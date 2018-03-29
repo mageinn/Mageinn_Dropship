@@ -1,0 +1,10 @@
+<!--@subject {{trans "New shipment on %store_name" store_name=$store.getFrontendName()}} @-->
+<!--@vars {
+"layout handle=\"sales_email_order_shipment_items\" shipment=$shipment order=$order":"Shipment Items Grid",
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+{{layout handle="sales_email_order_shipment_items" shipment=$shipment order=$order}}
+
+{{template config_path="design/email/footer_template"}}

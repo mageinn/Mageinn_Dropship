@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Mageinn_Dropship::css/vendor-popup.css"/>
+    </head>
+    <body>
+        <referenceBlock name="column_name">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Mageinn_Dropship::items/column/name.phtml</argument>
+            </action>
+            <block class="Mageinn\Dropship\Block\Adminhtml\Order\View\VendorInfo" name="sales_order_view_vendor" template="order/view/vendor_info.phtml"/>
+        </referenceBlock>
+    </body>
+</page>

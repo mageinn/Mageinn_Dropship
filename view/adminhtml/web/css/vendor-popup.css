@@ -1,0 +1,17 @@
+/*Vendor popup on orders items*/
+.modal-popup.vendor-info-popup .modal-footer {
+    display: none;
+}
+
+.modal-popup.vendor-info-popup .modal-inner-wrap {
+    width: 40%;
+}
+
+.modal-popup.vendor-info-popup .vendor-popup .info-list tr>td {
+    padding-bottom: 1em;
+    vertical-align: top;
+}
+
+.modal-popup.vendor-info-popup .vendor-popup td {
+    padding:0 15px 0 15px;
+}

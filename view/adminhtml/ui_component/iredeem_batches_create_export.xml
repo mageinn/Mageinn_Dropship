@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">iredeem_batches_create_export.iredeem_batches_create_export_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Batch</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back">
+                <url path="*/*/"/>
+                <class>back</class>
+                <label translate="true">Back</label>
+            </button>
+            <button name="reset">
+                <label translate="true">Reset</label>
+            </button>
+            <button name="save">
+                <class>save primary</class>
+                <label translate="true">Save</label>
+            </button>
+        </buttons>
+        <layout>
+            <navContainerName>left</navContainerName>
+            <type>tabs</type>
+        </layout>
+        <deps>
+            <dep>iredeem_batches_create_export.iredeem_batches_create_export_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="iredeem_batches_create_export_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="sales/batches/saveExport"/>
+        </settings>
+        <dataProvider class="Mageinn\Dropship\Model\Batch\DataProvider" name="iredeem_batches_create_export_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="vendor_batches">
+        <settings>
+            <label translate="true">Batch Details</label>
+        </settings>
+        <field name="vendor_name" formElement="select">
+            <settings>
+                <label translate="true">Vendor</label>
+                <dataType>text</dataType>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Mageinn\Dropship\Ui\Component\Listing\Column\Vendor\Options"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+    </fieldset>
+</form>
