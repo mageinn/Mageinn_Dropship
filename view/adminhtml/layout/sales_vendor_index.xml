@@ -4,7 +4,7 @@
     <update handle="styles"/>
     <body>
         <referenceContainer name="content">
-            <uiComponent name="iredeem_vendor_grid"/>
+            <uiComponent name="mageinn_vendor_grid"/>
         </referenceContainer>
     </body>
 </page>

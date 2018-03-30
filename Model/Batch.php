@@ -17,7 +17,7 @@ class Batch extends \Magento\Cron\Model\Schedule
     /**#@+
      * Table
      */
-    const TABLE_DROPSHIP_BATCH = 'iredeem_dropship_batch';
+    const TABLE_DROPSHIP_BATCH = 'mageinn_dropship_batch';
     /**#@-*/
 
     /**

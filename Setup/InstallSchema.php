@@ -25,7 +25,7 @@ class InstallSchema implements InstallSchemaInterface
         $installer->startSetup();
 
         /**
-         * Create table 'iredeem_vendor_information'
+         * Create table 'mageinn_vendor_information'
          */
         if (!$installer->tableExists(Info::VENDOR_INFO_TABLE)) {
             $table = $installer->getConnection()

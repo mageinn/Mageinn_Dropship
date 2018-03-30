@@ -1,5 +1,4 @@
 <?php
-/* app/code/Iredeem/Dropship/Setup/InstallData.php */
 
 namespace Mageinn\Dropship\Setup;
 

@@ -351,7 +351,7 @@ class Email
     /**
      * Creates an email message based on the set components
      *
-     * @param \Iredeem\Core\Magento\Mail\Template\TransportBuilder $transportBuilder
+     * @param \Mageinn\Dropship\Magento\Mail\Template\TransportBuilder $transportBuilder
      * @param $contents
      * @return bool|\Magento\Framework\Mail\TransportInterface
      */

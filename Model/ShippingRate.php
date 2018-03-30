@@ -12,7 +12,7 @@ class ShippingRate extends AbstractModel
     /**#@+
      * Table
      */
-    const SHIPPING_RATES_TABLE = 'iredeem_shipping_rates';
+    const SHIPPING_RATES_TABLE = 'mageinn_shipping_rates';
     /**#@-*/
 
     /**#@+

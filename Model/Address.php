@@ -13,7 +13,7 @@ class Address extends AbstractModel
     /**#@+
      * Table
      */
-    const VENDOR_ADDRESS_TABLE = 'iredeem_vendor_address';
+    const VENDOR_ADDRESS_TABLE = 'mageinn_vendor_address';
     /**#@-*/
 
     /**#@+

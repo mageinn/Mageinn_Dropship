@@ -152,7 +152,7 @@ class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface
                     'input' => 'boolean',
                     'group' => 'General',
                     'class' => 'delivery-country-override',
-                    'source' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean',
+                    'source' => \Magento\Eav\Model\Entity\Attribute\Source\Boolean::class,
                     'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,
                     'visible' => true,
                     'required' => false,

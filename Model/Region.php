@@ -12,7 +12,7 @@ class Region extends AbstractModel
     /**#@+
      * Table
      */
-    const REGIONS_TABLE = 'iredeem_regions';
+    const REGIONS_TABLE = 'mageinn_regions';
     /**#@-*/
 
     /**#@+
