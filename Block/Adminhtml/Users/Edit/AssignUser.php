@@ -1,10 +1,15 @@
 <?php
 
 namespace Mageinn\Dropship\Block\Adminhtml\Users\Edit;
+use Mageinn\Dropship\Block\Adminhtml\Users\Edit\Tab\User;
+use Magento\Backend\Block\Template\Context;
+use Magento\Framework\Json\EncoderInterface;
+use Magento\Framework\Registry;
+use Magento\User\Model\ResourceModel\User\CollectionFactory;
 
 /**
- * Class Stock
- * @package Mageinn\Dropship\Block\Adminhtml\Edit\
+ * Class AssignUser
+ * @package Mageinn\Dropship\Block\Adminhtml\Users\Edit
  */
 class AssignUser extends \Magento\Backend\Block\Template
 {
@@ -14,66 +19,66 @@ class AssignUser extends \Magento\Backend\Block\Template
     protected $_template = 'Mageinn_Dropship::vendor/assign_user.phtml';
 
     /**
-     * @var \Mageinn\Dropship\Block\Adminhtml\Users\Edit\Tab\User
+     * @var User
+     *
      */
     protected $blockGrid;
 
     /**
-     * @var \Magento\Framework\Registry
+     * @var Registry
+     *
      */
     protected $registry;
 
     /**
-     * @var \Magento\Framework\Json\EncoderInterface
+     * @var EncoderInterface
+     *
      */
     protected $jsonEncoder;
 
     /**
      * @var \Magento\User\Model\ResourceModel\User\Collection
+     *
      */
     protected $userCollectionFactory;
 
     /**
-     * AssignUser constructor.
-     * @param \Magento\Backend\Block\Template\Context $context
-     * @param \Magento\Framework\Registry $registry
-     * @param \Magento\Framework\Json\EncoderInterface $jsonEncoder
-     * @param \Magento\User\Model\ResourceModel\User\CollectionFactory $userCollectionFactory
+     * Constructor.
+     * @param Context $context
+     * @param EncoderInterface $jsonEncoder
+     * @param CollectionFactory $userCollectionFactory
+     * @param Registry $registry
      * @param array $data
      */
     public function __construct(
-        \Magento\Backend\Block\Template\Context $context,
-        \Magento\Framework\Registry $registry,
-        \Magento\Framework\Json\EncoderInterface $jsonEncoder,
-        \Magento\User\Model\ResourceModel\User\CollectionFactory $userCollectionFactory,
+        Context $context,
+        EncoderInterface $jsonEncoder,
+        CollectionFactory $userCollectionFactory,
+        Registry $registry,
         array $data = []
     ) {
-        $this->registry = $registry;
         $this->jsonEncoder = $jsonEncoder;
+        $this->registry = $registry;
         $this->userCollectionFactory = $userCollectionFactory;
         parent::__construct($context, $data);
     }
 
     /**
      * Retrieve instance of grid block
-     *
-     * @return \Magento\Framework\View\Element\BlockInterface
+     * @return Tab\User|\Magento\Framework\View\Element\BlockInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function getBlockGrid()
     {
-        if (null === $this->blockGrid) {
-            $this->blockGrid = $this->getLayout()->createBlock(
-                \Mageinn\Dropship\Block\Adminhtml\Users\Edit\Tab\User::class,
-                'vendor.user.grid'
-            );
+        if (is_null($this->blockGrid)) {
+            $this->blockGrid = $this->getLayout()->createBlock(User::class, 'vendor.user.grid');
         }
+
         return $this->blockGrid;
     }
 
     /**
      * Return HTML of grid block
-     *
      * @return string
      * @throws \Magento\Framework\Exception\LocalizedException
      */
@@ -88,19 +93,15 @@ class AssignUser extends \Magento\Backend\Block\Template
     public function getUsersJson()
     {
         if ($this->getVendor()->getId()) {
-            $vUsers = $this->userCollectionFactory->create()
-                ->addFieldToFilter('assoc_vendor_id', [
+            $v_users = $this->userCollectionFactory->create()->addFieldToFilter('assoc_vendor_id', [
                     'like' => '%"' . $this->getVendor()->getId() . '"%'
-                ])
-                ->addFieldToSelect('user_id');
+                ])->addFieldToSelect('user_id');
             $users = [];
-            foreach ($vUsers as $user) {
+            foreach ($v_users as $user) {
                 $users[$user->getUserId()]  = $user->getUserId();
             }
 
-            if (!empty($users)) {
-                return $this->jsonEncoder->encode($users);
-            }
+            if (!empty($users)) return $this->jsonEncoder->encode($users);
         }
 
         return '{}';
@@ -108,7 +109,6 @@ class AssignUser extends \Magento\Backend\Block\Template
 
     /**
      * Retrieve current category instance
-     *
      * @return array|null
      */
     public function getVendor()

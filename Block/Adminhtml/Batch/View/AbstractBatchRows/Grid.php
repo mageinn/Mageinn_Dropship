@@ -10,44 +10,44 @@ use Mageinn\Dropship\Model\ResourceModel\BatchRow\CollectionFactory;
 abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
 {
     /**
-     * @var \Magento\Framework\Registry
+     * @var \Magento\Framework\Registry|null
      */
-    protected $_registry = null;
+    protected $registry = null;
 
     /**
      * @var CollectionFactory
      */
-    protected $_collectionFactory;
+    protected $collectionFactory;
 
     /**
-     * User constructor.
-     * @param \Magento\Backend\Helper\Data $backendHelper
+     * Grid constructor.
      * @param \Magento\Backend\Block\Template\Context $context
-     * @param CollectionFactory $collectionFactory
+     * @param \Magento\Backend\Helper\Data $backendHelper
      * @param \Magento\Framework\Registry $registry
+     * @param CollectionFactory $collectionFactory
      * @param array $data
      */
     public function __construct(
-        \Magento\Backend\Helper\Data $backendHelper,
         \Magento\Backend\Block\Template\Context $context,
-        CollectionFactory $collectionFactory,
         \Magento\Framework\Registry $registry,
+        \Magento\Backend\Helper\Data $backendHelper,
+        CollectionFactory $collectionFactory,
         array $data = []
     ) {
-        $this->_registry = $registry;
-        $this->_collectionFactory = $collectionFactory;
+        $this->collectionFactory = $collectionFactory;
+        $this->registry = $registry;
         parent::__construct($context, $backendHelper, $data);
     }
 
     /**
-     * @return void
+     *
      */
     protected function _construct()
     {
         parent::_construct();
-        $this->setId('iredeem_batch_data_rows');
         $this->setDefaultSort('entity_id');
         $this->setUseAjax(true);
+        $this->setId('iredeem_batch_data_rows');
     }
 
     /**
@@ -55,7 +55,7 @@ abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
      */
     public function getBatch()
     {
-        return $this->_registry->registry('iredeem_batch');
+        return $this->registry->registry('iredeem_batch');
     }
 
     /**
@@ -63,12 +63,10 @@ abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
      */
     protected function _prepareCollection()
     {
-        if ($this->getBatch()->getId()) {
-            $this->setDefaultFilter('entity_id');
-        }
+        if ($this->getBatch()->getId()) $this->setDefaultFilter('entity_id');
 
-        $collection = $this->_collectionFactory->create()
-            ->addFieldToFilter('batch_id', ['eq' => $this->getBatch()->getId()]);
+        $collection = $this->collectionFactory->create();
+        $collection->addFieldToFilter('batch_id', ['eq' => $this->getBatch()->getId()]);
 
         $this->setCollection($collection);
 

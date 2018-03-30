@@ -6,21 +6,20 @@ use \Magento\Backend\App\Action\Context;
 use \Magento\Framework\View\Result\PageFactory;
 
 /**
- * Dropship Index Action
- * @package Mageinn\Dropship\Controller\Adminhtml\Dropship
+ * Class Index
+ * @package Mageinn\Dropship\Controller\Adminhtml\Vendor
  */
 class Index extends Action
 {
     /**
-     * @var \Magento\Framework\View\Result\PageFactory
+     * @var PageFactory
      */
     protected $resultPageFactory;
 
     /**
-     * Constructor
-     *
-     * @param \Magento\Backend\App\Action\Context $context
-     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
+     * Index constructor.
+     * @param Context $context
+     * @param PageFactory $resultPageFactory
      */
     public function __construct(Context $context, PageFactory $resultPageFactory)
     {
@@ -31,17 +30,17 @@ class Index extends Action
     /**
      * Load the defined page.
      *
-     * @return \Magento\Framework\View\Result\Page
+     * @return \Magento\Backend\Model\View\Result\Page|\Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface
      */
     public function execute()
     {
-        /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
-        $resultPage = $this->resultPageFactory->create();
-        $resultPage->setActiveMenu('Mageinn_Dropship::vendor_vendors');
-        $resultPage->addBreadcrumb(__('Sales'), __('Sales'));
-        $resultPage->addBreadcrumb(__('Dropship Portal'), __('Dropship Portal'));
-        $resultPage->getConfig()->getTitle()->prepend(__('Dropship Portal'));
+        /** @var \Magento\Backend\Model\View\Result\Page $result_page */
+        $result_page = $this->resultPageFactory->create();
+        $result_page->setActiveMenu('Mageinn_Dropship::vendor_vendors');
+        $result_page->addBreadcrumb(__('Sales'), __('Sales'));
+        $result_page->addBreadcrumb(__('Vendors'), __('Vendors'));
+        $result_page->getConfig()->getTitle()->prepend(__('Vendors'));
 
-        return $resultPage;
+        return $result_page;
     }
 }

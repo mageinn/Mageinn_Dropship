@@ -1,6 +1,11 @@
 <?php
 namespace Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractFilePath;
 
+use Mageinn\Dropship\Model\Source\BatchStatus;
+use Magento\Backend\Helper\Data;
+use Magento\Framework\Data\CollectionFactory;
+use Magento\Framework\Registry;
+
 /**
  * Class Grid
  * @package Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractFilePath
@@ -8,48 +13,48 @@ namespace Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractFilePath;
 abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
 {
     /**
-     * @var \Magento\Framework\Registry
+     * @var Registry|null
      */
-    protected $_registry = null;
+    protected $registry = null;
 
     /**
-     * @var \Magento\Framework\Data\CollectionFactory
+     * @var CollectionFactory
      */
-    protected $_collectionFactory;
+    protected $collectionFactory;
 
     /**
      * @var \Psr\Log\LoggerInterface
      */
-    protected $_logger;
+    protected $logger;
 
     /**
-     * @var \Mageinn\Dropship\Model\Source\BatchStatus
+     * @var BatchStatus
      */
-    protected $_batchStatus;
+    protected $batchStatus;
 
     /**
-     * User constructor.
-     * @param \Magento\Backend\Helper\Data $backendHelper
+     * Grid constructor.
      * @param \Magento\Backend\Block\Template\Context $context
-     * @param \Magento\Framework\Data\CollectionFactory $collectionFactory
-     * @param \Magento\Framework\Registry $registry
+     * @param Data $backendHelper
+     * @param Registry $registry
+     * @param CollectionFactory $collectionFactory
+     * @param BatchStatus $batchStatus
      * @param \Psr\Log\LoggerInterface $logger
-     * @param \Mageinn\Dropship\Model\Source\BatchStatus $batchStatus
      * @param array $data
      */
     public function __construct(
-        \Magento\Backend\Helper\Data $backendHelper,
         \Magento\Backend\Block\Template\Context $context,
-        \Magento\Framework\Data\CollectionFactory $collectionFactory,
-        \Magento\Framework\Registry $registry,
+        Data $backendHelper,
+        Registry $registry,
+        CollectionFactory $collectionFactory,
+        BatchStatus $batchStatus,
         \Psr\Log\LoggerInterface $logger,
-        \Mageinn\Dropship\Model\Source\BatchStatus $batchStatus,
         array $data = []
     ) {
-        $this->_registry = $registry;
-        $this->_collectionFactory = $collectionFactory;
-        $this->_logger = $logger;
-        $this->_batchStatus = $batchStatus;
+        $this->collectionFactory = $collectionFactory;
+        $this->registry = $registry;
+        $this->batchStatus = $batchStatus;
+        $this->logger = $logger;
         parent::__construct($context, $backendHelper, $data);
     }
 
@@ -60,8 +65,8 @@ abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     {
         parent::_construct();
         $this->setId('iredeem_batch_file_path');
-        $this->setDefaultSort('entity_id');
         $this->setUseAjax(true);
+        $this->setDefaultSort('entity_id');
         $this->setFilterVisibility(false);
     }
 
@@ -70,7 +75,7 @@ abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
      */
     public function getBatch()
     {
-        return $this->_registry->registry('iredeem_batch');
+        return $this->registry->registry('iredeem_batch');
     }
 
     /**
@@ -78,15 +83,13 @@ abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
      */
     protected function _prepareCollection()
     {
-        if ($this->getBatch()->getId()) {
-            $this->setDefaultFilter('entity_id');
-        }
+        if ($this->getBatch()->getId()) $this->setDefaultFilter('entity_id');
 
         try {
-            $collection = $this->_collectionFactory->create()->addItem($this->getBatch());
+            $collection = $this->collectionFactory->create()->addItem($this->getBatch());
             $this->setCollection($collection);
-        } catch (\Exception $e) {
-            $this->_logger->error($e);
+        } catch (\Exception $exception) {
+            $this->logger->error($exception);
         }
 
         return parent::_prepareCollection();

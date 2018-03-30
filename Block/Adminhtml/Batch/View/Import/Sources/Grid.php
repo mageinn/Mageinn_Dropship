@@ -1,11 +1,13 @@
 <?php
 namespace Mageinn\Dropship\Block\Adminhtml\Batch\View\Import\Sources;
 
+use Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractFilePath\Grid as GridParent;
+
 /**
  * Class Grid
- * @package Mageinn\Dropship\Block\Adminhtml\Batch\View\Export\Destinations
+ * @package Mageinn\Dropship\Block\Adminhtml\Batch\View\Import\Sources
  */
-class Grid extends \Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractFilePath\Grid
+class Grid extends GridParent
 {
     /**
      * @return \Magento\Backend\Block\Widget\Grid\Extended
@@ -16,39 +18,47 @@ class Grid extends \Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractFilePath
         $this->addColumn(
             'entity_id',
             [
-                'header' => __('ID'),
                 'name' => 'entity_id',
                 'index' => 'entity_id',
+                'header' => __('ID'),
             ]
-        )->addColumn(
+        );
+
+        $this->addColumn(
             'file_path',
             [
-                'header' => __('Location'),
                 'name' => 'file_path',
                 'index' => 'file_path',
+                'header' => __('Location'),
             ]
-        )->addColumn(
+        );
+
+        $this->addColumn(
             'status',
             [
-                'header' => __('Status'),
                 'name' => 'status',
                 'index' => 'status',
+                'header' => __('Status'),
                 'type' => 'options',
-                'options' => $this->_batchStatus->getOptionsArray(),
+                'options' => $this->batchStatus->getOptionsArray(),
             ]
-        )->addColumn(
+        );
+
+        $this->addColumn(
             'error_info',
             [
-                'header' => __('Error'),
                 'name' => 'error_info',
                 'index' => 'error_info',
+                'header' => __('Error'),
             ]
-        )->addColumn(
+        );
+
+        $this->addColumn(
             'updated_at',
             [
-                'header' => __('Updated At'),
                 'name' => 'updated_at',
                 'index' => 'updated_at',
+                'header' => __('Updated At'),
             ]
         );
 

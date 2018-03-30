@@ -1,32 +1,37 @@
 <?php
 namespace Mageinn\Dropship\Block\Adminhtml\ShippingRates;
 
+use Mageinn\Dropship\Model\ResourceModel\Info\CollectionFactory;
+use Magento\Backend\Block\Template\Context;
+use Magento\Backend\Block\Widget;
+
 /**
  * Class ImportExport
  * @package Mageinn\Dropship\Block\Adminhtml\ShippingRates
  */
-class ImportExport extends \Magento\Backend\Block\Widget
+class ImportExport extends Widget
 {
     /**
-     * @var \Mageinn\Dropship\Model\ResourceModel\Info\CollectionFactory
+     * @var CollectionFactory
      */
-    protected $vendorsCollectionFactory;
+    protected $vendorsFactory;
 
     /**
-     * @param \Magento\Backend\Block\Template\Context $context
+     * @param Context $context
      * @param array $data
      */
     public function __construct(
-        \Magento\Backend\Block\Template\Context $context,
-        \Mageinn\Dropship\Model\ResourceModel\Info\CollectionFactory $collectionFactory,
+        Context $context,
+        CollectionFactory $collectionFactory,
         array $data = []
     ) {
-        $this->vendorsCollectionFactory = $collectionFactory;
+        $this->vendorsFactory = $collectionFactory;
         parent::__construct($context, $data);
     }
 
     /**
      * @return string
+     *
      */
     public function getExportUrl()
     {
@@ -35,6 +40,7 @@ class ImportExport extends \Magento\Backend\Block\Widget
 
     /**
      * @return string
+     *
      */
     public function getImportUrl()
     {
@@ -43,17 +49,18 @@ class ImportExport extends \Magento\Backend\Block\Widget
 
     /**
      * @return string
+     *
      */
     public function getVendorsSelectHtml()
     {
-        $vendorsCollection = $this->vendorsCollectionFactory->create();
+        $vendors_collection = $this->vendorsFactory->create();
 
-        $vendorsSelect = '<select name="vendor_id" class="admin__control-select shipping-rates-select required-entry">';
-        foreach ($vendorsCollection as $vendor) {
-            $vendorsSelect .= '<option value="' . $vendor->getId() . '">' . $vendor->getName() . '</option>';
-        }
-        $vendorsSelect .= '</select>';
+        $vendors_select = '<select name="vendor_id" class="admin__control-select shipping-rates-select required-entry">';
+        foreach ($vendors_collection as $vendor)
+            $vendors_select .= sprintf('<option value="%s">%s</option>', $vendor->getId(), $vendor->getName());
 
-        return $vendorsSelect;
+        $vendors_select .= '</select>';
+
+        return $vendors_select;
     }
 }

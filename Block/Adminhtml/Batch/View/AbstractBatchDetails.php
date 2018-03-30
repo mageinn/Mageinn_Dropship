@@ -1,11 +1,13 @@
 <?php
 namespace Mageinn\Dropship\Block\Adminhtml\Batch\View;
 
+use Magento\Backend\Block\Template;
+
 /**
  * Class AbstractBatchDetails
  * @package Mageinn\Dropship\Block\Adminhtml\Batch\View
  */
-abstract class AbstractBatchDetails extends \Magento\Backend\Block\Template
+abstract class AbstractBatchDetails extends Template
 {
     /**
      * @var string
@@ -15,21 +17,19 @@ abstract class AbstractBatchDetails extends \Magento\Backend\Block\Template
     /**
      * @var \Magento\Backend\Block\Widget\Grid\Extended
      */
-    protected $_grid;
+    protected $grid;
 
     /**
      * Retrieve instance of grid block
-     *
-     * @return \Magento\Framework\View\Element\BlockInterface
+     * @return \Magento\Backend\Block\Widget\Grid\Extended
      */
     public function getGrid()
     {
-        return $this->_grid;
+        return $this->grid;
     }
 
     /**
      * Return HTML of grid block
-     *
      * @return string
      */
     public function getGridHtml()

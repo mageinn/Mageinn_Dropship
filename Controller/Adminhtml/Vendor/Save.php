@@ -166,7 +166,7 @@ class Save extends Action
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
         $postData = $this->getRequest()->getPostValue();
-        $vendor = $postData['iredeem_vendor'];
+        $vendor = $postData['mageinn_vendor'];
         $addresses = $postData['vendor_address'];
         $settings = $postData['vendor_settings'];
         $batchExport = $postData['batch_export'];

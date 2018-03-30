@@ -3,12 +3,12 @@
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
         <add id="Mageinn_Dropship::dropship" title="Dropship" translate="title" module="Mageinn_Dropship"
-             sortOrder="20" parent="Magento_Sales::sales" resource="Mageinn_Dropship::dropship" dependsOnModule="Magento_Sales" />
-        <add id="Mageinn_Dropship::vendor_vendors" title="Vendors" translate="title" module="Mageinn_Dropship" sortOrder="100"
+             sortOrder="10" parent="Magento_Sales::sales" resource="Mageinn_Dropship::dropship" dependsOnModule="Magento_Sales" />
+        <add id="Mageinn_Dropship::vendor_vendors" title="Vendors" translate="title" module="Mageinn_Dropship" sortOrder="20"
              parent="Mageinn_Dropship::dropship" action="sales/vendor" resource="Mageinn_Dropship::vendors"/>
-        <add id="Mageinn_Dropship::vendor_batches" title="Batches" translate="title" module="Mageinn_Dropship" sortOrder="200"
+        <add id="Mageinn_Dropship::vendor_batches" title="Batches" translate="title" module="Mageinn_Dropship" sortOrder="30"
              parent="Mageinn_Dropship::dropship" action="sales/batches" resource="Mageinn_Dropship::vendors"/>
-        <add id="Mageinn_Dropship::vendor_shipping_rates" title="Shipping Rates" translate="title" module="Mageinn_Dropship" sortOrder="300"
+        <add id="Mageinn_Dropship::vendor_shipping_rates" title="Shipping Rates" translate="title" module="Mageinn_Dropship" sortOrder="40"
              parent="Mageinn_Dropship::dropship" action="sales/shippingRates" resource="Mageinn_Dropship::vendors"/>
     </menu>
 </config>

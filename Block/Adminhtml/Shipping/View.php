@@ -2,7 +2,10 @@
 
 namespace Mageinn\Dropship\Block\Adminhtml\Shipping;
 
+use Mageinn\Dropship\Model\Shipment;
 use Mageinn\Dropship\Model\Source\ShipmentStatus;
+use Magento\Backend\Block\Widget\Context;
+use Magento\Framework\Registry;
 
 /**
  * Class View
@@ -11,29 +14,33 @@ use Mageinn\Dropship\Model\Source\ShipmentStatus;
 class View extends \Magento\Shipping\Block\Adminhtml\View
 {
     /**
-     * @var \Mageinn\Dropship\Model\Shipment
+     * @var Shipment
      */
     protected $shipment;
 
     /**
-     * View constructor.
-     * @param \Magento\Backend\Block\Widget\Context $context
-     * @param \Magento\Framework\Registry $registry
-     * @param \Mageinn\Dropship\Model\Shipment $shipment
+     * Constructor.
+     * @param Context $context
+     * @param Shipment $shipment
+     * @param Registry $registry
      * @param array $data
      */
     public function __construct(
-        \Magento\Backend\Block\Widget\Context $context,
-        \Magento\Framework\Registry $registry,
-        \Mageinn\Dropship\Model\Shipment $shipment,
+        Context $context,
+        Shipment $shipment,
+        Registry $registry,
         array $data = []
     ) {
         $this->shipment = $shipment;
-        return parent::__construct($context, $registry, $data);
+        return parent::__construct(
+            $context,
+            $registry,
+            $data
+        );
     }
 
     /**
-     * @return void
+     *
      */
     protected function _construct()
     {
@@ -46,12 +53,15 @@ class View extends \Magento\Shipping\Block\Adminhtml\View
                     'label'    => __('Mark as shipped'),
                     'class'    => 'primary',
                     'disabled' => $this->shipment->isStatusLocked(),
-                    'onclick'  => 'setLocation(\'' . $this->getMarkAsShippedUrl() . '\')'
+                    'onclick'  => sprintf('setLocation(\'%s\')', $this->getMarkAsShippedUrl())
                 ]
             );
         }
     }
 
+    /**
+     * @return string
+     */
     public function getMarkAsShippedUrl()
     {
         return $this->getUrl('sales/shipment/ship', ['shipment_id' => $this->getShipment()->getId()]);
@@ -62,11 +72,10 @@ class View extends \Magento\Shipping\Block\Adminhtml\View
      */
     public function getHeaderText()
     {
-        if ($this->getShipment()->getEmailSent()) {
-            $emailSent = __('the shipment email was sent');
-        } else {
-            $emailSent = __('the shipment email is not sent');
-        }
+        $emailSent = $this->getShipment()->getEmailSent()
+            ? __('the shipment email was sent')
+            : __('the shipment email is not sent');
+
         // @codingStandardsIgnoreStart
         return __(
             'Shipment #%1 | %3 (%2) [%4]',

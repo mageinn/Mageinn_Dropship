@@ -1,27 +1,28 @@
 <?php
 namespace Mageinn\Dropship\Block\Adminhtml\Batch\View\Import;
 
+use Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractBatchDetails;
+use Mageinn\Dropship\Block\Adminhtml\Batch\View\Import\Sources\Grid;
+
 /**
  * Class Sources
  * @package Mageinn\Dropship\Block\Adminhtml\Batch\View\Import
  */
-class Sources extends \Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractBatchDetails
+class Sources extends AbstractBatchDetails
 {
 
     /**
      * Retrieve instance of grid block
      *
-     * @return \Magento\Framework\View\Element\BlockInterface
+     * @return \Magento\Backend\Block\Widget\Grid\Extended|\Magento\Framework\View\Element\BlockInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function getGrid()
     {
-        if (null === $this->_grid) {
-            $this->_grid = $this->getLayout()->createBlock(
-                \Mageinn\Dropship\Block\Adminhtml\Batch\View\Import\Sources\Grid::class,
-                'batches.destinations'
-            );
+        if (is_null($this->grid)) {
+            $this->grid = $this->getLayout()->createBlock(Grid::class, 'batches.destinations');
         }
-        return $this->_grid;
+
+        return $this->grid;
     }
 }
