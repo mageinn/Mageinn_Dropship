@@ -31,7 +31,7 @@ require([
     function getFilterUrl()
     {
         var adminURL = BASE_URL.substr(0, BASE_URL.lastIndexOf('/admin'));
-        return adminURL + "/admin/sales/shippingRates/filter";
+        return adminURL + "/manager/sales/shippingRates/filter"; /* todo fix url*/
     }
 
     /**

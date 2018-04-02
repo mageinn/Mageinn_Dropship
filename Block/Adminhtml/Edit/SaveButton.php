@@ -15,7 +15,7 @@ class SaveButton implements ButtonProviderInterface
     public function getButtonData()
     {
         $data = [
-            'label' => __('Save Vendor'),
+            'label' => __('Save Dropship'),
             'class' => 'save primary',
             'data_attribute' => [
                 'mage-init' => ['button' => ['event' => 'save']],

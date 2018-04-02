@@ -38,8 +38,8 @@ class Index extends Action
         $result_page = $this->resultPageFactory->create();
         $result_page->setActiveMenu('Mageinn_Dropship::vendor_vendors');
         $result_page->addBreadcrumb(__('Sales'), __('Sales'));
-        $result_page->addBreadcrumb(__('Vendors'), __('Vendors'));
-        $result_page->getConfig()->getTitle()->prepend(__('Vendors'));
+        $result_page->addBreadcrumb(__('Dropships'), __('Dropships'));
+        $result_page->getConfig()->getTitle()->prepend(__('Dropships'));
 
         return $result_page;
     }

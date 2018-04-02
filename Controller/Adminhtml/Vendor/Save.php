@@ -116,9 +116,9 @@ class Save extends Action
 
     /**
      * Save Associated vendor users.
-     *
      * @param $vendorId
      * @param $assocVendorUsersIds
+     * @throws LocalizedException
      */
     protected function _saveAssocUsers($vendorId, $assocVendorUsersIds)
     {
@@ -190,7 +190,7 @@ class Save extends Action
             /** @var \Mageinn\Dropship\Model\Info $model */
             $model = $this->vendorModel->load($id);
             if (!$model->getId() && $id) {
-                $this->messageManager->addError(__('This vendor no longer exists.'));
+                $this->messageManager->addError(__('This dropship no longer exists.'));
                 return $resultRedirect->setPath('*/*/');
             }
 
@@ -204,7 +204,7 @@ class Save extends Action
                     $this->_saveAssocUsers($id, $assocUsers);
                 }
 
-                $this->messageManager->addSuccess(__('You saved the vendor.'));
+                $this->messageManager->addSuccess(__('You saved the dropship.'));
 
                 if ($this->getRequest()->getParam('back')) {
                     return $resultRedirect->setPath('*/*/edit', ['id' => $model->getId()]);
@@ -214,7 +214,7 @@ class Save extends Action
             } catch (LocalizedException $e) {
                 $this->messageManager->addError($e->getMessage());
             } catch (\Exception $e) {
-                $this->messageManager->addException($e, __('Something went wrong while saving the vendor.'));
+                $this->messageManager->addException($e, __('Something went wrong while saving the dropship.'));
             }
 
             return $resultRedirect->setPath('*/*/edit', ['id' => $this->getRequest()->getParam('entity_id')]);
