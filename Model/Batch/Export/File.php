@@ -38,7 +38,7 @@ class File extends \Magento\Framework\Filesystem\Io\File
     protected $emailSentToVendor;
 
     /**
-     * @var \Mageinn\Core\Magento\Mail\Template\TransportBuilder
+     * @var \Mageinn\Vendor\Magento\Mail\Template\TransportBuilder
      */
     protected $transportBuilder;
 
@@ -70,7 +70,7 @@ class File extends \Magento\Framework\Filesystem\Io\File
     /**
      * File constructor.
      * @param \Magento\Framework\Filesystem\DirectoryList $dir
-     * @param \Mageinn\Core\Magento\Mail\Template\TransportBuilder $builder
+     * @param \Mageinn\Vendor\Magento\Mail\Template\TransportBuilder $builder
      * @param \Psr\Log\LoggerInterface $logger
      * @param \Mageinn\Vendor\Model\Batch\Export\File\Email $email
      * @param \Mageinn\Vendor\Model\Batch\Export\File\Response $response
@@ -78,7 +78,7 @@ class File extends \Magento\Framework\Filesystem\Io\File
      */
     public function __construct(
         \Magento\Framework\Filesystem\DirectoryList $dir,
-        \Mageinn\Core\Magento\Mail\Template\TransportBuilder $builder,
+        \Mageinn\Vendor\Magento\Mail\Template\TransportBuilder $builder,
         \Psr\Log\LoggerInterface $logger,
         \Mageinn\Vendor\Model\Batch\Export\File\Email $email,
         \Mageinn\Vendor\Model\Batch\Export\File\Response $response,
