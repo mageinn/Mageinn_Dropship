@@ -1,25 +1,26 @@
 <?php
-namespace Mageinn\Dropship\Controller\Adminhtml\Vendor;
+namespace Mageinn\Vendor\Controller\Adminhtml\Vendor;
 
 use \Magento\Backend\App\Action;
 use \Magento\Backend\App\Action\Context;
 use \Magento\Framework\View\Result\PageFactory;
 
 /**
- * Class Index
- * @package Mageinn\Dropship\Controller\Adminhtml\Vendor
+ * Vendor Index Action
+ * @package Mageinn\Vendor\Controller\Adminhtml\Vendor
  */
 class Index extends Action
 {
     /**
-     * @var PageFactory
+     * @var \Magento\Framework\View\Result\PageFactory
      */
     protected $resultPageFactory;
 
     /**
-     * Index constructor.
-     * @param Context $context
-     * @param PageFactory $resultPageFactory
+     * Constructor
+     *
+     * @param \Magento\Backend\App\Action\Context $context
+     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
      */
     public function __construct(Context $context, PageFactory $resultPageFactory)
     {
@@ -30,17 +31,17 @@ class Index extends Action
     /**
      * Load the defined page.
      *
-     * @return \Magento\Backend\Model\View\Result\Page|\Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface
+     * @return \Magento\Framework\View\Result\Page
      */
     public function execute()
     {
-        /** @var \Magento\Backend\Model\View\Result\Page $result_page */
-        $result_page = $this->resultPageFactory->create();
-        $result_page->setActiveMenu('Mageinn_Dropship::vendor_vendors');
-        $result_page->addBreadcrumb(__('Sales'), __('Sales'));
-        $result_page->addBreadcrumb(__('Dropships'), __('Dropships'));
-        $result_page->getConfig()->getTitle()->prepend(__('Dropships'));
+        /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
+        $resultPage = $this->resultPageFactory->create();
+        $resultPage->setActiveMenu('Mageinn_Vendor::vendor_vendors');
+        $resultPage->addBreadcrumb(__('Sales'), __('Sales'));
+        $resultPage->addBreadcrumb(__('Vendor Portal'), __('Vendor Portal'));
+        $resultPage->getConfig()->getTitle()->prepend(__('Vendor Portal'));
 
-        return $result_page;
+        return $resultPage;
     }
 }

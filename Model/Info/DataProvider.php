@@ -1,20 +1,20 @@
 <?php
-namespace Mageinn\Dropship\Model\Info;
+namespace Mageinn\Vendor\Model\Info;
 
 use \Magento\Ui\DataProvider\AbstractDataProvider;
-use \Mageinn\Dropship\Model\ResourceModel\Info\CollectionFactory as InfoCollectionFactory;
-use \Mageinn\Dropship\Model\ResourceModel\Address\CollectionFactory as AddressCollectionFactory;
-use \Mageinn\Dropship\Model\Info;
-use \Mageinn\Dropship\Model\Address;
+use \Mageinn\Vendor\Model\ResourceModel\Info\CollectionFactory as InfoCollectionFactory;
+use \Mageinn\Vendor\Model\ResourceModel\Address\CollectionFactory as AddressCollectionFactory;
+use \Mageinn\Vendor\Model\Info;
+use \Mageinn\Vendor\Model\Address;
 
 /**
  * Class DataProvider
  *
- * @package Mageinn\Dropship\Model\Dropship
+ * @package Mageinn\Vendor\Model\Vendor
  */
 class DataProvider extends AbstractDataProvider
 {
-    /** @var \Mageinn\Dropship\Model\ResourceModel\Address\Collection */
+    /** @var \Mageinn\Vendor\Model\ResourceModel\Address\Collection */
     protected $addressCollection;
 
     /** @var array Settings fieldset */
@@ -91,7 +91,7 @@ class DataProvider extends AbstractDataProvider
         }
 
         $items = $this->collection->getItems();
-        /** @var \Mageinn\Dropship\Model\Info $vendor */
+        /** @var \Mageinn\Vendor\Model\Info $vendor */
         foreach ($items as $vendor) {
             $vendorId = $vendor->getEntityId();
             $info = [];
@@ -109,7 +109,7 @@ class DataProvider extends AbstractDataProvider
             $batchImport[Info::VENDOR_BATCH_IMPORT_GENERAL] =
                 array_intersect_key($vendor->getData(), $this->batchImportColumns);
 
-            $this->loadedData[$vendorId]['iredeem_vendor'] = $info;
+            $this->loadedData[$vendorId]['mageinn_vendor'] = $info;
             $this->loadedData[$vendorId]['vendor_settings'] = $settings;
             $this->loadedData[$vendorId]['vendor_address'] = $vendorAddresses;
             $this->loadedData[$vendorId]['batch_export'] = $batchExport;

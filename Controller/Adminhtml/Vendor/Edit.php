@@ -1,11 +1,11 @@
 <?php
-namespace Mageinn\Dropship\Controller\Adminhtml\Vendor;
+namespace Mageinn\Vendor\Controller\Adminhtml\Vendor;
 
 use \Magento\Backend\App\Action;
 use \Magento\Backend\App\Action\Context;
 use \Magento\Framework\Registry;
 use \Magento\Framework\View\Result\PageFactory;
-use \Mageinn\Dropship\Model\Info;
+use \Mageinn\Vendor\Model\Info;
 
 class Edit extends Action
 {
@@ -70,16 +70,16 @@ class Edit extends Action
             }
         }
 
-        $this->coreRegistry->register('iredeem_vendor', $model);
+        $this->coreRegistry->register('mageinn_vendor', $model);
 
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
-        $resultPage->setActiveMenu('Mageinn_Dropship::vendor')->addBreadcrumb(
-            $id ? __('Edit Dropship' . $model->getVendorName()) : __('New Dropship'),
-            $id ? __('Edit Dropship' . $model->getVendorName()) : __('New Dropship')
+        $resultPage->setActiveMenu('Mageinn_Vendor::vendor')->addBreadcrumb(
+            $id ? __('Edit Vendor' . $model->getVendorName()) : __('New Vendor'),
+            $id ? __('Edit Vendor' . $model->getVendorName()) : __('New Vendor')
         );
         $resultPage->getConfig()->getTitle()->prepend(__('Vendors'));
-        $resultPage->getConfig()->getTitle()->prepend($model->getId() ? $model->getName() : __('New Dropship'));
+        $resultPage->getConfig()->getTitle()->prepend($model->getId() ? $model->getName() : __('New Vendor'));
 
         return $resultPage;
     }

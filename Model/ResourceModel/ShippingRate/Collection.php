@@ -1,13 +1,13 @@
 <?php
-namespace Mageinn\Dropship\Model\ResourceModel\ShippingRate;
+namespace Mageinn\Vendor\Model\ResourceModel\ShippingRate;
 
-use Mageinn\Dropship\Model\ShippingRate;
+use Mageinn\Vendor\Model\ShippingRate;
 use \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 
 /**
  * Class Collection
  *
- * @package Mageinn\Dropship\Model\ResourceModel\Region
+ * @package Mageinn\Vendor\Model\ResourceModel\Region
  */
 class Collection extends AbstractCollection
 {
@@ -23,7 +23,7 @@ class Collection extends AbstractCollection
      */
     protected function _construct()
     {
-        $this->_init(ShippingRate::class, \Mageinn\Dropship\Model\ResourceModel\ShippingRate::class);
+        $this->_init(ShippingRate::class, \Mageinn\Vendor\Model\ResourceModel\ShippingRate::class);
         $this->_map['fields']['entity_id'] = 'main_table.entity_id';
     }
 }

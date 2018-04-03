@@ -1,11 +1,11 @@
 <?php
-namespace Mageinn\Dropship\Model\ResourceModel;
+namespace Mageinn\Vendor\Model\ResourceModel;
 
 use \Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
 /**
  * Class BatchRow
- * @package Mageinn\Dropship\Model\ResourceModel
+ * @package Mageinn\Vendor\Model\ResourceModel
  */
 class BatchRow extends AbstractDb
 {
@@ -16,7 +16,7 @@ class BatchRow extends AbstractDb
      */
     protected function _construct()
     {
-        $this->_init(\Mageinn\Dropship\Model\BatchRow::TABLE_DROPSHIP_BATCH_ROW, 'entity_id');
+        $this->_init(\Mageinn\Vendor\Model\BatchRow::TABLE_DROPSHIP_BATCH_ROW, 'entity_id');
     }
 
     /**
@@ -31,7 +31,7 @@ class BatchRow extends AbstractDb
             try {
                 $connection->beginTransaction();
                 $connection->insertMultiple(
-                    $this->getTable(\Mageinn\Dropship\Model\BatchRow::TABLE_DROPSHIP_BATCH_ROW),
+                    $this->getTable(\Mageinn\Vendor\Model\BatchRow::TABLE_DROPSHIP_BATCH_ROW),
                     $data
                 );
                 $connection->commit();

@@ -2,9 +2,9 @@
 
 // @codingStandardsIgnoreFile
 
-$statuses = \Mageinn\Dropship\Model\Source\ShipmentStatus::getStatusOptions();
+$statuses = \Mageinn\Vendor\Model\Source\ShipmentStatus::getStatusOptions();
 $currentStatus = $block->getData('entity')->getDropshipStatus();
-$helper = $this->helper('Mageinn\Dropship\Helper\Data');
+$helper = $this->helper('Mageinn\Vendor\Helper\Data');
 $disabled = $block->getData('entity')->isStatusLocked() ? 'disabled' : '';
 ?>
 <?php if ($_entity = $block->getEntity()): ?>

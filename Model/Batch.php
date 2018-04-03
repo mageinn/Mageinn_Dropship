@@ -1,12 +1,12 @@
 <?php
-namespace Mageinn\Dropship\Model;
+namespace Mageinn\Vendor\Model;
 
-use Mageinn\Dropship\Model\Source\BatchStatus;
+use Mageinn\Vendor\Model\Source\BatchStatus;
 use Magento\Framework\Exception\LocalizedException;
 
 /**
  * Class Info
- * @package Mageinn\Dropship\Model
+ * @package Mageinn\Vendor\Model
  */
 class Batch extends \Magento\Cron\Model\Schedule
 {
@@ -21,12 +21,12 @@ class Batch extends \Magento\Cron\Model\Schedule
     /**#@-*/
 
     /**
-     * @var \Mageinn\Dropship\Model\InfoFactory
+     * @var \Mageinn\Vendor\Model\InfoFactory
      */
     protected $vendor;
 
     /**
-     * @var \Mageinn\Dropship\Model\Batch\Import
+     * @var \Mageinn\Vendor\Model\Batch\Import
      */
     protected $import;
 
@@ -48,12 +48,12 @@ class Batch extends \Magento\Cron\Model\Schedule
     /**
      * Batch constructor.
      *
-     * @var \Mageinn\Dropship\Model\Batch\Export
+     * @var \Mageinn\Vendor\Model\Batch\Export
      */
     protected $export;
 
     /**
-     * @var \Mageinn\Dropship\Model\ResourceModel\BatchRow
+     * @var \Mageinn\Vendor\Model\ResourceModel\BatchRow
      */
     protected $batchRow;
 
@@ -62,10 +62,10 @@ class Batch extends \Magento\Cron\Model\Schedule
      *
      * @param \Magento\Framework\Model\Context $context
      * @param \Magento\Framework\Registry $registry
-     * @param \Mageinn\Dropship\Model\InfoFactory $vendor
-     * @param \Mageinn\Dropship\Model\Batch\Import $import
-     * @param \Mageinn\Dropship\Model\Batch\Export $export
-     * @param \Mageinn\Dropship\Model\ResourceModel\BatchRow $batchRow
+     * @param \Mageinn\Vendor\Model\InfoFactory $vendor
+     * @param \Mageinn\Vendor\Model\Batch\Import $import
+     * @param \Mageinn\Vendor\Model\Batch\Export $export
+     * @param \Mageinn\Vendor\Model\ResourceModel\BatchRow $batchRow
      * @param \Magento\Framework\Stdlib\DateTime\DateTime $date
      * @param \Magento\Framework\Filesystem\DirectoryList $dir
      * @param \Magento\Framework\Filesystem\Driver\File $file
@@ -76,10 +76,10 @@ class Batch extends \Magento\Cron\Model\Schedule
     public function __construct(
         \Magento\Framework\Model\Context $context,
         \Magento\Framework\Registry $registry,
-        \Mageinn\Dropship\Model\InfoFactory $vendor,
-        \Mageinn\Dropship\Model\Batch\Import $import,
-        \Mageinn\Dropship\Model\Batch\Export $export,
-        \Mageinn\Dropship\Model\ResourceModel\BatchRow $batchRow,
+        \Mageinn\Vendor\Model\InfoFactory $vendor,
+        \Mageinn\Vendor\Model\Batch\Import $import,
+        \Mageinn\Vendor\Model\Batch\Export $export,
+        \Mageinn\Vendor\Model\ResourceModel\BatchRow $batchRow,
         \Magento\Framework\Stdlib\DateTime\DateTime $date,
         \Magento\Framework\Filesystem\DirectoryList $dir,
         \Magento\Framework\Filesystem\Driver\File $file,
@@ -104,7 +104,7 @@ class Batch extends \Magento\Cron\Model\Schedule
      */
     public function _construct()
     {
-        $this->_init(\Mageinn\Dropship\Model\ResourceModel\Batch::class);
+        $this->_init(\Mageinn\Vendor\Model\ResourceModel\Batch::class);
     }
 
     /**
@@ -201,10 +201,10 @@ class Batch extends \Magento\Cron\Model\Schedule
     {
         $this->setUpdatedAt($this->date->gmtDate());
         switch ($this->getType()) {
-            case \Mageinn\Dropship\Model\Source\BatchType::IREDEEM_VENDOR_BATCH_TYPE_EXPORT:
+            case \Mageinn\Vendor\Model\Source\BatchType::MAGEINN_VENDOR_BATCH_TYPE_EXPORT:
                 $this->_runExport();
                 break;
-            case \Mageinn\Dropship\Model\Source\BatchType::IREDEEM_VENDOR_BATCH_TYPE_IMPORT:
+            case \Mageinn\Vendor\Model\Source\BatchType::MAGEINN_VENDOR_BATCH_TYPE_IMPORT:
                 $this->_runImport();
                 break;
             default:

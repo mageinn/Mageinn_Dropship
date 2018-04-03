@@ -1,9 +1,9 @@
 <?php
-namespace Mageinn\Dropship\Setup;
+namespace Mageinn\Vendor\Setup;
 
-use Mageinn\Dropship\Model\Region;
+use Mageinn\Vendor\Model\Region;
 use Magento\Framework\Exception\LocalizedException;
-use Mageinn\Dropship\Ui\DataProviders\Product\Form\Modifier\DeliveryCountry;
+use Mageinn\Vendor\Ui\DataProviders\Product\Form\Modifier\DeliveryCountry;
 
 class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface
 {
@@ -28,12 +28,12 @@ class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface
     private $csvProcessor;
 
     /**
-     * @var \Iredeem\Core\Helper\Data
+     * @var \Mageinn\Core\Helper\Data
      */
     private $coreHelper;
 
     /**
-     * @var \Mageinn\Dropship\Model\ResourceModel\Region
+     * @var \Mageinn\Vendor\Model\ResourceModel\Region
      */
     private $regionResource;
 
@@ -56,8 +56,8 @@ class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface
         \Magento\Framework\Filesystem\Driver\File $file,
         \Magento\Framework\Module\Dir\Reader $moduleReader,
         \Magento\Framework\File\Csv $csvProcessor,
-        \Iredeem\Core\Helper\Data $coreHelper,
-        \Mageinn\Dropship\Model\ResourceModel\Region $regionResource
+        \Mageinn\Core\Helper\Data $coreHelper,
+        \Mageinn\Vendor\Model\ResourceModel\Region $regionResource
     ) {
         $this->eavSetupFactory = $eavSetupFactory;
         $this->fileDriver = $file;
@@ -152,7 +152,7 @@ class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface
                     'input' => 'boolean',
                     'group' => 'General',
                     'class' => 'delivery-country-override',
-                    'source' => \Magento\Eav\Model\Entity\Attribute\Source\Boolean::class,
+                    'source' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean',
                     'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,
                     'visible' => true,
                     'required' => false,
@@ -174,7 +174,7 @@ class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface
                     'type' => 'varchar',
                     'label' => 'Shipping Ruleset',
                     'input' => 'select',
-                    'source' => \Mageinn\Dropship\Model\ShippingRate\Attribute\Source\ShippingRuleset::class,
+                    'source' => \Mageinn\Vendor\Model\ShippingRate\Attribute\Source\ShippingRuleset::class,
                     'required' => false,
                     'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,
                     'visible' => true,
@@ -202,7 +202,7 @@ class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface
     {
         $etcPath = $this->moduleReader->getModuleDir(
             \Magento\Framework\Module\Dir::MODULE_ETC_DIR,
-            'Mageinn_Dropship'
+            'Mageinn_Vendor'
         );
 
         return sprintf('%s/../Setup/Data/%s', $etcPath, $fileName);

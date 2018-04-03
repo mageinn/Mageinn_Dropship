@@ -1,12 +1,12 @@
 <?php
-namespace Mageinn\Dropship\Setup;
+namespace Mageinn\Vendor\Setup;
 
 use \Magento\Framework\DB\Ddl\Table;
 use \Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
-use Mageinn\Dropship\Model\Info;
+use Mageinn\Vendor\Model\Info;
 
 /**
  * @codeCoverageIgnore
@@ -35,56 +35,56 @@ class InstallSchema implements InstallSchemaInterface
                     Table::TYPE_SMALLINT,
                     null,
                     ['identity' => true, 'unsigned' => true, 'nullable' => false, 'primary' => true],
-                    'Dropship Id'
+                    'Vendor Id'
                 )
                 ->addColumn(
                     'name',
                     Table::TYPE_TEXT,
                     255,
                     ['nullable' => false],
-                    'Dropship Name'
+                    'Vendor Name'
                 )
                 ->addColumn(
                     'status',
                     Table::TYPE_BOOLEAN,
                     null,
                     ['nullable' => false, 'default' => '1'],
-                    'Dropship Status'
+                    'Vendor Status'
                 )
                 ->addColumn(
                     'email',
                     Table::TYPE_TEXT,
                     255,
                     ['nullable' => false],
-                    'Dropship Email'
+                    'Vendor Email'
                 )
                 ->addColumn(
                     'telephone',
                     Table::TYPE_TEXT,
                     255,
                     ['nullable' => false],
-                    'Dropship Telephone'
+                    'Vendor Telephone'
                 )
                 ->addColumn(
                     'shipment_type',
                     Table::TYPE_TEXT,
                     255,
                     [],
-                    'Dropship Shipment Type'
+                    'Vendor Shipment Type'
                 )
                 ->addColumn(
                     'client_managed',
                     Table::TYPE_BOOLEAN,
                     null,
                     ['nullable' => false, 'default' => '0'],
-                    'Dropship Is Client Managed'
+                    'Vendor Is Client Managed'
                 )
                 ->addColumn(
                     'multiplier',
                     Table::TYPE_DECIMAL,
                     '12,4',
                     ['nullable' => false, 'default' => '0.0000'],
-                    'Dropship Multiplier'
+                    'Vendor Multiplier'
                 )
                 ->addIndex(
                     $setup->getIdxName(
@@ -95,7 +95,7 @@ class InstallSchema implements InstallSchemaInterface
                     ['entity_id'],
                     AdapterInterface::INDEX_TYPE_INDEX
                 )
-                ->setComment('Dropship Information');
+                ->setComment('Vendor Information');
             $installer->getConnection()->createTable($table);
         }
         $installer->endSetup();

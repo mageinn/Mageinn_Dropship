@@ -1,20 +1,20 @@
 <?php
 
-namespace Mageinn\Dropship\Helper;
+namespace Mageinn\Vendor\Helper;
 
-use \Iredeem\Core\Helper\Data as CoreData;
+use \Mageinn\Core\Helper\Data as CoreData;
 use \Magento\Store\Model\StoreManagerInterface;
 use \Magento\Framework\ObjectManagerInterface;
 use \Magento\Framework\App\Helper\Context;
-use \Mageinn\Dropship\Model\ResourceModel\Region\CollectionFactory as RegionCollectionFactory;
+use \Mageinn\Vendor\Model\ResourceModel\Region\CollectionFactory as RegionCollectionFactory;
 use \Magento\Framework\Filesystem\Io\File;
 
 /**
  * Class ShippingRates
  *
- * General helper for Dropship module
+ * General helper for Vendor module
  *
- * @package Mageinn\Dropship\Helper
+ * @package Mageinn\Vendor\Helper
  */
 class ShippingRates extends CoreData
 {
@@ -260,7 +260,7 @@ class ShippingRates extends CoreData
      * Returns the countries for a region
      *
      * @param $region
-     * @return \Mageinn\Dropship\Model\ResourceModel\Region\Collection
+     * @return \Mageinn\Vendor\Model\ResourceModel\Region\Collection
      */
     public function getCountriesForRegion($region)
     {

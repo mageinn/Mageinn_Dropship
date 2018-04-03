@@ -1,60 +1,55 @@
 <?php
-namespace Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractFilePath;
-
-use Mageinn\Dropship\Model\Source\BatchStatus;
-use Magento\Backend\Helper\Data;
-use Magento\Framework\Data\CollectionFactory;
-use Magento\Framework\Registry;
+namespace Mageinn\Vendor\Block\Adminhtml\Batch\View\AbstractFilePath;
 
 /**
  * Class Grid
- * @package Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractFilePath
+ * @package Mageinn\Vendor\Block\Adminhtml\Batch\View\AbstractFilePath
  */
 abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
 {
     /**
-     * @var Registry|null
+     * @var \Magento\Framework\Registry
      */
-    protected $registry = null;
+    protected $_registry = null;
 
     /**
-     * @var CollectionFactory
+     * @var \Magento\Framework\Data\CollectionFactory
      */
-    protected $collectionFactory;
+    protected $_collectionFactory;
 
     /**
      * @var \Psr\Log\LoggerInterface
      */
-    protected $logger;
+    protected $_logger;
 
     /**
-     * @var BatchStatus
+     * @var \Mageinn\Vendor\Model\Source\BatchStatus
      */
-    protected $batchStatus;
+    protected $_batchStatus;
 
     /**
-     * Grid constructor.
+     * User constructor.
+     * @param \Magento\Backend\Helper\Data $backendHelper
      * @param \Magento\Backend\Block\Template\Context $context
-     * @param Data $backendHelper
-     * @param Registry $registry
-     * @param CollectionFactory $collectionFactory
-     * @param BatchStatus $batchStatus
+     * @param \Magento\Framework\Data\CollectionFactory $collectionFactory
+     * @param \Magento\Framework\Registry $registry
      * @param \Psr\Log\LoggerInterface $logger
+     * @param \Mageinn\Vendor\Model\Source\BatchStatus $batchStatus
      * @param array $data
      */
     public function __construct(
+        \Magento\Backend\Helper\Data $backendHelper,
         \Magento\Backend\Block\Template\Context $context,
-        Data $backendHelper,
-        Registry $registry,
-        CollectionFactory $collectionFactory,
-        BatchStatus $batchStatus,
+        \Magento\Framework\Data\CollectionFactory $collectionFactory,
+        \Magento\Framework\Registry $registry,
         \Psr\Log\LoggerInterface $logger,
+        \Mageinn\Vendor\Model\Source\BatchStatus $batchStatus,
         array $data = []
     ) {
-        $this->collectionFactory = $collectionFactory;
-        $this->registry = $registry;
-        $this->batchStatus = $batchStatus;
-        $this->logger = $logger;
+        $this->_registry = $registry;
+        $this->_collectionFactory = $collectionFactory;
+        $this->_logger = $logger;
+        $this->_batchStatus = $batchStatus;
         parent::__construct($context, $backendHelper, $data);
     }
 
@@ -64,18 +59,18 @@ abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     protected function _construct()
     {
         parent::_construct();
-        $this->setId('iredeem_batch_file_path');
-        $this->setUseAjax(true);
+        $this->setId('mageinn_batch_file_path');
         $this->setDefaultSort('entity_id');
+        $this->setUseAjax(true);
         $this->setFilterVisibility(false);
     }
 
     /**
-     * @return \Mageinn\Dropship\Model\Batch|null
+     * @return \Mageinn\Vendor\Model\Batch|null
      */
     public function getBatch()
     {
-        return $this->registry->registry('iredeem_batch');
+        return $this->_registry->registry('mageinn_batch');
     }
 
     /**
@@ -83,13 +78,15 @@ abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
      */
     protected function _prepareCollection()
     {
-        if ($this->getBatch()->getId()) $this->setDefaultFilter('entity_id');
+        if ($this->getBatch()->getId()) {
+            $this->setDefaultFilter('entity_id');
+        }
 
         try {
-            $collection = $this->collectionFactory->create()->addItem($this->getBatch());
+            $collection = $this->_collectionFactory->create()->addItem($this->getBatch());
             $this->setCollection($collection);
-        } catch (\Exception $exception) {
-            $this->logger->error($exception);
+        } catch (\Exception $e) {
+            $this->_logger->error($e);
         }
 
         return parent::_prepareCollection();

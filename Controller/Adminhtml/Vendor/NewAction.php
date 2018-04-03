@@ -1,13 +1,13 @@
 <?php
-namespace Mageinn\Dropship\Controller\Adminhtml\Vendor;
+namespace Mageinn\Vendor\Controller\Adminhtml\Vendor;
 
 use \Magento\Backend\App\Action;
 use \Magento\Backend\App\Action\Context;
 use \Magento\Backend\Model\View\Result\ForwardFactory;
 
 /**
- * Dropship Index Action
- * @package Mageinn\Dropship\Controller\Adminhtml\Dropship
+ * Vendor Index Action
+ * @package Mageinn\Vendor\Controller\Adminhtml\Vendor
  */
 class NewAction extends Action
 {

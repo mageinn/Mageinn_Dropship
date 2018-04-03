@@ -1,6 +1,7 @@
 <?php
+/* app/code/Mageinn/Vendor/Setup/InstallData.php */
 
-namespace Mageinn\Dropship\Setup;
+namespace Mageinn\Vendor\Setup;
 
 use Magento\Eav\Setup\EavSetup;
 use Magento\Eav\Setup\EavSetupFactory;
@@ -44,9 +45,9 @@ class InstallData implements InstallDataInterface
             'vendor_id',
             [
                 'type' => 'int',
-                'label' => 'Dropship',
+                'label' => 'Vendor',
                 'input' => 'select',
-                'source' => \Mageinn\Dropship\Model\Info\Attribute\Source\Vendorid::class,
+                'source' => \Mageinn\Vendor\Model\Info\Attribute\Source\Vendorid::class,
                 'required' => true,
                 'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,
                 'visible' => true,

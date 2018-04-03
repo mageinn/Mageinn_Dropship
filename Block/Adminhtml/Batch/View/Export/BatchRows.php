@@ -1,29 +1,27 @@
 <?php
-namespace Mageinn\Dropship\Block\Adminhtml\Batch\View\Export;
-
-use Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractBatchDetails;
-use Mageinn\Dropship\Block\Adminhtml\Batch\View\Export\BatchRows\Grid;
+namespace Mageinn\Vendor\Block\Adminhtml\Batch\View\Export;
 
 /**
- * Class BatchRows
- * @package Mageinn\Dropship\Block\Adminhtml\Batch\View\Export
+ * Class DataRows
+ * @package Mageinn\Vendor\Block\Adminhtml\Batch\View\Export
  */
-class BatchRows extends AbstractBatchDetails
+class BatchRows extends \Mageinn\Vendor\Block\Adminhtml\Batch\View\AbstractBatchDetails
 {
 
     /**
      * Retrieve instance of grid block
      *
-     * @return \Magento\Backend\Block\Widget\Grid\Extended|\Magento\Framework\View\Element\BlockInterface
+     * @return \Magento\Framework\View\Element\BlockInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function getGrid()
     {
-        if (is_null($this->grid)) {
-            $this->grid = $this->getLayout()->createBlock(Grid::class, 'batches.data.rows');
+        if (null === $this->_grid) {
+            $this->_grid = $this->getLayout()->createBlock(
+                \Mageinn\Vendor\Block\Adminhtml\Batch\View\Export\BatchRows\Grid::class,
+                'batches.data.rows'
+            );
         }
-
-
-        return $this->grid;
+        return $this->_grid;
     }
 }

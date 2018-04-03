@@ -1,8 +1,8 @@
 <?php
 
-namespace Mageinn\Dropship\Model\Export;
+namespace Mageinn\Vendor\Model\Export;
 
-use Mageinn\Dropship\Model\Address;
+use Mageinn\Vendor\Model\Address;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
@@ -10,7 +10,7 @@ use Magento\Ui\Component\MassAction\Filter;
 
 /**
  * Class VendorToCsv
- * @package Mageinn\Dropship\Model\Export
+ * @package Mageinn\Vendor\Model\Export
  */
 class VendorToCsv
 {
@@ -127,7 +127,7 @@ class VendorToCsv
     }
 
     /**
-     * Clean Dropship Data
+     * Clean Vendor Data
      *
      * @param $exportData
      * @return array

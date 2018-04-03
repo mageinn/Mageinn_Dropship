@@ -1,11 +1,11 @@
 <?php
-namespace Mageinn\Dropship\Observer;
+namespace Mageinn\Vendor\Observer;
 
 use Magento\Framework\Event\ObserverInterface;
 
 /**
  * Class ProductListDeliveryCountry
- * @package Mageinn\Dropship\Observer
+ * @package Mageinn\Vendor\Observer
  */
 class ProductListDeliveryCountry implements ObserverInterface
 {
@@ -32,7 +32,7 @@ class ProductListDeliveryCountry implements ObserverInterface
     public function execute(\Magento\Framework\Event\Observer $observer)
     {
         $deliveryCountry =
-            $this->httpContext->getValue(\Mageinn\Dropship\Model\Plugin\DeliveryCountry::COOKIE_DELIVERY);
+            $this->httpContext->getValue(\Mageinn\Vendor\Model\Plugin\DeliveryCountry::COOKIE_DELIVERY);
 
         if ($deliveryCountry) {
             $productCollection = $observer->getCollection();

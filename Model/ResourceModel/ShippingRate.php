@@ -1,11 +1,11 @@
 <?php
-namespace Mageinn\Dropship\Model\ResourceModel;
+namespace Mageinn\Vendor\Model\ResourceModel;
 
 use \Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
 /**
  * Class ShippingRate
- * @package Mageinn\Dropship\Model\ResourceModel
+ * @package Mageinn\Vendor\Model\ResourceModel
  */
 class ShippingRate extends AbstractDb
 {
@@ -16,6 +16,6 @@ class ShippingRate extends AbstractDb
      */
     protected function _construct()
     {
-        $this->_init(\Mageinn\Dropship\Model\ShippingRate::SHIPPING_RATES_TABLE, 'entity_id');
+        $this->_init(\Mageinn\Vendor\Model\ShippingRate::SHIPPING_RATES_TABLE, 'entity_id');
     }
 }

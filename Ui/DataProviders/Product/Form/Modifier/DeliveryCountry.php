@@ -1,5 +1,5 @@
 <?php
-namespace Mageinn\Dropship\Ui\DataProviders\Product\Form\Modifier;
+namespace Mageinn\Vendor\Ui\DataProviders\Product\Form\Modifier;
 
 use Magento\Catalog\Model\Locator\LocatorInterface;
 use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;

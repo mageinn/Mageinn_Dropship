@@ -1,57 +1,38 @@
 <?php
-namespace Mageinn\Dropship\Block\Adminhtml\Order\View;
-use Mageinn\Dropship\Model\Address;
-use Magento\Backend\Block\Template\Context;
-use Magento\Catalog\Model\Product\OptionFactory;
-use Magento\CatalogInventory\Api\StockConfigurationInterface;
-use Magento\CatalogInventory\Api\StockRegistryInterface;
+namespace Mageinn\Vendor\Block\Adminhtml\Order\View;
 
-/**
- * Class VendorInfo
- * @package Mageinn\Dropship\Block\Adminhtml\Order\View
- */
 class VendorInfo extends \Magento\Sales\Block\Adminhtml\Items\Column\Name
 {
     protected $vendorId;
 
-    /**
-     * @var \Mageinn\Dropship\Model\Info
-     */
+    /** @var \Mageinn\Vendor\Model\Info  */
     protected $vendor;
 
     /**
-     * Constructor
-     *
-     * @param Context $context
-     * @param StockConfigurationInterface $stockConfiguration
-     * @param OptionFactory $optionFactory
-     * @param StockRegistryInterface $stockRegistry
+     * VendorInfo constructor.
+     * @param \Magento\Backend\Block\Template\Context $context
+     * @param \Magento\CatalogInventory\Api\StockRegistryInterface $stockRegistry
+     * @param \Magento\CatalogInventory\Api\StockConfigurationInterface $stockConfiguration
      * @param \Magento\Framework\Registry $registry
-     * @param Address $vendor
+     * @param \Magento\Catalog\Model\Product\OptionFactory $optionFactory
+     * @param \Mageinn\Vendor\Model\Address $vendor
      * @param array $data
      */
     public function __construct(
-        Context $context,
-        StockConfigurationInterface $stockConfiguration,
-        OptionFactory $optionFactory,
-        StockRegistryInterface $stockRegistry,
+        \Magento\Backend\Block\Template\Context $context,
+        \Magento\CatalogInventory\Api\StockRegistryInterface $stockRegistry,
+        \Magento\CatalogInventory\Api\StockConfigurationInterface $stockConfiguration,
         \Magento\Framework\Registry $registry,
-        Address $vendor,
+        \Magento\Catalog\Model\Product\OptionFactory $optionFactory,
+        \Mageinn\Vendor\Model\Address $vendor,
         array $data = []
     ) {
         $this->vendor = $vendor;
-        parent::__construct(
-            $context,
-            $stockRegistry,
-            $stockConfiguration,
-            $registry,
-            $optionFactory,
-            $data
-        );
+        parent::__construct($context, $stockRegistry, $stockConfiguration, $registry, $optionFactory, $data);
     }
 
     /**
-     * @param int $vendorId
+     * @param $vendorId
      */
     public function setVendorId($vendorId)
     {
@@ -65,12 +46,11 @@ class VendorInfo extends \Magento\Sales\Block\Adminhtml\Items\Column\Name
      */
     public function getVendor()
     {
-        $address_type = Address::ADDRESS_TYPE_CUSTOMER_SERVICE;
+        $addressType = \Mageinn\Vendor\Model\Address::ADDRESS_TYPE_CUSTOMER_SERVICE;
+        $vendorAddressCollection = $this->vendor->getCollection()
+            ->addFieldToFilter('vendor_id', ['eq' => "$this->vendorId"])
+            ->addFieldToFilter('type', ['eq' => "$addressType"]);
 
-        $vendor_address_collection = $this->vendor->getCollection();
-        $vendor_address_collection->addFieldToFilter('vendor_id', ['eq' => $this->vendorId]);
-        $vendor_address_collection->addFieldToFilter('type', ['eq' => $address_type]);
-
-        return $vendor_address_collection->getFirstItem();
+        return $vendorAddressCollection->getFirstItem();
     }
 }

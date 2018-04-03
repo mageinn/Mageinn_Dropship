@@ -1,5 +1,5 @@
 <?php
-namespace Mageinn\Dropship\Controller\Adminhtml\ShippingRates;
+namespace Mageinn\Vendor\Controller\Adminhtml\ShippingRates;
 
 use \Magento\Backend\App\Action;
 use \Magento\Backend\App\Action\Context;
@@ -7,11 +7,11 @@ use \Magento\Framework\App\Response\Http\FileFactory;
 use \Magento\Framework\Controller\Result\RawFactory;
 use \Psr\Log\LoggerInterface;
 use \Magento\Framework\App\Filesystem\DirectoryList;
-use \Mageinn\Dropship\Model\ShippingRate;
+use \Mageinn\Vendor\Model\ShippingRate;
 
 /**
- * Dropship Index Action
- * @package Mageinn\Dropship\Controller\Adminhtml\Dropship
+ * Vendor Index Action
+ * @package Mageinn\Vendor\Controller\Adminhtml\Vendor
  */
 class Export extends Action
 {

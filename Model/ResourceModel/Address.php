@@ -1,12 +1,11 @@
 <?php
-namespace Mageinn\Dropship\Model\ResourceModel;
+namespace Mageinn\Vendor\Model\ResourceModel;
 
 use \Magento\Framework\Model\ResourceModel\Db\AbstractDb;
-use Mageinn\Dropship\Model\Address as AddressModel;
 
 /**
  * Class Address
- * @package Mageinn\Dropship\Model\ResourceModel
+ * @package Mageinn\Vendor\Model\ResourceModel
  */
 class Address extends AbstractDb
 {
@@ -17,6 +16,6 @@ class Address extends AbstractDb
      */
     protected function _construct()
     {
-        $this->_init(AddressModel::VENDOR_ADDRESS_TABLE, 'entity_id');
+        $this->_init('mageinn_vendor_address', 'entity_id');
     }
 }

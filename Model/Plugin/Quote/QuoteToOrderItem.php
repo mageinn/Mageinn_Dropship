@@ -1,5 +1,5 @@
 <?php
-namespace Mageinn\Dropship\Model\Plugin\Quote;
+namespace Mageinn\Vendor\Model\Plugin\Quote;
 
 use Closure;
 

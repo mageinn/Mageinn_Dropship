@@ -1,13 +1,11 @@
 <?php
-namespace Mageinn\Dropship\Block\Adminhtml\Batch\View\Import\BatchRows;
-
-use Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractBatchRows\Grid as GridParent;
+namespace Mageinn\Vendor\Block\Adminhtml\Batch\View\Import\BatchRows;
 
 /**
  * Class Grid
- * @package Mageinn\Dropship\Block\Adminhtml\Batch\View\Import\BatchRows
+ * @package Mageinn\Vendor\Block\Adminhtml\Batch\View\Import\BatchRows
  */
-class Grid extends GridParent
+class Grid extends \Mageinn\Vendor\Block\Adminhtml\Batch\View\AbstractBatchRows\Grid
 {
     /**
      * @return \Magento\Backend\Block\Widget\Grid\Extended
@@ -18,57 +16,46 @@ class Grid extends GridParent
         $this->addColumn(
             'entity_id',
             [
+                'header' => __('ID'),
                 'name' => 'entity_id',
                 'index' => 'entity_id',
-                'header' => __('ID'),
             ]
-        );
-
-        $this->addColumn(
+        )->addColumn(
             'order_increment_id',
             [
+                'header' => __('Order ID'),
                 'name' => 'order_increment_id',
                 'index' => 'order_increment_id',
-                'header' => __('Order ID'),
             ]
-        );
-
-        $this->addColumn(
+        )->addColumn(
             'shipment_increment_id',
             [
+                'header' => __('Shipment ID'),
                 'name' => 'shipment_increment_id',
                 'index' => 'shipment_increment_id',
-                'header' => __('Shipment ID'),
             ]
-        );
-
-        $this->addColumn(
+        )->addColumn(
             'track_id',
             [
+                'header' => __('Tracking ID'),
                 'name' => 'track_id',
                 'index' => 'track_id',
-                'header' => __('Tracking ID'),
             ]
-        );
-
-        $this->addColumn(
+        )->addColumn(
             'has_error',
             [
+                'header' => __('Has Error'),
                 'name' => 'has_error',
                 'index' => 'has_error',
-                'header' => __('Has Error'),
             ]
-        );
-
-        $this->addColumn(
+        )->addColumn(
             'error_info',
             [
+                'header' => __('Error Info'),
                 'name' => 'error_info',
                 'index' => 'error_info',
-                'header' => __('Error Info'),
             ]
         );
-
         return parent::_prepareColumns();
     }
 }

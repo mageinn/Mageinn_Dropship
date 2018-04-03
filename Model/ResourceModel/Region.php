@@ -1,11 +1,11 @@
 <?php
-namespace Mageinn\Dropship\Model\ResourceModel;
+namespace Mageinn\Vendor\Model\ResourceModel;
 
 use \Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
 /**
  * Class Region
- * @package Mageinn\Dropship\Model\ResourceModel
+ * @package Mageinn\Vendor\Model\ResourceModel
  */
 class Region extends AbstractDb
 {
@@ -16,6 +16,6 @@ class Region extends AbstractDb
      */
     protected function _construct()
     {
-        $this->_init(\Mageinn\Dropship\Model\Region::REGIONS_TABLE, 'entity_id');
+        $this->_init(\Mageinn\Vendor\Model\Region::REGIONS_TABLE, 'entity_id');
     }
 }

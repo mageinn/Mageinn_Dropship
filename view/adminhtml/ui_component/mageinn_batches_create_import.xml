@@ -3,7 +3,7 @@
       xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">iredeem_batches_create_import.iredeem_batches_create_import_data_source</item>
+            <item name="provider" xsi:type="string">mageinn_batches_create_import.mageinn_batches_create_import_data_source</item>
         </item>
         <item name="label" xsi:type="string" translate="true">Batch</item>
     </argument>
@@ -27,10 +27,10 @@
             <type>tabs</type>
         </layout>
         <deps>
-            <dep>iredeem_batches_create_import.iredeem_batches_create_import_data_source</dep>
+            <dep>mageinn_batches_create_import.mageinn_batches_create_import_data_source</dep>
         </deps>
     </settings>
-    <dataSource name="iredeem_batches_create_import_data_source">
+    <dataSource name="mageinn_batches_create_import_data_source">
         <argument name="data" xsi:type="array">
             <item name="js_config" xsi:type="array">
                 <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
@@ -39,7 +39,7 @@
         <settings>
             <submitUrl path="sales/batches/saveImport"/>
         </settings>
-        <dataProvider class="Mageinn\Dropship\Model\Batch\DataProvider" name="iredeem_batches_create_import_data_source">
+        <dataProvider class="Mageinn\Vendor\Model\Batch\DataProvider" name="mageinn_batches_create_import_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>entity_id</primaryFieldName>
@@ -58,7 +58,7 @@
             <formElements>
                 <select>
                     <settings>
-                        <options class="Mageinn\Dropship\Ui\Component\Listing\Column\Vendor\Options"/>
+                        <options class="Mageinn\Vendor\Ui\Component\Listing\Column\Vendor\Options"/>
                     </settings>
                 </select>
             </formElements>

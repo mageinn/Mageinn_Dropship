@@ -1,14 +1,14 @@
 <?php
-namespace Mageinn\Dropship\Model\ResourceModel\Address;
+namespace Mageinn\Vendor\Model\ResourceModel\Address;
 
 use \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
-use \Mageinn\Dropship\Model\Address;
-use \Mageinn\Dropship\Model\ResourceModel\Address as ResourceModelAddress;
+use \Mageinn\Vendor\Model\Address;
+use \Mageinn\Vendor\Model\ResourceModel\Address as ResourceModelAddress;
 
 /**
  * Class Collection
  *
- * @package Mageinn\Dropship\Model\ResourceModel\Address
+ * @package Mageinn\Vendor\Model\ResourceModel\Address
  */
 class Collection extends AbstractCollection
 {

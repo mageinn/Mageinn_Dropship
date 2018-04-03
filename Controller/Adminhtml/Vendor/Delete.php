@@ -1,15 +1,15 @@
 <?php
-namespace Mageinn\Dropship\Controller\Adminhtml\Vendor;
+namespace Mageinn\Vendor\Controller\Adminhtml\Vendor;
 
 use \Magento\Backend\App\Action;
 use \Magento\Backend\App\Action\Context;
 use \Magento\Framework\Registry;
-use \Mageinn\Dropship\Model\Info;
+use \Mageinn\Vendor\Model\Info;
 
 /**
  * Class Delete
  *
- * @package Mageinn\Dropship\Controller\Adminhtml\Dropship
+ * @package Mageinn\Vendor\Controller\Adminhtml\Vendor
  */
 class Delete extends Action
 {

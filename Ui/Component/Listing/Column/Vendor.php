@@ -1,31 +1,27 @@
 <?php
-namespace Mageinn\Dropship\Ui\Component\Listing\Column;
+namespace Mageinn\Vendor\Ui\Component\Listing\Column;
 
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
 
-/**
- * Class Vendor
- * @package Mageinn\Dropship\Ui\Component\Listing\Column
- */
 class Vendor extends Column
 {
-    /** @var \Mageinn\Dropship\Model\Info  */
-    protected $vendor;
+    /** @var \Mageinn\Vendor\Model\Info  */
+    protected $_vendor;
 
     /**
-     * Dropship constructor.
+     * Vendor constructor.
      * @param ContextInterface $context
      * @param UiComponentFactory $uiComponentFactory
-     * @param \Mageinn\Dropship\Model\Info $vendor
+     * @param \Mageinn\Vendor\Model\Info $vendor
      * @param array $components
      * @param array $data
      */
     public function __construct(
         ContextInterface $context,
         UiComponentFactory $uiComponentFactory,
-        \Mageinn\Dropship\Model\Info $vendor,
+        \Mageinn\Vendor\Model\Info $vendor,
         array $components = [],
         array $data = []
     ) {

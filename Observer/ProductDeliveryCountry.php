@@ -1,21 +1,21 @@
 <?php
 
-namespace Mageinn\Dropship\Observer;
+namespace Mageinn\Vendor\Observer;
 
-use Mageinn\Dropship\Model\ShippingRate;
-use Mageinn\Dropship\Model\Region;
+use Mageinn\Vendor\Model\ShippingRate;
+use Mageinn\Vendor\Model\Region;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 
 class ProductDeliveryCountry implements ObserverInterface
 {
     /**
-     * @var \Mageinn\Dropship\Model\ResourceModel\Region\CollectionFactory
+     * @var \Mageinn\Vendor\Model\ResourceModel\Region\CollectionFactory
      */
     protected $regionsFactory;
 
     /**
-     * @var \Mageinn\Dropship\Model\ResourceModel\ShippingRate\CollectionFactory $ratesFactory
+     * @var \Mageinn\Vendor\Model\ResourceModel\ShippingRate\CollectionFactory $ratesFactory
      */
     protected $ratesFactory;
 
@@ -27,13 +27,13 @@ class ProductDeliveryCountry implements ObserverInterface
     /**
      * ProductDeliveryCountry constructor.
      * @param \Magento\Framework\Message\ManagerInterface $messageManager
-     * @param \Mageinn\Dropship\Model\ResourceModel\Region\CollectionFactory $regionsFactory
-     * @param \Mageinn\Dropship\Model\ResourceModel\ShippingRate\CollectionFactory $ratesFactory
+     * @param \Mageinn\Vendor\Model\ResourceModel\Region\CollectionFactory $regionsFactory
+     * @param \Mageinn\Vendor\Model\ResourceModel\ShippingRate\CollectionFactory $ratesFactory
      */
     public function __construct(
         \Magento\Framework\Message\ManagerInterface $messageManager,
-        \Mageinn\Dropship\Model\ResourceModel\Region\CollectionFactory $regionsFactory,
-        \Mageinn\Dropship\Model\ResourceModel\ShippingRate\CollectionFactory $ratesFactory
+        \Mageinn\Vendor\Model\ResourceModel\Region\CollectionFactory $regionsFactory,
+        \Mageinn\Vendor\Model\ResourceModel\ShippingRate\CollectionFactory $ratesFactory
     ) {
         $this->regionsFactory = $regionsFactory;
         $this->ratesFactory = $ratesFactory;
@@ -80,7 +80,7 @@ class ProductDeliveryCountry implements ObserverInterface
 
     /**
      * @param $product
-     * @return \Mageinn\Dropship\Model\ResourceModel\ShippingRate\Collection
+     * @return \Mageinn\Vendor\Model\ResourceModel\ShippingRate\Collection
      */
     private function getVendorShippingRatesCollection($product)
     {

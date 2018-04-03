@@ -1,12 +1,12 @@
 <?php
-namespace Mageinn\Dropship\Model\Source;
+namespace Mageinn\Vendor\Model\Source;
 
 use \Magento\Framework\Data\OptionSourceInterface;
 
 /**
  * Class DropshipNotificationRecipient Source.
  *
- * @package Mageinn\Dropship\Model\Source
+ * @package Mageinn\Vendor\Model\Source
  */
 class DropshipNotificationRecipient implements OptionSourceInterface
 {
@@ -24,7 +24,7 @@ class DropshipNotificationRecipient implements OptionSourceInterface
         return [
             [
                 'value' => self::DROPSHIP_NOTIFICATION_RECIPIENT_VENDOR_EMAIL,
-                'label' => __('Dropship Email')
+                'label' => __('Vendor Email')
             ],
             [
                 'value' => self::DROPSHIP_NOTIFICATION_RECIPIENT_CUSTOMER_SERVICE_EMAIL,

@@ -1,9 +1,9 @@
 <?php
-namespace Mageinn\Dropship\Model\Batch\Export\File;
+namespace Mageinn\Vendor\Model\Batch\Export\File;
 
 /**
  * Class Email
- * @package Mageinn\Dropship\Model\Batch\Export\File
+ * @package Mageinn\Vendor\Model\Batch\Export\File
  */
 class Email
 {
@@ -57,7 +57,7 @@ class Email
     protected $templateVars;
 
     /**
-     * @var \Mageinn\Dropship\Helper\Data
+     * @var \Mageinn\Vendor\Helper\Data
      */
     protected $vendorHelper;
 
@@ -73,11 +73,11 @@ class Email
 
     /**
      * Email constructor.
-     * @param \Mageinn\Dropship\Helper\Data $helper
+     * @param \Mageinn\Vendor\Helper\Data $helper
      * @param \Magento\Store\Model\StoreManagerInterface $manager
      */
     public function __construct(
-        \Mageinn\Dropship\Helper\Data $helper,
+        \Mageinn\Vendor\Helper\Data $helper,
         \Magento\Store\Model\StoreManagerInterface $manager
     ) {
         $this->vendorHelper = $helper;
@@ -351,7 +351,7 @@ class Email
     /**
      * Creates an email message based on the set components
      *
-     * @param \Mageinn\Dropship\Magento\Mail\Template\TransportBuilder $transportBuilder
+     * @param \Mageinn\Core\Magento\Mail\Template\TransportBuilder $transportBuilder
      * @param $contents
      * @return bool|\Magento\Framework\Mail\TransportInterface
      */

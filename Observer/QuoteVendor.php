@@ -1,13 +1,13 @@
 <?php
-namespace Mageinn\Dropship\Observer;
+namespace Mageinn\Vendor\Observer;
 
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 
 /**
- * Quote Dropship ID Observer
+ * Quote Vendor ID Observer
  *
- * @package Mageinn\Dropship\Observer
+ * @package Mageinn\Vendor\Observer
  */
 class QuoteVendor implements ObserverInterface
 {

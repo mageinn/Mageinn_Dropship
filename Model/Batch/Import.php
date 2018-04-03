@@ -1,5 +1,5 @@
 <?php
-namespace Mageinn\Dropship\Model\Batch;
+namespace Mageinn\Vendor\Model\Batch;
 
 use \Magento\Framework\Model\AbstractModel;
 use \Magento\Framework\Exception\LocalizedException;
@@ -7,7 +7,7 @@ use \Magento\Framework\Exception\LocalizedException;
 /**
  * Class Import
  *
- * @package Mageinn\Dropship\Model\Batch
+ * @package Mageinn\Vendor\Model\Batch
  * @method Import setBatchRowError($flag)
  * @method Import getBatchRowError()
  * @method Import setBatchRows($data)

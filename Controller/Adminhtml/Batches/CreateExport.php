@@ -1,9 +1,9 @@
 <?php
-namespace Mageinn\Dropship\Controller\Adminhtml\Batches;
+namespace Mageinn\Vendor\Controller\Adminhtml\Batches;
 
 /**
  * Class CreateImport
- * @package Mageinn\Dropship\Controller\Adminhtml\Batches
+ * @package Mageinn\Vendor\Controller\Adminhtml\Batches
  */
 class CreateExport extends \Magento\Backend\App\Action
 {
@@ -32,7 +32,7 @@ class CreateExport extends \Magento\Backend\App\Action
     {
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->_resultPage->create();
-        $resultPage->setActiveMenu('Mageinn_Dropship::vendor_batches')
+        $resultPage->setActiveMenu('Mageinn_Vendor::vendor_batches')
             ->addBreadcrumb(__('Create Order Export Batch'), __('Create Order Export Batch'));
         $resultPage->getConfig()->getTitle()->prepend(__('Create Order Export Batch'));
 

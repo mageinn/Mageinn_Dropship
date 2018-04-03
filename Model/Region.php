@@ -1,11 +1,11 @@
 <?php
-namespace Mageinn\Dropship\Model;
+namespace Mageinn\Vendor\Model;
 
 use \Magento\Framework\Model\AbstractModel;
 
 /**
  * Class Region
- * @package Mageinn\Dropship\Model
+ * @package Mageinn\Vendor\Model
  */
 class Region extends AbstractModel
 {
@@ -32,6 +32,6 @@ class Region extends AbstractModel
      */
     protected function _construct()
     {
-        $this->_init(\Mageinn\Dropship\Model\ResourceModel\Region::class);
+        $this->_init(\Mageinn\Vendor\Model\ResourceModel\Region::class);
     }
 }

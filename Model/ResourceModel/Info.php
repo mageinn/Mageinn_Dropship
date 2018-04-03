@@ -1,11 +1,11 @@
 <?php
-namespace Mageinn\Dropship\Model\ResourceModel;
+namespace Mageinn\Vendor\Model\ResourceModel;
 
 use \Magento\Framework\Model\ResourceModel\Db\AbstractDb;
-use Mageinn\Dropship\Model\Info as InfoModel;
+
 /**
  * Class Info
- * @package Mageinn\Dropship\Model\ResourceModel
+ * @package Mageinn\Vendor\Model\ResourceModel
  */
 class Info extends AbstractDb
 {
@@ -16,6 +16,6 @@ class Info extends AbstractDb
      */
     protected function _construct()
     {
-        $this->_init(InfoModel::VENDOR_INFO_TABLE, 'entity_id');
+        $this->_init('mageinn_vendor_information', 'entity_id');
     }
 }

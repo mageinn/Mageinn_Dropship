@@ -1,9 +1,9 @@
 <?php
-namespace Mageinn\Dropship\Controller\Adminhtml\Batches;
+namespace Mageinn\Vendor\Controller\Adminhtml\Batches;
 
 /**
  * Class ViewExport
- * @package Mageinn\Dropship\Controller\Adminhtml\Batches
+ * @package Mageinn\Vendor\Controller\Adminhtml\Batches
  */
 class ViewImport extends \Magento\Backend\App\Action
 {
@@ -13,7 +13,7 @@ class ViewImport extends \Magento\Backend\App\Action
     protected $_registry;
 
     /**
-     * @var \Mageinn\Dropship\Model\Batch
+     * @var \Mageinn\Vendor\Model\Batch
      */
     private $batchModel;
 
@@ -22,13 +22,13 @@ class ViewImport extends \Magento\Backend\App\Action
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magento\Framework\View\Result\PageFactory $resultFactory
      * @param \Magento\Framework\Registry $registry
-     * @param \Mageinn\Dropship\Model\Batch $batchModel
+     * @param \Mageinn\Vendor\Model\Batch $batchModel
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\View\Result\PageFactory $resultFactory,
         \Magento\Framework\Registry $registry,
-        \Mageinn\Dropship\Model\Batch $batchModel
+        \Mageinn\Vendor\Model\Batch $batchModel
     ) {
         $this->resultFactory = $resultFactory;
         $this->_registry = $registry;
@@ -60,11 +60,11 @@ class ViewImport extends \Magento\Backend\App\Action
             }
         }
 
-        $this->_registry->register('iredeem_batch', $model);
+        $this->_registry->register('mageinn_batch', $model);
         $this->_registry->register('current_batch_type', 'Import');
 
         $resultPage = $this->resultFactory->create(\Magento\Framework\Controller\ResultFactory::TYPE_PAGE);
-        $resultPage->setActiveMenu('Mageinn_Dropship::vendor_batches')->addBreadcrumb(__('Batch View'), __('Batch View'));
+        $resultPage->setActiveMenu('Mageinn_Vendor::vendor_batches')->addBreadcrumb(__('Batch View'), __('Batch View'));
         $resultPage->getConfig()->getTitle()->prepend(__('View Import Orders Batch ' . $id));
 
         return $resultPage;

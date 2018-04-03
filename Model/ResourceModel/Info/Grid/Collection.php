@@ -1,17 +1,17 @@
 <?php
-namespace Mageinn\Dropship\Model\ResourceModel\Info\Grid;
+namespace Mageinn\Vendor\Model\ResourceModel\Info\Grid;
 
 use Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult;
 use Magento\Framework\Event\ManagerInterface as EventManager;
 use Magento\Framework\Data\Collection\Db\FetchStrategyInterface as FetchStrategy;
 use Magento\Framework\Data\Collection\EntityFactoryInterface as EntityFactory;
 use Psr\Log\LoggerInterface as Logger;
-use Mageinn\Dropship\Model\Info;
+use Mageinn\Vendor\Model\Info;
 
 /**
  * Flat vendor information grid collection
  *
- * @package Mageinn\Dropship\Model\ResourceModel\Info\Grid
+ * @package Mageinn\Vendor\Model\ResourceModel\Info\Grid
  */
 class Collection extends SearchResult
 {

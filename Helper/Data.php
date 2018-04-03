@@ -1,9 +1,9 @@
 <?php
 
-namespace Mageinn\Dropship\Helper;
+namespace Mageinn\Vendor\Helper;
 
-use \Iredeem\Core\Helper\Data as CoreData;
-use Mageinn\Dropship\Model\Source\ShipmentStatus;
+use \Mageinn\Core\Helper\Data as CoreData;
+use Mageinn\Vendor\Model\Source\ShipmentStatus;
 use \Magento\Store\Model\StoreManagerInterface;
 use \Magento\Framework\ObjectManagerInterface;
 use \Magento\Framework\App\Helper\Context;
@@ -11,27 +11,27 @@ use \Magento\Framework\App\Helper\Context;
 /**
  * Class Data
  *
- * General helper for Dropship module
+ * General helper for Vendor module
  *
- * @package Mageinn\Dropship\Helper
+ * @package Mageinn\Vendor\Helper
  */
 class Data extends CoreData
 {
-    const XML_PATH_IREDEEM_VENDOR_BATCH_EXPORT = 'dropship/batch_order_export/';
+    const XML_PATH_MAGEINN_VENDOR_BATCH_EXPORT = 'dropship/batch_order_export/';
 
-    /** @var \Mageinn\Dropship\Model\Info  */
+    /** @var \Mageinn\Vendor\Model\Info  */
     protected $_vendor;
 
     /**
      * Data constructor.
      * @param \Magento\Framework\App\Helper\Context $context
-     * @param \Mageinn\Dropship\Model\Info $vendor
+     * @param \Mageinn\Vendor\Model\Info $vendor
      */
     public function __construct(
         Context $context,
         ObjectManagerInterface $objectManager,
         StoreManagerInterface $storeManager,
-        \Mageinn\Dropship\Model\Info $vendor
+        \Mageinn\Vendor\Model\Info $vendor
     ) {
         $this->_vendor = $vendor;
         parent::__construct($context, $objectManager, $storeManager);
@@ -46,7 +46,7 @@ class Data extends CoreData
      */
     public function getBatchOrderExportConfig($code, $storeId = null)
     {
-        return $this->getConfigValue(self::XML_PATH_IREDEEM_VENDOR_BATCH_EXPORT . $code, $storeId);
+        return $this->getConfigValue(self::XML_PATH_MAGEINN_VENDOR_BATCH_EXPORT . $code, $storeId);
     }
 
     /**
@@ -60,6 +60,10 @@ class Data extends CoreData
         return $this->_vendor->load($id)->getName();
     }
 
+    /**
+     * @param $value
+     * @return string
+     */
     public function getShipmentStatusLabel($value)
     {
         return ShipmentStatus::getLabel($value);

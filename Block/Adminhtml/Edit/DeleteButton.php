@@ -1,13 +1,13 @@
 <?php
 
-namespace Mageinn\Dropship\Block\Adminhtml\Edit;
+namespace Mageinn\Vendor\Block\Adminhtml\Edit;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 use Magento\Backend\Block\Widget\Context;
 
 /**
- * Class DeleteButton
- * @package Mageinn\Dropship\Block\Adminhtml\Edit
+ * Class SaveButton
+ * @package Magento\Customer\Block\Adminhtml\Edit
  */
 class DeleteButton implements ButtonProviderInterface
 {
@@ -26,7 +26,8 @@ class DeleteButton implements ButtonProviderInterface
 
     /**
      * Return CMS block ID
-     * @return mixed
+     *
+     * @return int|null
      */
     public function getVendorId()
     {
@@ -38,9 +39,7 @@ class DeleteButton implements ButtonProviderInterface
      */
     public function getDeleteUrl()
     {
-        return $this->context
-            ->getUrlBuilder()
-            ->getUrl('*/*/delete', ['entity_id' => $this->getVendorId()]);
+        return $this->context->getUrlBuilder()->getUrl('*/*/delete', ['entity_id' => $this->getVendorId()]);
     }
 
     /**
@@ -58,7 +57,6 @@ class DeleteButton implements ButtonProviderInterface
                 'sort_order' => 20,
             ];
         }
-
         return $data;
     }
 }

@@ -1,11 +1,11 @@
 <?php
-namespace Mageinn\Dropship\Block\Adminhtml\Batch\View\Export\Destinations;
+namespace Mageinn\Vendor\Block\Adminhtml\Batch\View\Export\Destinations;
 
 /**
  * Class Grid
- * @package Mageinn\Dropship\Block\Adminhtml\Batch\View\Export\Destinations
+ * @package Mageinn\Vendor\Block\Adminhtml\Batch\View\Export\Destinations
  */
-class Grid extends \Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractFilePath\Grid
+class Grid extends \Mageinn\Vendor\Block\Adminhtml\Batch\View\AbstractFilePath\Grid
 {
     /**
      * @return \Magento\Backend\Block\Widget\Grid\Extended
@@ -16,39 +16,39 @@ class Grid extends \Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractFilePath
         $this->addColumn(
             'entity_id',
             [
+                'header' => __('ID'),
                 'name' => 'entity_id',
                 'index' => 'entity_id',
-                'header' => __('ID'),
             ]
         )->addColumn(
             'file_path',
             [
+                'header' => __('Location'),
                 'name' => 'file_path',
                 'index' => 'file_path',
-                'header' => __('Location'),
             ]
         )->addColumn(
             'status',
             [
+                'header' => __('Status'),
                 'name' => 'status',
                 'index' => 'status',
-                'header' => __('Status'),
                 'type' => 'options',
-                'options' => $this->batchStatus->getOptionsArray(),
+                'options' => $this->_batchStatus->getOptionsArray(),
             ]
         )->addColumn(
             'error_info',
             [
+                'header' => __('Error'),
                 'name' => 'error_info',
                 'index' => 'error_info',
-                'header' => __('Error'),
             ]
         )->addColumn(
             'updated_at',
             [
+                'header' => __('Updated At'),
                 'name' => 'updated_at',
                 'index' => 'updated_at',
-                'header' => __('Updated At'),
             ]
         );
 
@@ -61,7 +61,7 @@ class Grid extends \Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractFilePath
      */
     public function getRowUrl($row)
     {
-        $row->getData(); // TODO why?
+        $row->getData();
         return $this->getUrl('sales/batches/download', ['_current' => true]);
     }
 }

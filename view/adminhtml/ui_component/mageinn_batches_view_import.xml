@@ -3,7 +3,7 @@
       xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">iredeem_batches_view_export.iredeem_batches_view_export_data_source</item>
+            <item name="provider" xsi:type="string">mageinn_batches_view_import.mageinn_batches_view_import_data_source</item>
         </item>
         <item name="label" xsi:type="string" translate="true">Manage Batches</item>
     </argument>
@@ -20,16 +20,16 @@
             <type>tabs</type>
         </layout>
         <deps>
-            <dep>iredeem_batches_view_export.iredeem_batches_view_export_data_source</dep>
+            <dep>mageinn_batches_view_import.mageinn_batches_view_import_data_source</dep>
         </deps>
     </settings>
-    <dataSource name="iredeem_batches_view_export_data_source">
+    <dataSource name="mageinn_batches_view_import_data_source">
         <argument name="data" xsi:type="array">
             <item name="js_config" xsi:type="array">
                 <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
             </item>
         </argument>
-        <dataProvider class="Mageinn\Dropship\Model\Batch\DataProvider" name="iredeem_batches_view_export_data_source">
+        <dataProvider class="Mageinn\Vendor\Model\Batch\DataProvider" name="mageinn_batches_view_import_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>entity_id</primaryFieldName>
@@ -46,7 +46,7 @@
         <field name="entity_id" formElement="input">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">iredeem_batch</item>
+                    <item name="source" xsi:type="string">mageinn_batch</item>
                 </item>
             </argument>
             <settings>
@@ -58,7 +58,7 @@
         <field name="vendor" formElement="input">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">iredeem_batch</item>
+                    <item name="source" xsi:type="string">mageinn_batch</item>
                     <item name="label" xsi:type="string" translate="true">Vendor</item>
                 </item>
             </argument>
@@ -71,7 +71,7 @@
         <field name="status" formElement="select">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">iredeem_batch</item>
+                    <item name="source" xsi:type="string">mageinn_batch</item>
                 </item>
             </argument>
             <settings>
@@ -83,7 +83,7 @@
             <formElements>
                 <select>
                     <settings>
-                        <options class="Mageinn\Dropship\Model\Source\BatchStatus"/>
+                        <options class="Mageinn\Vendor\Model\Source\BatchStatus"/>
                     </settings>
                 </select>
             </formElements>
@@ -91,7 +91,7 @@
         <field name="num_rows" formElement="input">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">iredeem_batch</item>
+                    <item name="source" xsi:type="string">mageinn_batch</item>
                     <item name="label" xsi:type="string" translate="true">Number of Rows</item>
                 </item>
             </argument>
@@ -104,7 +104,7 @@
         <field name="rows_text" formElement="textarea">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">iredeem_batch</item>
+                    <item name="source" xsi:type="string">mageinn_batch</item>
                     <item name="label" xsi:type="string" translate="true">Content</item>
                 </item>
             </argument>
@@ -114,41 +114,40 @@
             </settings>
         </field>
     </fieldset>
-    <fieldset name="iredeem_batch_destinations">
+    <fieldset name="mageinn_batch_sources">
         <settings>
-            <label translate="true">Destinations</label>
+            <label translate="true">Sources</label>
             <additionalClasses>
-                <class name="batch-destination">true</class>
+                <class name="batch-sources">true</class>
             </additionalClasses>
             <dataScope/>
         </settings>
-        <container name="iredeem_batches_destinations_container" >
+        <container name="mageinn_batch_source_container">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="sortOrder" xsi:type="number">10</item>
                 </item>
             </argument>
             <htmlContent name="html_content">
-                <argument name="block" xsi:type="object">Mageinn\Dropship\Block\Adminhtml\Batch\View\Export\Destinations</argument>
+                <argument name="block" xsi:type="object">Mageinn\Vendor\Block\Adminhtml\Batch\View\Import\Sources</argument>
             </htmlContent>
         </container>
     </fieldset>
-    <fieldset name="iredeem_batch_rows">
+    <fieldset name="mageinn_batch_rows">
         <settings>
             <label translate="true">Data Rows</label>
             <additionalClasses>
                 <class name="batch-data-rows">true</class>
             </additionalClasses>
-            <dataScope/>
         </settings>
-        <container name="iredeem_batch_rows_container" >
+        <container name="mageinn_batch_rows_container">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="sortOrder" xsi:type="number">10</item>
                 </item>
             </argument>
             <htmlContent name="html_content">
-                <argument name="block" xsi:type="object">Mageinn\Dropship\Block\Adminhtml\Batch\View\Export\BatchRows</argument>
+                <argument name="block" xsi:type="object">Mageinn\Vendor\Block\Adminhtml\Batch\View\Import\BatchRows</argument>
             </htmlContent>
         </container>
     </fieldset>

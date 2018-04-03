@@ -1,10 +1,10 @@
 <?php
 
-namespace Mageinn\Dropship\Model\Plugin;
+namespace Mageinn\Vendor\Model\Plugin;
 
 /**
  * Class DeliveryCountry
- * @package Mageinn\Dropship\Model\Plugin
+ * @package Mageinn\Vendor\Model\Plugin
  */
 class DeliveryCountry
 {

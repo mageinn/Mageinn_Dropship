@@ -1,11 +1,11 @@
 <?php
-namespace Mageinn\Dropship\Block\Adminhtml\Batch\View\Export\BatchRows;
+namespace Mageinn\Vendor\Block\Adminhtml\Batch\View\Export\BatchRows;
 
 /**
  * Class Grid
- * @package Mageinn\Dropship\Block\Adminhtml\Batch\View\Export\BatchRows
+ * @package Mageinn\Vendor\Block\Adminhtml\Batch\View\Export\BatchRows
  */
-class Grid extends \Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractBatchRows\Grid
+class Grid extends \Mageinn\Vendor\Block\Adminhtml\Batch\View\AbstractBatchRows\Grid
 {
     /**
      * @return \Magento\Backend\Block\Widget\Grid\Extended
@@ -16,30 +16,30 @@ class Grid extends \Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractBatchRow
         $this->addColumn(
             'entity_id',
             [
+                'header' => __('ID'),
                 'name' => 'entity_id',
                 'index' => 'entity_id',
-                'header' => __('ID'),
             ]
         )->addColumn(
             'order_increment_id',
             [
+                'header' => __('Order ID'),
                 'name' => 'order_increment_id',
                 'index' => 'order_increment_id',
-                'header' => __('Order ID'),
             ]
         )->addColumn(
             'shipment_increment_id',
             [
+                'header' => __('Shipment ID'),
                 'name' => 'shipment_increment_id',
                 'index' => 'shipment_increment_id',
-                'header' => __('Shipment ID'),
             ]
         )->addColumn(
             'item_sku',
             [
+                'header' => __('Item SKU'),
                 'name' => 'item_sku',
                 'index' => 'item_sku',
-                'header' => __('Item SKU'),
             ]
         );
         return parent::_prepareColumns();

@@ -1,18 +1,18 @@
 <?php
-namespace Mageinn\Dropship\Controller\Adminhtml\ShippingRates;
+namespace Mageinn\Vendor\Controller\Adminhtml\ShippingRates;
 
 use \Magento\Backend\App\Action;
 use \Magento\Backend\App\Action\Context;
 use Magento\Framework\Controller\ResultFactory;
 
 /**
- * Dropship Index Action
- * @package Mageinn\Dropship\Controller\Adminhtml\Dropship
+ * Vendor Index Action
+ * @package Mageinn\Vendor\Controller\Adminhtml\Vendor
  */
 class Filter extends Action
 {
     /**
-     * @var \Mageinn\Dropship\Model\ShippingRate\Attribute\Source\ShippingRuleset
+     * @var \Mageinn\Vendor\Model\ShippingRate\Attribute\Source\ShippingRuleset
      */
     private $ratesSource;
 
@@ -20,11 +20,11 @@ class Filter extends Action
      * Constructor
      *
      * @param \Magento\Backend\App\Action\Context $context
-     * @param \Mageinn\Dropship\Model\ShippingRate\Attribute\Source\ShippingRuleset $ratesSource
+     * @param \Mageinn\Vendor\Model\ShippingRate\Attribute\Source\ShippingRuleset $ratesSource
      */
     public function __construct(
         Context $context,
-        \Mageinn\Dropship\Model\ShippingRate\Attribute\Source\ShippingRuleset $ratesSource
+        \Mageinn\Vendor\Model\ShippingRate\Attribute\Source\ShippingRuleset $ratesSource
     ) {
         parent::__construct($context);
 

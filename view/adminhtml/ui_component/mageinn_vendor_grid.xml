@@ -75,7 +75,7 @@
         </column>
         <column name="status" component="Magento_Ui/js/grid/columns/select">
             <settings>
-                <options class="Mageinn\Dropship\Model\Source\IsActive"/>
+                <options class="Mageinn\Vendor\Model\Source\IsActive"/>
                 <filter>select</filter>
                 <editor>
                     <editorType>select</editorType>
@@ -98,7 +98,7 @@
         </column>
         <column name="client_managed" component="Magento_Ui/js/grid/columns/select">
             <settings>
-                <options class="Mageinn\Dropship\Model\Source\IsEnabled"/>
+                <options class="Mageinn\Vendor\Model\Source\IsEnabled"/>
                 <filter>select</filter>
                 <editor>
                     <editorType>select</editorType>
@@ -113,7 +113,7 @@
                 <label translate="true">Multiplier</label>
             </settings>
         </column>
-        <actionsColumn name="actions" class="Mageinn\Dropship\Ui\Component\Listing\Column\Actions">
+        <actionsColumn name="actions" class="Mageinn\Vendor\Ui\Component\Listing\Column\Actions">
             <settings>
                 <indexField>entity_id</indexField>
             </settings>

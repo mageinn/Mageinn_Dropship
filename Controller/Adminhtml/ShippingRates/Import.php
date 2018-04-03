@@ -1,14 +1,14 @@
 <?php
-namespace Mageinn\Dropship\Controller\Adminhtml\ShippingRates;
+namespace Mageinn\Vendor\Controller\Adminhtml\ShippingRates;
 
 use \Magento\Backend\App\Action;
 use \Magento\Backend\App\Action\Context;
 use Magento\Framework\Exception\LocalizedException;
 use \Magento\Framework\View\Result\PageFactory;
 use \Magento\Framework\File\Csv;
-use \Mageinn\Dropship\Helper\ShippingRates;
-use \Mageinn\Dropship\Model\ResourceModel\ShippingRate as ShippingRateResourceModel;
-use \Mageinn\Dropship\Model\ShippingRate;
+use \Mageinn\Vendor\Helper\ShippingRates;
+use \Mageinn\Vendor\Model\ResourceModel\ShippingRate as ShippingRateResourceModel;
+use \Mageinn\Vendor\Model\ShippingRate;
 use \Magento\Framework\File\UploaderFactory;
 use \Magento\Framework\Filesystem\Directory\WriteInterface;
 use \Magento\Framework\Filesystem;
@@ -17,7 +17,7 @@ use Psr\Log\LoggerInterface;
 
 /**
  * Class Import
- * @package Mageinn\Dropship\Controller\Adminhtml\ShippingRates
+ * @package Mageinn\Vendor\Controller\Adminhtml\ShippingRates
  */
 class Import extends Action
 {

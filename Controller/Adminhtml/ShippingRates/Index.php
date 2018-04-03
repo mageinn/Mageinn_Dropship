@@ -1,13 +1,13 @@
 <?php
-namespace Mageinn\Dropship\Controller\Adminhtml\ShippingRates;
+namespace Mageinn\Vendor\Controller\Adminhtml\ShippingRates;
 
 use \Magento\Backend\App\Action;
 use \Magento\Backend\App\Action\Context;
 use \Magento\Framework\View\Result\PageFactory;
 
 /**
- * Dropship Index Action
- * @package Mageinn\Dropship\Controller\Adminhtml\Dropship
+ * Vendor Index Action
+ * @package Mageinn\Vendor\Controller\Adminhtml\Vendor
  */
 class Index extends Action
 {
@@ -32,7 +32,7 @@ class Index extends Action
     {
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultFactory->create();
-        $resultPage->setActiveMenu('Mageinn_Dropship::vendor_shipping_rates');
+        $resultPage->setActiveMenu('Mageinn_Vendor::vendor_shipping_rates');
         $resultPage->addBreadcrumb(__('Shipping Rates'), __('Shipping Rates'));
         $resultPage->addBreadcrumb(__('Import/Export'), __('Import/Export'));
         $resultPage->getConfig()->getTitle()->prepend(__('Import/Export Shipping Rates'));

@@ -1,14 +1,14 @@
 <?php
-namespace Mageinn\Dropship\Controller\Adminhtml\VendorExport;
+namespace Mageinn\Vendor\Controller\Adminhtml\VendorExport;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
-use Mageinn\Dropship\Model\Export\VendorToCsv;
+use Mageinn\Vendor\Model\Export\VendorToCsv;
 use Magento\Framework\App\Response\Http\FileFactory;
 
 /**
  * Class GridToCsv
- * @package Mageinn\Dropship\Controller\Adminhtml\VendorExport
+ * @package Mageinn\Vendor\Controller\Adminhtml\VendorExport
  */
 class GridToCsv extends Action
 {

@@ -1,11 +1,11 @@
 <?php
-namespace Mageinn\Dropship\Block\Adminhtml\Edit;
+namespace Mageinn\Vendor\Block\Adminhtml\Edit;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 /**
  * Class SaveButton
- * @package Mageinn\Dropship\Block\Adminhtml\Edit
+ * @package Magento\Customer\Block\Adminhtml\Edit
  */
 class SaveButton implements ButtonProviderInterface
 {
@@ -15,7 +15,7 @@ class SaveButton implements ButtonProviderInterface
     public function getButtonData()
     {
         $data = [
-            'label' => __('Save Dropship'),
+            'label' => __('Save Vendor'),
             'class' => 'save primary',
             'data_attribute' => [
                 'mage-init' => ['button' => ['event' => 'save']],
@@ -23,6 +23,7 @@ class SaveButton implements ButtonProviderInterface
             ],
             'sort_order' => 90,
         ];
+
         return $data;
     }
 }

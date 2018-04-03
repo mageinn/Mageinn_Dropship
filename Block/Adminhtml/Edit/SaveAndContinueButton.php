@@ -1,11 +1,10 @@
 <?php
-namespace Mageinn\Dropship\Block\Adminhtml\Edit;
+namespace Mageinn\Vendor\Block\Adminhtml\Edit;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 /**
  * Class SaveAndContinueButton
- * @package Mageinn\Dropship\Block\Adminhtml\Edit
  */
 class SaveAndContinueButton implements ButtonProviderInterface
 {
@@ -18,7 +17,9 @@ class SaveAndContinueButton implements ButtonProviderInterface
             'label' => __('Save and Continue Edit'),
             'class' => 'save',
             'data_attribute' => [
-                'mage-init' => ['button' => ['event' => 'saveAndContinueEdit'],],
+                'mage-init' => [
+                    'button' => ['event' => 'saveAndContinueEdit'],
+                ],
             ],
             'sort_order' => 80,
         ];

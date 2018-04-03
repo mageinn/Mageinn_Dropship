@@ -24,8 +24,8 @@
     </div>
 
     <div class="product-vendor-block">
-        <span><?= /* @escapeNotVerified */ __('Dropship') ?>:</span>
-        <a href="#" id="vendor-<?= $_item->getVendorId() ?>"><?= $block->escapeHtml($this->helper('Mageinn\Dropship\Helper\Data')->getVendorNameById($_item->getVendorId())) ?></a>
+        <span><?= /* @escapeNotVerified */ __('Vendor') ?>:</span>
+        <a href="#" id="vendor-<?= $_item->getVendorId() ?>"><?= $block->escapeHtml($this->helper('Mageinn\Vendor\Helper\Data')->getVendorNameById($_item->getVendorId())) ?></a>
     </div>
 
     <?php if ($block->getOrderOptions()): ?>

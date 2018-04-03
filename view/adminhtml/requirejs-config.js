@@ -1,7 +1,7 @@
 var config = {
     map: {
         '*': {
-            shippingRuleset: 'Mageinn_Dropship/js/form/element/shipping-ruleset'
+            shippingRuleset: 'Mageinn_Vendor/js/form/element/shipping-ruleset'
         }
     },
     shim: {

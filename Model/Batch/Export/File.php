@@ -1,11 +1,11 @@
 <?php
-namespace Mageinn\Dropship\Model\Batch\Export;
+namespace Mageinn\Vendor\Model\Batch\Export;
 
 use Magento\Framework\Exception\LocalizedException;
 
 /**
  * Class File
- * @package Mageinn\Dropship\Model\Batch\Export
+ * @package Mageinn\Vendor\Model\Batch\Export
  */
 class File extends \Magento\Framework\Filesystem\Io\File
 {
@@ -38,7 +38,7 @@ class File extends \Magento\Framework\Filesystem\Io\File
     protected $emailSentToVendor;
 
     /**
-     * @var \Mageinn\Dropship\Magento\Mail\Template\TransportBuilder
+     * @var \Mageinn\Core\Magento\Mail\Template\TransportBuilder
      */
     protected $transportBuilder;
 
@@ -48,7 +48,7 @@ class File extends \Magento\Framework\Filesystem\Io\File
     protected $logger;
 
     /**
-     * @var \Mageinn\Dropship\Model\Batch\Export\File\Email
+     * @var \Mageinn\Vendor\Model\Batch\Export\File\Email
      */
     protected $email;
 
@@ -58,7 +58,7 @@ class File extends \Magento\Framework\Filesystem\Io\File
     protected $notes = [];
 
     /**
-     * @var \Mageinn\Dropship\Model\Batch\Export\File\Response
+     * @var \Mageinn\Vendor\Model\Batch\Export\File\Response
      */
     protected $response;
 
@@ -70,18 +70,18 @@ class File extends \Magento\Framework\Filesystem\Io\File
     /**
      * File constructor.
      * @param \Magento\Framework\Filesystem\DirectoryList $dir
-     * @param \Mageinn\Dropship\Magento\Mail\Template\TransportBuilder $builder
+     * @param \Mageinn\Core\Magento\Mail\Template\TransportBuilder $builder
      * @param \Psr\Log\LoggerInterface $logger
-     * @param \Mageinn\Dropship\Model\Batch\Export\File\Email $email
-     * @param \Mageinn\Dropship\Model\Batch\Export\File\Response $response
+     * @param \Mageinn\Vendor\Model\Batch\Export\File\Email $email
+     * @param \Mageinn\Vendor\Model\Batch\Export\File\Response $response
      * @param \Magento\Framework\Filesystem\Io\File $fileSystem
      */
     public function __construct(
         \Magento\Framework\Filesystem\DirectoryList $dir,
-        \Mageinn\Dropship\Magento\Mail\Template\TransportBuilder $builder,
+        \Mageinn\Core\Magento\Mail\Template\TransportBuilder $builder,
         \Psr\Log\LoggerInterface $logger,
-        \Mageinn\Dropship\Model\Batch\Export\File\Email $email,
-        \Mageinn\Dropship\Model\Batch\Export\File\Response $response,
+        \Mageinn\Vendor\Model\Batch\Export\File\Email $email,
+        \Mageinn\Vendor\Model\Batch\Export\File\Response $response,
         \Magento\Framework\Filesystem\Io\File $fileSystem
     ) {
         $this->dir = $dir;
@@ -97,7 +97,7 @@ class File extends \Magento\Framework\Filesystem\Io\File
      *
      * @param $contents
      * @param $vendor
-     * @return \Mageinn\Dropship\Model\Batch\Export\File\Response
+     * @return \Mageinn\Vendor\Model\Batch\Export\File\Response
      * @throws \Exception
      */
     public function handle($contents, $vendor)

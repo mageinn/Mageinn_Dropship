@@ -1,12 +1,12 @@
 <?php
-namespace Mageinn\Dropship\Model\Source;
+namespace Mageinn\Vendor\Model\Source;
 
 use \Magento\Framework\Data\OptionSourceInterface;
 
 /**
  * Class ShipmentStatus Source.
  *
- * @package Mageinn\Dropship\Model\Source
+ * @package Mageinn\Vendor\Model\Source
  */
 class BatchStatus implements OptionSourceInterface
 {

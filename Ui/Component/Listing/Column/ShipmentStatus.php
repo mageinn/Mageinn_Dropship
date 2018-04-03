@@ -1,13 +1,9 @@
 <?php
-namespace Mageinn\Dropship\Ui\Component\Listing\Column;
+namespace Mageinn\Vendor\Ui\Component\Listing\Column;
 
-use Mageinn\Dropship\Model\Source\ShipmentStatus as ShipmentStatusSource;
+use Mageinn\Vendor\Model\Source\ShipmentStatus as ShipmentStatusSource;
 use Magento\Ui\Component\Listing\Columns\Column;
 
-/**
- * Class ShipmentStatus
- * @package Mageinn\Dropship\Ui\Component\Listing\Column
- */
 class ShipmentStatus extends Column
 {
     /**

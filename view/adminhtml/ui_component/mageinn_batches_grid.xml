@@ -3,7 +3,7 @@
          xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">iredeem_batches_grid.iredeem_batches_grid_data_source</item>
+            <item name="provider" xsi:type="string">mageinn_batches_grid.mageinn_batches_grid_data_source</item>
         </item>
     </argument>
     <settings>
@@ -19,17 +19,17 @@
                 <label translate="true">Create Tracking Import Batch</label>
             </button>
         </buttons>
-        <spinner>iredeem_batches_columns</spinner>
+        <spinner>mageinn_batches_columns</spinner>
         <deps>
-            <dep>iredeem_batches_grid.iredeem_batches_grid_data_source</dep>
+            <dep>mageinn_batches_grid.mageinn_batches_grid_data_source</dep>
         </deps>
     </settings>
-    <dataSource name="iredeem_batches_grid_data_source" component="Magento_Ui/js/grid/provider">
+    <dataSource name="mageinn_batches_grid_data_source" component="Magento_Ui/js/grid/provider">
         <settings>
             <updateUrl path="mui/index/render"/>
         </settings>
         <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider"
-                      name="iredeem_batches_grid_data_source">
+                      name="mageinn_batches_grid_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>entity_id</primaryFieldName>
@@ -51,7 +51,7 @@
             </action>
         </massaction>
     </listingToolbar>
-    <columns name="iredeem_batches_columns">
+    <columns name="mageinn_batches_columns">
         <selectionsColumn name="ids">
             <settings>
                 <indexField>entity_id</indexField>
@@ -64,10 +64,10 @@
                 <sorting>asc</sorting>
             </settings>
         </column>
-        <column name="vendor_id" class="Mageinn\Dropship\Ui\Component\Listing\Column\Vendor">
+        <column name="vendor_id" class="Mageinn\Vendor\Ui\Component\Listing\Column\Vendor">
             <settings>
                 <filter>select</filter>
-                <options class="Mageinn\Dropship\Ui\Component\Listing\Column\Vendor\Options"/>
+                <options class="Mageinn\Vendor\Ui\Component\Listing\Column\Vendor\Options"/>
                 <dataType>select</dataType>
                 <label translate="true">Vendor</label>
                 <visible>true</visible>
@@ -75,7 +75,7 @@
         </column>
         <column name="type" component="Magento_Ui/js/grid/columns/select">
             <settings>
-                <options class="Mageinn\Dropship\Model\Source\BatchType"/>
+                <options class="Mageinn\Vendor\Model\Source\BatchType"/>
                 <filter>select</filter>
                 <editor>
                     <editorType>select</editorType>
@@ -86,7 +86,7 @@
         </column>
         <column name="status" component="Magento_Ui/js/grid/columns/select">
             <settings>
-                <options class="Mageinn\Dropship\Model\Source\BatchStatus"/>
+                <options class="Mageinn\Vendor\Model\Source\BatchStatus"/>
                 <filter>select</filter>
                 <editor>
                     <editorType>select</editorType>
@@ -122,7 +122,7 @@
                 <label translate="true">Scheduled At</label>
             </settings>
         </column>
-        <actionsColumn name="actions" class="Mageinn\Dropship\Ui\Component\Listing\Column\Batches\Actions">
+        <actionsColumn name="actions" class="Mageinn\Vendor\Ui\Component\Listing\Column\Batches\Actions">
             <settings>
                 <indexField>entity_id</indexField>
             </settings>

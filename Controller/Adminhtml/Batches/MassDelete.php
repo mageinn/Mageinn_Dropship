@@ -1,15 +1,11 @@
 <?php
-namespace Mageinn\Dropship\Controller\Adminhtml\Batches;
+namespace Mageinn\Vendor\Controller\Adminhtml\Batches;
 
 use Magento\Backend\App\Action\Context;
 use Magento\Ui\Component\MassAction\Filter;
 use Magento\Framework\Controller\ResultFactory;
-use Mageinn\Dropship\Model\ResourceModel\Batch\CollectionFactory;
+use Mageinn\Vendor\Model\ResourceModel\Batch\CollectionFactory;
 
-/**
- * Class MassDelete
- * @package Mageinn\Dropship\Controller\Adminhtml\Batches
- */
 class MassDelete extends \Magento\Backend\App\Action
 {
     /**
@@ -48,7 +44,7 @@ class MassDelete extends \Magento\Backend\App\Action
         try {
             $collection = $this->filter->getCollection($this->collectionFactory->create());
 
-            /** @var \Mageinn\Dropship\Model\Batch $item */
+            /** @var \Mageinn\Vendor\Model\Batch $item */
             foreach ($collection as $item) {
                 // @codingStandardsIgnoreStart
                 $item->delete();

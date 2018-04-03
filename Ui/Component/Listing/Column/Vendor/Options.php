@@ -1,9 +1,9 @@
 <?php
 
-namespace Mageinn\Dropship\Ui\Component\Listing\Column\Vendor;
+namespace Mageinn\Vendor\Ui\Component\Listing\Column\Vendor;
 
 use Magento\Framework\Data\OptionSourceInterface;
-use Mageinn\Dropship\Model\ResourceModel\Info\CollectionFactory;
+use Mageinn\Vendor\Model\ResourceModel\Info\CollectionFactory;
 
 /**
  * Class Options

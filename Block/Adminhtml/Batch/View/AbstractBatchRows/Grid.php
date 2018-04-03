@@ -1,61 +1,61 @@
 <?php
-namespace Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractBatchRows;
+namespace Mageinn\Vendor\Block\Adminhtml\Batch\View\AbstractBatchRows;
 
-use Mageinn\Dropship\Model\ResourceModel\BatchRow\CollectionFactory;
+use Mageinn\Vendor\Model\ResourceModel\BatchRow\CollectionFactory;
 
 /**
  * Class Grid
- * @package Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractBatchRows
+ * @package Mageinn\Vendor\Block\Adminhtml\Batch\View\AbstractBatchRows
  */
 abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
 {
     /**
-     * @var \Magento\Framework\Registry|null
+     * @var \Magento\Framework\Registry
      */
-    protected $registry = null;
+    protected $_registry = null;
 
     /**
      * @var CollectionFactory
      */
-    protected $collectionFactory;
+    protected $_collectionFactory;
 
     /**
-     * Grid constructor.
-     * @param \Magento\Backend\Block\Template\Context $context
+     * User constructor.
      * @param \Magento\Backend\Helper\Data $backendHelper
-     * @param \Magento\Framework\Registry $registry
+     * @param \Magento\Backend\Block\Template\Context $context
      * @param CollectionFactory $collectionFactory
+     * @param \Magento\Framework\Registry $registry
      * @param array $data
      */
     public function __construct(
-        \Magento\Backend\Block\Template\Context $context,
-        \Magento\Framework\Registry $registry,
         \Magento\Backend\Helper\Data $backendHelper,
+        \Magento\Backend\Block\Template\Context $context,
         CollectionFactory $collectionFactory,
+        \Magento\Framework\Registry $registry,
         array $data = []
     ) {
-        $this->collectionFactory = $collectionFactory;
-        $this->registry = $registry;
+        $this->_registry = $registry;
+        $this->_collectionFactory = $collectionFactory;
         parent::__construct($context, $backendHelper, $data);
     }
 
     /**
-     *
+     * @return void
      */
     protected function _construct()
     {
         parent::_construct();
+        $this->setId('mageinn_batch_data_rows');
         $this->setDefaultSort('entity_id');
         $this->setUseAjax(true);
-        $this->setId('iredeem_batch_data_rows');
     }
 
     /**
-     * @return \Mageinn\Dropship\Model\Batch|null
+     * @return \Mageinn\Vendor\Model\Batch|null
      */
     public function getBatch()
     {
-        return $this->registry->registry('iredeem_batch');
+        return $this->_registry->registry('mageinn_batch');
     }
 
     /**
@@ -63,10 +63,12 @@ abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
      */
     protected function _prepareCollection()
     {
-        if ($this->getBatch()->getId()) $this->setDefaultFilter('entity_id');
+        if ($this->getBatch()->getId()) {
+            $this->setDefaultFilter('entity_id');
+        }
 
-        $collection = $this->collectionFactory->create();
-        $collection->addFieldToFilter('batch_id', ['eq' => $this->getBatch()->getId()]);
+        $collection = $this->_collectionFactory->create()
+            ->addFieldToFilter('batch_id', ['eq' => $this->getBatch()->getId()]);
 
         $this->setCollection($collection);
 

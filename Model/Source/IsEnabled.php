@@ -1,23 +1,23 @@
 <?php
-namespace Mageinn\Dropship\Model\Source;
+namespace Mageinn\Vendor\Model\Source;
 
 use \Magento\Framework\Data\OptionSourceInterface;
-use \Mageinn\Dropship\Model\Info;
+use \Mageinn\Vendor\Model\Info;
 
 /**
  * Class IsEnabled Source.
  *
- * @package Mageinn\Dropship\Model\Source
+ * @package Mageinn\Vendor\Model\Source
  */
 class IsEnabled implements OptionSourceInterface
 {
-    /** @var \Mageinn\Dropship\Model\Info */
+    /** @var \Mageinn\Vendor\Model\Info */
     protected $vendor;
 
     /**
      * IsEnabled constructor.
      *
-     * @param \Mageinn\Dropship\Model\Info $vendor
+     * @param \Mageinn\Vendor\Model\Info $vendor
      */
     public function __construct(Info $vendor)
     {

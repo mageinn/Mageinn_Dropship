@@ -1,12 +1,12 @@
 <?php
-namespace Mageinn\Dropship\Model;
+namespace Mageinn\Vendor\Model;
 
 use \Magento\Framework\Model\AbstractModel;
-use \Mageinn\Dropship\Model\ResourceModel\Info as ResourceModelInfo;
+use \Mageinn\Vendor\Model\ResourceModel\Info as ResourceModelInfo;
 
 /**
  * Class Info
- * @package Mageinn\Dropship\Model
+ * @package Mageinn\Vendor\Model
  */
 class Info extends AbstractModel
 {
@@ -17,7 +17,7 @@ class Info extends AbstractModel
     /**#@-*/
 
     /**#@+
-     * Dropship Information Data
+     * Vendor Information Data
      */
     const VENDOR_DATA_INFORMATION = 'vendor';
 

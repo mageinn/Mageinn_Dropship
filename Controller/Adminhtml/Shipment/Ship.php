@@ -1,7 +1,7 @@
 <?php
-namespace Mageinn\Dropship\Controller\Adminhtml\Shipment;
+namespace Mageinn\Vendor\Controller\Adminhtml\Shipment;
 
-use Mageinn\Dropship\Model\Source\ShipmentStatus;
+use Mageinn\Vendor\Model\Source\ShipmentStatus;
 use \Magento\Backend\App\Action;
 use \Magento\Backend\App\Action\Context;
 use \Magento\Framework\Registry;

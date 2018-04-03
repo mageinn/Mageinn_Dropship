@@ -1,14 +1,14 @@
 <?php
-namespace Mageinn\Dropship\Model\ResourceModel\Info;
+namespace Mageinn\Vendor\Model\ResourceModel\Info;
 
 use \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
-use \Mageinn\Dropship\Model\Info;
-use \Mageinn\Dropship\Model\ResourceModel\Info as ResourceModelInfo;
+use \Mageinn\Vendor\Model\Info;
+use \Mageinn\Vendor\Model\ResourceModel\Info as ResourceModelInfo;
 
 /**
  * Class Collection
  *
- * @package Mageinn\Dropship\Model\ResourceModel\Info
+ * @package Mageinn\Vendor\Model\ResourceModel\Info
  */
 class Collection extends AbstractCollection
 {

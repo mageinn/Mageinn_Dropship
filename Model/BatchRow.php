@@ -1,11 +1,11 @@
 <?php
-namespace Mageinn\Dropship\Model;
+namespace Mageinn\Vendor\Model;
 
 use \Magento\Framework\Model\AbstractModel;
 
 /**
  * Class Info
- * @package Mageinn\Dropship\Model
+ * @package Mageinn\Vendor\Model
  */
 class BatchRow extends AbstractModel
 {
@@ -22,6 +22,6 @@ class BatchRow extends AbstractModel
      */
     protected function _construct()
     {
-        $this->_init(\Mageinn\Dropship\Model\ResourceModel\BatchRow::class);
+        $this->_init(\Mageinn\Vendor\Model\ResourceModel\BatchRow::class);
     }
 }

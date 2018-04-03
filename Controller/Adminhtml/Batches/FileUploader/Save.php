@@ -1,5 +1,5 @@
 <?php
-namespace Mageinn\Dropship\Controller\Adminhtml\Batches\FileUploader;
+namespace Mageinn\Vendor\Controller\Adminhtml\Batches\FileUploader;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
@@ -7,7 +7,7 @@ use Magento\Backend\App\Action\Context;
 /**
  * File Uploads Action Controller
  *
- * @package Mageinn\Dropship\Controller\Adminhtml\Batches\FileUploader
+ * @package Mageinn\Vendor\Controller\Adminhtml\Batches\FileUploader
  */
 class Save extends Action
 {

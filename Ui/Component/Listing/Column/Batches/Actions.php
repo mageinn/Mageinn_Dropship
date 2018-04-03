@@ -1,9 +1,9 @@
 <?php
-namespace Mageinn\Dropship\Ui\Component\Listing\Column\Batches;
+namespace Mageinn\Vendor\Ui\Component\Listing\Column\Batches;
 
 /**
  * Class Actions
- * @package Mageinn\Dropship\Ui\Component\Listing\Column
+ * @package Mageinn\Vendor\Ui\Component\Listing\Column
  */
 class Actions extends \Magento\Ui\Component\Listing\Columns\Column
 {
@@ -42,7 +42,7 @@ class Actions extends \Magento\Ui\Component\Listing\Columns\Column
             foreach ($dataSource['data']['items'] as &$item) {
                 // Form the view action based on the batch type so that we can create
                 // separate pages for each type of batch
-                if ($item['type'] == \Mageinn\Dropship\Model\Source\BatchType::IREDEEM_VENDOR_BATCH_TYPE_IMPORT) {
+                if ($item['type'] == \Mageinn\Vendor\Model\Source\BatchType::MAGEINN_VENDOR_BATCH_TYPE_IMPORT) {
                     $actionType = 'Import';
                 } else {
                     $actionType = 'Export';

@@ -1,5 +1,5 @@
 <?php
-namespace Mageinn\Dropship\Observer;
+namespace Mageinn\Vendor\Observer;
 
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
@@ -25,7 +25,7 @@ class AutomaticShipment implements ObserverInterface
         \Magento\Sales\Model\Order\ShipmentDocumentFactory $shipmentFactory,
         \Magento\Framework\DB\Transaction $transaction,
         \Magento\Sales\Model\Convert\Order $convertOrder,
-        \Mageinn\Dropship\Model\Info $vendor,
+        \Mageinn\Vendor\Model\Info $vendor,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
     ) {
         $this->shipmentFactory = $shipmentFactory;
@@ -46,7 +46,7 @@ class AutomaticShipment implements ObserverInterface
         $order = $observer->getEvent()->getOrder();
 
         $allowedOrderStatuses = $this->scopeConfig
-            ->getValue(\Mageinn\Dropship\Model\Info::CONFIGURATION_OPTION_DEFAULT_DROPSHIP_ORDER_STATUS);
+            ->getValue(\Mageinn\Vendor\Model\Info::CONFIGURATION_OPTION_DEFAULT_DROPSHIP_ORDER_STATUS);
 
         if (!$order->getId()
             || !$order->canShip()

@@ -1,22 +1,22 @@
 <?php
-namespace Mageinn\Dropship\Model\ResourceModel\Batch\Grid;
+namespace Mageinn\Vendor\Model\ResourceModel\Batch\Grid;
 
 use Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult;
 use Magento\Framework\Event\ManagerInterface as EventManager;
 use Magento\Framework\Data\Collection\Db\FetchStrategyInterface as FetchStrategy;
 use Magento\Framework\Data\Collection\EntityFactoryInterface as EntityFactory;
 use Psr\Log\LoggerInterface as Logger;
-use Mageinn\Dropship\Model\Batch;
+use Mageinn\Vendor\Model\Batch;
 
 /**
  * Flat batches grid collection
  *
- * @package Mageinn\Dropship\Model\ResourceModel\Info\Grid
+ * @package Mageinn\Vendor\Model\ResourceModel\Info\Grid
  */
 class Collection extends SearchResult
 {
     /**
-     * @var \Mageinn\Dropship\Model\Batch
+     * @var \Mageinn\Vendor\Model\Batch
      */
     protected $batchModel;
 

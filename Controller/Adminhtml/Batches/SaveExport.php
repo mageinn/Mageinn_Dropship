@@ -1,14 +1,14 @@
 <?php
-namespace Mageinn\Dropship\Controller\Adminhtml\Batches;
+namespace Mageinn\Vendor\Controller\Adminhtml\Batches;
 
 /**
  * Class Save
- * @package Mageinn\Dropship\Controller\Adminhtml\Batches\Import
+ * @package Mageinn\Vendor\Controller\Adminhtml\Batches\Import
  */
 class SaveExport extends \Magento\Backend\App\Action
 {
     /**
-     * @var \Mageinn\Dropship\Model\Batch
+     * @var \Mageinn\Vendor\Model\Batch
      */
     protected $_batch;
 
@@ -18,21 +18,21 @@ class SaveExport extends \Magento\Backend\App\Action
     protected $_dateTime;
 
     /**
-     * @var \Mageinn\Dropship\Model\InfoFactory
+     * @var \Mageinn\Vendor\Model\InfoFactory
      */
     protected $_vendor;
 
     /**
      * SaveImport constructor.
      * @param \Magento\Backend\App\Action\Context $context
-     * @param \Mageinn\Dropship\Model\BatchFactory $batch
+     * @param \Mageinn\Vendor\Model\BatchFactory $batch
      * @param \Magento\Framework\Stdlib\DateTime\DateTime $dateTime
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
-        \Mageinn\Dropship\Model\BatchFactory $batch,
+        \Mageinn\Vendor\Model\BatchFactory $batch,
         \Magento\Framework\Stdlib\DateTime\DateTime $dateTime,
-        \Mageinn\Dropship\Model\InfoFactory $vendor
+        \Mageinn\Vendor\Model\InfoFactory $vendor
     ) {
         $this->_batch = $batch->create();
         $this->_dateTime = $dateTime;
@@ -64,8 +64,8 @@ class SaveExport extends \Magento\Backend\App\Action
         try {
             $this->_batch
                 ->setVendorId($batch['vendor_name'])
-                ->setType(\Mageinn\Dropship\Model\Source\BatchType::IREDEEM_VENDOR_BATCH_TYPE_EXPORT)
-                ->setStatus(\Mageinn\Dropship\Model\Source\BatchStatus::BATCH_STATUS_SCHEDULED)
+                ->setType(\Mageinn\Vendor\Model\Source\BatchType::MAGEINN_VENDOR_BATCH_TYPE_EXPORT)
+                ->setStatus(\Mageinn\Vendor\Model\Source\BatchStatus::BATCH_STATUS_SCHEDULED)
                 ->setCreatedAt($time)
                 ->setScheduledAt($time)
                 ->save();

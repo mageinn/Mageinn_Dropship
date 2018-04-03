@@ -1,20 +1,20 @@
 <?php
 
-namespace Mageinn\Dropship\Block\Adminhtml\Users\Edit\Tab;
+namespace Mageinn\Vendor\Block\Adminhtml\Users\Edit\Tab;
 
 use Magento\Backend\Block\Template\Context;
-use Magento\Backend\Block\Widget\Grid\Column;
 use Magento\Backend\Block\Widget\Grid;
-use Magento\Backend\Helper\Data;
-use Magento\User\Model\ResourceModel\User\CollectionFactory;
-use Magento\Framework\Exception\LocalizedException;
+use Magento\Backend\Block\Widget\Grid\Column;
 use \Magento\Backend\Block\Widget\Grid\Extended;
+use Magento\Backend\Helper\Data;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Registry;
+use Magento\User\Model\ResourceModel\User\CollectionFactory;
 use Magento\User\Model\UserFactory;
 
 /**
- * Class User
- * @package Mageinn\Dropship\Block\Adminhtml\Users\Edit\Tab
+ * Class Stock
+ * @package Mageinn\Vendor\Block\Adminhtml\Edit\Tab
  */
 class User extends Extended
 {
@@ -46,39 +46,35 @@ class User extends Extended
      */
     public function __construct(
         Context $context,
-        CollectionFactory $userCollectionFactory,
-        UserFactory $userFactory,
         Data $backendHelper,
+        UserFactory $userFactory,
+        CollectionFactory $userCollectionFactory,
         Registry $coreRegistry,
         array $data = []
     ) {
         $this->userFactory = $userFactory;
         $this->coreRegistry = $coreRegistry;
         $this->userCollectionFactory = $userCollectionFactory;
-        parent::__construct(
-            $context,
-            $backendHelper,
-            $data
-        );
+        parent::__construct($context, $backendHelper, $data);
     }
 
     /**
-     *
+     * Costructor
      */
     protected function _construct()
     {
         parent::_construct();
-        $this->setUseAjax(true);
-        $this->setId('iredeem_vendor_users');
+        $this->setId('mageinn_vendor_users');
         $this->setDefaultSort('user_id');
+        $this->setUseAjax(true);
     }
 
     /**
-     * @return mixed
+     * @return array|null
      */
     public function getVendor()
     {
-        return $this->coreRegistry->registry('iredeem_vendor');
+        return $this->coreRegistry->registry('mageinn_vendor');
     }
 
     /**
@@ -91,7 +87,9 @@ class User extends Extended
         // Set custom filter for in associated user flag
         if ($column->getId() == 'associated_user') {
             $usersIds = $this->_getSelectedUsers();
-            if (empty($usersIds)) $usersIds = 0;
+            if (empty($usersIds)) {
+                $usersIds = 0;
+            }
             if ($column->getFilter()->getValue()) {
                 $this->getCollection()->addFieldToFilter('user_id', ['in' => $usersIds]);
             } elseif (!empty($usersIds)) {
@@ -100,7 +98,6 @@ class User extends Extended
         } else {
             parent::_addColumnFilterToCollection($column);
         }
-
         return $this;
     }
 
@@ -109,15 +106,25 @@ class User extends Extended
      */
     protected function _prepareCollection()
     {
-        if ($this->getVendor()->getId()) $this->setDefaultFilter(['associated_user' => 1]);
+        if ($this->getVendor()->getId()) {
+            $this->setDefaultFilter(['associated_user' => 1]);
+        }
 
-        $collection = $this->userCollectionFactory->create()->addFieldToSelect('user_id');
-        $collection->addFieldToSelect('username');
-        $collection->addFieldToSelect('firstname');
-        $collection->addFieldToSelect('lastname');
-        $collection->addFieldToSelect('email');
-        $collection->addFieldToSelect('is_active');
-        $collection->addFieldToSelect('assoc_vendor_id');
+        $collection = $this->userCollectionFactory->create()->addFieldToSelect(
+            'user_id'
+        )->addFieldToSelect(
+            'username'
+        )->addFieldToSelect(
+            'firstname'
+        )->addFieldToSelect(
+            'lastname'
+        )->addFieldToSelect(
+            'email'
+        )->addFieldToSelect(
+            'is_active'
+        )->addFieldToSelect(
+            'assoc_vendor_id'
+        );
 
         $this->setCollection($collection);
 
@@ -133,8 +140,8 @@ class User extends Extended
         $this->addColumn(
             'associated_user',
             [
-                'name' => 'associated_user',
                 'type' => 'checkbox',
+                'name' => 'associated_user',
                 'values' => $this->_getSelectedUsers(),
                 'index' => 'user_id',
                 'header_css_class' => 'col-select col-massaction',
@@ -151,20 +158,17 @@ class User extends Extended
                 'column_css_class' => 'col-id'
             ]
         );
-        $this->addColumn('username',  ['header' => __('User Name'),  'index' => 'username']);
+        $this->addColumn('username', ['header' => __('User Name'), 'index' => 'username']);
         $this->addColumn('firstname', ['header' => __('First Name'), 'index' => 'firstname']);
-        $this->addColumn('lastname',  ['header' => __('Last Name'),  'index' => 'lastname']);
-        $this->addColumn('email',     ['header' => __('Email'),      'index' => 'email']);
+        $this->addColumn('lastname', ['header' => __('Last Name'), 'index' => 'lastname']);
+        $this->addColumn('email', ['header' => __('Email'), 'index' => 'email']);
         $this->addColumn(
             'is_active',
             [
                 'header' => __('Status'),
                 'index' => 'is_active',
                 'type' => 'options',
-                'options' => [
-                    '1' => __('Active'),
-                    '0' => __('Inactive')
-                ]
+                'options' => ['1' => __('Active'), '0' => __('Inactive')]
             ]
         );
 
@@ -180,19 +184,20 @@ class User extends Extended
     }
 
     /**
-     * @return array|null
+     * @return array
      */
     protected function _getSelectedUsers()
     {
         $users = $this->getRequest()->getPost('selected_users');
 
-        if (is_null($users) && $this->getVendor()->getId()) {
-            $v_users = $this->userCollectionFactory->create()->addFieldToFilter('assoc_vendor_id',
-                [
+        if ($users === null && $this->getVendor()->getId()) {
+            $vUsers = $this->userCollectionFactory->create()
+                ->addFieldToFilter('assoc_vendor_id', [
                     'like' => '%"' . $this->getVendor()->getId() . '"%'
-                ])->addFieldToSelect('user_id');
+                ])
+                ->addFieldToSelect('user_id');
             $users = [];
-            foreach ($v_users as $user) {
+            foreach ($vUsers as $user) {
                 $users[$user->getId()] = $user->getId();
             }
         }

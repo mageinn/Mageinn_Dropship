@@ -1,24 +1,24 @@
 <?php
 
-namespace Mageinn\Dropship\Observer;
+namespace Mageinn\Vendor\Observer;
 
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
-use Mageinn\Dropship\Model\Info;
-use Mageinn\Dropship\Model\Source\DropshipNotificationRecipient;
-use Mageinn\Dropship\Model\ResourceModel\Address\CollectionFactory;
-use Mageinn\Dropship\Model\Address;
+use Mageinn\Vendor\Model\Info;
+use Mageinn\Vendor\Model\Source\DropshipNotificationRecipient;
+use Mageinn\Vendor\Model\ResourceModel\Address\CollectionFactory;
+use Mageinn\Vendor\Model\Address;
 use \Psr\Log\LoggerInterface;
 
 class ShipmentEmail implements ObserverInterface
 {
     /**
-     * @var \Mageinn\Dropship\Model\Info
+     * @var \Mageinn\Vendor\Model\Info
      */
     protected $vendor;
 
     /**
-     * @var \Mageinn\Dropship\Model\ResourceModel\Address\Collection;
+     * @var \Mageinn\Vendor\Model\ResourceModel\Address\Collection;
      */
     protected $vendorAddress;
 

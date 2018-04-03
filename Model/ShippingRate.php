@@ -1,11 +1,11 @@
 <?php
-namespace Mageinn\Dropship\Model;
+namespace Mageinn\Vendor\Model;
 
 use \Magento\Framework\Model\AbstractModel;
 
 /**
  * Class ShippingRate
- * @package Mageinn\Dropship\Model
+ * @package Mageinn\Vendor\Model
  */
 class ShippingRate extends AbstractModel
 {
@@ -37,6 +37,6 @@ class ShippingRate extends AbstractModel
      */
     protected function _construct()
     {
-        $this->_init(\Mageinn\Dropship\Model\ResourceModel\ShippingRate::class);
+        $this->_init(\Mageinn\Vendor\Model\ResourceModel\ShippingRate::class);
     }
 }

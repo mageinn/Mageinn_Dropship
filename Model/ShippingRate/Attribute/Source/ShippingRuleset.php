@@ -1,23 +1,23 @@
 <?php
 
-namespace Mageinn\Dropship\Model\ShippingRate\Attribute\Source;
+namespace Mageinn\Vendor\Model\ShippingRate\Attribute\Source;
 
-use Mageinn\Dropship\Model\ShippingRate;
+use Mageinn\Vendor\Model\ShippingRate;
 
 /**
  * Class ShippingRuleset
  *
- * @package Mageinn\Dropship\Model\ShippingRate\Attribute\Source
+ * @package Mageinn\Vendor\Model\ShippingRate\Attribute\Source
  */
 class ShippingRuleset extends \Magento\Eav\Model\Entity\Attribute\Source\Table
 {
     /**
-     * @var \Mageinn\Dropship\Model\ResourceModel\ShippingRate\CollectionFactory $ratesFactory
+     * @var \Mageinn\Vendor\Model\ResourceModel\ShippingRate\CollectionFactory $ratesFactory
      */
     protected $ratesFactory;
 
     /**
-     * @var \Mageinn\Dropship\Model\Info\Attribute\Source\Vendorid
+     * @var \Mageinn\Vendor\Model\Info\Attribute\Source\Vendorid
      */
     protected $vendorSource;
 
@@ -30,15 +30,15 @@ class ShippingRuleset extends \Magento\Eav\Model\Entity\Attribute\Source\Table
      * @param \Magento\Eav\Model\ResourceModel\Entity\Attribute\Option\CollectionFactory $attrOptionCollectionFactory
      * @param \Magento\Eav\Model\ResourceModel\Entity\Attribute\OptionFactory $attrOptionFactory
      * @param \Magento\Framework\Registry $registry
-     * @param \Mageinn\Dropship\Model\ResourceModel\ShippingRate\CollectionFactory $ratesFactory
-     * @param \Mageinn\Dropship\Model\Info\Attribute\Source\Vendorid $vendorSource
+     * @param \Mageinn\Vendor\Model\ResourceModel\ShippingRate\CollectionFactory $ratesFactory
+     * @param \Mageinn\Vendor\Model\Info\Attribute\Source\Vendorid $vendorSource
      */
     public function __construct(
         \Magento\Eav\Model\ResourceModel\Entity\Attribute\Option\CollectionFactory $attrOptionCollectionFactory,
         \Magento\Eav\Model\ResourceModel\Entity\Attribute\OptionFactory $attrOptionFactory,
         \Magento\Framework\Registry $registry,
-        \Mageinn\Dropship\Model\ResourceModel\ShippingRate\CollectionFactory $ratesFactory,
-        \Mageinn\Dropship\Model\Info\Attribute\Source\Vendorid $vendorSource
+        \Mageinn\Vendor\Model\ResourceModel\ShippingRate\CollectionFactory $ratesFactory,
+        \Mageinn\Vendor\Model\Info\Attribute\Source\Vendorid $vendorSource
     ) {
         $this->ratesFactory = $ratesFactory;
         $this->vendorSource = $vendorSource;
@@ -62,7 +62,7 @@ class ShippingRuleset extends \Magento\Eav\Model\Entity\Attribute\Source\Table
     }
 
     /**
-     * @return \Mageinn\Dropship\Model\ResourceModel\ShippingRate\Collection
+     * @return \Mageinn\Vendor\Model\ResourceModel\ShippingRate\Collection
      */
     protected function _createShippingRulesetCollection($vendorId = false)
     {

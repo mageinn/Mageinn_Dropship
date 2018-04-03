@@ -1,20 +1,20 @@
 <?php
-namespace Mageinn\Dropship\Controller\Adminhtml\Vendor;
+namespace Mageinn\Vendor\Controller\Adminhtml\Vendor;
 
 use \Magento\Backend\App\Action;
 use \Magento\Backend\App\Action\Context;
 use \Magento\Framework\Registry;
 use \Magento\Framework\Exception\LocalizedException;
-use \Mageinn\Dropship\Model\Info;
-use \Mageinn\Dropship\Model\Address;
-use \Mageinn\Dropship\Model\ResourceModel\Address\CollectionFactory as AddressCollectionFactory;
+use \Mageinn\Vendor\Model\Info;
+use \Mageinn\Vendor\Model\Address;
+use \Mageinn\Vendor\Model\ResourceModel\Address\CollectionFactory as AddressCollectionFactory;
 use \Magento\User\Model\ResourceModel\User\CollectionFactory as UserCollectionFactory;
-use \Iredeem\Core\Helper\Data as CoreData;
+use \Mageinn\Core\Helper\Data as CoreData;
 
 /**
  * Class Save
  *
- * @package Mageinn\Dropship\Controller\Adminhtml\Dropship
+ * @package Mageinn\Vendor\Controller\Adminhtml\Vendor
  */
 class Save extends Action
 {
@@ -46,7 +46,7 @@ class Save extends Action
     protected $vendorModel;
 
     /**
-     * @var \Iredeem\Core\Helper\Data
+     * @var \Mageinn\Core\Helper\Data
      */
     protected $coreHelper;
 
@@ -81,7 +81,7 @@ class Save extends Action
     }
 
     /**
-     * Save Dropship Addresses.
+     * Save Vendor Addresses.
      *
      * @param $vendorId
      * @param $data
@@ -116,9 +116,9 @@ class Save extends Action
 
     /**
      * Save Associated vendor users.
+     *
      * @param $vendorId
      * @param $assocVendorUsersIds
-     * @throws LocalizedException
      */
     protected function _saveAssocUsers($vendorId, $assocVendorUsersIds)
     {
@@ -187,10 +187,10 @@ class Save extends Action
                 $info['entity_id'] = null;
             }
 
-            /** @var \Mageinn\Dropship\Model\Info $model */
+            /** @var \Mageinn\Vendor\Model\Info $model */
             $model = $this->vendorModel->load($id);
             if (!$model->getId() && $id) {
-                $this->messageManager->addError(__('This dropship no longer exists.'));
+                $this->messageManager->addError(__('This vendor no longer exists.'));
                 return $resultRedirect->setPath('*/*/');
             }
 
@@ -204,7 +204,7 @@ class Save extends Action
                     $this->_saveAssocUsers($id, $assocUsers);
                 }
 
-                $this->messageManager->addSuccess(__('You saved the dropship.'));
+                $this->messageManager->addSuccess(__('You saved the vendor.'));
 
                 if ($this->getRequest()->getParam('back')) {
                     return $resultRedirect->setPath('*/*/edit', ['id' => $model->getId()]);
@@ -214,7 +214,7 @@ class Save extends Action
             } catch (LocalizedException $e) {
                 $this->messageManager->addError($e->getMessage());
             } catch (\Exception $e) {
-                $this->messageManager->addException($e, __('Something went wrong while saving the dropship.'));
+                $this->messageManager->addException($e, __('Something went wrong while saving the vendor.'));
             }
 
             return $resultRedirect->setPath('*/*/edit', ['id' => $this->getRequest()->getParam('entity_id')]);

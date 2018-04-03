@@ -1,9 +1,9 @@
 <?php
-namespace Mageinn\Dropship\Controller\Adminhtml\FilePath;
+namespace Mageinn\Vendor\Controller\Adminhtml\FilePath;
 
 /**
  * Class View
- * @package Mageinn\Dropship\Controller\Adminhtml\BatchRows
+ * @package Mageinn\Vendor\Controller\Adminhtml\BatchRows
  */
 class View extends \Magento\Backend\App\Action
 {
@@ -23,7 +23,7 @@ class View extends \Magento\Backend\App\Action
     private $registry;
 
     /**
-     * @var \Mageinn\Dropship\Model\Batch
+     * @var \Mageinn\Vendor\Model\Batch
      */
     private $batchModel;
 
@@ -32,14 +32,14 @@ class View extends \Magento\Backend\App\Action
      * @param \Magento\Framework\Controller\Result\RawFactory $resultRawFactory
      * @param \Magento\Framework\View\LayoutFactory $layoutFactory
      * @param \Magento\Framework\Registry $registry
-     * @param \Mageinn\Dropship\Model\Batch $batchModel
+     * @param \Mageinn\Vendor\Model\Batch $batchModel
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\Controller\Result\RawFactory $resultRawFactory,
         \Magento\Framework\View\LayoutFactory $layoutFactory,
         \Magento\Framework\Registry $registry,
-        \Mageinn\Dropship\Model\Batch $batchModel
+        \Mageinn\Vendor\Model\Batch $batchModel
     ) {
         $this->_resultRawFactory = $resultRawFactory;
         $this->_layoutFactory = $layoutFactory;
@@ -85,7 +85,7 @@ class View extends \Magento\Backend\App\Action
      */
     protected function _initItem($registry)
     {
-        $model = $registry->registry('iredeem_batch');
+        $model = $registry->registry('mageinn_batch');
         if (!$model) {
             $id = (int)$this->getRequest()->getParam('id', false);
             $model = $this->batchModel;
@@ -94,11 +94,11 @@ class View extends \Magento\Backend\App\Action
                 $model->load($id);
             }
 
-            $registry->register('iredeem_batch', $model);
-            if ($model->getType() == \Mageinn\Dropship\Model\Source\BatchType::IREDEEM_VENDOR_BATCH_TYPE_IMPORT) {
-                $registry->register('current_batch_type', \Mageinn\Dropship\Model\Batch::BATCH_TYPE_VIEW_IMPORT);
+            $registry->register('mageinn_batch', $model);
+            if ($model->getType() == \Mageinn\Vendor\Model\Source\BatchType::MAGEINN_VENDOR_BATCH_TYPE_IMPORT) {
+                $registry->register('current_batch_type', \Mageinn\Vendor\Model\Batch::BATCH_TYPE_VIEW_IMPORT);
             } else {
-                $registry->register('current_batch_type', \Mageinn\Dropship\Model\Batch::BATCH_TYPE_VIEW_EXPORT);
+                $registry->register('current_batch_type', \Mageinn\Vendor\Model\Batch::BATCH_TYPE_VIEW_EXPORT);
             }
         }
 
@@ -111,10 +111,10 @@ class View extends \Magento\Backend\App\Action
      */
     protected function _getGridClass($registry)
     {
-        if ($registry->registry('current_batch_type') == \Mageinn\Dropship\Model\Batch::BATCH_TYPE_VIEW_IMPORT) {
-            $gridClass = \Mageinn\Dropship\Block\Adminhtml\Batch\View\Import\Sources\Grid::class;
+        if ($registry->registry('current_batch_type') == \Mageinn\Vendor\Model\Batch::BATCH_TYPE_VIEW_IMPORT) {
+            $gridClass = \Mageinn\Vendor\Block\Adminhtml\Batch\View\Import\Sources\Grid::class;
         } else {
-            $gridClass = \Mageinn\Dropship\Block\Adminhtml\Batch\View\Export\Destinations\Grid::class;
+            $gridClass = \Mageinn\Vendor\Block\Adminhtml\Batch\View\Export\Destinations\Grid::class;
         }
 
         return $gridClass;

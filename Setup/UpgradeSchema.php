@@ -1,17 +1,17 @@
 <?php
-namespace Mageinn\Dropship\Setup;
+namespace Mageinn\Vendor\Setup;
 
-use Mageinn\Dropship\Model\Region;
-use Mageinn\Dropship\Model\ShippingRate;
+use Mageinn\Vendor\Model\Region;
+use Mageinn\Vendor\Model\ShippingRate;
 use \Magento\Framework\DB\Ddl\Table;
 use \Magento\Framework\DB\Adapter\AdapterInterface;
 use \Magento\Framework\Setup\UpgradeSchemaInterface;
 use \Magento\Framework\Setup\ModuleContextInterface;
 use \Magento\Framework\Setup\SchemaSetupInterface;
-use \Mageinn\Dropship\Model\Info;
-use \Mageinn\Dropship\Model\Address;
-use \Mageinn\Dropship\Model\Batch;
-use \Mageinn\Dropship\Model\BatchRow;
+use \Mageinn\Vendor\Model\Info;
+use \Mageinn\Vendor\Model\Address;
+use \Mageinn\Vendor\Model\Batch;
+use \Mageinn\Vendor\Model\BatchRow;
 
 /**
  * @codeCoverageIgnore
@@ -53,98 +53,98 @@ class UpgradeSchema implements UpgradeSchemaInterface
                         Table::TYPE_SMALLINT,
                         null,
                         ['identity' => true, 'unsigned' => true, 'nullable' => false, 'primary' => true],
-                        'Dropship Address Id'
+                        'Vendor Address Id'
                     )
                     ->addColumn(
                         'vendor_id',
                         Table::TYPE_SMALLINT,
                         null,
                         ['unsigned' => true, 'nullable' => false],
-                        'Dropship Address Id'
+                        'Vendor Address Id'
                     )
                     ->addColumn(
                         'type',
                         Table::TYPE_TEXT,
                         null,
                         ['nullable' => false],
-                        'Dropship Address Type'
+                        'Vendor Address Type'
                     )
                     ->addColumn(
                         'contact_name',
                         Table::TYPE_TEXT,
                         255,
                         [],
-                        'Dropship Address Contact Name'
+                        'Vendor Address Contact Name'
                     )
                     ->addColumn(
                         'street',
                         Table::TYPE_TEXT,
                         255,
                         [],
-                        'Dropship Address Street'
+                        'Vendor Address Street'
                     )
                     ->addColumn(
                         'city',
                         Table::TYPE_TEXT,
                         255,
                         [],
-                        'Dropship Address City'
+                        'Vendor Address City'
                     )
                     ->addColumn(
                         'postal_code',
                         Table::TYPE_TEXT,
                         255,
                         [],
-                        'Dropship Address Postal Code'
+                        'Vendor Address Postal Code'
                     )
                     ->addColumn(
                         'country',
                         Table::TYPE_TEXT,
                         255,
                         [],
-                        'Dropship Address Country'
+                        'Vendor Address Country'
                     )
                     ->addColumn(
                         'region',
                         Table::TYPE_TEXT,
                         255,
                         [],
-                        'Dropship Address State/Region'
+                        'Vendor Address State/Region'
                     )
                     ->addColumn(
                         'region_id',
                         Table::TYPE_INTEGER,
                         255,
                         ['unsigned' => true],
-                        'Dropship Address State/Region ID'
+                        'Vendor Address State/Region ID'
                     )
                     ->addColumn(
                         'email',
                         Table::TYPE_TEXT,
                         255,
                         [],
-                        'Dropship Address Email'
+                        'Vendor Address Email'
                     )
                     ->addColumn(
                         'telephone',
                         Table::TYPE_TEXT,
                         255,
                         [],
-                        'Dropship Address Telephone'
+                        'Vendor Address Telephone'
                     )
                     ->addColumn(
                         'url_title',
                         Table::TYPE_TEXT,
                         255,
                         [],
-                        'Dropship Address URL Title'
+                        'Vendor Address URL Title'
                     )
                     ->addColumn(
                         'url',
                         Table::TYPE_TEXT,
                         255,
                         [],
-                        'Dropship Address URL'
+                        'Vendor Address URL'
                     )
                     ->addIndex(
                         $setup->getIdxName(
@@ -167,7 +167,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                         'entity_id',
                         Table::ACTION_CASCADE
                     )
-                    ->setComment('Dropship Address');
+                    ->setComment('Vendor Address');
                 $setup->getConnection()->createTable($table);
             }
         }
@@ -189,7 +189,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                         'type' => Table::TYPE_BOOLEAN,
                         'nullable' => false,
                         'default' => 0,
-                        'comment' => 'Notify Dropship on Order'
+                        'comment' => 'Notify Vendor on Order'
                     ]
                 );
                 $setup->getConnection()->addColumn(
@@ -220,7 +220,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     [
                         'type' => Table::TYPE_INTEGER,
                         'nullable' => false,
-                        'comment' => 'Dropship ID'
+                        'comment' => 'Vendor ID'
                     ]
                 );
             }
@@ -231,7 +231,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     [
                         'type' => Table::TYPE_INTEGER,
                         'nullable' => false,
-                        'comment' => 'Dropship ID'
+                        'comment' => 'Vendor ID'
                     ]
                 );
             }
@@ -242,7 +242,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     [
                         'type' => Table::TYPE_INTEGER,
                         'nullable' => false,
-                        'comment' => 'Dropship ID'
+                        'comment' => 'Vendor ID'
                     ]
                 );
             }
@@ -253,7 +253,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     [
                         'type' => Table::TYPE_INTEGER,
                         'nullable' => false,
-                        'comment' => 'Dropship ID'
+                        'comment' => 'Vendor ID'
                     ]
                 );
             }
@@ -453,7 +453,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                         $setup->getTable(Info::VENDOR_INFO_TABLE),
                         'entity_id',
                         Table::ACTION_CASCADE
-                    )->setComment('Dropship Dropship Batch');
+                    )->setComment('Vendor Dropship Batch');
                 $setup->getConnection()->createTable($table);
             }
         }
@@ -466,7 +466,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     [
                         'type' => Table::TYPE_INTEGER,
                         'nullable' => false,
-                        'comment' => 'Dropship ID'
+                        'comment' => 'Vendor ID'
                     ]
                 );
             }
@@ -517,7 +517,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                         'type' => Table::TYPE_INTEGER,
                         'default' => '0',
                         'nullable' => false,
-                        'comment' => 'Associated Dropship ID'
+                        'comment' => 'Associated Vendor ID'
                     ]
                 );
             }
@@ -634,7 +634,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                         $setup->getTable('sales_order'),
                         'entity_id',
                         Table::ACTION_CASCADE
-                    )->setComment('Dropship Dropship Batch Row');
+                    )->setComment('Vendor Dropship Batch Row');
                 $setup->getConnection()->createTable($table);
             }
 
@@ -685,7 +685,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'assoc_vendor_id',
                     [
                         'type' => Table::TYPE_TEXT,
-                        'comment' => 'Associated Dropship IDs'
+                        'comment' => 'Associated Vendor IDs'
                     ]
                 );
             }

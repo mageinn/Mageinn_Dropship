@@ -1,13 +1,13 @@
 <?php
-namespace Mageinn\Dropship\Model\ResourceModel\Region;
+namespace Mageinn\Vendor\Model\ResourceModel\Region;
 
-use Mageinn\Dropship\Model\Region;
+use Mageinn\Vendor\Model\Region;
 use \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 
 /**
  * Class Collection
  *
- * @package Mageinn\Dropship\Model\ResourceModel\Region
+ * @package Mageinn\Vendor\Model\ResourceModel\Region
  */
 class Collection extends AbstractCollection
 {
@@ -23,7 +23,7 @@ class Collection extends AbstractCollection
      */
     protected function _construct()
     {
-        $this->_init(Region::class, \Mageinn\Dropship\Model\ResourceModel\Region::class);
+        $this->_init(Region::class, \Mageinn\Vendor\Model\ResourceModel\Region::class);
         $this->_map['fields']['entity_id'] = 'main_table.entity_id';
     }
 }

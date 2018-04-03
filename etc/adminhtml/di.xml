@@ -4,7 +4,7 @@
         <arguments>
             <argument name="modifiers" xsi:type="array">
                 <item name="delivery-country" xsi:type="array">
-                    <item name="class" xsi:type="string">Mageinn\Dropship\Ui\DataProviders\Product\Form\Modifier\DeliveryCountry</item>
+                    <item name="class" xsi:type="string">Mageinn\Vendor\Ui\DataProviders\Product\Form\Modifier\DeliveryCountry</item>
                     <item name="sortOrder" xsi:type="number">10</item>
                 </item>
             </argument>
