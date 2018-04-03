@@ -15,7 +15,7 @@
                 <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">
                         <resource id="Magento_Config::config">
-                            <resource id="Mageinn_Core::config">
+                            <resource id="Mageinn_Core::config" title="Dropship"> <!-- TODO check it-->
                                 <resource id="Mageinn_Vendor::vendor_configuration" title="Dropship" sortOrder="100" />
                             </resource>
                         </resource>
