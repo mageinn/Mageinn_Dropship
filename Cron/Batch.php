@@ -65,7 +65,7 @@ class Batch
     protected $logger;
 
     /**
-     * @var \Mageinn\Core\Helper\Data
+     * @var \Mageinn\Vendor\Helper\Data
      */
     protected $helper;
 
@@ -77,7 +77,7 @@ class Batch
      * @param DateTime $dateTime
      * @param ScopeConfigInterface $scopeConfig
      * @param LoggerInterface $logger
-     * @param \Mageinn\Core\Helper\Data $helper
+     * @param \Mageinn\Vendor\Helper\Data $helper
      */
     public function __construct(
         \Mageinn\Vendor\Model\BatchFactory $batchFactory,
@@ -85,7 +85,7 @@ class Batch
         DateTime $dateTime,
         ScopeConfigInterface $scopeConfig,
         LoggerInterface $logger,
-        \Mageinn\Core\Helper\Data $helper
+        \Mageinn\Vendor\Helper\Data $helper
     ) {
         $this->batchFactory = $batchFactory;
         $this->vendorFactory = $vendorFactory;

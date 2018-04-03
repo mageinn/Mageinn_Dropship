@@ -28,7 +28,7 @@ class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface
     private $csvProcessor;
 
     /**
-     * @var \Mageinn\Core\Helper\Data
+     * @var \Mageinn\Vendor\Helper\Data
      */
     private $coreHelper;
 
@@ -56,7 +56,7 @@ class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface
         \Magento\Framework\Filesystem\Driver\File $file,
         \Magento\Framework\Module\Dir\Reader $moduleReader,
         \Magento\Framework\File\Csv $csvProcessor,
-        \Mageinn\Core\Helper\Data $coreHelper,
+        \Mageinn\Vendor\Helper\Data $coreHelper,
         \Mageinn\Vendor\Model\ResourceModel\Region $regionResource
     ) {
         $this->eavSetupFactory = $eavSetupFactory;

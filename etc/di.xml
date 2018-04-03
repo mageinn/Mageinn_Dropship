@@ -6,6 +6,8 @@
     <preference for="Magento\Shipping\Controller\Adminhtml\Order\Shipment\AddComment" type="Mageinn\Vendor\Controller\Adminhtml\Shipment\AddComment" />
     <preference for="Magento\Sales\Model\Order\Shipment" type="Mageinn\Vendor\Model\Shipment" />
     <preference for="\Magento\Sales\Model\ResourceModel\Order\Shipment\Grid\Collection" type="Mageinn\Vendor\Model\ResourceModel\Order\Shipment\Grid\Collection" />
+    <preference for="\Magento\Framework\Mail\Template\TransportBuilder" type="\Mageinn\Vendor\Magento\Mail\Template\TransportBuilder" />
+
     <type name="Mageinn\Vendor\Model\ResourceModel\Info\Grid\Collection">
         <arguments>
             <argument name="mainTable" xsi:type="string">mageinn_vendor_information</argument>

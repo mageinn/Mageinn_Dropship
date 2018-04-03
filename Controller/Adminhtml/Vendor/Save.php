@@ -9,7 +9,7 @@ use \Mageinn\Vendor\Model\Info;
 use \Mageinn\Vendor\Model\Address;
 use \Mageinn\Vendor\Model\ResourceModel\Address\CollectionFactory as AddressCollectionFactory;
 use \Magento\User\Model\ResourceModel\User\CollectionFactory as UserCollectionFactory;
-use \Mageinn\Core\Helper\Data as CoreData;
+use \Mageinn\Vendor\Helper\Data;
 
 /**
  * Class Save
@@ -46,9 +46,9 @@ class Save extends Action
     protected $vendorModel;
 
     /**
-     * @var \Mageinn\Core\Helper\Data
+     * @var \Mageinn\Vendor\Helper\Data
      */
-    protected $coreHelper;
+    protected $dataHelper;
 
     /**
      * Save constructor.
@@ -68,14 +68,14 @@ class Save extends Action
         UserCollectionFactory $userCollectionFactory,
         Address $addressModel,
         Info $vendorModel,
-        CoreData $coreHelper
+        Data $dataHelper
     ) {
         $this->coreRegistry = $coreRegistry;
         $this->addressCollection = $addressCollectionFactory;
         $this->userCollectionFactory = $userCollectionFactory;
         $this->addressModel = $addressModel;
         $this->vendorModel = $vendorModel;
-        $this->coreHelper = $coreHelper;
+        $this->dataHelper = $dataHelper;
 
         parent::__construct($context);
     }
@@ -151,7 +151,7 @@ class Save extends Action
         }
 
         if (!empty($adminData)) {
-            $this->coreHelper->bulkUpdate($assocVendorUsers->getResource(), $adminData);
+            $this->dataHelper->bulkUpdate($assocVendorUsers->getResource(), $adminData);
         }
     }
 

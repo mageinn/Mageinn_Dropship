@@ -2,7 +2,6 @@
 
 namespace Mageinn\Vendor\Helper;
 
-use \Mageinn\Core\Helper\Data as CoreData;
 use \Magento\Store\Model\StoreManagerInterface;
 use \Magento\Framework\ObjectManagerInterface;
 use \Magento\Framework\App\Helper\Context;
@@ -16,7 +15,7 @@ use \Magento\Framework\Filesystem\Io\File;
  *
  * @package Mageinn\Vendor\Helper
  */
-class ShippingRates extends CoreData
+class ShippingRates extends Data
 {
     const REGION_ARRAY_POSITION = 0;
     const COUNTRY_ARRAY_POSITION = 1;
