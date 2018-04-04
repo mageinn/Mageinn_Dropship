@@ -2,6 +2,8 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
+        <add id="Mageinn_Core::dropship" title="Mageinn Dropship" module="Mageinn_Vendor" sortOrder="11" action="admin/system_config/edit/section/dropship/" resource="Mageinn_Vendor::config" parent="Mageinn_Core::mageinnmenu"/>
+
         <add id="Mageinn_Vendor::vendor" title="Dropship" translate="title" module="Mageinn_Vendor"
              sortOrder="20" parent="Magento_Sales::sales" resource="Mageinn_Vendor::dropship"
              dependsOnModule="Magento_Sales" />
