@@ -16,7 +16,7 @@ class BatchRows extends \Mageinn\Vendor\Block\Adminhtml\Batch\View\AbstractBatch
      */
     public function getGrid()
     {
-        if (null === $this->_grid) {
+        if (is_null($this->_grid)) {
             $this->_grid = $this->getLayout()->createBlock(
                 \Mageinn\Vendor\Block\Adminhtml\Batch\View\Export\BatchRows\Grid::class,
                 'batches.data.rows'

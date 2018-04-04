@@ -22,7 +22,9 @@ class Data extends AbstractHelper
 {
     const XML_PATH_MAGEINN_VENDOR_BATCH_EXPORT = 'dropship/batch_order_export/';
 
-    /** @var \Mageinn\Vendor\Model\Info  */
+    /**
+     * @var \Mageinn\Vendor\Model\Info
+     */
     protected $_vendor;
 
     /**

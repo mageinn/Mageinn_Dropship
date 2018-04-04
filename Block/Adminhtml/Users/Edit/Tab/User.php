@@ -110,21 +110,14 @@ class User extends Extended
             $this->setDefaultFilter(['associated_user' => 1]);
         }
 
-        $collection = $this->userCollectionFactory->create()->addFieldToSelect(
-            'user_id'
-        )->addFieldToSelect(
-            'username'
-        )->addFieldToSelect(
-            'firstname'
-        )->addFieldToSelect(
-            'lastname'
-        )->addFieldToSelect(
-            'email'
-        )->addFieldToSelect(
-            'is_active'
-        )->addFieldToSelect(
-            'assoc_vendor_id'
-        );
+        $collection = $this->userCollectionFactory->create()
+            ->addFieldToSelect('user_id')
+            ->addFieldToSelect('username')
+            ->addFieldToSelect('firstname')
+            ->addFieldToSelect('lastname')
+            ->addFieldToSelect('email')
+            ->addFieldToSelect('is_active')
+            ->addFieldToSelect('assoc_vendor_id');
 
         $this->setCollection($collection);
 
@@ -190,7 +183,7 @@ class User extends Extended
     {
         $users = $this->getRequest()->getPost('selected_users');
 
-        if ($users === null && $this->getVendor()->getId()) {
+        if (is_null($users) && $this->getVendor()->getId()) {
             $vUsers = $this->userCollectionFactory->create()
                 ->addFieldToFilter('assoc_vendor_id', [
                     'like' => '%"' . $this->getVendor()->getId() . '"%'

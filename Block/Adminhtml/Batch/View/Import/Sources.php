@@ -16,7 +16,7 @@ class Sources extends \Mageinn\Vendor\Block\Adminhtml\Batch\View\AbstractBatchDe
      */
     public function getGrid()
     {
-        if (null === $this->_grid) {
+        if (is_null($this->_grid)) {
             $this->_grid = $this->getLayout()->createBlock(
                 \Mageinn\Vendor\Block\Adminhtml\Batch\View\Import\Sources\Grid::class,
                 'batches.destinations'

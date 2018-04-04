@@ -16,7 +16,7 @@ class Destinations extends \Mageinn\Vendor\Block\Adminhtml\Batch\View\AbstractBa
      */
     public function getGrid()
     {
-        if (null === $this->_grid) {
+        if (is_null($this->_grid)) {
             $this->_grid = $this->getLayout()->createBlock(
                 \Mageinn\Vendor\Block\Adminhtml\Batch\View\Export\Destinations\Grid::class,
                 'batches.destinations'
