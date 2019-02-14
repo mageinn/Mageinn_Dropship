@@ -45,7 +45,7 @@ abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     protected function _construct()
     {
         parent::_construct();
-        $this->setId('iredeem_batch_data_rows');
+        $this->setId('mageinn_batch_data_rows');
         $this->setDefaultSort('entity_id');
         $this->setUseAjax(true);
     }

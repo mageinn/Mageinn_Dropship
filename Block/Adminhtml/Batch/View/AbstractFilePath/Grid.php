@@ -59,7 +59,7 @@ abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     protected function _construct()
     {
         parent::_construct();
-        $this->setId('iredeem_batch_file_path');
+        $this->setId('mageinn_batch_file_path');
         $this->setDefaultSort('entity_id');
         $this->setUseAjax(true);
         $this->setFilterVisibility(false);

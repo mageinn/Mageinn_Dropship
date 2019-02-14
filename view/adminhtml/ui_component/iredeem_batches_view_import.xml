@@ -114,7 +114,7 @@
             </settings>
         </field>
     </fieldset>
-    <fieldset name="iredeem_batch_sources">
+    <fieldset name="mageinn_batch_sources">
         <settings>
             <label translate="true">Sources</label>
             <additionalClasses>
@@ -122,7 +122,7 @@
             </additionalClasses>
             <dataScope/>
         </settings>
-        <container name="iredeem_batch_source_container">
+        <container name="mageinn_batch_source_container">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="sortOrder" xsi:type="number">10</item>
@@ -133,14 +133,14 @@
             </htmlContent>
         </container>
     </fieldset>
-    <fieldset name="iredeem_batch_rows">
+    <fieldset name="mageinn_batch_rows">
         <settings>
             <label translate="true">Data Rows</label>
             <additionalClasses>
                 <class name="batch-data-rows">true</class>
             </additionalClasses>
         </settings>
-        <container name="iredeem_batch_rows_container">
+        <container name="mageinn_batch_rows_container">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="sortOrder" xsi:type="number">10</item>
