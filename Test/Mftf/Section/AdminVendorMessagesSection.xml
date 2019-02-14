@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/Page/etc/SectionObject.xsd">
+    <section name="AdminVendorMessagesSection">
+        <element name="SuccessMessage" type="text" selector=".message-success"/>
+        <element name="RequiredMessage" type="text" selector=".admin__field-error"/>
+        <element name="InvalidMessage" type="text" selector=".admin__field-error"/>
+        <element name="ErrorIcon" type="text" selector=".admin__page-nav-item-messages ._error"/>
+    </section>
+</sections>

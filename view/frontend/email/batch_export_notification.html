@@ -1,0 +1,11 @@
+<!--@subject {{trans "%subject" subject=$subject}} @-->
+
+{{template config_path="design/email/header_template"}}
+
+{{if body}}
+    {{var body}}
+{{else}}
+    Default text
+{{/if}}
+
+{{template config_path="design/email/footer_template"}}

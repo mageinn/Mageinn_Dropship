@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/Page/etc/SectionObject.xsd">
+    <section name="BatchSection">
+        <element name="Batch" type="button" selector=".item-vendor-batches a" timeout="30"/>
+        <element name="CreateBachImport" type="button" selector=".page-actions-buttons button:last-child" timeout="30"/>
+        <element name="SelectVendor" type="button" selector="select[name='vendor_batches[vendor_name]']" timeout="30"/>
+        <element name="VendorDefaultLocation" type="button" selector=".admin__actions-switch label" timeout="30"/>
+        <element name="File" type="select" selector="input[name='vendor_batches[batch_file]']" timeout="30"/>
+        <element name="SaveImport" type="button" selector=".action-.scalable.save.primary" timeout="30"/>
+        <element name="ShowAllRecords" type="button" selector=".selectmenu-toggle" timeout="30"/>
+        <element name="LastRecord" type="button" selector=".selectmenu-items._active:last-child" timeout="30"/>
+        <element name="LastbatchImport" type="text" selector=".data-row:last-child > td:nth-child(3) div" timeout="30"/>
+    </section>
+</sections>

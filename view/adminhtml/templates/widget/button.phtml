@@ -1,0 +1,17 @@
+<?php
+
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * @var $block \Iredeem\Vendor\Block\Adminhtml\Widget\Button
+ */
+?>
+<?= $block->getBeforeHtml() ?>
+    <button <?= /* @escapeNotVerified */ $block->getAttributesHtml(), $block->getUiId() ?>>
+        <span><?= /* @escapeNotVerified */ $block->getLabel() ?></span>
+    </button>
+<?= $block->getAfterHtml() ?>
+

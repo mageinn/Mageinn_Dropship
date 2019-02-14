@@ -1,0 +1,25 @@
+<?php
+// @codingStandardsIgnoreFile
+
+/** @var \Iredeem\Vendor\Block\Adminhtml\Users\Edit\AssignUser $block */
+
+/** @var \Iredeem\Vendor\Block\Adminhtml\Users\Edit\Tab\User $blockGrid */
+$blockGrid = $block->getBlockGrid();
+$gridJsObjectName = $blockGrid->getJsObjectName();
+?>
+<?= $block->getGridHtml() ?>
+<input type="hidden" name="vendor_users" id="associated_user" data-form-part="iredeem_vendor_form" value="" />
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Iredeem_Vendor/users/assign-users": {
+                "selectedUsers": <?php /* @escapeNotVerified */ echo $block->getUsersJson(); ?>,
+                "gridJsObjectName": <?php /* @escapeNotVerified */ echo '"' . $gridJsObjectName . '"' ?: '{}'; ?>
+            }
+        }
+    }
+</script>
+<!-- @todo remove when "UI components" will support such initialization -->
+<script>
+    require('mage/apply/main').apply();
+</script>

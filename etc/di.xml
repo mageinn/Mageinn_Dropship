@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Shipping\Block\Adminhtml\View" type="Iredeem\Vendor\Block\Adminhtml\Shipping\View" />
+    <preference for="Magento\Shipping\Controller\Adminhtml\Order\Shipment\View" type="Iredeem\Vendor\Controller\Adminhtml\Shipment\View" />
+    <preference for="Magento\Shipping\Controller\Adminhtml\Order\Shipment\AddComment" type="Iredeem\Vendor\Controller\Adminhtml\Shipment\AddComment" />
+    <preference for="Magento\Sales\Model\Order\Shipment" type="Iredeem\Vendor\Model\Shipment" />
+    <preference for="\Magento\Sales\Model\ResourceModel\Order\Shipment\Grid\Collection" type="Iredeem\Vendor\Model\ResourceModel\Order\Shipment\Grid\Collection" />
+    <preference for="\Magento\Framework\Mail\Template\TransportBuilder" type="\Mageinn\Dropship\Magento\Mail\Template\TransportBuilder"/>
+    <type name="Iredeem\Vendor\Model\ResourceModel\Info\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">iredeem_vendor_information</argument>
+            <argument name="resourceModel" xsi:type="string">Iredeem\Vendor\Model\ResourceModel\Info</argument>
+        </arguments>
+    </type>
+    <type name="Iredeem\Vendor\Model\ResourceModel\User\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">admin_user</argument>
+            <argument name="resourceModel" xsi:type="string">Magento\User\Model\ResourceModel\User</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="iredeem_vendor_grid_data_source" xsi:type="string">Iredeem\Vendor\Model\ResourceModel\Info\Grid\Collection</item>
+                <item name="iredeem_vendor_form_data_source" xsi:type="string">Iredeem\Vendor\Model\ResourceModel\Info\Collection</item>
+                <item name="iredeem_vendor_user_grid_data_source" xsi:type="string">Iredeem\Vendor\Model\ResourceModel\User\Grid\Collection</item>
+                <item name="iredeem_batches_grid_data_source" xsi:type="string">Iredeem\Vendor\Model\ResourceModel\Batch\Grid\Collection</item>
+                <item name="iredeem_batches_view_data_source" xsi:type="string">Iredeem\Vendor\Model\ResourceModel\Batch\Collection</item>
+                <item name="iredeem_regions_data_source" xsi:type="string">Iredeem\Vendor\Model\ResourceModel\Region\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Quote\Model\Quote\Item\ToOrderItem">
+        <plugin name="vendor_quote_to_order_item" type="Iredeem\Vendor\Model\Plugin\Quote\QuoteToOrderItem"/>
+    </type>
+    <virtualType name="ShipmentGridAggregator">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="vendor_id" xsi:type="string">sales_shipment.vendor_id</item>
+                <item name="dropship_status" xsi:type="string">sales_shipment.dropship_status</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Iredeem\Vendor\Model\ResourceModel\Batch\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">iredeem_dropship_batch</argument>
+            <argument name="resourceModel" xsi:type="string">Iredeem\Vendor\Model\ResourceModel\Batch</argument>
+        </arguments>
+    </type>
+</config>

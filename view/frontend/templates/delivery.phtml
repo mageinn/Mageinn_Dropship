@@ -1,0 +1,11 @@
+<?php
+/**
+ * @var \Magento\Catalog\Block\Product\View
+ */
+$product = $block->getProduct();
+?>
+<div class="product-info-delivery">
+    <p>
+        <?=__('Delivery time:') ?> <span><?php echo __($product->getData('product_delivery_time')); ?></span>
+    </p>
+</div>

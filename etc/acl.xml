@@ -1,0 +1,26 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Sales::sales">
+                    <resource id="Iredeem_Vendor::dropship" title="Dropship" sortOrder="31">
+                        <resource id="Iredeem_Vendor::vendors" title="Vendors" sortOrder="10"/>
+                        <resource id="Iredeem_Vendor::product_stock" title="Products Stock" sortOrder="20"/>
+                    </resource>
+                    <resource id="Magento_Sales::sales_operation">
+                        <resource id="Magento_Sales::shipment">
+                            <resource id="Iredeem_Vendor::mark_shipped" title="Mark as shipped" sortOrder="100" />
+                        </resource>
+                    </resource>
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Iredeem_Vendor::vendor_configuration" title="Dropship" sortOrder="100" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

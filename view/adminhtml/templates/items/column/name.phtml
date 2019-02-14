@@ -1,0 +1,83 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * @see \Magento\Sales\Block\Adminhtml\Items\Column\Name
+ */
+?>
+
+<?php if ($_item = $block->getItem()): ?>
+    <div id="order_item_<?= /* @escapeNotVerified */ $_item->getId() ?>_title"
+         class="product-title">
+        <?= $block->escapeHtml($_item->getName()) ?>
+    </div>
+
+    <div class="product-sku-block">
+        <span><?= /* @escapeNotVerified */ __('SKU') ?>:</span> <?= implode('<br />', $this->helper('Magento\Catalog\Helper\Data')->splitSku($block->escapeHtml($block->getSku()))) ?>
+    </div>
+
+    <div class="product-vendor-block">
+        <span><?= /* @escapeNotVerified */ __('Vendor') ?>:</span>
+        <a href="#" id="vendor-<?= $_item->getVendorId() ?>"><?= $block->escapeHtml($this->helper('Iredeem\Vendor\Helper\Data')->getVendorNameById($_item->getVendorId())) ?></a>
+    </div>
+
+    <?php if ($block->getOrderOptions()): ?>
+        <dl class="item-options">
+            <?php foreach ($block->getOrderOptions() as $_option): ?>
+                <dt><?= /* @escapeNotVerified */ $_option['label'] ?>:</dt>
+                <dd>
+                    <?php if (isset($_option['custom_view']) && $_option['custom_view']): ?>
+                        <?= /* @escapeNotVerified */ $block->getCustomizedOptionValue($_option) ?>
+                    <?php else: ?>
+                        <?php $_option = $block->getFormattedOption($_option['value']); ?>
+                        <?= /* @escapeNotVerified */ $_option['value'] ?><?php if (isset($_option['remainder']) && $_option['remainder']): ?><span id="<?= /* @escapeNotVerified */ $_dots = 'dots' . uniqid() ?>"> ...</span><span id="<?= /* @escapeNotVerified */ $_id = 'id' . uniqid() ?>"><?= /* @escapeNotVerified */ $_option['remainder'] ?></span>
+                            <script>
+                                require(['prototype'], function() {
+                                    $('<?= /* @escapeNotVerified */ $_id ?>').hide();
+                                    $('<?= /* @escapeNotVerified */ $_id ?>').up().observe('mouseover', function(){$('<?= /* @escapeNotVerified */ $_id ?>').show();});
+                                    $('<?= /* @escapeNotVerified */ $_id ?>').up().observe('mouseover', function(){$('<?= /* @escapeNotVerified */ $_dots ?>').hide();});
+                                    $('<?= /* @escapeNotVerified */ $_id ?>').up().observe('mouseout',  function(){$('<?= /* @escapeNotVerified */ $_id ?>').hide();});
+                                    $('<?= /* @escapeNotVerified */ $_id ?>').up().observe('mouseout',  function(){$('<?= /* @escapeNotVerified */ $_dots ?>').show();});
+                                });
+                            </script>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                </dd>
+            <?php endforeach; ?>
+        </dl>
+    <?php endif; ?>
+    <?= $block->escapeHtml($_item->getDescription()) ?>
+
+    <div id="popup-modal-<?= $_item->getVendorId() ?>" style="display:none;">
+        <?php if ($block->getChildBlock('sales_order_view_vendor')): ?>
+            <?= $block->getChildBlock('sales_order_view_vendor')->setVendorId($_item->getVendorId()) ?>
+            <?= $block->getChildHtml('sales_order_view_vendor', false) ?>
+        <?php endif ?>
+    </div>
+
+    <script>
+        require(['jquery','Magento_Ui/js/modal/modal'],
+            function($,modal)
+            {
+                var options = {
+                    type: 'popup',
+                    responsive: true,
+                    innerScroll: true,
+                    title: $.mage.__('Customer Service Info'),
+                    modalClass: 'vendor-info-popup'
+                };
+                var popup = modal(options, $('#popup-modal-<?= $_item->getVendorId() ?>'));
+                $("#vendor-<?= $_item->getVendorId() ?> ").on('click',function(){
+                    $("#popup-modal-<?= $_item->getVendorId() ?>").modal("openModal");
+                });
+            }
+        );
+    </script>
+<?php endif; ?>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/Page/etc/SectionObject.xsd">
+
+    <section name="Footer">
+        <element name="terms_and_conditions" type="button" selector="li.nav.item > a"/>
+        <element name="privacy_policy" type="button" selector=".nav:nth-child(2) > a"/>
+        <element name="cookie_policy" type="button" selector=".nav:nth-child(3) > a"/>
+        <element name="terms_of_use" type="button" selector=".nav:nth-child(4) > a"/>
+    </section>
+
+    <section name="RecommendedTabs">
+        <element name="recommended" type="button" selector="#panel1-label"/>
+        <element name="seasonal_offers" type="button" selector="#panel2-label"/>
+        <element name="best_sellers" type="button" selector="#panel3-label"/>
+        <element name="most_wished_for" type="button" selector="#panel4-label"/>
+    </section>
+</sections>

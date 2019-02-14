@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/Test/etc/testSchema.xsd">
+    <test name="AdminVendorUserTest">
+        <annotations>
+            <features value="Manage Vendor users"/>
+            <stories value="Check if the shipment is displayed for a vendor user."/>
+            <title value="The vendor should be able to see his shipment."/>
+            <description value="Checks if a vendor is able to see his shipment."/>
+            <group value="iredeem"/>
+            <group value="vendorManageUser"/>
+        </annotations>
+        <before>
+            <actionGroup ref="LoginAsAdmin" stepKey="loginAsAdmin"/>
+        </before>
+        <after>
+            <amOnPage url="admin/admin/auth/logout/" stepKey="amOnLogoutPage"/>
+        </after>
+
+        <actionGroup ref="CreateVendor" stepKey="createVendor"/>
+        <!--Delete vendor user for the vendor created-->
+        <click selector="{{AdminVendorGridSection.filters}}" stepKey="clickOnFilters0"/>
+        <fillField selector="{{AdminVendorGridSection.VendorName}}" userInput="{{VendorData.name}}" stepKey="filterVendorName0"/>
+        <click selector="{{AdminVendorGridSection.applyFilters}}" stepKey="clickApplyFiltersButton0"/>
+        <waitForAjaxLoad stepKey="waitForResults0"/>
+        <click selector="{{AdminVendorGridSection.firstRowEditLink}}" stepKey="editSavedVendor0"/>
+        <waitForPageLoad stepKey="waitEditPageLoad0"/>
+        <click selector="{{AdminVendorFormActionsSection.AddVendorAdminUsers}}" stepKey="clickVendorUsersTab0"/>
+        <click selector="{{AdminVendorFormFieldsTitles.AddVendorUsers}}" stepKey="clickVendorUsersCollapsible0"/>
+        <wait stepKey="wait0" time="2" />
+        <click selector="{{AdminVendorUsersSelectionSection.SelectAllUsers}}" stepKey="clickSelectAllVendorUsers0"/>
+        <click selector="{{AdminVendorFormActionsSection.AddVendorSave}}" stepKey="saveVendor"/>
+        <!--Add admin user on EUR vendor to check the shipments for last order created by test-->
+        <click selector="button.action-tertiary.action-clear" stepKey="remoceFilters"/>
+        <waitForAjaxLoad stepKey="waitForClearFilters"/>
+        <click selector="{{AdminVendorGridSection.filters}}" stepKey="clickOnFilters"/>
+        <fillField selector="{{AdminVendorGridSection.VendorName}}" userInput="{{VendorData.name2}}" stepKey="filterVendorName"/>
+        <click selector="{{AdminVendorGridSection.applyFilters}}" stepKey="clickApplyFiltersButton"/>
+        <waitForAjaxLoad stepKey="waitForResults"/>
+        <click selector="{{AdminVendorGridSection.firstRowEditLink}}" stepKey="editSavedVendor"/>
+        <waitForPageLoad stepKey="waitEditPageLoad"/>
+        <click selector="{{AdminVendorFormActionsSection.AddVendorAdminUsers}}" stepKey="clickVendorUsersTab"/>
+        <click selector="{{AdminVendorFormFieldsTitles.AddVendorUsers}}" stepKey="clickVendorUsersCollapsible"/>
+        <click selector="{{AdminVendorUsersSelectionSection.ResetFilter}}" stepKey="clickVendorUsersResetFilters"/>
+        <waitForAjaxLoad stepKey="waitForResetFilterToEnd"/>
+        <fillField selector="{{AdminVendorUsersSelectionSection.FilterUserName}}" userInput="{{VendorUsers.userFilter2}}" stepKey="fillVendorAdminUserName"/>
+        <click selector="{{AdminVendorUsersSelectionSection.Search}}" stepKey="clickVendorUsersSearch"/>
+        <waitForAjaxLoad stepKey="waitForResetAdminSearch"/>
+        <click selector="{{AdminVendorUsersSelectionSection.SelectFirstUser}}" stepKey="clickOnFirstUser"/>
+        <wait stepKey="wait1" time="2" />
+        <click selector="{{AdminVendorFormActionsSection.AddVendorSave}}" stepKey="saveVendor5"/>
+        <!--Check shipments-->
+        <amOnPage url="admin/sales/shipment/" stepKey="amOnShipmentPage"/>
+        <waitForPageLoad stepKey="waitEditPageLoad2"/>
+        <seeElement selector="{{AdminMenuShipmentSection.Shipments}}" stepKey="checkShipemnts"/>
+    </test>
+</tests>

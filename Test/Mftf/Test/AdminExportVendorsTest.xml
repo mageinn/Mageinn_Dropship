@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/Test/etc/testSchema.xsd">
+    <test name="AdminExportsVendorCSVFormat">
+        <annotations>
+            <features value="Manage Vendor"/>
+            <stories value="Export via CSV a Vendor via the Admin"/>
+            <title value="You should be able to export a Vendor via CSV in the admin back-end."/>
+            <description value="You should be able to export a Vendor via CSV in the admin back-end."/>
+            <group value="iredeem"/>
+            <group value="exportCSVVendor"/>
+        </annotations>
+        <before>
+            <actionGroup ref="LoginAsAdmin" stepKey="loginAsAdmin"/>
+        </before>
+        <after>
+            <amOnPage url="admin/admin/auth/logout/" stepKey="amOnLogoutPage"/>
+        </after>
+
+        <!--#### CREATE ####-->
+        <actionGroup ref="CreateVendor" stepKey="createVendor"/>
+
+        <actionGroup ref="ExportCSVVendor" stepKey="exportVendor"/>
+
+        <!-- Delete vendor-->
+        <click selector="{{AdminVendorGridSection.firstRowEditLink}}" stepKey="selectVendor"/>
+
+        <click selector="{{AdminVendorFormActionsSection.DeleteVendor}}" stepKey="deleteVendor"/>
+        <click selector="{{AdminVendorFormActionsSection.VendorDeleteConfirmOK}}" stepKey="confirmDelete"/>
+        <seeElement selector="{{AdminVendorMessagesSection.SuccessMessage}}" stepKey="assertDeleteSuccess"/>
+    </test>
+
+    <test name="AdminExportsVendorXMLFormat">
+        <annotations>
+            <features value="Manage Vendor"/>
+            <stories value="Export via XML a Vendor via the Admin"/>
+            <title value="You should be able to export a Vendor via XML in the admin back-end."/>
+            <description value="You should be able to export a Vendor via XML in the admin back-end."/>
+            <group value="iredeem"/>
+            <group value="exportXMLVendor"/>
+        </annotations>
+        <before>
+            <actionGroup ref="LoginAsAdmin" stepKey="loginAsAdmin"/>
+        </before>
+        <after>
+            <amOnPage url="admin/admin/auth/logout/" stepKey="amOnLogoutPage"/>
+        </after>
+
+        <!--#### CREATE ####-->
+        <actionGroup ref="CreateVendor" stepKey="createVendor"/>
+
+        <actionGroup ref="ExportXMLVendor" stepKey="exportVendor"/>
+
+        <!-- Delete vendor-->
+        <click selector="{{AdminVendorGridSection.firstRowEditLink}}" stepKey="selectVendor"/>
+
+        <click selector="{{AdminVendorFormActionsSection.DeleteVendor}}" stepKey="deleteVendor"/>
+        <click selector="{{AdminVendorFormActionsSection.VendorDeleteConfirmOK}}" stepKey="confirmDelete"/>
+        <seeElement selector="{{AdminVendorMessagesSection.SuccessMessage}}" stepKey="assertDeleteSuccess"/>
+    </test>
+</tests>
