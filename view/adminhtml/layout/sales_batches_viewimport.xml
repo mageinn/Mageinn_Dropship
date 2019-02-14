@@ -3,7 +3,7 @@
     <update handle="styles"/>
     <body>
         <referenceContainer name="content">
-            <uiComponent name="iredeem_batches_view_import"/>
+            <uiComponent name="mageinn_batches_view_import"/>
         </referenceContainer>
     </body>
 </page>

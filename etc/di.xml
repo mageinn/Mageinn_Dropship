@@ -25,8 +25,8 @@
                 <item name="mageinn_dropship_grid_data_source" xsi:type="string">Mageinn\Dropship\Model\ResourceModel\Info\Grid\Collection</item>
                 <item name="mageinn_dropship_form_data_source" xsi:type="string">Mageinn\Dropship\Model\ResourceModel\Info\Collection</item>
                 <item name="mageinn_dropship_user_grid_data_source" xsi:type="string">Mageinn\Dropship\Model\ResourceModel\User\Grid\Collection</item>
-                <item name="iredeem_batches_grid_data_source" xsi:type="string">Mageinn\Dropship\Model\ResourceModel\Batch\Grid\Collection</item>
-                <item name="iredeem_batches_view_data_source" xsi:type="string">Mageinn\Dropship\Model\ResourceModel\Batch\Collection</item>
+                <item name="mageinn_batches_grid_data_source" xsi:type="string">Mageinn\Dropship\Model\ResourceModel\Batch\Grid\Collection</item>
+                <item name="mageinn_batches_view_data_source" xsi:type="string">Mageinn\Dropship\Model\ResourceModel\Batch\Collection</item>
                 <item name="iredeem_regions_data_source" xsi:type="string">Mageinn\Dropship\Model\ResourceModel\Region\Collection</item>
             </argument>
         </arguments>
