@@ -110,7 +110,7 @@ class Batch
                 $this->_createBatch(
                     $vendor->getId(),
                     $vendor->getBatchImportSchedule(),
-                    \Mageinn\Dropship\Model\Source\BatchType::IREDEEM_VENDOR_BATCH_TYPE_IMPORT,
+                    \Mageinn\Dropship\Model\Source\BatchType::MAGEINN_DROPSHIP_BATCH_TYPE_IMPORT,
                     $currentTime,
                     $vendor->getBatchImportSource()
                 );
@@ -119,7 +119,7 @@ class Batch
                 $this->_createBatch(
                     $vendor->getId(),
                     $vendor->getBatchExportSchedule(),
-                    \Mageinn\Dropship\Model\Source\BatchType::IREDEEM_VENDOR_BATCH_TYPE_EXPORT,
+                    \Mageinn\Dropship\Model\Source\BatchType::MAGEINN_DROPSHIP_BATCH_TYPE_EXPORT,
                     $currentTime
                 );
             }

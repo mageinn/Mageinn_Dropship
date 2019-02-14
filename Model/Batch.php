@@ -228,10 +228,10 @@ class Batch extends \Magento\Cron\Model\Schedule
     {
         $this->setUpdatedAt($this->date->gmtDate());
         switch ($this->getType()) {
-            case \Mageinn\Dropship\Model\Source\BatchType::IREDEEM_VENDOR_BATCH_TYPE_EXPORT:
+            case \Mageinn\Dropship\Model\Source\BatchType::MAGEINN_DROPSHIP_BATCH_TYPE_EXPORT:
                 $this->_runExport();
                 break;
-            case \Mageinn\Dropship\Model\Source\BatchType::IREDEEM_VENDOR_BATCH_TYPE_IMPORT:
+            case \Mageinn\Dropship\Model\Source\BatchType::MAGEINN_DROPSHIP_BATCH_TYPE_IMPORT:
                 $this->_runImport();
                 break;
             default:

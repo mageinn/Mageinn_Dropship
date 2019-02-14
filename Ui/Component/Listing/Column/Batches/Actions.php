@@ -42,7 +42,7 @@ class Actions extends \Magento\Ui\Component\Listing\Columns\Column
             foreach ($dataSource['data']['items'] as &$item) {
                 // Form the view action based on the batch type so that we can create
                 // separate pages for each type of batch
-                if ($item['type'] == \Mageinn\Dropship\Model\Source\BatchType::IREDEEM_VENDOR_BATCH_TYPE_IMPORT) {
+                if ($item['type'] == \Mageinn\Dropship\Model\Source\BatchType::MAGEINN_DROPSHIP_BATCH_TYPE_IMPORT) {
                     $actionType = 'Import';
                 } else {
                     $actionType = 'Export';

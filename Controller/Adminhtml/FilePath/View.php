@@ -95,7 +95,7 @@ class View extends \Magento\Backend\App\Action
             }
 
             $registry->register('mageinn_batch', $model);
-            if ($model->getType() == \Mageinn\Dropship\Model\Source\BatchType::IREDEEM_VENDOR_BATCH_TYPE_IMPORT) {
+            if ($model->getType() == \Mageinn\Dropship\Model\Source\BatchType::MAGEINN_DROPSHIP_BATCH_TYPE_IMPORT) {
                 $registry->register('current_batch_type', \Mageinn\Dropship\Model\Batch::BATCH_TYPE_VIEW_IMPORT);
             } else {
                 $registry->register('current_batch_type', \Mageinn\Dropship\Model\Batch::BATCH_TYPE_VIEW_EXPORT);

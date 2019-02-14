@@ -9,9 +9,8 @@ use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory as ProductColl
 use Magento\CatalogInventory\Api\StockRegistryInterface;
 
 /**
- * Class ShippingRates
- * @package Iredeem\DeliveryCountry\Helper
- * @codeCoverageIgnore
+ * Class Stock
+ * @package Mageinn\Dropship\Helper
  */
 class Stock extends CoreData
 {

@@ -349,11 +349,10 @@ class Email
     }
 
     /**
-     * Creates an email message based on the set components
-     *
-     * @param \Iredeem\Core\Magento\Mail\Template\TransportBuilder $transportBuilder
+     * @param $transportBuilder
      * @param $contents
-     * @return bool|\Magento\Framework\Mail\TransportInterface
+     * @return bool
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     protected function _prepareTransport($transportBuilder, $contents)
     {

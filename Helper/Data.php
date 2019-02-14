@@ -16,7 +16,7 @@ use \Magento\Framework\App\Helper\Context;
  */
 class Data extends CoreData
 {
-    const XML_PATH_IREDEEM_VENDOR_BATCH_EXPORT = 'dropship/batch_order_export/';
+    const XML_PATH_MAGEINN_DROPSHIP_BATCH_EXPORT = 'dropship/batch_order_export/';
 
     /** @var \Mageinn\Dropship\Model\Info  */
     protected $_vendor;
@@ -45,7 +45,7 @@ class Data extends CoreData
      */
     public function getBatchOrderExportConfig($code, $storeId = null)
     {
-        return $this->getConfigValue(self::XML_PATH_IREDEEM_VENDOR_BATCH_EXPORT . $code, $storeId);
+        return $this->getConfigValue(self::XML_PATH_MAGEINN_DROPSHIP_BATCH_EXPORT . $code, $storeId);
     }
 
     /**

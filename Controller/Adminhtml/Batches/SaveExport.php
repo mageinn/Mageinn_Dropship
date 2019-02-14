@@ -64,7 +64,7 @@ class SaveExport extends \Magento\Backend\App\Action
         try {
             $this->_batch
                 ->setVendorId($batch['vendor_name'])
-                ->setType(\Mageinn\Dropship\Model\Source\BatchType::IREDEEM_VENDOR_BATCH_TYPE_EXPORT)
+                ->setType(\Mageinn\Dropship\Model\Source\BatchType::MAGEINN_DROPSHIP_BATCH_TYPE_EXPORT)
                 ->setStatus(\Mageinn\Dropship\Model\Source\BatchStatus::BATCH_STATUS_SCHEDULED)
                 ->setCreatedAt($time)
                 ->setScheduledAt($time)

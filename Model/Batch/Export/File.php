@@ -42,7 +42,7 @@ class File extends \Magento\Framework\Filesystem\Io\File
     protected $emailSentToVendor;
 
     /**
-     * @var \Iredeem\Core\Magento\Mail\Template\TransportBuilder
+     * @var \Mageinn\Dropship\Magento\Mail\Template\TransportBuilder 
      */
     protected $transportBuilder;
 
@@ -79,16 +79,16 @@ class File extends \Magento\Framework\Filesystem\Io\File
     /**
      * File constructor.
      * @param \Magento\Framework\Filesystem\DirectoryList $dir
-     * @param \Iredeem\Core\Magento\Mail\Template\TransportBuilder $builder
+     * @param \Mageinn\Dropship\Magento\Mail\Template\TransportBuilder $builder
      * @param \Psr\Log\LoggerInterface $logger
-     * @param \Mageinn\Dropship\Model\Batch\Export\File\Email $email
-     * @param \Mageinn\Dropship\Model\Batch\Export\File\Response $response
+     * @param File\Email $email
+     * @param File\Response $response
      * @param \Magento\Framework\Filesystem\Io\File $fileSystem
      * @param \Mageinn\Dropship\Model\Batch\Handler\Transfer $transfer
      */
     public function __construct(
         \Magento\Framework\Filesystem\DirectoryList $dir,
-        TransportBuilder $builder,
+        \Mageinn\Dropship\Magento\Mail\Template\TransportBuilder $builder,
         \Psr\Log\LoggerInterface $logger,
         \Mageinn\Dropship\Model\Batch\Export\File\Email $email,
         \Mageinn\Dropship\Model\Batch\Export\File\Response $response,
