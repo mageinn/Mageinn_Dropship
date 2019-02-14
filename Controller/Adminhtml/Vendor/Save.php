@@ -1,20 +1,20 @@
 <?php
-namespace Mageinn\Vendor\Controller\Adminhtml\Vendor;
+namespace Iredeem\Vendor\Controller\Adminhtml\Vendor;
 
 use \Magento\Backend\App\Action;
 use \Magento\Backend\App\Action\Context;
 use \Magento\Framework\Registry;
 use \Magento\Framework\Exception\LocalizedException;
-use \Mageinn\Vendor\Model\Info;
-use \Mageinn\Vendor\Model\Address;
-use \Mageinn\Vendor\Model\ResourceModel\Address\CollectionFactory as AddressCollectionFactory;
+use \Iredeem\Vendor\Model\Info;
+use \Iredeem\Vendor\Model\Address;
+use \Iredeem\Vendor\Model\ResourceModel\Address\CollectionFactory as AddressCollectionFactory;
 use \Magento\User\Model\ResourceModel\User\CollectionFactory as UserCollectionFactory;
-use \Mageinn\Vendor\Helper\Data;
+use \Iredeem\Vendor\Helper\CoreData;
 
 /**
  * Class Save
  *
- * @package Mageinn\Vendor\Controller\Adminhtml\Vendor
+ * @package Iredeem\Vendor\Controller\Adminhtml\Vendor
  */
 class Save extends Action
 {
@@ -46,13 +46,12 @@ class Save extends Action
     protected $vendorModel;
 
     /**
-     * @var \Mageinn\Vendor\Helper\Data
+     * @var CoreData
      */
-    protected $dataHelper;
+    protected $coreHelper;
 
     /**
      * Save constructor.
-     *
      * @param Context $context
      * @param Registry $coreRegistry
      * @param AddressCollectionFactory $addressCollectionFactory
@@ -68,14 +67,14 @@ class Save extends Action
         UserCollectionFactory $userCollectionFactory,
         Address $addressModel,
         Info $vendorModel,
-        Data $dataHelper
+        CoreData $coreHelper
     ) {
         $this->coreRegistry = $coreRegistry;
         $this->addressCollection = $addressCollectionFactory;
         $this->userCollectionFactory = $userCollectionFactory;
         $this->addressModel = $addressModel;
         $this->vendorModel = $vendorModel;
-        $this->dataHelper = $dataHelper;
+        $this->coreHelper = $coreHelper;
 
         parent::__construct($context);
     }
@@ -142,16 +141,23 @@ class Save extends Action
         $adminData = [];
         foreach ($assocVendorUsers as $user) {
             $userIds = json_decode($user->getAssocVendorId());
+
+            if (is_object($userIds)) {
+                $userIds = get_object_vars($userIds);
+            }
+
             if (in_array($user->getId(), $usersIds)) {
                 $userIds = !empty($userIds) ? array_unique(array_merge($userIds, [$vendorId])) : [$vendorId];
             } else {
                 $userIds = !empty($userIds) ? array_diff($userIds, [$vendorId]) : null;
             }
-            $adminData[] = ['user_id' => $user->getId(), 'assoc_vendor_id' => json_encode($userIds)];
+            $adminData[] = ['user_id' => $user->getId(),
+                'assoc_vendor_id' => json_encode(!empty($userIds) ? array_values($userIds) : 0)
+            ];
         }
 
         if (!empty($adminData)) {
-            $this->dataHelper->bulkUpdate($assocVendorUsers->getResource(), $adminData);
+            $this->coreHelper->bulkUpdate($assocVendorUsers->getResource(), $adminData);
         }
     }
 
@@ -166,7 +172,7 @@ class Save extends Action
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
         $postData = $this->getRequest()->getPostValue();
-        $vendor = $postData['mageinn_vendor'];
+        $vendor = $postData['iredeem_vendor'];
         $addresses = $postData['vendor_address'];
         $settings = $postData['vendor_settings'];
         $batchExport = $postData['batch_export'];
@@ -187,7 +193,7 @@ class Save extends Action
                 $info['entity_id'] = null;
             }
 
-            /** @var \Mageinn\Vendor\Model\Info $model */
+            /** @var \Iredeem\Vendor\Model\Info $model */
             $model = $this->vendorModel->load($id);
             if (!$model->getId() && $id) {
                 $this->messageManager->addError(__('This vendor no longer exists.'));

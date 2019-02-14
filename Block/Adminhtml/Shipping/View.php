@@ -1,17 +1,17 @@
 <?php
 
-namespace Mageinn\Vendor\Block\Adminhtml\Shipping;
+namespace Iredeem\Vendor\Block\Adminhtml\Shipping;
 
-use Mageinn\Vendor\Model\Source\ShipmentStatus;
+use Iredeem\Vendor\Model\Source\ShipmentStatus;
 
 /**
  * Class View
- * @package Mageinn\Vendor\Block\Adminhtml\Shipping
+ * @package Iredeem\Vendor\Block\Adminhtml\Shipping
  */
 class View extends \Magento\Shipping\Block\Adminhtml\View
 {
     /**
-     * @var \Mageinn\Vendor\Model\Shipment
+     * @var \Iredeem\Vendor\Model\Shipment
      */
     protected $shipment;
 
@@ -19,13 +19,13 @@ class View extends \Magento\Shipping\Block\Adminhtml\View
      * View constructor.
      * @param \Magento\Backend\Block\Widget\Context $context
      * @param \Magento\Framework\Registry $registry
-     * @param \Mageinn\Vendor\Model\Shipment $shipment
+     * @param \Iredeem\Vendor\Model\Shipment $shipment
      * @param array $data
      */
     public function __construct(
         \Magento\Backend\Block\Widget\Context $context,
         \Magento\Framework\Registry $registry,
-        \Mageinn\Vendor\Model\Shipment $shipment,
+        \Iredeem\Vendor\Model\Shipment $shipment,
         array $data = []
     ) {
         $this->shipment = $shipment;
@@ -39,7 +39,7 @@ class View extends \Magento\Shipping\Block\Adminhtml\View
     {
         parent::_construct();
 
-        if ($this->_authorization->isAllowed('Mageinn_Vendor::mark_shipped')) {
+        if ($this->_authorization->isAllowed('Iredeem_Vendor::mark_shipped')) {
             $this->buttonList->add(
                 'markShipped',
                 [

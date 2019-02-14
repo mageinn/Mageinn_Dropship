@@ -1,7 +1,7 @@
 <?php
-namespace Mageinn\Vendor\Controller\Adminhtml\Shipment;
+namespace Iredeem\Vendor\Controller\Adminhtml\Shipment;
 
-use Mageinn\Vendor\Model\Source\ShipmentStatus;
+use Iredeem\Vendor\Model\Source\ShipmentStatus;
 use \Magento\Backend\App\Action;
 use \Magento\Backend\App\Action\Context;
 use \Magento\Framework\Registry;

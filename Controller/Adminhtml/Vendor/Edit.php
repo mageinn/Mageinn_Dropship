@@ -1,11 +1,11 @@
 <?php
-namespace Mageinn\Vendor\Controller\Adminhtml\Vendor;
+namespace Iredeem\Vendor\Controller\Adminhtml\Vendor;
 
 use \Magento\Backend\App\Action;
 use \Magento\Backend\App\Action\Context;
 use \Magento\Framework\Registry;
 use \Magento\Framework\View\Result\PageFactory;
-use \Mageinn\Vendor\Model\Info;
+use \Iredeem\Vendor\Model\Info;
 
 class Edit extends Action
 {
@@ -70,11 +70,11 @@ class Edit extends Action
             }
         }
 
-        $this->coreRegistry->register('mageinn_vendor', $model);
+        $this->coreRegistry->register('iredeem_vendor', $model);
 
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
-        $resultPage->setActiveMenu('Mageinn_Vendor::vendor')->addBreadcrumb(
+        $resultPage->setActiveMenu('Iredeem_Vendor::vendor')->addBreadcrumb(
             $id ? __('Edit Vendor' . $model->getVendorName()) : __('New Vendor'),
             $id ? __('Edit Vendor' . $model->getVendorName()) : __('New Vendor')
         );

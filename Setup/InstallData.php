@@ -1,7 +1,7 @@
 <?php
-/* app/code/Mageinn/Vendor/Setup/InstallData.php */
+/* app/code/Iredeem/Vendor/Setup/InstallData.php */
 
-namespace Mageinn\Vendor\Setup;
+namespace Iredeem\Vendor\Setup;
 
 use Magento\Eav\Setup\EavSetup;
 use Magento\Eav\Setup\EavSetupFactory;
@@ -47,7 +47,7 @@ class InstallData implements InstallDataInterface
                 'type' => 'int',
                 'label' => 'Vendor',
                 'input' => 'select',
-                'source' => \Mageinn\Vendor\Model\Info\Attribute\Source\Vendorid::class,
+                'source' => \Iredeem\Vendor\Model\Info\Attribute\Source\Vendorid::class,
                 'required' => true,
                 'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,
                 'visible' => true,

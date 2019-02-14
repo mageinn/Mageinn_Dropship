@@ -1,12 +1,12 @@
 <?php
-namespace Mageinn\Vendor\Model;
+namespace Iredeem\Vendor\Model;
 
-use Mageinn\Vendor\Model\Source\BatchStatus;
+use Iredeem\Vendor\Model\Source\BatchStatus;
 use Magento\Framework\Exception\LocalizedException;
 
 /**
  * Class Info
- * @package Mageinn\Vendor\Model
+ * @package Iredeem\Vendor\Model
  */
 class Batch extends \Magento\Cron\Model\Schedule
 {
@@ -17,16 +17,16 @@ class Batch extends \Magento\Cron\Model\Schedule
     /**#@+
      * Table
      */
-    const TABLE_DROPSHIP_BATCH = 'mageinn_dropship_batch';
+    const TABLE_DROPSHIP_BATCH = 'iredeem_dropship_batch';
     /**#@-*/
 
     /**
-     * @var \Mageinn\Vendor\Model\InfoFactory
+     * @var \Iredeem\Vendor\Model\InfoFactory
      */
     protected $vendor;
 
     /**
-     * @var \Mageinn\Vendor\Model\Batch\Import
+     * @var \Iredeem\Vendor\Model\Batch\Import
      */
     protected $import;
 
@@ -36,7 +36,7 @@ class Batch extends \Magento\Cron\Model\Schedule
     protected $date;
 
     /**
-     * @var \Magento\Framework\Filesystem\DirectoryList
+     * @var \Magento\Framework\App\Filesystem\DirectoryList
      */
     protected $dir;
 
@@ -48,27 +48,39 @@ class Batch extends \Magento\Cron\Model\Schedule
     /**
      * Batch constructor.
      *
-     * @var \Mageinn\Vendor\Model\Batch\Export
+     * @var \Iredeem\Vendor\Model\Batch\Export
      */
     protected $export;
 
     /**
-     * @var \Mageinn\Vendor\Model\ResourceModel\BatchRow
+     * @var \Iredeem\Vendor\Model\ResourceModel\BatchRow
      */
     protected $batchRow;
+
+    /**
+     * @var \Iredeem\Vendor\Model\Batch\Handler\Transfer
+     */
+    protected $transfer;
+
+    /**
+     * @var \Magento\Framework\Filesystem\Io\File
+     */
+    protected $io;
 
     /**
      * Batch constructor.
      *
      * @param \Magento\Framework\Model\Context $context
      * @param \Magento\Framework\Registry $registry
-     * @param \Mageinn\Vendor\Model\InfoFactory $vendor
-     * @param \Mageinn\Vendor\Model\Batch\Import $import
-     * @param \Mageinn\Vendor\Model\Batch\Export $export
-     * @param \Mageinn\Vendor\Model\ResourceModel\BatchRow $batchRow
+     * @param \Iredeem\Vendor\Model\InfoFactory $vendor
+     * @param \Iredeem\Vendor\Model\Batch\Import $import
+     * @param \Iredeem\Vendor\Model\Batch\Export $export
+     * @param \Iredeem\Vendor\Model\ResourceModel\BatchRow $batchRow
      * @param \Magento\Framework\Stdlib\DateTime\DateTime $date
-     * @param \Magento\Framework\Filesystem\DirectoryList $dir
+     * @param \Magento\Framework\App\Filesystem\DirectoryList $dir
      * @param \Magento\Framework\Filesystem\Driver\File $file
+     * @param Batch\Handler\Transfer $transfer
+     * @param \Magento\Framework\Filesystem\Io\File $io
      * @param \Magento\Framework\Model\ResourceModel\AbstractResource|null $resource
      * @param \Magento\Framework\Data\Collection\AbstractDb|null $resourceCollection
      * @param array $data
@@ -76,13 +88,15 @@ class Batch extends \Magento\Cron\Model\Schedule
     public function __construct(
         \Magento\Framework\Model\Context $context,
         \Magento\Framework\Registry $registry,
-        \Mageinn\Vendor\Model\InfoFactory $vendor,
-        \Mageinn\Vendor\Model\Batch\Import $import,
-        \Mageinn\Vendor\Model\Batch\Export $export,
-        \Mageinn\Vendor\Model\ResourceModel\BatchRow $batchRow,
+        \Iredeem\Vendor\Model\InfoFactory $vendor,
+        \Iredeem\Vendor\Model\Batch\Import $import,
+        \Iredeem\Vendor\Model\Batch\Export $export,
+        \Iredeem\Vendor\Model\ResourceModel\BatchRow $batchRow,
         \Magento\Framework\Stdlib\DateTime\DateTime $date,
-        \Magento\Framework\Filesystem\DirectoryList $dir,
+        \Magento\Framework\App\Filesystem\DirectoryList $dir,
         \Magento\Framework\Filesystem\Driver\File $file,
+        Batch\Handler\Transfer $transfer,
+        \Magento\Framework\Filesystem\Io\File $io,
         \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
         \Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
         array $data = []
@@ -94,6 +108,9 @@ class Batch extends \Magento\Cron\Model\Schedule
         $this->file = $file;
         $this->export = $export;
         $this->batchRow = $batchRow;
+        $this->transfer = $transfer;
+        $this->io = $io;
+
         parent::__construct($context, $registry, $resource, $resourceCollection, $data);
     }
 
@@ -104,7 +121,7 @@ class Batch extends \Magento\Cron\Model\Schedule
      */
     public function _construct()
     {
-        $this->_init(\Mageinn\Vendor\Model\ResourceModel\Batch::class);
+        $this->_init(\Iredeem\Vendor\Model\ResourceModel\Batch::class);
     }
 
     /**
@@ -135,17 +152,18 @@ class Batch extends \Magento\Cron\Model\Schedule
 
         $vendor = $this->vendor->create()->load($this->getVendorId());
         $response = $this->export->process($vendor, $this->getId());
-        if ($response) {
+        $this->setNumRows($response->getRowsNumber());
+        if ($response->getRowsNumber() == 0) {
+            $this->setStatus(BatchStatus::BATCH_STATUS_EMPTY);
+        } else {
             $this->setRowsText($response->getRowsText())
-                ->setNumRows($response->getRowsNumber())
                 ->setFilePath($response->getFilePath());
             if ($response->getNotes()) {
                 $this->setNotes($response->getNotes());
             }
             $this->batchRow->bulkInsert($response->getBatchRows());
+            $this->setStatus(BatchStatus::BATCH_STATUS_SUCCESS);
         }
-
-        $this->setStatus(BatchStatus::BATCH_STATUS_SUCCESS);
     }
 
     /**
@@ -159,9 +177,18 @@ class Batch extends \Magento\Cron\Model\Schedule
         $vendor = $this->vendor->create()->load($this->getVendorId());
 
         $source = $this->getFilePath();
+        if ($isSftp = $this->transfer->isSftp($source)) {
+            $filePath = $this->dir
+                    ->getPath(\Magento\Framework\App\Filesystem\DirectoryList::TMP) . DIRECTORY_SEPARATOR . $isSftp[3];
+            $pathInfo = $this->io->getPathInfo($filePath);
+            $this->file->createDirectory($pathInfo['dirname']);
+            $this->transfer->retrieveFileFromRemoteServer($isSftp, $vendor->getBatchExportPrivateKey(), $filePath);
+        } else {
+            $filePath = $this->dir->getRoot() . DIRECTORY_SEPARATOR . $source;
+        }
+
         $delimiter = $vendor->getBatchImportDelimiter();
         $template = $this->import->validateImportTemplate($vendor->getBatchImportFileData(), $delimiter);
-        $filePath = $this->dir->getRoot() . DIRECTORY_SEPARATOR . $source;
         $fileData = $this->import->getImportData($filePath, $template, $delimiter);
         if ($fileData) {
             $this->import->updateShipmentBatch(
@@ -201,10 +228,10 @@ class Batch extends \Magento\Cron\Model\Schedule
     {
         $this->setUpdatedAt($this->date->gmtDate());
         switch ($this->getType()) {
-            case \Mageinn\Vendor\Model\Source\BatchType::MAGEINN_VENDOR_BATCH_TYPE_EXPORT:
+            case \Iredeem\Vendor\Model\Source\BatchType::IREDEEM_VENDOR_BATCH_TYPE_EXPORT:
                 $this->_runExport();
                 break;
-            case \Mageinn\Vendor\Model\Source\BatchType::MAGEINN_VENDOR_BATCH_TYPE_IMPORT:
+            case \Iredeem\Vendor\Model\Source\BatchType::IREDEEM_VENDOR_BATCH_TYPE_IMPORT:
                 $this->_runImport();
                 break;
             default:

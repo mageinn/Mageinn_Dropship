@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/Test/etc/testSchema.xsd">
+    <test name="AdminShippingRatesImport">
+        <annotations>
+            <features value="Import Shipping Rates"/>
+            <stories value="Import Shipping Rates"/>
+            <title value="Importing Shipping Rates from a file"/>
+            <description value="Importing Shipping Rates from a file"/>
+            <group value="iredeem"/>
+            <group value="shippingRates"/>
+        </annotations>
+        <before>
+            <actionGroup ref="LoginAsAdmin" stepKey="loginAsAdmin"/>
+        </before>
+
+        <actionGroup ref="ImportShippingRates" stepKey="importShippingRates"/>
+        <seeElement selector="{{AdminShippingRatesMessagesSection.SuccessMessage}}" stepKey="assertSuccess"/>
+    </test>
+</tests>

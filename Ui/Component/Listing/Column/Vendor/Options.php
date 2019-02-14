@@ -1,9 +1,9 @@
 <?php
 
-namespace Mageinn\Vendor\Ui\Component\Listing\Column\Vendor;
+namespace Iredeem\Vendor\Ui\Component\Listing\Column\Vendor;
 
 use Magento\Framework\Data\OptionSourceInterface;
-use Mageinn\Vendor\Model\ResourceModel\Info\CollectionFactory;
+use Iredeem\Vendor\Model\ResourceModel\Info\CollectionFactory;
 
 /**
  * Class Options

@@ -2,11 +2,11 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <head>
-        <css src="Mageinn_Vendor::css/vendor-users-grid.css"/>
+        <css src="Iredeem_Vendor::css/vendor-users-grid.css"/>
     </head>
     <body>
         <referenceContainer name="content">
-            <uiComponent name="mageinn_vendor_form"/>
+            <uiComponent name="iredeem_vendor_form"/>
         </referenceContainer>
     </body>
 </page>

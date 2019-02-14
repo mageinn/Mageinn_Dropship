@@ -1,9 +1,9 @@
 <?php
-namespace Mageinn\Vendor\Controller\Adminhtml\Batches;
+namespace Iredeem\Vendor\Controller\Adminhtml\Batches;
 
 /**
  * Class View
- * @package Mageinn\Vendor\Controller\Adminhtml\BatchRows
+ * @package Iredeem\Vendor\Controller\Adminhtml\BatchRows
  */
 class Download extends \Magento\Backend\App\Action
 {
@@ -42,7 +42,7 @@ class Download extends \Magento\Backend\App\Action
     protected $registry;
 
     /**
-     * @var \Mageinn\Vendor\Model\Batch
+     * @var \Iredeem\Vendor\Model\Batch
      */
     protected $batchModel;
 
@@ -65,7 +65,7 @@ class Download extends \Magento\Backend\App\Action
         \Psr\Log\LoggerInterface $logger,
         \Magento\Framework\Filesystem\Io\File $fileSystemIo,
         \Magento\Framework\Registry $registry,
-        \Mageinn\Vendor\Model\Batch $batchModel
+        \Iredeem\Vendor\Model\Batch $batchModel
     ) {
         $this->_resultRawFactory = $resultRawFactory;
         $this->_layoutFactory = $layoutFactory;
@@ -96,26 +96,35 @@ class Download extends \Magento\Backend\App\Action
             );
         }
 
-        $filePath = $item->getFilePath();
-        $fileInfo = $this->fileSystem->getPathInfo($filePath);
-        $fileName = $fileInfo['basename'];
+        if ($item->getFilePath()) {
+            $filePath = $item->getFilePath();
+            $fileInfo = $this->fileSystem->getPathInfo($filePath);
+            $fileName = $fileInfo['basename'];
 
-        $searchString = $this->_dir->getRoot() . DIRECTORY_SEPARATOR;
-        $projectPath = str_replace($searchString, '', $filePath);
+            $searchString = $this->_dir->getRoot() . DIRECTORY_SEPARATOR;
+            $projectPath = str_replace($searchString, '', $filePath);
 
-        try {
-            $this->_fileFactory->create(
-                $fileName,
-                [
-                    'type' => 'filename',
-                    'value' => $projectPath
-                ]
-            );
-            $resultRaw = $this->_resultRawFactory->create();
+            try {
+                $this->_fileFactory->create(
+                    $fileName,
+                    [
+                        'type' => 'filename',
+                        'value' => $projectPath
+                    ]
+                );
+                $resultRaw = $this->_resultRawFactory->create();
 
-            return $resultRaw;
-        } catch (\Exception $e) {
-            $this->_logger->error($e);
+                return $resultRaw;
+            } catch (\Exception $e) {
+                $this->_logger->error($e);
+
+                return $resultRedirect->setPath(
+                    'sales/batches/view' . $this->registry->registry('current_batch_type'),
+                    ['_current' => true]
+                );
+            }
+        } else {
+            $this->messageManager->addWarningMessage(__('Batch does not have an export file.'));
 
             return $resultRedirect->setPath(
                 'sales/batches/view' . $this->registry->registry('current_batch_type'),
@@ -130,7 +139,7 @@ class Download extends \Magento\Backend\App\Action
      */
     private function _initItem($registry)
     {
-        $model = $registry->registry('mageinn_batch');
+        $model = $registry->registry('iredeem_batch');
         if (!$model) {
             $id = (int)$this->getRequest()->getParam('id', false);
             $model = $this->batchModel;
@@ -139,11 +148,11 @@ class Download extends \Magento\Backend\App\Action
                 $model->load($id);
             }
 
-            $registry->register('mageinn_batch', $model);
-            if ($model->getType() == \Mageinn\Vendor\Model\Source\BatchType::MAGEINN_VENDOR_BATCH_TYPE_IMPORT) {
-                $registry->register('current_batch_type', \Mageinn\Vendor\Model\Batch::BATCH_TYPE_VIEW_IMPORT);
+            $registry->register('iredeem_batch', $model);
+            if ($model->getType() == \Iredeem\Vendor\Model\Source\BatchType::IREDEEM_VENDOR_BATCH_TYPE_IMPORT) {
+                $registry->register('current_batch_type', \Iredeem\Vendor\Model\Batch::BATCH_TYPE_VIEW_IMPORT);
             } else {
-                $registry->register('current_batch_type', \Mageinn\Vendor\Model\Batch::BATCH_TYPE_VIEW_EXPORT);
+                $registry->register('current_batch_type', \Iredeem\Vendor\Model\Batch::BATCH_TYPE_VIEW_EXPORT);
             }
         }
 

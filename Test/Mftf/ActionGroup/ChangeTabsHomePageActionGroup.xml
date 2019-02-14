@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/Test/etc/actionGroupSchema.xsd">
+
+    <actionGroup name="NavigateToFooterPages">
+        <amOnPage url="/" stepKey="navigateToHomePage"/>
+        <waitForPageLoad stepKey="waitForPageLoad"/>
+        <click selector="{{Footer.terms_and_conditions}}" stepKey="navigateToTermsAndConditions"/>
+        <scrollTo selector="#maincontent > div.columns > div > div > article > section.static-page-contact-info > p > strong" x="1104" y="1108" stepKey="goToEndOfPage"/>
+        <wait time="5" stepKey="waitForTaC"/>
+        <click selector="{{Footer.privacy_policy}}" stepKey="navigateToPrivacyPolicy"/>
+        <switchToNextTab stepKey="switchToNextTab1"/>
+        <scrollTo selector="#page-footer > div > div.logo-wrap > a > img" stepKey="scrollToEndOfPrivacyPolicy"/>
+        <wait time="5" stepKey="waitForPp"/>
+        <closeTab stepKey="closePrivacyPolicy"/>
+        <switchToPreviousTab stepKey="switchToPreviousTab1"/>
+        <click selector="{{Footer.cookie_policy}}" stepKey="navigateToCookiePolicy"/>
+        <switchToNextTab stepKey="switchToCookiePolicyPage"/>
+        <scrollTo selector="body > div.main-body-placeholder > div > div > div > div > div > div.text-wrapper > div > div > p:nth-child(22)" stepKey="scrollToEndOfCookiePolicy"/>
+        <wait time="5" stepKey="waitForPp2"/>
+        <wait time="5" stepKey="waitForCp"/>
+        <switchToPreviousTab stepKey="switchToPreviousTab2"/>
+        <click selector="{{Footer.terms_of_use}}" stepKey="navigateToTermsOfUse"/>
+        <wait time="5" stepKey="waitForToU"/>
+    </actionGroup>
+
+    <actionGroup name="ChangeTab">
+        <amOnPage url="/" stepKey="navigateToHomePage"/>
+        <waitForPageLoad stepKey="waitForPageLoad"/>
+        <click selector="{{RecommendedTabs.seasonal_offers}}" stepKey="changeTabToSeasonalOffers"/>
+        <wait time="5" stepKey="waitForSeasonalOffersTab"/>
+        <click selector="{{RecommendedTabs.best_sellers}}" stepKey="changeTabToBestSellers"/>
+        <wait time="5" stepKey="waitForBestSellersTab"/>
+        <click selector="{{RecommendedTabs.most_wished_for}}" stepKey="changeTabToMostWishedFor"/>
+        <wait time="5" stepKey="waitForWishedForTab"/>
+        <click selector="{{RecommendedTabs.recommended}}" stepKey="changeTabBackToRecommended"/>
+        <wait time="5" stepKey="waitForRecommendedTab"/>
+    </actionGroup>
+
+</actionGroups>

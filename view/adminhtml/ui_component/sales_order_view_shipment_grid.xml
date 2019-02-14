@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <columns name="sales_order_shipment_columns">
-        <column name="vendor_id" class="Mageinn\Vendor\Ui\Component\Listing\Column\Vendor" sortOrder="16">
+        <column name="vendor_id" class="Iredeem\Vendor\Ui\Component\Listing\Column\Vendor" sortOrder="16">
             <settings>
                 <filter>select</filter>
-                <options class="Mageinn\Vendor\Ui\Component\Listing\Column\Vendor\Options"/>
+                <options class="Iredeem\Vendor\Ui\Component\Listing\Column\Vendor\Options"/>
                 <dataType>select</dataType>
                 <label translate="true">Vendor</label>
                 <visible>true</visible>
             </settings>
         </column>
-        <column name="dropship_status" class="Mageinn\Vendor\Ui\Component\Listing\Column\ShipmentStatus" sortOrder="16">
+        <column name="dropship_status" class="Iredeem\Vendor\Ui\Component\Listing\Column\ShipmentStatus" sortOrder="16">
             <settings>
                 <filter>select</filter>
-                <options class="Mageinn\Vendor\Model\Source\ShipmentStatus"/>
+                <options class="Iredeem\Vendor\Model\Source\ShipmentStatus"/>
                 <dataType>select</dataType>
                 <label translate="true">Status</label>
                 <visible>true</visible>

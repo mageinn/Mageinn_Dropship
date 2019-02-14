@@ -1,11 +1,11 @@
 <?php
-namespace Mageinn\Vendor\Model\ResourceModel;
+namespace Iredeem\Vendor\Model\ResourceModel;
 
 use \Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
 /**
  * Class Info
- * @package Mageinn\Vendor\Model\ResourceModel
+ * @package Iredeem\Vendor\Model\ResourceModel
  */
 class Info extends AbstractDb
 {
@@ -16,6 +16,6 @@ class Info extends AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('mageinn_vendor_information', 'entity_id');
+        $this->_init('iredeem_vendor_information', 'entity_id');
     }
 }

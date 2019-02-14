@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
-    <template id="dropship_notification_template" label="Vendor Order Notification" file="vendor_notification.html" type="html" module="Mageinn_Vendor" area="frontend"/>
-    <template id="dropship_batch_order_export_notification_template" label="Batch Orders Export Email Notification template" file="batch_export_notification.html" type="html" module="Mageinn_Vendor" area="frontend"/>
+    <template id="dropship_notification_template" label="Vendor Order Notification"
+              file="vendor_notification.html" type="html" module="Iredeem_Vendor" area="frontend"/>
+    <template id="dropship_batch_order_export_notification_template" label="Batch Orders Export Email Notification template" file="batch_export_notification.html" type="html" module="Iredeem_Vendor" area="frontend"/>
 </config>

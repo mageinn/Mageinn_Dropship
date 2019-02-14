@@ -1,5 +1,5 @@
 <?php
-namespace Mageinn\Vendor\Observer;
+namespace Iredeem\Vendor\Observer;
 
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
@@ -7,7 +7,7 @@ use Magento\Framework\Event\ObserverInterface;
 /**
  * Quote Vendor ID Observer
  *
- * @package Mageinn\Vendor\Observer
+ * @package Iredeem\Vendor\Observer
  */
 class QuoteVendor implements ObserverInterface
 {

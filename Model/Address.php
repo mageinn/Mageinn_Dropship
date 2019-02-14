@@ -1,19 +1,19 @@
 <?php
-namespace Mageinn\Vendor\Model;
+namespace Iredeem\Vendor\Model;
 
 use \Magento\Framework\Model\AbstractModel;
-use \Mageinn\Vendor\Model\ResourceModel\Address as ResourceModelAddress;
+use \Iredeem\Vendor\Model\ResourceModel\Address as ResourceModelAddress;
 
 /**
  * Class Info
- * @package Mageinn\Vendor\Model
+ * @package Iredeem\Vendor\Model
  */
 class Address extends AbstractModel
 {
     /**#@+
      * Table
      */
-    const VENDOR_ADDRESS_TABLE = 'mageinn_vendor_address';
+    const VENDOR_ADDRESS_TABLE = 'iredeem_vendor_address';
     /**#@-*/
 
     /**#@+

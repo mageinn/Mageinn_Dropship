@@ -1,20 +1,19 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\Shipping\Block\Adminhtml\View" type="Mageinn\Vendor\Block\Adminhtml\Shipping\View" />
-    <preference for="Magento\Shipping\Controller\Adminhtml\Order\Shipment\View" type="Mageinn\Vendor\Controller\Adminhtml\Shipment\View" />
-    <preference for="Magento\Shipping\Controller\Adminhtml\Order\Shipment\AddComment" type="Mageinn\Vendor\Controller\Adminhtml\Shipment\AddComment" />
-    <preference for="Magento\Sales\Model\Order\Shipment" type="Mageinn\Vendor\Model\Shipment" />
-    <preference for="\Magento\Sales\Model\ResourceModel\Order\Shipment\Grid\Collection" type="Mageinn\Vendor\Model\ResourceModel\Order\Shipment\Grid\Collection" />
-    <preference for="\Magento\Framework\Mail\Template\TransportBuilder" type="\Mageinn\Vendor\Magento\Mail\Template\TransportBuilder" />
-
-    <type name="Mageinn\Vendor\Model\ResourceModel\Info\Grid\Collection">
+    <preference for="Magento\Shipping\Block\Adminhtml\View" type="Iredeem\Vendor\Block\Adminhtml\Shipping\View" />
+    <preference for="Magento\Shipping\Controller\Adminhtml\Order\Shipment\View" type="Iredeem\Vendor\Controller\Adminhtml\Shipment\View" />
+    <preference for="Magento\Shipping\Controller\Adminhtml\Order\Shipment\AddComment" type="Iredeem\Vendor\Controller\Adminhtml\Shipment\AddComment" />
+    <preference for="Magento\Sales\Model\Order\Shipment" type="Iredeem\Vendor\Model\Shipment" />
+    <preference for="\Magento\Sales\Model\ResourceModel\Order\Shipment\Grid\Collection" type="Iredeem\Vendor\Model\ResourceModel\Order\Shipment\Grid\Collection" />
+    <preference for="\Magento\Framework\Mail\Template\TransportBuilder" type="\Mageinn\Dropship\Magento\Mail\Template\TransportBuilder"/>
+    <type name="Iredeem\Vendor\Model\ResourceModel\Info\Grid\Collection">
         <arguments>
-            <argument name="mainTable" xsi:type="string">mageinn_vendor_information</argument>
-            <argument name="resourceModel" xsi:type="string">Mageinn\Vendor\Model\ResourceModel\Info</argument>
+            <argument name="mainTable" xsi:type="string">iredeem_vendor_information</argument>
+            <argument name="resourceModel" xsi:type="string">Iredeem\Vendor\Model\ResourceModel\Info</argument>
         </arguments>
     </type>
-    <type name="Mageinn\Vendor\Model\ResourceModel\User\Grid\Collection">
+    <type name="Iredeem\Vendor\Model\ResourceModel\User\Grid\Collection">
         <arguments>
             <argument name="mainTable" xsi:type="string">admin_user</argument>
             <argument name="resourceModel" xsi:type="string">Magento\User\Model\ResourceModel\User</argument>
@@ -23,18 +22,17 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="mageinn_vendor_grid_data_source" xsi:type="string">Mageinn\Vendor\Model\ResourceModel\Info\Grid\Collection</item>
-                <item name="mageinn_vendor_form_data_source" xsi:type="string">Mageinn\Vendor\Model\ResourceModel\Info\Collection</item>
-                <item name="mageinn_vendor_user_grid_data_source" xsi:type="string">Mageinn\Vendor\Model\ResourceModel\User\Grid\Collection</item>
-                <item name="mageinn_batches_grid_data_source" xsi:type="string">Mageinn\Vendor\Model\ResourceModel\Batch\Grid\Collection</item>
-                <item name="mageinn_batches_view_data_source" xsi:type="string">Mageinn\Vendor\Model\ResourceModel\Batch\Collection</item>
-                <item name="mageinn_shipping_rule_form_data_source" xsi:type="string">Mageinn\Vendor\Model\ResourceModel\ShippingRate\Collection</item>
-                <item name="mageinn_regions_data_source" xsi:type="string">Mageinn\Vendor\Model\ResourceModel\Region\Collection</item>
+                <item name="iredeem_vendor_grid_data_source" xsi:type="string">Iredeem\Vendor\Model\ResourceModel\Info\Grid\Collection</item>
+                <item name="iredeem_vendor_form_data_source" xsi:type="string">Iredeem\Vendor\Model\ResourceModel\Info\Collection</item>
+                <item name="iredeem_vendor_user_grid_data_source" xsi:type="string">Iredeem\Vendor\Model\ResourceModel\User\Grid\Collection</item>
+                <item name="iredeem_batches_grid_data_source" xsi:type="string">Iredeem\Vendor\Model\ResourceModel\Batch\Grid\Collection</item>
+                <item name="iredeem_batches_view_data_source" xsi:type="string">Iredeem\Vendor\Model\ResourceModel\Batch\Collection</item>
+                <item name="iredeem_regions_data_source" xsi:type="string">Iredeem\Vendor\Model\ResourceModel\Region\Collection</item>
             </argument>
         </arguments>
     </type>
     <type name="Magento\Quote\Model\Quote\Item\ToOrderItem">
-        <plugin name="vendor_quote_to_order_item" type="Mageinn\Vendor\Model\Plugin\Quote\QuoteToOrderItem"/>
+        <plugin name="vendor_quote_to_order_item" type="Iredeem\Vendor\Model\Plugin\Quote\QuoteToOrderItem"/>
     </type>
     <virtualType name="ShipmentGridAggregator">
         <arguments>
@@ -44,10 +42,10 @@
             </argument>
         </arguments>
     </virtualType>
-    <type name="Mageinn\Vendor\Model\ResourceModel\Batch\Grid\Collection">
+    <type name="Iredeem\Vendor\Model\ResourceModel\Batch\Grid\Collection">
         <arguments>
-            <argument name="mainTable" xsi:type="string">mageinn_dropship_batch</argument>
-            <argument name="resourceModel" xsi:type="string">Mageinn\Vendor\Model\ResourceModel\Batch</argument>
+            <argument name="mainTable" xsi:type="string">iredeem_dropship_batch</argument>
+            <argument name="resourceModel" xsi:type="string">Iredeem\Vendor\Model\ResourceModel\Batch</argument>
         </arguments>
     </type>
 </config>

@@ -1,18 +1,18 @@
 <?php
 
-namespace Mageinn\Vendor\Model\Batch;
+namespace Iredeem\Vendor\Model\Batch;
 
 use \Magento\Framework\Model\AbstractModel;
 
 /**
  * Class Adapter
  *
- * @package Mageinn\Vendor\Model\Batch
+ * @package Iredeem\Vendor\Model\Batch
  */
 class Export extends AbstractModel
 {
     /**
-     * @var \Mageinn\Vendor\Helper\Data
+     * @var \Iredeem\Vendor\Helper\Data
      */
     protected $vendorHelper;
 
@@ -22,7 +22,7 @@ class Export extends AbstractModel
     protected $shipmentCollection;
 
     /**
-     * @var \Mageinn\Vendor\Model\Batch\Export\Response
+     * @var \Iredeem\Vendor\Model\Batch\Export\Response
      */
     protected $response;
 
@@ -32,7 +32,7 @@ class Export extends AbstractModel
     protected $shipments;
 
     /**
-     * @var \Mageinn\Vendor\Model\Batch\Export\File
+     * @var \Iredeem\Vendor\Model\Batch\Export\File
      */
     protected $file;
 
@@ -46,10 +46,10 @@ class Export extends AbstractModel
      *
      * @param \Magento\Framework\Model\Context $context
      * @param \Magento\Framework\Registry $registry
-     * @param \Mageinn\Vendor\Helper\Data $helper
+     * @param \Iredeem\Vendor\Helper\Data $helper
      * @param \Magento\Sales\Model\ResourceModel\Order\Shipment\CollectionFactory $shipmentCollection
-     * @param \Mageinn\Vendor\Model\Batch\Export\Response $response
-     * @param \Mageinn\Vendor\Model\Batch\Export\File $file
+     * @param \Iredeem\Vendor\Model\Batch\Export\Response $response
+     * @param \Iredeem\Vendor\Model\Batch\Export\File $file
      * @param \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection $shipments
      * @param \Magento\Framework\Model\ResourceModel\AbstractResource|null $resource
      * @param \Magento\Framework\Data\Collection\AbstractDb|null $resourceCollection
@@ -58,10 +58,10 @@ class Export extends AbstractModel
     public function __construct(
         \Magento\Framework\Model\Context $context,
         \Magento\Framework\Registry $registry,
-        \Mageinn\Vendor\Helper\Data $helper,
+        \Iredeem\Vendor\Helper\Data $helper,
         \Magento\Sales\Model\ResourceModel\Order\Shipment\CollectionFactory $shipmentCollection,
-        \Mageinn\Vendor\Model\Batch\Export\Response $response,
-        \Mageinn\Vendor\Model\Batch\Export\File $file,
+        \Iredeem\Vendor\Model\Batch\Export\Response $response,
+        \Iredeem\Vendor\Model\Batch\Export\File $file,
         \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection $shipments = null,
         \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
         \Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
@@ -80,7 +80,7 @@ class Export extends AbstractModel
      *
      * @param $vendor
      * @param $batchId
-     * @return \Mageinn\Vendor\Model\Batch\Export\Response|null
+     * @return \Iredeem\Vendor\Model\Batch\Export\Response|null
      * @throws \Exception
      */
     public function process($vendor, $batchId)
@@ -96,22 +96,27 @@ class Export extends AbstractModel
             $values = array_unique($matches[1]);
             // Formatted data for each item of the vendor's shipments
             $formattedData = $this->_getDataSource($vendor);
-            $fileHeading = $this->_getFileHeading($vendor);
-            $fileContents = '';
+            $this->response->setRowsNumber(count($formattedData));
+            // If there is data to process, we process it
             if (!empty($formattedData)) {
-                $fileContents =
-                    $this->_getFileContents($formattedData, $placeholders, $values, $exportFields, $batchId);
-            }
-            $exportFileContents = $fileHeading . $fileContents;
+                $fileHeading = $this->_getFileHeading($vendor);
+                $fileContents = $this->_getFileContents(
+                    $formattedData,
+                    $placeholders,
+                    $values,
+                    $exportFields,
+                    $batchId
+                );
+                $exportFileContents = $fileHeading . $fileContents;
 
-            // Create file and send it in emails based on the vendor settings
-            $fileResponse = $this->file->handle($exportFileContents, $vendor);
-            $this->_updateShipments($vendor);
-            $this->response->setRowsNumber(count($formattedData))
-                ->setRowsText($exportFileContents)
-                ->setNotes($fileResponse->getNotes())
-                ->setFilePath($fileResponse->getFilePath())
-                ->setBatchRows($this->batchRowsArray);
+                // Create file and send it in emails based on the vendor settings
+                $fileResponse = $this->file->handle($exportFileContents, $vendor);
+                $this->_updateShipments($vendor);
+                $this->response->setRowsText($exportFileContents)
+                    ->setNotes($fileResponse->getNotes())
+                    ->setFilePath($fileResponse->getFilePath())
+                    ->setBatchRows($this->batchRowsArray);
+            }
 
             return $this->response;
         }

@@ -1,11 +1,11 @@
 <?php
-namespace Mageinn\Vendor\Model\ResourceModel;
+namespace Iredeem\Vendor\Model\ResourceModel;
 
 use \Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
 /**
  * Class Batch
- * @package Mageinn\Vendor\Model\ResourceModel
+ * @package Iredeem\Vendor\Model\ResourceModel
  */
 class Batch extends AbstractDb
 {
@@ -16,6 +16,6 @@ class Batch extends AbstractDb
      */
     protected function _construct()
     {
-        $this->_init(\Mageinn\Vendor\Model\Batch::TABLE_DROPSHIP_BATCH, 'entity_id');
+        $this->_init(\Iredeem\Vendor\Model\Batch::TABLE_DROPSHIP_BATCH, 'entity_id');
     }
 }

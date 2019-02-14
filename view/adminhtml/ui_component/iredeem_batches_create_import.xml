@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">iredeem_batches_create_import.iredeem_batches_create_import_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Batch</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back">
+                <url path="*/*/"/>
+                <class>back</class>
+                <label translate="true">Back</label>
+            </button>
+            <button name="reset">
+                <label translate="true">Reset</label>
+            </button>
+            <button name="save">
+                <class>save primary</class>
+                <label translate="true">Save</label>
+            </button>
+        </buttons>
+        <layout>
+            <navContainerName>left</navContainerName>
+            <type>tabs</type>
+        </layout>
+        <deps>
+            <dep>iredeem_batches_create_import.iredeem_batches_create_import_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="iredeem_batches_create_import_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="sales/batches/saveImport"/>
+        </settings>
+        <dataProvider class="Iredeem\Vendor\Model\Batch\DataProvider" name="iredeem_batches_create_import_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="vendor_batches">
+        <settings>
+            <label translate="true">Batch Details</label>
+        </settings>
+        <field name="vendor_name" formElement="select">
+            <settings>
+                <label translate="true">Vendor</label>
+                <dataType>text</dataType>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Iredeem\Vendor\Ui\Component\Listing\Column\Vendor\Options"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="default_file_location" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="number">1</item>
+                    <item name="label" xsi:type="string" translate="true">Import from vendor's default location</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="batch_file" formElement="fileUploader">
+            <settings>
+                <label translate="true">Import from uploaded file</label>
+                <componentType>fileUploader</componentType>
+                <imports>
+                    <link name="disabled">ns = ${ $.ns }, index = default_file_location :checked</link>
+                </imports>
+            </settings>
+            <formElements>
+                <fileUploader>
+                    <settings>
+                        <allowedExtensions>csv</allowedExtensions>
+                        <maxFileSize>2097152</maxFileSize>
+                        <uploaderConfig>
+                            <param xsi:type="string" name="url">sales/batches_fileUploader/save</param>
+                        </uploaderConfig>
+                    </settings>
+                </fileUploader>
+            </formElements>
+        </field>
+    </fieldset>
+</form>

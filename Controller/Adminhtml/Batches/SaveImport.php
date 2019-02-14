@@ -1,19 +1,19 @@
 <?php
-namespace Mageinn\Vendor\Controller\Adminhtml\Batches;
+namespace Iredeem\Vendor\Controller\Adminhtml\Batches;
 
 /**
  * Class Save
- * @package Mageinn\Vendor\Controller\Adminhtml\Batches\Import
+ * @package Iredeem\Vendor\Controller\Adminhtml\Batches\Import
  */
 class SaveImport extends \Magento\Backend\App\Action
 {
     /**
-     * @var \Mageinn\Vendor\Model\BatchFactory
+     * @var \Iredeem\Vendor\Model\BatchFactory
      */
     protected $_batch;
 
     /**
-     * @var \Mageinn\Vendor\Model\InfoFactory
+     * @var \Iredeem\Vendor\Model\InfoFactory
      */
     protected $_vendor;
 
@@ -30,16 +30,16 @@ class SaveImport extends \Magento\Backend\App\Action
     /**
      * SaveImport constructor.
      * @param \Magento\Backend\App\Action\Context $context
-     * @param \Mageinn\Vendor\Model\BatchFactory $batch
-     * @param \Mageinn\Vendor\Model\InfoFactory $vendor
+     * @param \Iredeem\Vendor\Model\BatchFactory $batch
+     * @param \Iredeem\Vendor\Model\InfoFactory $vendor
      * @param \Magento\Framework\Filesystem $filesystem
      * @param \Magento\Framework\Stdlib\DateTime\DateTime $dateTime
      * @throws \Magento\Framework\Exception\FileSystemException
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
-        \Mageinn\Vendor\Model\BatchFactory $batch,
-        \Mageinn\Vendor\Model\InfoFactory $vendor,
+        \Iredeem\Vendor\Model\BatchFactory $batch,
+        \Iredeem\Vendor\Model\InfoFactory $vendor,
         \Magento\Framework\Filesystem $filesystem,
         \Magento\Framework\Stdlib\DateTime\DateTime $dateTime
     ) {
@@ -86,8 +86,8 @@ class SaveImport extends \Magento\Backend\App\Action
         try {
             $this->_batch
                 ->setVendorId($batch['vendor_name'])
-                ->setType(\Mageinn\Vendor\Model\Source\BatchType::MAGEINN_VENDOR_BATCH_TYPE_IMPORT)
-                ->setStatus(\Mageinn\Vendor\Model\Source\BatchStatus::BATCH_STATUS_SCHEDULED)
+                ->setType(\Iredeem\Vendor\Model\Source\BatchType::IREDEEM_VENDOR_BATCH_TYPE_IMPORT)
+                ->setStatus(\Iredeem\Vendor\Model\Source\BatchStatus::BATCH_STATUS_SCHEDULED)
                 ->setCreatedAt($time)
                 ->setScheduledAt($time)
                 ->setFilePath($file)

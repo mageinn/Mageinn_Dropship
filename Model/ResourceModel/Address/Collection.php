@@ -1,14 +1,14 @@
 <?php
-namespace Mageinn\Vendor\Model\ResourceModel\Address;
+namespace Iredeem\Vendor\Model\ResourceModel\Address;
 
 use \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
-use \Mageinn\Vendor\Model\Address;
-use \Mageinn\Vendor\Model\ResourceModel\Address as ResourceModelAddress;
+use \Iredeem\Vendor\Model\Address;
+use \Iredeem\Vendor\Model\ResourceModel\Address as ResourceModelAddress;
 
 /**
  * Class Collection
  *
- * @package Mageinn\Vendor\Model\ResourceModel\Address
+ * @package Iredeem\Vendor\Model\ResourceModel\Address
  */
 class Collection extends AbstractCollection
 {

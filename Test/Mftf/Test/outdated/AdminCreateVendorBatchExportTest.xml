@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/Test/etc/testSchema.xsd">
+    <test name="AdminCreateBatchExport">
+        <annotations>
+            <group value="iredeem"/>
+            <group value="vendorBatch"/>
+        </annotations>
+        <before>
+            <actionGroup ref="LoginAsAdmin" stepKey="loginAsAdminForVendor1"/>
+        </before>
+        <after>
+            <amOnPage url="admin/admin/auth/logout/" stepKey="amOnLogoutPage"/>
+        </after>
+
+        <actionGroup ref="CreateVendor" stepKey="createVendor"/>
+
+        <!-- Filter saved vendor so we can get the id -->
+        <click selector="{{AdminVendorGridSection.filters}}" stepKey="clickOnFilters"/>
+        <fillField selector="{{AdminVendorGridSection.VendorName}}" userInput="{{VendorData.name}}" stepKey="filterVendorName"/>
+        <fillField selector="{{AdminVendorGridSection.VendorEmail}}" userInput="{{VendorData.email}}" stepKey="filterVendorEmail"/>
+        <fillField selector="{{AdminVendorGridSection.VendorTelephone}}" userInput="{{VendorData.telephone}}" stepKey="filterVendorPhone"/>
+        <click selector="{{AdminVendorGridSection.applyFilters}}" stepKey="clickApplyFiltersButton"/>
+        <waitForAjaxLoad stepKey="waitForResults"/>
+
+        <!-- Get the vendor id -->
+        <grabTextFrom selector="{{AdminVendorGridSection.firstRowIdColumn}}" stepKey="grabVendorId"/>
+
+        <amOnPage url="{{VendorPageData.createExportBatchUrl}}" stepKey="amOnCreateBatchVendorsPageEdit"/>
+        <waitForPageLoad stepKey="waitCreateBatchExportPageLoad"/>
+        <selectOption selector="{{AdminExportBatchPage.vendor}}" userInput="{$grabVendorId}" stepKey="selectVendorForExport"/>
+        <click selector="{{AdminExportBatchPage.saveButton}}" stepKey="clickSaveExportBatchButton"/>
+        <waitForPageLoad stepKey="waitSaveBatchExportPageLoad"/>
+
+        <!--Filter by vendor and type-->
+        <click selector="{{AdminExportBatchPage.filters}}" stepKey="clickOnExportBatchFilters"/>
+        <selectOption selector="{{AdminExportBatchPage.batchVendorFilter}}" userInput="{$grabVendorId}" stepKey="selectVendorFilter"/>
+        <selectOption selector="{{AdminExportBatchPage.batchTypeFilter}}" userInput="{{VendorPageData.batchTypeExport}}" stepKey="selectBatchTypeFilter"/>
+        <selectOption selector="{{AdminExportBatchPage.batchStatusFilter}}" userInput="{{VendorPageData.batchStatusScheduled}}" stepKey="selectBatchStatusFilter"/>
+        <click selector="{{AdminExportBatchPage.applyFilters}}" stepKey="clickOnExportBatchApplyFilters"/>
+        <waitForAjaxLoad stepKey="waitForBatchFilterResults"/>
+
+        <!-- Check export in grid -->
+        <see selector="tr[data-repeat-index='0'] td:nth-child(3) .data-grid-cell-content" userInput="{{VendorData.name}}" stepKey="checkBatchVendorName"/>
+        <see selector="tr[data-repeat-index='0'] td:nth-child(4) .data-grid-cell-content" userInput="Export" stepKey="checkBatchTypeExport"/>
+        <see selector="tr[data-repeat-index='0'] td:nth-child(5) .data-grid-cell-content" userInput="Scheduled" stepKey="checkBatchStatusScheduled"/>
+        <!-- Check export page -->
+        <click selector="tr[data-repeat-index='0'] td:last-child a" stepKey="clickViewVendorExportBatch"/>
+        <waitForPageLoad stepKey="waitVendorBatchExportPageLoad"/>
+
+        <amOnPage url="{{VendorPageData.batchesUrl}}" stepKey="amOnBatchGridPage"/>
+        <waitForPageLoad stepKey="waitBatchGridPageLoad"/>
+        <click selector="{{AdminExportBatchPage.clearFilters}}" stepKey="clickClearFilters"/>
+        <waitForAjaxLoad stepKey="waitForBatchFilterCleared"/>
+    </test>
+</tests>

@@ -1,0 +1,39 @@
+<?php
+
+// @codingStandardsIgnoreFile
+
+/** @var \Iredeem\Vendor\Block\Adminhtml\Stock\ImportExport $block*/
+?>
+<div class="import-export-product_stock">
+    <div class="import-product-stock">
+        <div class="admin__page-section-title">
+            <span class="title"><?= /* @escapeNotVerified */ __('Import Products Stock') ?></span>
+        </div>
+        <form id="import-form" class="admin__fieldset product-stock-form" action="<?= $block->getImportUrl() ?>" method="post" enctype="multipart/form-data">
+            <?= $block->getBlockHtml('formkey') ?>
+            <div class="fieldset admin__field">
+                <span class="admin__field-label"><span><?= /* @escapeNotVerified */ __('Select Vendor') ?></span></span>
+                <div class="admin__field-control">
+                    <?= $block->getCurrentVendorsSelectHtml() ?>
+                    <input type="file" id="produc_stock_file" name="produc_stock_file" class="input-file required-entry"/>
+                    <?= $block->getButtonHtml(__('Import'), 'this.form.submit()', 'import-submit primary') ?>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="export-product_stock">
+        <div class="admin__page-section-title">
+            <span class="title"><?= /* @escapeNotVerified */ __('Export Products Stock') ?></span>
+        </div>
+        <form id="export_form" class="admin__fieldset product-stock-form" action="<?= $block->getExportUrl() ?>" method="post" enctype="multipart/form-data">
+            <?= $block->getBlockHtml('formkey') ?>
+            <div class="fieldset admin__field">
+                <span class="admin__field-label"><span><?= /* @escapeNotVerified */ __('Select Vendor') ?></span></span>
+                <div class="admin__field-control">
+                    <?= $block->getCurrentVendorsSelectHtml() ?>
+                    <?= $block->getButtonHtml(__('Export'), "this.form.submit()", 'primary') ?>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

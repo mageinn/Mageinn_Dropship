@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/DataGenerator/etc/dataProfileSchema.xsd">
+    <entity name="VendorData" type="vendor">
+        <data key="name" unique="suffix">SimpleVendor</data>
+        <data key="name2">Vendor 1 EUR</data>
+        <data key="email">simple@example.com</data>
+        <data key="telephone">+0123456789</data>
+        <data key="currency">EUR</data>
+    </entity>
+    <entity name="VendorAddress" type="vendor">
+        <data key="street">Street</data>
+        <data key="city">London</data>
+        <data key="country">GB</data>
+        <data key="street_shipping">Street</data>
+        <data key="city_shipping">London</data>
+        <data key="country_shipping">GB</data>
+    </entity>
+    <entity name="VendorUsers" type="vendor">
+        <data key="userFilter">vendor</data>
+        <data key="userFilter2">m2username</data>
+    </entity>
+    <entity name="VendorBatchExport" type="vendor">
+        <data key="shipmentStatusOnExport">10</data>
+        <data key="schedule">* 12 * * *</data>
+        <data key="destination">var/export/vendor/export.csv</data>
+        <data key="headings">data for header</data>
+        <data key="values">[order_id] is the order ID</data>
+    </entity>
+    <entity name="VendorBatchImport" type="vendor">
+        <data key="schedule">* 18 * * *</data>
+        <data key="source">var/import/vendor/import.csv</data>
+        <data key="values">[order_id]</data>
+        <data key="delimiter">,</data>
+    </entity>
+    <entity name="VendorInvalidData" type="vendor">
+        <data key="email">invalidemail.com</data>
+        <data key="schedule">not valid cron</data>
+    </entity>
+    <entity name="VendorEditDataFilters" type="vendor">
+        <data key="name">SimpleVendor</data>
+        <data key="email">simple</data>
+        <data key="telephone">+01234</data>
+    </entity>
+    <entity name="VendorEdit" type="vendor">
+        <data key="name" unique="suffix">SimpleVendorChanged</data>
+        <data key="currency">USD</data>
+        <data key="street">ChangedStreet</data>
+        <data key="destination">var/export/vendor/exportChanged.csv</data>
+        <data key="source">var/import/vendor/importChanged.csv</data>
+    </entity>
+    <entity name="VendorExport" type="vendor">
+        <data key="selectAllVendors">Select All</data>
+        <data key="exportCSV">CSV</data>
+        <data key="exportExcelCSV">Excel CSV</data>
+    </entity>
+</entities>

@@ -1,9 +1,9 @@
 <?php
-namespace Mageinn\Vendor\Block\Adminhtml\Batch\View\AbstractFilePath;
+namespace Iredeem\Vendor\Block\Adminhtml\Batch\View\AbstractFilePath;
 
 /**
  * Class Grid
- * @package Mageinn\Vendor\Block\Adminhtml\Batch\View\AbstractFilePath
+ * @package Iredeem\Vendor\Block\Adminhtml\Batch\View\AbstractFilePath
  */
 abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
 {
@@ -23,7 +23,7 @@ abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     protected $_logger;
 
     /**
-     * @var \Mageinn\Vendor\Model\Source\BatchStatus
+     * @var \Iredeem\Vendor\Model\Source\BatchStatus
      */
     protected $_batchStatus;
 
@@ -34,7 +34,7 @@ abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
      * @param \Magento\Framework\Data\CollectionFactory $collectionFactory
      * @param \Magento\Framework\Registry $registry
      * @param \Psr\Log\LoggerInterface $logger
-     * @param \Mageinn\Vendor\Model\Source\BatchStatus $batchStatus
+     * @param \Iredeem\Vendor\Model\Source\BatchStatus $batchStatus
      * @param array $data
      */
     public function __construct(
@@ -43,7 +43,7 @@ abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         \Magento\Framework\Data\CollectionFactory $collectionFactory,
         \Magento\Framework\Registry $registry,
         \Psr\Log\LoggerInterface $logger,
-        \Mageinn\Vendor\Model\Source\BatchStatus $batchStatus,
+        \Iredeem\Vendor\Model\Source\BatchStatus $batchStatus,
         array $data = []
     ) {
         $this->_registry = $registry;
@@ -59,18 +59,18 @@ abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     protected function _construct()
     {
         parent::_construct();
-        $this->setId('mageinn_batch_file_path');
+        $this->setId('iredeem_batch_file_path');
         $this->setDefaultSort('entity_id');
         $this->setUseAjax(true);
         $this->setFilterVisibility(false);
     }
 
     /**
-     * @return \Mageinn\Vendor\Model\Batch|null
+     * @return \Iredeem\Vendor\Model\Batch|null
      */
     public function getBatch()
     {
-        return $this->_registry->registry('mageinn_batch');
+        return $this->_registry->registry('iredeem_batch');
     }
 
     /**

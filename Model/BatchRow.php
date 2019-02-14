@@ -1,18 +1,18 @@
 <?php
-namespace Mageinn\Vendor\Model;
+namespace Iredeem\Vendor\Model;
 
 use \Magento\Framework\Model\AbstractModel;
 
 /**
  * Class Info
- * @package Mageinn\Vendor\Model
+ * @package Iredeem\Vendor\Model
  */
 class BatchRow extends AbstractModel
 {
     /**#@+
      * Table
      */
-    const TABLE_DROPSHIP_BATCH_ROW = 'mageinn_dropship_batch_row';
+    const TABLE_DROPSHIP_BATCH_ROW = 'iredeem_dropship_batch_row';
     /**#@-*/
 
     /**
@@ -22,6 +22,6 @@ class BatchRow extends AbstractModel
      */
     protected function _construct()
     {
-        $this->_init(\Mageinn\Vendor\Model\ResourceModel\BatchRow::class);
+        $this->_init(\Iredeem\Vendor\Model\ResourceModel\BatchRow::class);
     }
 }

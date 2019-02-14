@@ -1,6 +1,6 @@
 <?php
 
-namespace Mageinn\Vendor\Model\ResourceModel\Order\Shipment\Grid;
+namespace Iredeem\Vendor\Model\ResourceModel\Order\Shipment\Grid;
 
 use Magento\Backend\Model\Auth\Session;
 use Magento\Framework\Data\Collection\Db\FetchStrategyInterface as FetchStrategy;

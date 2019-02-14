@@ -1,11 +1,11 @@
 <?php
-namespace Mageinn\Vendor\Block\Adminhtml\Batch\View\Import\Sources;
+namespace Iredeem\Vendor\Block\Adminhtml\Batch\View\Import\Sources;
 
 /**
  * Class Grid
- * @package Mageinn\Vendor\Block\Adminhtml\Batch\View\Export\Destinations
+ * @package Iredeem\Vendor\Block\Adminhtml\Batch\View\Export\Destinations
  */
-class Grid extends \Mageinn\Vendor\Block\Adminhtml\Batch\View\AbstractFilePath\Grid
+class Grid extends \Iredeem\Vendor\Block\Adminhtml\Batch\View\AbstractFilePath\Grid
 {
     /**
      * @return \Magento\Backend\Block\Widget\Grid\Extended

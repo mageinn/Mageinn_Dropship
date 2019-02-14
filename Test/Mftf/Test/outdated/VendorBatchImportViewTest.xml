@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/Test/etc/testSchema.xsd">
+    <test name="ImportVendorBatch">
+        <annotations>
+            <stories value="Check if batch is importend"/>
+            <title value="Check if batch is importend"/>
+            <description value="Create Vendor and import batch"/>
+            <group value="iredeem"/>
+            <group value="vendorBatch"/>
+        </annotations>
+        <before>
+            <actionGroup ref="LoginAsAdmin" stepKey="loginAsAdmin"/>
+        </before>
+
+        <actionGroup ref="CreateVendor" stepKey="createVendorForBatch"/>
+        <actionGroup ref="importBatchForVendor" stepKey="ImportBatchForVendor"/>
+    </test>
+</tests>

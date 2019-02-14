@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/Page/etc/SectionObject.xsd">
+    <section name="AdminVendorBasicFieldSection">
+        <element name="VendorName" type="input" selector="input[name='iredeem_vendor[vendor][name]']"/>
+        <element name="VendorEmail" type="input" selector="input[name='iredeem_vendor[vendor][email]']"/>
+        <element name="VendorTelephone" type="input" selector="input[name='iredeem_vendor[vendor][telephone]']"/>
+    </section>
+    <section name="AdminVendorSettingsSection">
+        <element name="VendorCurrency" type="select" selector="select[name='vendor_settings[settings][currency]']"/>
+    </section>
+    <section name="AdminVendorAddressFieldSection">
+        <element name="BillingStreet" type="input" selector="input[name='vendor_address[billing_address][street]']"/>
+        <element name="BillingCity" type="input" selector="input[name='vendor_address[billing_address][city]']"/>
+        <element name="BillingCountry" type="select" selector="select[name='vendor_address[billing_address][country]']"/>
+        <element name="SameAsBilling" type="button" selector="div[data-index='same_as_billing'] .admin__actions-switch"/>
+        <element name="ShippingStreet" type="input" selector="input[name='vendor_address[shipping_address][street]']"/>
+        <element name="ShippingCity" type="input" selector="input[name='vendor_address[shipping_address][city]']"/>
+        <element name="ShippingCountry" type="select" selector="select[name='vendor_address[shipping_address][country]']"/>
+    </section>
+    <section name="AdminVendorUsersSelectionSection">
+        <element name="ResetFilter" type="button" selector="#iredeem_vendor_users .action-reset"/>
+        <element name="Search" type="button" selector="#iredeem_vendor_users .action-secondary"/>
+        <element name="FilterUserName" type="input" selector="#iredeem_vendor_users_filter_username"/>
+        <element name="SelectAllUsers" type="input" selector="#iredeem_vendor_users_table .data-grid-actions-cell input"/>
+        <element name="SelectFirstUser" type="text" selector="#iredeem_vendor_users_table tbody tr:first-child"/>
+    </section>
+    <section name="AdminVendorBatchExportSection">
+        <element name="IsEnabled" type="button" selector="div[data-index='batch_export_enabled'] .admin__actions-switch"/>
+        <element name="ShipmentStatusOnExport" type="select" selector="select[name='batch_export[batch_export_general][batch_export_shipment_status]']"/>
+        <element name="Schedule" type="input" selector="input[name='batch_export[batch_export_general][batch_export_schedule]']"/>
+        <element name="Destination" type="textarea" selector="textarea[name='batch_export[batch_export_general][batch_export_destination]']"/>
+        <element name="Headings" type="textarea" selector="textarea[name='batch_export[batch_export_general][batch_export_headings]']"/>
+        <element name="Values" type="textarea" selector="textarea[name='batch_export[batch_export_general][batch_export_values]']"/>
+    </section>
+    <section name="AdminVendorBatchImportSection">
+        <element name="Schedule" type="input" selector="input[name='batch_import[batch_import_general][batch_import_schedule]']"/>
+        <element name="SourceLocation" type="input" selector="input[name='batch_import[batch_import_general][batch_import_source]']"/>
+        <element name="Values" type="input" selector="input[name='batch_import[batch_import_general][batch_import_file_data]']"/>
+        <element name="Delimiter" type="input" selector="input[name='batch_import[batch_import_general][batch_import_delimiter]']"/>
+    </section>
+</sections>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/Page/etc/SectionObject.xsd">
+    <section name="AdminShippingRatesImportSection">
+        <element name="Vendor" type="select" selector="#import-form select[name='vendor_id']" timeout="30"/>
+        <element name="File" type="file" selector="input[name='shipping_rates_file']" timeout="30"/>
+        <element name="Submit" type="button" selector="button[title='Import']" timeout="30"/>
+    </section>
+</sections>

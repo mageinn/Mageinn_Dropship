@@ -1,16 +1,16 @@
 <?php
-namespace Mageinn\Vendor\Block\Adminhtml\Batch\View;
+namespace Iredeem\Vendor\Block\Adminhtml\Batch\View;
 
 /**
  * Class AbstractBatchDetails
- * @package Mageinn\Vendor\Block\Adminhtml\Batch\View
+ * @package Iredeem\Vendor\Block\Adminhtml\Batch\View
  */
 abstract class AbstractBatchDetails extends \Magento\Backend\Block\Template
 {
     /**
      * @var string
      */
-    protected $_template = 'Mageinn_Vendor::batch/view/details.phtml';
+    protected $_template = 'Iredeem_Vendor::batch/view/details.phtml';
 
     /**
      * @var \Magento\Backend\Block\Widget\Grid\Extended

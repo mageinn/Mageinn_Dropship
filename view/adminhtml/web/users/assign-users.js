@@ -27,7 +27,7 @@ define([
          */
         function registerVendorUser(grid, element, checked)
         {
-            if (checked) {
+            if (checked && element.value !== 'on') {
                 if (element.positionElement) {
                     element.positionElement.disabled = false;
                     vendorUsers.set(element.value, element.positionElement.value);
@@ -63,8 +63,8 @@ define([
 
             if (trElement) {
                 checkbox = Element.getElementsBySelector(trElement, 'input');
-
-                if (checkbox[0]) {
+                // 'on' value is from header checkbox and it was not ignored.
+                if (checkbox[0] && checkbox[0].value !== "on") {
                     checked = isInput ? checkbox[0].checked : !checkbox[0].checked;
                     gridJsObject.setCheckboxChecked(checkbox[0], checked);
                 }

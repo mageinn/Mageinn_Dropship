@@ -1,12 +1,12 @@
 <?php
-namespace Mageinn\Vendor\Model\ResourceModel\BatchRow;
+namespace Iredeem\Vendor\Model\ResourceModel\BatchRow;
 
 use \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 
 /**
  * Class Collection
  *
- * @package Mageinn\Vendor\Model\ResourceModel\BatchRow
+ * @package Iredeem\Vendor\Model\ResourceModel\BatchRow
  */
 class Collection extends AbstractCollection
 {
@@ -23,8 +23,8 @@ class Collection extends AbstractCollection
     protected function _construct()
     {
         $this->_init(
-            \Mageinn\Vendor\Model\BatchRow::class,
-            \Mageinn\Vendor\Model\ResourceModel\BatchRow::class
+            \Iredeem\Vendor\Model\BatchRow::class,
+            \Iredeem\Vendor\Model\ResourceModel\BatchRow::class
         );
         $this->_map['fields']['entity_id'] = 'main_table.entity_id';
     }

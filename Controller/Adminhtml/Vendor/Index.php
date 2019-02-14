@@ -1,5 +1,5 @@
 <?php
-namespace Mageinn\Vendor\Controller\Adminhtml\Vendor;
+namespace Iredeem\Vendor\Controller\Adminhtml\Vendor;
 
 use \Magento\Backend\App\Action;
 use \Magento\Backend\App\Action\Context;
@@ -7,7 +7,7 @@ use \Magento\Framework\View\Result\PageFactory;
 
 /**
  * Vendor Index Action
- * @package Mageinn\Vendor\Controller\Adminhtml\Vendor
+ * @package Iredeem\Vendor\Controller\Adminhtml\Vendor
  */
 class Index extends Action
 {
@@ -37,7 +37,7 @@ class Index extends Action
     {
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
-        $resultPage->setActiveMenu('Mageinn_Vendor::vendor_vendors');
+        $resultPage->setActiveMenu('Iredeem_Vendor::vendor_vendors');
         $resultPage->addBreadcrumb(__('Sales'), __('Sales'));
         $resultPage->addBreadcrumb(__('Vendor Portal'), __('Vendor Portal'));
         $resultPage->getConfig()->getTitle()->prepend(__('Vendor Portal'));

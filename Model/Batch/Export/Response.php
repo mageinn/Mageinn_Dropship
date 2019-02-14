@@ -1,11 +1,11 @@
 <?php
 
-namespace Mageinn\Vendor\Model\Batch\Export;
+namespace Iredeem\Vendor\Model\Batch\Export;
 
 /**
  * Class Response
  *
- * @package Mageinn\Vendor\Model\Batch\Export
+ * @package Iredeem\Vendor\Model\Batch\Export
  */
 class Response
 {

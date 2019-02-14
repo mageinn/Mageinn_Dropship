@@ -1,9 +1,9 @@
 <?php
-namespace Mageinn\Vendor\Model\Batch\Export\File;
+namespace Iredeem\Vendor\Model\Batch\Export\File;
 
 /**
  * Class Email
- * @package Mageinn\Vendor\Model\Batch\Export\File
+ * @package Iredeem\Vendor\Model\Batch\Export\File
  */
 class Email
 {
@@ -57,7 +57,7 @@ class Email
     protected $templateVars;
 
     /**
-     * @var \Mageinn\Vendor\Helper\Data
+     * @var \Iredeem\Vendor\Helper\Data
      */
     protected $vendorHelper;
 
@@ -73,11 +73,11 @@ class Email
 
     /**
      * Email constructor.
-     * @param \Mageinn\Vendor\Helper\Data $helper
+     * @param \Iredeem\Vendor\Helper\Data $helper
      * @param \Magento\Store\Model\StoreManagerInterface $manager
      */
     public function __construct(
-        \Mageinn\Vendor\Helper\Data $helper,
+        \Iredeem\Vendor\Helper\Data $helper,
         \Magento\Store\Model\StoreManagerInterface $manager
     ) {
         $this->vendorHelper = $helper;
@@ -351,7 +351,7 @@ class Email
     /**
      * Creates an email message based on the set components
      *
-     * @param \Mageinn\Vendor\Magento\Mail\Template\TransportBuilder $transportBuilder
+     * @param \Iredeem\Core\Magento\Mail\Template\TransportBuilder $transportBuilder
      * @param $contents
      * @return bool|\Magento\Framework\Mail\TransportInterface
      */

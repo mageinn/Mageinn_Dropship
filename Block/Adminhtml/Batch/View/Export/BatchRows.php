@@ -1,11 +1,11 @@
 <?php
-namespace Mageinn\Vendor\Block\Adminhtml\Batch\View\Export;
+namespace Iredeem\Vendor\Block\Adminhtml\Batch\View\Export;
 
 /**
  * Class DataRows
- * @package Mageinn\Vendor\Block\Adminhtml\Batch\View\Export
+ * @package Iredeem\Vendor\Block\Adminhtml\Batch\View\Export
  */
-class BatchRows extends \Mageinn\Vendor\Block\Adminhtml\Batch\View\AbstractBatchDetails
+class BatchRows extends \Iredeem\Vendor\Block\Adminhtml\Batch\View\AbstractBatchDetails
 {
 
     /**
@@ -16,9 +16,9 @@ class BatchRows extends \Mageinn\Vendor\Block\Adminhtml\Batch\View\AbstractBatch
      */
     public function getGrid()
     {
-        if (is_null($this->_grid)) {
+        if (null === $this->_grid) {
             $this->_grid = $this->getLayout()->createBlock(
-                \Mageinn\Vendor\Block\Adminhtml\Batch\View\Export\BatchRows\Grid::class,
+                \Iredeem\Vendor\Block\Adminhtml\Batch\View\Export\BatchRows\Grid::class,
                 'batches.data.rows'
             );
         }

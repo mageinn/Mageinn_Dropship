@@ -1,11 +1,12 @@
 <?php
-namespace Mageinn\Vendor\Model\Batch\Export;
+namespace Iredeem\Vendor\Model\Batch\Export;
 
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Mail\Template\TransportBuilder;
 
 /**
  * Class File
- * @package Mageinn\Vendor\Model\Batch\Export
+ * @package Iredeem\Vendor\Model\Batch\Export
  */
 class File extends \Magento\Framework\Filesystem\Io\File
 {
@@ -19,7 +20,10 @@ class File extends \Magento\Framework\Filesystem\Io\File
         '[YYYY]',
         '[YY]',
         '[MM]',
-        '[DD]'
+        '[DD]',
+        '[hh]',
+        '[mm]',
+        '[ss]',
     ];
 
     /**
@@ -38,7 +42,7 @@ class File extends \Magento\Framework\Filesystem\Io\File
     protected $emailSentToVendor;
 
     /**
-     * @var \Mageinn\Vendor\Magento\Mail\Template\TransportBuilder
+     * @var \Iredeem\Core\Magento\Mail\Template\TransportBuilder
      */
     protected $transportBuilder;
 
@@ -48,7 +52,7 @@ class File extends \Magento\Framework\Filesystem\Io\File
     protected $logger;
 
     /**
-     * @var \Mageinn\Vendor\Model\Batch\Export\File\Email
+     * @var \Iredeem\Vendor\Model\Batch\Export\File\Email
      */
     protected $email;
 
@@ -58,7 +62,7 @@ class File extends \Magento\Framework\Filesystem\Io\File
     protected $notes = [];
 
     /**
-     * @var \Mageinn\Vendor\Model\Batch\Export\File\Response
+     * @var \Iredeem\Vendor\Model\Batch\Export\File\Response
      */
     protected $response;
 
@@ -68,21 +72,28 @@ class File extends \Magento\Framework\Filesystem\Io\File
     protected $fileInfo;
 
     /**
+     * @var \Iredeem\Vendor\Helper\Data
+     */
+    protected $transfer;
+
+    /**
      * File constructor.
      * @param \Magento\Framework\Filesystem\DirectoryList $dir
-     * @param \Mageinn\Vendor\Magento\Mail\Template\TransportBuilder $builder
+     * @param \Iredeem\Core\Magento\Mail\Template\TransportBuilder $builder
      * @param \Psr\Log\LoggerInterface $logger
-     * @param \Mageinn\Vendor\Model\Batch\Export\File\Email $email
-     * @param \Mageinn\Vendor\Model\Batch\Export\File\Response $response
+     * @param \Iredeem\Vendor\Model\Batch\Export\File\Email $email
+     * @param \Iredeem\Vendor\Model\Batch\Export\File\Response $response
      * @param \Magento\Framework\Filesystem\Io\File $fileSystem
+     * @param \Iredeem\Vendor\Model\Batch\Handler\Transfer $transfer
      */
     public function __construct(
         \Magento\Framework\Filesystem\DirectoryList $dir,
-        \Mageinn\Vendor\Magento\Mail\Template\TransportBuilder $builder,
+        TransportBuilder $builder,
         \Psr\Log\LoggerInterface $logger,
-        \Mageinn\Vendor\Model\Batch\Export\File\Email $email,
-        \Mageinn\Vendor\Model\Batch\Export\File\Response $response,
-        \Magento\Framework\Filesystem\Io\File $fileSystem
+        \Iredeem\Vendor\Model\Batch\Export\File\Email $email,
+        \Iredeem\Vendor\Model\Batch\Export\File\Response $response,
+        \Magento\Framework\Filesystem\Io\File $fileSystem,
+        \Iredeem\Vendor\Model\Batch\Handler\Transfer $transfer
     ) {
         $this->dir = $dir;
         $this->transportBuilder = $builder;
@@ -90,6 +101,7 @@ class File extends \Magento\Framework\Filesystem\Io\File
         $this->email = $email;
         $this->response = $response;
         $this->fileInfo = $fileSystem;
+        $this->transfer = $transfer;
     }
 
     /**
@@ -97,26 +109,21 @@ class File extends \Magento\Framework\Filesystem\Io\File
      *
      * @param $contents
      * @param $vendor
-     * @return \Mageinn\Vendor\Model\Batch\Export\File\Response
+     * @return \Iredeem\Vendor\Model\Batch\Export\File\Response
      * @throws \Exception
      */
     public function handle($contents, $vendor)
     {
-        $this->dateValues = [
-            date('Y'),
-            date('y'),
-            date('m'),
-            date('d'),
-        ];
-
         $this->emailSentToVendor = false;
         $this->notes = [];
         $uniqueDestinations = explode(PHP_EOL, $vendor->getBatchExportDestination());
         foreach ($uniqueDestinations as $destination) {
-            // Replace the placeholders with the date values
-            $path = str_replace($this->datePlaceholders, $this->dateValues, $destination);
+            $path = $this->getDestinationPath($destination);
             $isMail = $this->_isMail($path);
-            if ($isMail) {
+            $isSftp = $this->transfer->isSftp($path);
+            if ($isSftp) {
+                $this->transfer->createFileOnRemoteServer($isSftp, $vendor->getBatchExportPrivateKey(), $contents);
+            } elseif ($isMail) {
                 $this->_sendEmail($vendor, $contents, $isMail);
             } else {
                 $this->_createFileOnServer($contents, $path);
@@ -134,6 +141,27 @@ class File extends \Magento\Framework\Filesystem\Io\File
         $this->response->setNotes($this->notes);
 
         return $this->response;
+    }
+
+    /**
+     * Replace the placeholders with the date values
+     *
+     * @param string $destination
+     * @return string
+     */
+    protected function getDestinationPath($destination)
+    {
+        $this->dateValues = [
+            date('Y'),
+            date('y'),
+            date('m'),
+            date('d'),
+            date('h'),
+            date('i'),
+            date('s'),
+        ];
+
+        return str_replace($this->datePlaceholders, $this->dateValues, $destination);
     }
 
     /**

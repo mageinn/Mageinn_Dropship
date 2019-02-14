@@ -1,9 +1,9 @@
 <?php
-namespace Mageinn\Vendor\Magento\Mail\Template;
+namespace Mageinn\Dropship\Magento\Mail\Template;
 
 /**
  * Class TransportBuilder
- * @package Mageinn\Vendor\Magento\Mail\Template
+ * @package Mageinn\Dropship\Magento\Mail\Template
  */
 class TransportBuilder extends \Magento\Framework\Mail\Template\TransportBuilder
 {

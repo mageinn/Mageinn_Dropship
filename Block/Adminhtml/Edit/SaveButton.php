@@ -1,5 +1,5 @@
 <?php
-namespace Mageinn\Vendor\Block\Adminhtml\Edit;
+namespace Iredeem\Vendor\Block\Adminhtml\Edit;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 

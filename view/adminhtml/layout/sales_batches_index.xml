@@ -4,7 +4,7 @@
     <update handle="styles"/>
     <body>
         <referenceContainer name="content">
-            <uiComponent name="mageinn_batches_grid"/>
+            <uiComponent name="iredeem_batches_grid"/>
         </referenceContainer>
     </body>
 </page>

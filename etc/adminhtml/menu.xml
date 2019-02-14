@@ -2,16 +2,15 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Mageinn_Core::dropship" title="Mageinn Dropship" module="Mageinn_Vendor" sortOrder="11" action="admin/system_config/edit/section/dropship/" resource="Mageinn_Vendor::config" parent="Mageinn_Core::mageinnmenu"/>
-
-        <add id="Mageinn_Vendor::vendor" title="Dropship" translate="title" module="Mageinn_Vendor"
-             sortOrder="20" parent="Magento_Sales::sales" resource="Mageinn_Vendor::dropship"
+        <add id="Iredeem_Vendor::vendor" title="Dropship" translate="title" module="Iredeem_Vendor"
+             sortOrder="20" parent="Magento_Sales::sales" resource="Iredeem_Vendor::dropship"
              dependsOnModule="Magento_Sales" />
-        <add id="Mageinn_Vendor::vendor_vendors" title="Vendors" translate="title" module="Mageinn_Vendor" sortOrder="100"
-             parent="Mageinn_Vendor::vendor" action="sales/vendor" resource="Mageinn_Vendor::vendors"/>
-        <add id="Mageinn_Vendor::vendor_batches" title="Batches" translate="title" module="Mageinn_Vendor" sortOrder="200"
-             parent="Mageinn_Vendor::vendor" action="sales/batches" resource="Mageinn_Vendor::vendors"/>
-        <add id="Mageinn_Vendor::vendor_shipping_rates" title="Shipping Rates" translate="title" module="Mageinn_Vendor" sortOrder="300"
-             parent="Mageinn_Vendor::vendor" action="sales/shippingRates" resource="Mageinn_Vendor::vendors"/>
+        <add id="Iredeem_Vendor::vendor_vendors" title="Vendors" translate="title" module="Iredeem_Vendor" sortOrder="100"
+             parent="Iredeem_Vendor::vendor" action="sales/vendor" resource="Iredeem_Vendor::vendors"/>
+        <add id="Iredeem_Vendor::vendor_batches" title="Batches" translate="title" module="Iredeem_Vendor" sortOrder="200"
+             parent="Iredeem_Vendor::vendor" action="sales/batches" resource="Iredeem_Vendor::vendors"/>
+
+        <add id="Iredeem_Vendor::vendor_stock" title="Products Stock" translate="title" module="Iredeem_Vendor" sortOrder="201"
+             parent="Iredeem_Vendor::vendor" action="product/stock" resource="Iredeem_Vendor::product_stock"/>
     </menu>
 </config>

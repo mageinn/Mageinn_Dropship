@@ -1,12 +1,12 @@
 <?php
-namespace Mageinn\Vendor\Setup;
+namespace Iredeem\Vendor\Setup;
 
 use \Magento\Framework\DB\Ddl\Table;
 use \Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
-use Mageinn\Vendor\Model\Info;
+use Iredeem\Vendor\Model\Info;
 
 /**
  * @codeCoverageIgnore
@@ -25,7 +25,7 @@ class InstallSchema implements InstallSchemaInterface
         $installer->startSetup();
 
         /**
-         * Create table 'mageinn_vendor_information'
+         * Create table 'iredeem_vendor_information'
          */
         if (!$installer->tableExists(Info::VENDOR_INFO_TABLE)) {
             $table = $installer->getConnection()

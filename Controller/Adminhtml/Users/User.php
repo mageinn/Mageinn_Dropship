@@ -1,6 +1,6 @@
 <?php
 
-namespace Mageinn\Vendor\Controller\Adminhtml\Users;
+namespace Iredeem\Vendor\Controller\Adminhtml\Users;
 
 abstract class User extends \Magento\Backend\App\Action
 {
@@ -9,5 +9,5 @@ abstract class User extends \Magento\Backend\App\Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Mageinn_Vendor::user_list';
+    const ADMIN_RESOURCE = 'Iredeem_Vendor::user_list';
 }

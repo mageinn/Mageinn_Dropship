@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/Test/etc/testSchema.xsd">
+    <test name="AdminShippingRatesExport">
+        <annotations>
+            <features value="Export Shipping Rates"/>
+            <stories value="Export Shipping Rates"/>
+            <title value="Export Shipping Rates happy flow"/>
+            <description value="Export Shipping Rates happy flow"/>
+            <group value="iredeem"/>
+            <group value="shippingRates"/>
+        </annotations>
+        <before>
+            <actionGroup ref="LoginAsAdmin" stepKey="loginAsAdmin"/>
+        </before>
+
+        <actionGroup ref="ImportShippingRates" stepKey="importShippingRates"/>
+
+        <selectOption selector="{{AdminShippingRatesExportSection.Vendor}}" userInput="{{ShippingRatesExport.vendor}}" stepKey="selectVendor"/>
+        <click selector="{{AdminShippingRatesExportSection.Submit}}" stepKey="submit"/>
+        <dontSee selector="{{AdminShippingRatesMessagesSection.ErrorMessage}}" stepKey="assertNotError"/>
+    </test>
+</tests>

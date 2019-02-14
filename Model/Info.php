@@ -1,19 +1,19 @@
 <?php
-namespace Mageinn\Vendor\Model;
+namespace Iredeem\Vendor\Model;
 
 use \Magento\Framework\Model\AbstractModel;
-use \Mageinn\Vendor\Model\ResourceModel\Info as ResourceModelInfo;
+use \Iredeem\Vendor\Model\ResourceModel\Info as ResourceModelInfo;
 
 /**
  * Class Info
- * @package Mageinn\Vendor\Model
+ * @package Iredeem\Vendor\Model
  */
 class Info extends AbstractModel
 {
     /**#@+
      * Table
      */
-    const VENDOR_INFO_TABLE = 'mageinn_vendor_information';
+    const VENDOR_INFO_TABLE = 'iredeem_vendor_information';
     /**#@-*/
 
     /**#@+

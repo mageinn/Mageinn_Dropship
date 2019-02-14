@@ -1,11 +1,11 @@
 <?php
-namespace Mageinn\Vendor\Block\Adminhtml\Batch\View\AbstractBatchRows;
+namespace Iredeem\Vendor\Block\Adminhtml\Batch\View\AbstractBatchRows;
 
-use Mageinn\Vendor\Model\ResourceModel\BatchRow\CollectionFactory;
+use Iredeem\Vendor\Model\ResourceModel\BatchRow\CollectionFactory;
 
 /**
  * Class Grid
- * @package Mageinn\Vendor\Block\Adminhtml\Batch\View\AbstractBatchRows
+ * @package Iredeem\Vendor\Block\Adminhtml\Batch\View\AbstractBatchRows
  */
 abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
 {
@@ -45,17 +45,17 @@ abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     protected function _construct()
     {
         parent::_construct();
-        $this->setId('mageinn_batch_data_rows');
+        $this->setId('iredeem_batch_data_rows');
         $this->setDefaultSort('entity_id');
         $this->setUseAjax(true);
     }
 
     /**
-     * @return \Mageinn\Vendor\Model\Batch|null
+     * @return \Iredeem\Vendor\Model\Batch|null
      */
     public function getBatch()
     {
-        return $this->_registry->registry('mageinn_batch');
+        return $this->_registry->registry('iredeem_batch');
     }
 
     /**

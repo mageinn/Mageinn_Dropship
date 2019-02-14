@@ -1,5 +1,5 @@
 <?php
-namespace Mageinn\Vendor\Controller\Adminhtml\Vendor;
+namespace Iredeem\Vendor\Controller\Adminhtml\Vendor;
 
 use \Magento\Backend\App\Action;
 use \Magento\Backend\App\Action\Context;
@@ -7,7 +7,7 @@ use \Magento\Backend\Model\View\Result\ForwardFactory;
 
 /**
  * Vendor Index Action
- * @package Mageinn\Vendor\Controller\Adminhtml\Vendor
+ * @package Iredeem\Vendor\Controller\Adminhtml\Vendor
  */
 class NewAction extends Action
 {

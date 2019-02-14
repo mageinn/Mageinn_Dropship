@@ -1,12 +1,12 @@
 <?php
-namespace Mageinn\Vendor\Model\Source;
+namespace Iredeem\Vendor\Model\Source;
 
 use \Magento\Framework\Data\OptionSourceInterface;
 
 /**
  * Class ShipmentStatus Source.
  *
- * @package Mageinn\Vendor\Model\Source
+ * @package Iredeem\Vendor\Model\Source
  */
 class ShipmentStatus implements OptionSourceInterface
 {

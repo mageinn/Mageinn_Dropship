@@ -1,15 +1,15 @@
 <?php
-namespace Mageinn\Vendor\Controller\Adminhtml\Vendor;
+namespace Iredeem\Vendor\Controller\Adminhtml\Vendor;
 
 use \Magento\Backend\App\Action;
 use \Magento\Backend\App\Action\Context;
 use \Magento\Framework\Registry;
-use \Mageinn\Vendor\Model\Info;
+use \Iredeem\Vendor\Model\Info;
 
 /**
  * Class Delete
  *
- * @package Mageinn\Vendor\Controller\Adminhtml\Vendor
+ * @package Iredeem\Vendor\Controller\Adminhtml\Vendor
  */
 class Delete extends Action
 {

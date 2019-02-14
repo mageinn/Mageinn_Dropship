@@ -1,5 +1,5 @@
 <?php
-namespace Mageinn\Vendor\Ui\Component\Listing\Column;
+namespace Iredeem\Vendor\Ui\Component\Listing\Column;
 
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
@@ -7,21 +7,21 @@ use Magento\Ui\Component\Listing\Columns\Column;
 
 class Vendor extends Column
 {
-    /** @var \Mageinn\Vendor\Model\Info  */
+    /** @var \Iredeem\Vendor\Model\Info  */
     protected $_vendor;
 
     /**
      * Vendor constructor.
      * @param ContextInterface $context
      * @param UiComponentFactory $uiComponentFactory
-     * @param \Mageinn\Vendor\Model\Info $vendor
+     * @param \Iredeem\Vendor\Model\Info $vendor
      * @param array $components
      * @param array $data
      */
     public function __construct(
         ContextInterface $context,
         UiComponentFactory $uiComponentFactory,
-        \Mageinn\Vendor\Model\Info $vendor,
+        \Iredeem\Vendor\Model\Info $vendor,
         array $components = [],
         array $data = []
     ) {

@@ -1,20 +1,20 @@
 <?php
 
-namespace Mageinn\Vendor\Block\Adminhtml\Users\Edit;
+namespace Iredeem\Vendor\Block\Adminhtml\Users\Edit;
 
 /**
  * Class Stock
- * @package Mageinn\Vendor\Block\Adminhtml\Edit\
+ * @package Iredeem\Vendor\Block\Adminhtml\Edit\
  */
 class AssignUser extends \Magento\Backend\Block\Template
 {
     /**
      * @var string
      */
-    protected $_template = 'Mageinn_Vendor::vendor/assign_user.phtml';
+    protected $_template = 'Iredeem_Vendor::vendor/assign_user.phtml';
 
     /**
-     * @var \Mageinn\Vendor\Block\Adminhtml\Users\Edit\Tab\User
+     * @var \Iredeem\Vendor\Block\Adminhtml\Users\Edit\Tab\User
      */
     protected $blockGrid;
 
@@ -64,7 +64,7 @@ class AssignUser extends \Magento\Backend\Block\Template
     {
         if (null === $this->blockGrid) {
             $this->blockGrid = $this->getLayout()->createBlock(
-                \Mageinn\Vendor\Block\Adminhtml\Users\Edit\Tab\User::class,
+                \Iredeem\Vendor\Block\Adminhtml\Users\Edit\Tab\User::class,
                 'vendor.user.grid'
             );
         }
@@ -113,6 +113,6 @@ class AssignUser extends \Magento\Backend\Block\Template
      */
     public function getVendor()
     {
-        return $this->registry->registry('mageinn_vendor');
+        return $this->registry->registry('iredeem_vendor');
     }
 }

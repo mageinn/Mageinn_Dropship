@@ -1,17 +1,15 @@
 <?php
-namespace Mageinn\Vendor\Setup;
+namespace Iredeem\Vendor\Setup;
 
-use Mageinn\Vendor\Model\Region;
-use Mageinn\Vendor\Model\ShippingRate;
 use \Magento\Framework\DB\Ddl\Table;
 use \Magento\Framework\DB\Adapter\AdapterInterface;
 use \Magento\Framework\Setup\UpgradeSchemaInterface;
 use \Magento\Framework\Setup\ModuleContextInterface;
 use \Magento\Framework\Setup\SchemaSetupInterface;
-use \Mageinn\Vendor\Model\Info;
-use \Mageinn\Vendor\Model\Address;
-use \Mageinn\Vendor\Model\Batch;
-use \Mageinn\Vendor\Model\BatchRow;
+use \Iredeem\Vendor\Model\Info;
+use \Iredeem\Vendor\Model\Address;
+use \Iredeem\Vendor\Model\Batch;
+use \Iredeem\Vendor\Model\BatchRow;
 
 /**
  * @codeCoverageIgnore
@@ -43,7 +41,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
 
         if (version_compare($context->getVersion(), '0.0.3') < 0) {
             /**
-             * Create table 'mageinn_vendor_address'
+             * Create table 'iredeem_vendor_address'
              */
             if (!$setup->tableExists(Address::VENDOR_ADDRESS_TABLE)) {
                 $table = $setup->getConnection()
@@ -369,7 +367,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
 
         if (version_compare($context->getVersion(), '0.0.10') < 0) {
             /**
-             * Create table 'mageinn_dropship_batch'
+             * Create table 'iredeem_dropship_batch'
              */
             if (!$setup->tableExists(Batch::TABLE_DROPSHIP_BATCH)) {
                 $table = $setup->getConnection()
@@ -489,16 +487,16 @@ class UpgradeSchema implements UpgradeSchemaInterface
         // Need to change the types of the columns to simple text because there is the possibility
         // that the export file of the error may contain more than 255 chars
         if (version_compare($context->getVersion(), '0.0.13') < 0) {
-            if ($setup->tableExists('mageinn_dropship_batch')) {
+            if ($setup->tableExists('iredeem_dropship_batch')) {
                 $setup->getConnection()->modifyColumn(
-                    $setup->getTable('mageinn_dropship_batch'),
+                    $setup->getTable('iredeem_dropship_batch'),
                     'rows_text',
                     [
                         'type' => Table::TYPE_TEXT,
                         'comment' => 'Rows Text'
                     ]
                 )->modifyColumn(
-                    $setup->getTable('mageinn_dropship_batch'),
+                    $setup->getTable('iredeem_dropship_batch'),
                     'error_info',
                     [
                         'type' => Table::TYPE_TEXT,
@@ -525,7 +523,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
 
         if (version_compare($context->getVersion(), '0.0.15') < 0) {
             /**
-             * Create table 'mageinn_dropship_batch_row'
+             * Create table 'iredeem_dropship_batch_row'
              */
             if (!$setup->tableExists(BatchRow::TABLE_DROPSHIP_BATCH_ROW)) {
                 $table = $setup->getConnection()
@@ -679,7 +677,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
         }
 
         if (version_compare($context->getVersion(), '0.0.17') < 0) {
-            if ($setup->tableExists('mageinn_dropship_batch')) {
+            if ($setup->tableExists('iredeem_dropship_batch')) {
                 $setup->getConnection()->modifyColumn(
                     $setup->getTable('admin_user'),
                     'assoc_vendor_id',
@@ -691,82 +689,23 @@ class UpgradeSchema implements UpgradeSchemaInterface
             }
         }
 
-        if (version_compare($context->getVersion(), '0.0.18') < 0) {
-            if (!$setup->tableExists(Region::REGIONS_TABLE)) {
-                $table = $setup->getConnection()
-                    ->newTable($setup->getTable(Region::REGIONS_TABLE))
-                    ->addColumn(
-                        'entity_id',
-                        Table::TYPE_INTEGER,
-                        null,
-                        ['identity' => true, 'unsigned' => true, 'nullable' => false, 'primary' => true]
-                    )->addColumn(
-                        Region::REGION_DATA_NAME,
-                        Table::TYPE_TEXT,
-                        50,
-                        ['nullable' => false]
-                    )->addColumn(
-                        Region::REGION_DATA_COUNTRY,
-                        Table::TYPE_TEXT,
-                        50,
-                        ['nullable' => false]
-                    )->addColumn(
-                        Region::REGION_DATA_CODE,
-                        Table::TYPE_TEXT,
-                        3,
-                        ['nullable' => false]
-                    );
+        if (version_compare($context->getVersion(), '0.0.32') < 0) {
+            if ($setup->tableExists(Info::VENDOR_INFO_TABLE)) {
+                $tableName = $setup->getTable(Info::VENDOR_INFO_TABLE);
+                $connection = $setup->getConnection();
 
-                $setup->getConnection()->createTable($table);
-            }
+                $columns = [
+                    'batch_export_private_key' => [
+                        'type' => Table::TYPE_TEXT,
+                        'nullable' => true,
+                        'default' => '',
+                        'comment' => 'Batch SFTP Private Key'
+                    ]
+                ];
 
-            if (!$setup->tableExists(ShippingRate::SHIPPING_RATES_TABLE)) {
-                $table = $setup->getConnection()
-                    ->newTable($setup->getTable(ShippingRate::SHIPPING_RATES_TABLE))
-                    ->addColumn(
-                        'entity_id',
-                        Table::TYPE_INTEGER,
-                        null,
-                        ['identity' => true, 'unsigned' => true, 'nullable' => false, 'primary' => true]
-                    )->addColumn(
-                        ShippingRate::SHIPPING_RATE_DATA_VENDOR_ID,
-                        Table::TYPE_SMALLINT,
-                        null,
-                        ['unsigned' => true, 'nullable' => false]
-                    )->addColumn(
-                        ShippingRate::SHIPPING_RATE_DATA_COUNTRY,
-                        Table::TYPE_TEXT,
-                        50, // Full region country name.
-                        ['nullable' => false]
-                    )->addColumn(
-                        ShippingRate::SHIPPING_RATE_DATA_GROUP,
-                        Table::TYPE_TEXT,
-                        50,
-                        ['nullable' => false]
-                    )->addColumn(
-                        ShippingRate::SHIPPING_RATE_DATA_DELIVERY,
-                        Table::TYPE_FLOAT,
-                        null,
-                        ['nullable' => false]
-                    )->addColumn(
-                        ShippingRate::SHIPPING_RATE_DATA_PRICE,
-                        Table::TYPE_FLOAT,
-                        null,
-                        ['nullable' => false]
-                    )->addForeignKey(
-                        $setup->getFkName(
-                            ShippingRate::SHIPPING_RATES_TABLE,
-                            'entity_id',
-                            Info::VENDOR_INFO_TABLE,
-                            'entity_id'
-                        ),
-                        'vendor_id',
-                        $setup->getTable(Info::VENDOR_INFO_TABLE),
-                        'entity_id',
-                        Table::ACTION_CASCADE
-                    );
-
-                $setup->getConnection()->createTable($table);
+                foreach ($columns as $columnName => $columnData) {
+                    $connection->addColumn($tableName, $columnName, $columnData);
+                }
             }
         }
 

@@ -1,5 +1,5 @@
 <?php
-namespace Mageinn\Vendor\Model\Source;
+namespace Iredeem\Vendor\Model\Source;
 
 use \Magento\Sales\Model\Config\Source\Order\Status;
 

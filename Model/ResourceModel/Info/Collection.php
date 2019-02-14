@@ -1,14 +1,14 @@
 <?php
-namespace Mageinn\Vendor\Model\ResourceModel\Info;
+namespace Iredeem\Vendor\Model\ResourceModel\Info;
 
 use \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
-use \Mageinn\Vendor\Model\Info;
-use \Mageinn\Vendor\Model\ResourceModel\Info as ResourceModelInfo;
+use \Iredeem\Vendor\Model\Info;
+use \Iredeem\Vendor\Model\ResourceModel\Info as ResourceModelInfo;
 
 /**
  * Class Collection
  *
- * @package Mageinn\Vendor\Model\ResourceModel\Info
+ * @package Iredeem\Vendor\Model\ResourceModel\Info
  */
 class Collection extends AbstractCollection
 {

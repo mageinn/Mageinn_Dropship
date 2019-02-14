@@ -1,7 +1,7 @@
 <?php
-namespace Mageinn\Vendor\Ui\Component\Listing\Column;
+namespace Iredeem\Vendor\Ui\Component\Listing\Column;
 
-use Mageinn\Vendor\Model\Source\ShipmentStatus as ShipmentStatusSource;
+use Iredeem\Vendor\Model\Source\ShipmentStatus as ShipmentStatusSource;
 use Magento\Ui\Component\Listing\Columns\Column;
 
 class ShipmentStatus extends Column

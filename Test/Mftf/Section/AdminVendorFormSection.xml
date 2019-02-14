@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/Page/etc/SectionObject.xsd">
+    <section name="AdminVendorFormActionsSection">
+        <element name="AddVendorSave" type="button" selector="#save" timeout="30"/>
+        <element name="AddVendorSaveAndContinue" type="button" selector="#save_and_continue" timeout="30"/>
+        <element name="DeleteVendor" type="button" selector="#delete" timeout="30"/>
+        <element name="Back" type="button" selector="#back" timeout="30"/>
+        <element name="VendorDeleteConfirmOK" type="button" selector="._show .action-accept" timeout="30"/>
+        <element name="VendorDeleteConfirmCancel" type="button" selector="._show .action-dismiss" timeout="30"/>
+        <element name="AddVendorSettingsTab" type="button" selector="#tab_vendor_settings" timeout="30"/>
+        <element name="AddVendorAddress" type="button" selector="#tab_vendor_address" timeout="30"/>
+        <element name="AddVendorAdminUsers" type="button" selector="#tab_vendor_users" timeout="30"/>
+        <element name="AddVendorBatchExport" type="button" selector="#tab_batch_export" timeout="30"/>
+        <element name="AddVendorBatchImport" type="button" selector="#tab_batch_import" timeout="30"/>
+    </section>
+    <section name="AdminVendorFormFieldsTitles">
+        <element name="AddVendorSettings" type="button" selector=".settings" timeout="30"/>
+        <element name="AddVendorBillingAddress" type="button" selector=".billing-address" timeout="30"/>
+        <element name="AddVendorShippingAddress" type="button" selector=".shipping-address" timeout="30"/>
+        <element name="AddVendorUsers" type="button" selector=".vendor-users" timeout="30"/>
+        <element name="AddVendorBatchExportTitle" type="button" selector=".batch-export" timeout="30"/>
+        <element name="AddVendorBatchImportTitle" type="button" selector=".batch-import" timeout="30"/>
+        <element name="VendorTitle" type="text" selector=".page-title" timeout="30"/>
+    </section>
+</sections>

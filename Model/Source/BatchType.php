@@ -1,16 +1,16 @@
 <?php
-namespace Mageinn\Vendor\Model\Source;
+namespace Iredeem\Vendor\Model\Source;
 
 use \Magento\Framework\Data\OptionSourceInterface;
 
 /**
  * Class BatchType
- * @package Mageinn\Vendor\Model\Source
+ * @package Iredeem\Vendor\Model\Source
  */
 class BatchType implements OptionSourceInterface
 {
-    const MAGEINN_VENDOR_BATCH_TYPE_EXPORT = 'orders_export';
-    const MAGEINN_VENDOR_BATCH_TYPE_IMPORT = 'orders_import';
+    const IREDEEM_VENDOR_BATCH_TYPE_EXPORT = 'orders_export';
+    const IREDEEM_VENDOR_BATCH_TYPE_IMPORT = 'orders_import';
 
     /**
      * @return array
@@ -18,8 +18,8 @@ class BatchType implements OptionSourceInterface
     public function toOptionArray()
     {
         return [
-            ['value' => self::MAGEINN_VENDOR_BATCH_TYPE_IMPORT, 'label' => __('Import')],
-            ['value' => self::MAGEINN_VENDOR_BATCH_TYPE_EXPORT, 'label' => __('Export')],
+            ['value' => self::IREDEEM_VENDOR_BATCH_TYPE_IMPORT, 'label' => __('Import')],
+            ['value' => self::IREDEEM_VENDOR_BATCH_TYPE_EXPORT, 'label' => __('Export')],
         ];
     }
 }

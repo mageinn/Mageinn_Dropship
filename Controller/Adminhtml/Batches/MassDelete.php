@@ -1,10 +1,10 @@
 <?php
-namespace Mageinn\Vendor\Controller\Adminhtml\Batches;
+namespace Iredeem\Vendor\Controller\Adminhtml\Batches;
 
 use Magento\Backend\App\Action\Context;
 use Magento\Ui\Component\MassAction\Filter;
 use Magento\Framework\Controller\ResultFactory;
-use Mageinn\Vendor\Model\ResourceModel\Batch\CollectionFactory;
+use Iredeem\Vendor\Model\ResourceModel\Batch\CollectionFactory;
 
 class MassDelete extends \Magento\Backend\App\Action
 {
@@ -44,7 +44,7 @@ class MassDelete extends \Magento\Backend\App\Action
         try {
             $collection = $this->filter->getCollection($this->collectionFactory->create());
 
-            /** @var \Mageinn\Vendor\Model\Batch $item */
+            /** @var \Iredeem\Vendor\Model\Batch $item */
             foreach ($collection as $item) {
                 // @codingStandardsIgnoreStart
                 $item->delete();

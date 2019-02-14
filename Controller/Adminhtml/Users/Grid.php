@@ -1,7 +1,7 @@
 <?php
-namespace Mageinn\Vendor\Controller\Adminhtml\Users;
+namespace Iredeem\Vendor\Controller\Adminhtml\Users;
 
-class Grid extends \Mageinn\Vendor\Controller\Adminhtml\Users\User
+class Grid extends \Iredeem\Vendor\Controller\Adminhtml\Users\User
 {
     /**
      * @var \Magento\Framework\Controller\Result\RawFactory
@@ -14,7 +14,7 @@ class Grid extends \Mageinn\Vendor\Controller\Adminhtml\Users\User
     protected $layoutFactory;
 
     /**
-     * @var \Mageinn\Vendor\Model\Info
+     * @var \Iredeem\Vendor\Model\Info
      */
     protected $vendorModel;
 
@@ -28,14 +28,14 @@ class Grid extends \Mageinn\Vendor\Controller\Adminhtml\Users\User
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magento\Framework\Controller\Result\RawFactory $resultRawFactory
      * @param \Magento\Framework\View\LayoutFactory $layoutFactory
-     * @param \Mageinn\Vendor\Model\Info $vendorModel
+     * @param \Iredeem\Vendor\Model\Info $vendorModel
      * @param \Magento\Framework\Registry $registry
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\Controller\Result\RawFactory $resultRawFactory,
         \Magento\Framework\View\LayoutFactory $layoutFactory,
-        \Mageinn\Vendor\Model\Info $vendorModel,
+        \Iredeem\Vendor\Model\Info $vendorModel,
         \Magento\Framework\Registry $registry
     ) {
         parent::__construct($context);
@@ -63,7 +63,7 @@ class Grid extends \Mageinn\Vendor\Controller\Adminhtml\Users\User
 
         return $resultRaw->setContents(
             $this->layoutFactory->create()->createBlock(
-                'Mageinn\Vendor\Block\Adminhtml\Users\Edit\Tab\User',
+                'Iredeem\Vendor\Block\Adminhtml\Users\Edit\Tab\User',
                 'vendor.user.grid'
             )->toHtml()
         );
@@ -81,7 +81,7 @@ class Grid extends \Mageinn\Vendor\Controller\Adminhtml\Users\User
             $myModel->load($id);
         }
 
-        $this->registry->register('mageinn_vendor', $myModel);
+        $this->registry->register('iredeem_vendor', $myModel);
 
         return $myModel;
     }

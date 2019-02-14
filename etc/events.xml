@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="sales_quote_item_set_product">
-        <observer name="quote_mageinn_vendor_id" instance="Mageinn\Vendor\Observer\QuoteVendor"/>
+        <observer name="quote_iredeem_vendor_id" instance="Iredeem\Vendor\Observer\QuoteVendor"/>
     </event>
     <event name="checkout_submit_all_after">
-        <observer name="mageinn_vendor_checkout_submit_all_after" instance="Mageinn\Vendor\Observer\AutomaticShipment"/>
+        <observer name="iredeem_vendor_checkout_submit_all_after" instance="Iredeem\Vendor\Observer\AutomaticShipment"/>
     </event>
     <event name="sales_order_shipment_save_after">
-        <observer name="mageinn_vendor_shipment_save" instance="Mageinn\Vendor\Observer\ShipmentEmail"/>
-    </event>
-    <event name="catalog_block_product_list_collection">
-        <observer name="delivery_country" instance="Mageinn\Vendor\Observer\ProductListDeliveryCountry" shared="true" />
-    </event>
-    <event name="catalog_product_save_before">
-        <observer name="mageinn_vendor_product_delivery_country_save" instance="Mageinn\Vendor\Observer\ProductDeliveryCountry"/>
+        <observer name="iredeem_vendor_shipment_save" instance="Iredeem\Vendor\Observer\ShipmentEmail"/>
     </event>
 </config>

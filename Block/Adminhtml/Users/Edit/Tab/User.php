@@ -1,6 +1,6 @@
 <?php
 
-namespace Mageinn\Vendor\Block\Adminhtml\Users\Edit\Tab;
+namespace Iredeem\Vendor\Block\Adminhtml\Users\Edit\Tab;
 
 use Magento\Backend\Block\Template\Context;
 use Magento\Backend\Block\Widget\Grid;
@@ -14,7 +14,7 @@ use Magento\User\Model\UserFactory;
 
 /**
  * Class Stock
- * @package Mageinn\Vendor\Block\Adminhtml\Edit\Tab
+ * @package Iredeem\Vendor\Block\Adminhtml\Edit\Tab
  */
 class User extends Extended
 {
@@ -64,7 +64,7 @@ class User extends Extended
     protected function _construct()
     {
         parent::_construct();
-        $this->setId('mageinn_vendor_users');
+        $this->setId('iredeem_vendor_users');
         $this->setDefaultSort('user_id');
         $this->setUseAjax(true);
     }
@@ -74,7 +74,7 @@ class User extends Extended
      */
     public function getVendor()
     {
-        return $this->coreRegistry->registry('mageinn_vendor');
+        return $this->coreRegistry->registry('iredeem_vendor');
     }
 
     /**
@@ -110,14 +110,21 @@ class User extends Extended
             $this->setDefaultFilter(['associated_user' => 1]);
         }
 
-        $collection = $this->userCollectionFactory->create()
-            ->addFieldToSelect('user_id')
-            ->addFieldToSelect('username')
-            ->addFieldToSelect('firstname')
-            ->addFieldToSelect('lastname')
-            ->addFieldToSelect('email')
-            ->addFieldToSelect('is_active')
-            ->addFieldToSelect('assoc_vendor_id');
+        $collection = $this->userCollectionFactory->create()->addFieldToSelect(
+            'user_id'
+        )->addFieldToSelect(
+            'username'
+        )->addFieldToSelect(
+            'firstname'
+        )->addFieldToSelect(
+            'lastname'
+        )->addFieldToSelect(
+            'email'
+        )->addFieldToSelect(
+            'is_active'
+        )->addFieldToSelect(
+            'assoc_vendor_id'
+        );
 
         $this->setCollection($collection);
 
@@ -183,7 +190,7 @@ class User extends Extended
     {
         $users = $this->getRequest()->getPost('selected_users');
 
-        if (is_null($users) && $this->getVendor()->getId()) {
+        if ($users === null && $this->getVendor()->getId()) {
             $vUsers = $this->userCollectionFactory->create()
                 ->addFieldToFilter('assoc_vendor_id', [
                     'like' => '%"' . $this->getVendor()->getId() . '"%'

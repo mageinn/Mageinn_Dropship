@@ -1,5 +1,5 @@
 <?php
-namespace Mageinn\Vendor\Model\Batch;
+namespace Iredeem\Vendor\Model\Batch;
 
 use \Magento\Framework\Model\AbstractModel;
 use \Magento\Framework\Exception\LocalizedException;
@@ -7,7 +7,7 @@ use \Magento\Framework\Exception\LocalizedException;
 /**
  * Class Import
  *
- * @package Mageinn\Vendor\Model\Batch
+ * @package Iredeem\Vendor\Model\Batch
  * @method Import setBatchRowError($flag)
  * @method Import getBatchRowError()
  * @method Import setBatchRows($data)
@@ -145,7 +145,9 @@ class Import extends AbstractModel
 
             $clear = [];
             foreach ($fileData as $data) {
-                $clear[] = array_combine($template, $data);
+                if ($data) {
+                    $clear[] = array_combine($template, $data);
+                }
             }
 
             return $clear;
@@ -195,6 +197,7 @@ class Import extends AbstractModel
      * @param $vendorId
      * @param $currentDate
      * @return $this
+     * @codeCoverageIgnore Integration
      */
     public function updateShipmentBatch($shipmentData, $template, $batchId, $vendorId, $currentDate)
     {
@@ -245,6 +248,7 @@ class Import extends AbstractModel
      * @param $type
      * @param null $vendorId
      * @return \Magento\Framework\DataObject|null
+     * @codeCoverageIgnore Integration
      */
     protected function _getShipment($id, $type, $vendorId = null)
     {

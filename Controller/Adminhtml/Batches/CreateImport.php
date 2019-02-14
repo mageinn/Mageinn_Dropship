@@ -1,9 +1,9 @@
 <?php
-namespace Mageinn\Vendor\Controller\Adminhtml\Batches;
+namespace Iredeem\Vendor\Controller\Adminhtml\Batches;
 
 /**
  * Class CreateImport
- * @package Mageinn\Vendor\Controller\Adminhtml\Batches
+ * @package Iredeem\Vendor\Controller\Adminhtml\Batches
  */
 class CreateImport extends \Magento\Backend\App\Action
 {
@@ -42,7 +42,7 @@ class CreateImport extends \Magento\Backend\App\Action
     {
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->_resultPage->create();
-        $resultPage->setActiveMenu('Mageinn_Vendor::vendor_batches')
+        $resultPage->setActiveMenu('Iredeem_Vendor::vendor_batches')
             ->addBreadcrumb(__('Create Tracking Import Batch'), __('Create Tracking Import Batch'));
         $resultPage->getConfig()->getTitle()->prepend(__('Create Tracking Import Batch'));
 

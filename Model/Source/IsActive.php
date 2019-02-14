@@ -1,17 +1,17 @@
 <?php
-namespace Mageinn\Vendor\Model\Source;
+namespace Iredeem\Vendor\Model\Source;
 
 use \Magento\Framework\Data\OptionSourceInterface;
-use \Mageinn\Vendor\Model\Info;
+use \Iredeem\Vendor\Model\Info;
 
 /**
  * Class IsActive Source.
  *
- * @package Mageinn\Vendor\Model\Source
+ * @package Iredeem\Vendor\Model\Source
  */
 class IsActive implements OptionSourceInterface
 {
-    /** @var \Mageinn\Vendor\Model\Info */
+    /** @var \Iredeem\Vendor\Model\Info */
     protected $vendor;
 
     public function __construct(Info $vendor)

@@ -1,11 +1,11 @@
 <?php
-namespace Mageinn\Vendor\Block\Adminhtml\Order\View;
+namespace Iredeem\Vendor\Block\Adminhtml\Order\View;
 
 class VendorInfo extends \Magento\Sales\Block\Adminhtml\Items\Column\Name
 {
     protected $vendorId;
 
-    /** @var \Mageinn\Vendor\Model\Info  */
+    /** @var \Iredeem\Vendor\Model\Info  */
     protected $vendor;
 
     /**
@@ -15,7 +15,7 @@ class VendorInfo extends \Magento\Sales\Block\Adminhtml\Items\Column\Name
      * @param \Magento\CatalogInventory\Api\StockConfigurationInterface $stockConfiguration
      * @param \Magento\Framework\Registry $registry
      * @param \Magento\Catalog\Model\Product\OptionFactory $optionFactory
-     * @param \Mageinn\Vendor\Model\Address $vendor
+     * @param \Iredeem\Vendor\Model\Address $vendor
      * @param array $data
      */
     public function __construct(
@@ -24,7 +24,7 @@ class VendorInfo extends \Magento\Sales\Block\Adminhtml\Items\Column\Name
         \Magento\CatalogInventory\Api\StockConfigurationInterface $stockConfiguration,
         \Magento\Framework\Registry $registry,
         \Magento\Catalog\Model\Product\OptionFactory $optionFactory,
-        \Mageinn\Vendor\Model\Address $vendor,
+        \Iredeem\Vendor\Model\Address $vendor,
         array $data = []
     ) {
         $this->vendor = $vendor;
@@ -46,7 +46,7 @@ class VendorInfo extends \Magento\Sales\Block\Adminhtml\Items\Column\Name
      */
     public function getVendor()
     {
-        $addressType = \Mageinn\Vendor\Model\Address::ADDRESS_TYPE_CUSTOMER_SERVICE;
+        $addressType = \Iredeem\Vendor\Model\Address::ADDRESS_TYPE_CUSTOMER_SERVICE;
         $vendorAddressCollection = $this->vendor->getCollection()
             ->addFieldToFilter('vendor_id', ['eq' => "$this->vendorId"])
             ->addFieldToFilter('type', ['eq' => "$addressType"]);

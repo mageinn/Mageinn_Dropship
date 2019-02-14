@@ -2,29 +2,29 @@
 /**
  * Catalog product vendor attribute source
  */
-namespace Mageinn\Vendor\Model\Info\Attribute\Source;
+namespace Iredeem\Vendor\Model\Info\Attribute\Source;
 
 /**
  * Class Collection
  *
- * @package Mageinn\Vendor\Model\ResourceModel\Info
+ * @package Iredeem\Vendor\Model\ResourceModel\Info
  */
 class Vendorid extends \Magento\Eav\Model\Entity\Attribute\Source\Table
 {
     /**
-     * @var \Mageinn\Vendor\Model\ResourceModel\Info\CollectionFactory
+     * @var \Iredeem\Vendor\Model\ResourceModel\Info\CollectionFactory
      */
     protected $infoFactory;
 
     /**
      * @param \Magento\Eav\Model\ResourceModel\Entity\Attribute\Option\CollectionFactory $attrOptionCollectionFactory
      * @param \Magento\Eav\Model\ResourceModel\Entity\Attribute\OptionFactory $attrOptionFactory
-     * @param \Mageinn\Vendor\Model\ResourceModel\Info\CollectionFactory $infoFactory
+     * @param \Iredeem\Vendor\Model\ResourceModel\Info\CollectionFactory $infoFactory
      */
     public function __construct(
         \Magento\Eav\Model\ResourceModel\Entity\Attribute\Option\CollectionFactory $attrOptionCollectionFactory,
         \Magento\Eav\Model\ResourceModel\Entity\Attribute\OptionFactory $attrOptionFactory,
-        \Mageinn\Vendor\Model\ResourceModel\Info\CollectionFactory $infoFactory
+        \Iredeem\Vendor\Model\ResourceModel\Info\CollectionFactory $infoFactory
     ) {
         $this->infoFactory = $infoFactory;
         parent::__construct($attrOptionCollectionFactory, $attrOptionFactory);
@@ -48,7 +48,7 @@ class Vendorid extends \Magento\Eav\Model\Entity\Attribute\Source\Table
     }
 
     /**
-     * @return \Mageinn\Vendor\Model\ResourceModel\Info\Collection
+     * @return \Iredeem\Vendor\Model\ResourceModel\Info\Collection
      */
     protected function _createVendorCollection()
     {
