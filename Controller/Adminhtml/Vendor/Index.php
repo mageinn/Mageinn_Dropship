@@ -37,7 +37,7 @@ class Index extends Action
     {
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
-        $resultPage->setActiveMenu('Iredeem_Vendor::vendor_vendors');
+        $resultPage->setActiveMenu('Mageinn_Dropship::vendor_vendors');
         $resultPage->addBreadcrumb(__('Sales'), __('Sales'));
         $resultPage->addBreadcrumb(__('Vendor Portal'), __('Vendor Portal'));
         $resultPage->getConfig()->getTitle()->prepend(__('Vendor Portal'));

@@ -31,7 +31,7 @@ class Index extends Action
     {
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultFactory->create();
-        $resultPage->setActiveMenu('Iredeem_Vendor::vendor_stock');
+        $resultPage->setActiveMenu('Mageinn_Dropship::vendor_stock');
         $resultPage->addBreadcrumb(__('Stock'), __('Stock'));
         $resultPage->addBreadcrumb(__('Import/Export'), __('Import/Export'));
         $resultPage->getConfig()->getTitle()->prepend(__('Import/Export Product Stock '));
@@ -44,6 +44,6 @@ class Index extends Action
      */
     protected function _isAllowed()
     {
-        return $this->_authorization->isAllowed('Iredeem_Vendor::product_stock');
+        return $this->_authorization->isAllowed('Mageinn_Dropship::product_stock');
     }
 }

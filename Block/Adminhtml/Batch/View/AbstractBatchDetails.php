@@ -10,7 +10,7 @@ abstract class AbstractBatchDetails extends \Magento\Backend\Block\Template
     /**
      * @var string
      */
-    protected $_template = 'Iredeem_Vendor::batch/view/details.phtml';
+    protected $_template = 'Mageinn_Dropship::batch/view/details.phtml';
 
     /**
      * @var \Magento\Backend\Block\Widget\Grid\Extended

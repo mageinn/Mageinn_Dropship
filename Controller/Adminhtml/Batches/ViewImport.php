@@ -64,7 +64,7 @@ class ViewImport extends \Magento\Backend\App\Action
         $this->_registry->register('current_batch_type', 'Import');
 
         $resultPage = $this->resultFactory->create(\Magento\Framework\Controller\ResultFactory::TYPE_PAGE);
-        $resultPage->setActiveMenu('Iredeem_Vendor::vendor_batches')->addBreadcrumb(__('Batch View'), __('Batch View'));
+        $resultPage->setActiveMenu('Mageinn_Dropship::vendor_batches')->addBreadcrumb(__('Batch View'), __('Batch View'));
         $resultPage->getConfig()->getTitle()->prepend(__('View Import Orders Batch ' . $id));
 
         return $resultPage;

@@ -2,19 +2,19 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceBlock name="product.info.details">
-             <block class="Magento\Catalog\Block\Product\View" name="further_details" template="Iredeem_Vendor::further_details.phtml" group="detailed_info">
+             <block class="Magento\Catalog\Block\Product\View" name="further_details" template="Mageinn_Dropship::further_details.phtml" group="detailed_info">
                 <arguments>
                     <argument translate="true" name="title" xsi:type="string">How to redeem your award</argument>
                 </arguments>
             </block>
-            <block class="Magento\Catalog\Block\Product\View" name="contact_details" template="Iredeem_Vendor::contact_details.phtml" group="detailed_info">
+            <block class="Magento\Catalog\Block\Product\View" name="contact_details" template="Mageinn_Dropship::contact_details.phtml" group="detailed_info">
                 <arguments>
                     <argument translate="true" name="title" xsi:type="string">Contact</argument>
                 </arguments>
             </block>
         </referenceBlock>
         <referenceContainer name="product.info.main">
-            <block class="Magento\Catalog\Block\Product\View" name="product.info.delivery" template="Iredeem_Vendor::delivery.phtml" after="product.info.price" />
+            <block class="Magento\Catalog\Block\Product\View" name="product.info.delivery" template="Mageinn_Dropship::delivery.phtml" after="product.info.price" />
         </referenceContainer>
     </body>
 </page>

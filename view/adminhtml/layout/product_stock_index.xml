@@ -4,7 +4,7 @@
     <body>
         <referenceBlock name="content">
             <block class="Mageinn\Dropship\Block\Adminhtml\Stock\ImportExport"
-                   name="product-stock-management" template="Iredeem_Vendor::stockManagement/importExport.phtml"/>
+                   name="product-stock-management" template="Mageinn_Dropship::stockManagement/importExport.phtml"/>
         </referenceBlock>
     </body>
 </page>

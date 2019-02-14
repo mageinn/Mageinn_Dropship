@@ -39,7 +39,7 @@ class View extends \Magento\Shipping\Block\Adminhtml\View
     {
         parent::_construct();
 
-        if ($this->_authorization->isAllowed('Iredeem_Vendor::mark_shipped')) {
+        if ($this->_authorization->isAllowed('Mageinn_Dropship::mark_shipped')) {
             $this->buttonList->add(
                 'markShipped',
                 [

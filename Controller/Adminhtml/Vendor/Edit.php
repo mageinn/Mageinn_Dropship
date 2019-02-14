@@ -74,7 +74,7 @@ class Edit extends Action
 
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
-        $resultPage->setActiveMenu('Iredeem_Vendor::vendor')->addBreadcrumb(
+        $resultPage->setActiveMenu('Mageinn_Dropship::vendor')->addBreadcrumb(
             $id ? __('Edit Vendor' . $model->getVendorName()) : __('New Vendor'),
             $id ? __('Edit Vendor' . $model->getVendorName()) : __('New Vendor')
         );

@@ -2,7 +2,7 @@
 
 <pages xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/Page/etc/PageObject.xsd">
-    <page name="AdminVendorPage" url="sales/vendor/" area="admin" module="Iredeem_Vendor">
+    <page name="AdminVendorPage" url="sales/vendor/" area="admin" module="Mageinn_Dropship">
         <section name="AdminVendorGridSection"/>
         <section name="AdminVendorFormSection"/>
     </page>

@@ -37,7 +37,7 @@ class Index extends Action
     {
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
-        $resultPage->setActiveMenu('Iredeem_Vendor::vendor_batches');
+        $resultPage->setActiveMenu('Mageinn_Dropship::vendor_batches');
         $resultPage->addBreadcrumb(__('Batches'), __('Batches'));
         $resultPage->addBreadcrumb(__('Vendor Batches'), __('Vendor Batches'));
         $resultPage->getConfig()->getTitle()->prepend(__('Import/Export Order Batches for Vendors'));

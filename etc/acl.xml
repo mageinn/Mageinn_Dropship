@@ -3,20 +3,20 @@
         <resources>
             <resource id="Magento_Backend::admin">
                 <resource id="Magento_Sales::sales">
-                    <resource id="Iredeem_Vendor::dropship" title="Dropship" sortOrder="31">
-                        <resource id="Iredeem_Vendor::vendors" title="Vendors" sortOrder="10"/>
-                        <resource id="Iredeem_Vendor::product_stock" title="Products Stock" sortOrder="20"/>
+                    <resource id="Mageinn_Dropship::dropship" title="Dropship" sortOrder="31">
+                        <resource id="Mageinn_Dropship::vendors" title="Vendors" sortOrder="10"/>
+                        <resource id="Mageinn_Dropship::product_stock" title="Products Stock" sortOrder="20"/>
                     </resource>
                     <resource id="Magento_Sales::sales_operation">
                         <resource id="Magento_Sales::shipment">
-                            <resource id="Iredeem_Vendor::mark_shipped" title="Mark as shipped" sortOrder="100" />
+                            <resource id="Mageinn_Dropship::mark_shipped" title="Mark as shipped" sortOrder="100" />
                         </resource>
                     </resource>
                 </resource>
                 <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">
                         <resource id="Magento_Config::config">
-                            <resource id="Iredeem_Vendor::vendor_configuration" title="Dropship" sortOrder="100" />
+                            <resource id="Mageinn_Dropship::vendor_configuration" title="Dropship" sortOrder="100" />
                         </resource>
                     </resource>
                 </resource>

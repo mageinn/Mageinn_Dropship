@@ -11,7 +11,7 @@ class AssignUser extends \Magento\Backend\Block\Template
     /**
      * @var string
      */
-    protected $_template = 'Iredeem_Vendor::vendor/assign_user.phtml';
+    protected $_template = 'Mageinn_Dropship::vendor/assign_user.phtml';
 
     /**
      * @var \Mageinn\Dropship\Block\Adminhtml\Users\Edit\Tab\User
