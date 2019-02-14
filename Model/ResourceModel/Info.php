@@ -16,6 +16,6 @@ class Info extends AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('iredeem_vendor_information', 'entity_id');
+        $this->_init('mageinn_dropship_information', 'entity_id');
     }
 }

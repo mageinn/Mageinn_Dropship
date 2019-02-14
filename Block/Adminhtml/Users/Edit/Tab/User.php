@@ -64,7 +64,7 @@ class User extends Extended
     protected function _construct()
     {
         parent::_construct();
-        $this->setId('iredeem_vendor_users');
+        $this->setId('mageinn_dropship_users');
         $this->setDefaultSort('user_id');
         $this->setUseAjax(true);
     }
@@ -74,7 +74,7 @@ class User extends Extended
      */
     public function getVendor()
     {
-        return $this->coreRegistry->registry('iredeem_vendor');
+        return $this->coreRegistry->registry('mageinn_dropship');
     }
 
     /**

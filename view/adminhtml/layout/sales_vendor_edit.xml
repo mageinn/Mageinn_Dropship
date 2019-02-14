@@ -6,7 +6,7 @@
     </head>
     <body>
         <referenceContainer name="content">
-            <uiComponent name="iredeem_vendor_form"/>
+            <uiComponent name="mageinn_dropship_form"/>
         </referenceContainer>
     </body>
 </page>

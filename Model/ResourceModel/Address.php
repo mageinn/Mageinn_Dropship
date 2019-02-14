@@ -16,6 +16,6 @@ class Address extends AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('iredeem_vendor_address', 'entity_id');
+        $this->_init('mageinn_dropship_address', 'entity_id');
     }
 }

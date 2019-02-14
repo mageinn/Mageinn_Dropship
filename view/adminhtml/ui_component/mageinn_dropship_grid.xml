@@ -3,7 +3,7 @@
          xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">iredeem_vendor_grid.iredeem_vendor_grid_data_source</item>
+            <item name="provider" xsi:type="string">mageinn_dropship_grid.mageinn_dropship_grid_data_source</item>
         </item>
     </argument>
     <settings>
@@ -14,12 +14,12 @@
                 <label translate="true">Add New Vendor</label>
             </button>
         </buttons>
-        <spinner>iredeem_vendor_columns</spinner>
+        <spinner>mageinn_dropship_columns</spinner>
         <deps>
-            <dep>iredeem_vendor_grid.iredeem_vendor_grid_data_source</dep>
+            <dep>mageinn_dropship_grid.mageinn_dropship_grid_data_source</dep>
         </deps>
     </settings>
-    <dataSource name="iredeem_vendor_grid_data_source" component="Magento_Ui/js/grid/provider">
+    <dataSource name="mageinn_dropship_grid_data_source" component="Magento_Ui/js/grid/provider">
         <settings>
             <storageConfig>
                 <param name="indexField" xsi:type="string">entity_id</param>
@@ -27,7 +27,7 @@
             <updateUrl path="mui/index/render"/>
         </settings>
         <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider"
-                      name="iredeem_vendor_grid_data_source">
+                      name="mageinn_dropship_grid_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>main_table.entity_id</primaryFieldName>
@@ -42,7 +42,7 @@
         <exportButton name="export_button" >
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="selectProvider" xsi:type="string">iredeem_vendor_grid.iredeem_vendor_grid.iredeem_vendor_columns.ids</item>
+                    <item name="selectProvider" xsi:type="string">mageinn_dropship_grid.mageinn_dropship_grid.mageinn_dropship_columns.ids</item>
                 </item>
             </argument>
             <settings>
@@ -54,7 +54,7 @@
             </settings>
         </exportButton>
     </listingToolbar>
-    <columns name="iredeem_vendor_columns">
+    <columns name="mageinn_dropship_columns">
         <selectionsColumn name="ids">
             <settings>
                 <indexField>entity_id</indexField>

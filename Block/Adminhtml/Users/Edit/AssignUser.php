@@ -113,6 +113,6 @@ class AssignUser extends \Magento\Backend\Block\Template
      */
     public function getVendor()
     {
-        return $this->registry->registry('iredeem_vendor');
+        return $this->registry->registry('mageinn_dropship');
     }
 }

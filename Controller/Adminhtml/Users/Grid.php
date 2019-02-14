@@ -81,7 +81,7 @@ class Grid extends \Mageinn\Dropship\Controller\Adminhtml\Users\User
             $myModel->load($id);
         }
 
-        $this->registry->register('iredeem_vendor', $myModel);
+        $this->registry->register('mageinn_dropship', $myModel);
 
         return $myModel;
     }

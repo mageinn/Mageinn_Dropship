@@ -41,7 +41,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
 
         if (version_compare($context->getVersion(), '0.0.3') < 0) {
             /**
-             * Create table 'iredeem_vendor_address'
+             * Create table 'mageinn_dropship_address'
              */
             if (!$setup->tableExists(Address::VENDOR_ADDRESS_TABLE)) {
                 $table = $setup->getConnection()

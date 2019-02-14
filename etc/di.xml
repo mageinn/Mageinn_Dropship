@@ -9,7 +9,7 @@
     <preference for="\Magento\Framework\Mail\Template\TransportBuilder" type="\Mageinn\Dropship\Magento\Mail\Template\TransportBuilder"/>
     <type name="Mageinn\Dropship\Model\ResourceModel\Info\Grid\Collection">
         <arguments>
-            <argument name="mainTable" xsi:type="string">iredeem_vendor_information</argument>
+            <argument name="mainTable" xsi:type="string">mageinn_dropship_information</argument>
             <argument name="resourceModel" xsi:type="string">Mageinn\Dropship\Model\ResourceModel\Info</argument>
         </arguments>
     </type>
@@ -22,9 +22,9 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="iredeem_vendor_grid_data_source" xsi:type="string">Mageinn\Dropship\Model\ResourceModel\Info\Grid\Collection</item>
-                <item name="iredeem_vendor_form_data_source" xsi:type="string">Mageinn\Dropship\Model\ResourceModel\Info\Collection</item>
-                <item name="iredeem_vendor_user_grid_data_source" xsi:type="string">Mageinn\Dropship\Model\ResourceModel\User\Grid\Collection</item>
+                <item name="mageinn_dropship_grid_data_source" xsi:type="string">Mageinn\Dropship\Model\ResourceModel\Info\Grid\Collection</item>
+                <item name="mageinn_dropship_form_data_source" xsi:type="string">Mageinn\Dropship\Model\ResourceModel\Info\Collection</item>
+                <item name="mageinn_dropship_user_grid_data_source" xsi:type="string">Mageinn\Dropship\Model\ResourceModel\User\Grid\Collection</item>
                 <item name="iredeem_batches_grid_data_source" xsi:type="string">Mageinn\Dropship\Model\ResourceModel\Batch\Grid\Collection</item>
                 <item name="iredeem_batches_view_data_source" xsi:type="string">Mageinn\Dropship\Model\ResourceModel\Batch\Collection</item>
                 <item name="iredeem_regions_data_source" xsi:type="string">Mageinn\Dropship\Model\ResourceModel\Region\Collection</item>

@@ -70,7 +70,7 @@ class Edit extends Action
             }
         }
 
-        $this->coreRegistry->register('iredeem_vendor', $model);
+        $this->coreRegistry->register('mageinn_dropship', $model);
 
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();

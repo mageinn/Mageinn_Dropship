@@ -3,9 +3,9 @@
 <sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/Page/etc/SectionObject.xsd">
     <section name="AdminVendorBasicFieldSection">
-        <element name="VendorName" type="input" selector="input[name='iredeem_vendor[vendor][name]']"/>
-        <element name="VendorEmail" type="input" selector="input[name='iredeem_vendor[vendor][email]']"/>
-        <element name="VendorTelephone" type="input" selector="input[name='iredeem_vendor[vendor][telephone]']"/>
+        <element name="VendorName" type="input" selector="input[name='mageinn_dropship[vendor][name]']"/>
+        <element name="VendorEmail" type="input" selector="input[name='mageinn_dropship[vendor][email]']"/>
+        <element name="VendorTelephone" type="input" selector="input[name='mageinn_dropship[vendor][telephone]']"/>
     </section>
     <section name="AdminVendorSettingsSection">
         <element name="VendorCurrency" type="select" selector="select[name='vendor_settings[settings][currency]']"/>
@@ -20,11 +20,11 @@
         <element name="ShippingCountry" type="select" selector="select[name='vendor_address[shipping_address][country]']"/>
     </section>
     <section name="AdminVendorUsersSelectionSection">
-        <element name="ResetFilter" type="button" selector="#iredeem_vendor_users .action-reset"/>
-        <element name="Search" type="button" selector="#iredeem_vendor_users .action-secondary"/>
-        <element name="FilterUserName" type="input" selector="#iredeem_vendor_users_filter_username"/>
-        <element name="SelectAllUsers" type="input" selector="#iredeem_vendor_users_table .data-grid-actions-cell input"/>
-        <element name="SelectFirstUser" type="text" selector="#iredeem_vendor_users_table tbody tr:first-child"/>
+        <element name="ResetFilter" type="button" selector="#mageinn_dropship_users .action-reset"/>
+        <element name="Search" type="button" selector="#mageinn_dropship_users .action-secondary"/>
+        <element name="FilterUserName" type="input" selector="#mageinn_dropship_users_filter_username"/>
+        <element name="SelectAllUsers" type="input" selector="#mageinn_dropship_users_table .data-grid-actions-cell input"/>
+        <element name="SelectFirstUser" type="text" selector="#mageinn_dropship_users_table tbody tr:first-child"/>
     </section>
     <section name="AdminVendorBatchExportSection">
         <element name="IsEnabled" type="button" selector="div[data-index='batch_export_enabled'] .admin__actions-switch"/>

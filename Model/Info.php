@@ -13,7 +13,7 @@ class Info extends AbstractModel
     /**#@+
      * Table
      */
-    const VENDOR_INFO_TABLE = 'iredeem_vendor_information';
+    const VENDOR_INFO_TABLE = 'mageinn_dropship_information';
     /**#@-*/
 
     /**#@+

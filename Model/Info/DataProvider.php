@@ -110,7 +110,7 @@ class DataProvider extends AbstractDataProvider
             $batchImport[Info::VENDOR_BATCH_IMPORT_GENERAL] =
                 array_intersect_key($vendor->getData(), $this->batchImportColumns);
 
-            $this->loadedData[$vendorId]['iredeem_vendor'] = $info;
+            $this->loadedData[$vendorId]['mageinn_dropship'] = $info;
             $this->loadedData[$vendorId]['vendor_settings'] = $settings;
             $this->loadedData[$vendorId]['vendor_address'] = $vendorAddresses;
             $this->loadedData[$vendorId]['batch_export'] = $batchExport;
