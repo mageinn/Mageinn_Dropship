@@ -1,17 +1,17 @@
 <?php
 
-namespace Iredeem\Vendor\Controller\Adminhtml\Stock;
+namespace Mageinn\Dropship\Controller\Adminhtml\Stock;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Psr\Log\LoggerInterface;
-use Iredeem\Vendor\Helper\Stock;
+use Mageinn\Dropship\Helper\Stock;
 use Magento\Framework\App\Response\Http\FileFactory;
 use Magento\Framework\Controller\Result\RawFactory;
 
 /**
  * Class Export
- * @package Iredeem\Vendor\Controller\Adminhtml\Stock
+ * @package Mageinn\Dropship\Controller\Adminhtml\Stock
  * @codeCoverageIgnore Controller functions don't need UT
  */
 class Export extends Action
@@ -21,7 +21,7 @@ class Export extends Action
      */
     protected $logger;
     /**
-     * @var \Iredeem\Vendor\Helper\Stock
+     * @var \Mageinn\Dropship\Helper\Stock
      */
     protected $stockHelper;
     /**
@@ -40,7 +40,7 @@ class Export extends Action
     protected $directoryList;
 
     /**
-     * @var  /Iredeem\Vendor\Helper\Data
+     * @var  /Mageinn\Dropship\Helper\Data
      */
     protected $vendorHelper;
 
@@ -58,7 +58,7 @@ class Export extends Action
      * @param FileFactory $fileFactory
      * @param RawFactory $rawFactory
      * @param \Magento\Framework\App\Filesystem\DirectoryList $directoryList
-     * @param \Iredeem\Vendor\Helper\Data $vendorHelper
+     * @param \Mageinn\Dropship\Helper\Data $vendorHelper
      * @param \Magento\Framework\Stdlib\DateTime\TimezoneInterface $date
      */
     public function __construct(
@@ -68,7 +68,7 @@ class Export extends Action
         FileFactory $fileFactory,
         RawFactory $rawFactory,
         \Magento\Framework\App\Filesystem\DirectoryList $directoryList,
-        \Iredeem\Vendor\Helper\Data $vendorHelper,
+        \Mageinn\Dropship\Helper\Data $vendorHelper,
         \Magento\Framework\Stdlib\DateTime\TimezoneInterface $date
     ) {
         $this->logger = $logger;

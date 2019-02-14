@@ -1,5 +1,5 @@
 <?php
-namespace Iredeem\Vendor\Model\Batch\Handler;
+namespace Mageinn\Dropship\Model\Batch\Handler;
 
 use Magento\Framework\Exception\LocalizedException;
 use phpseclib\Net\SFTP;
@@ -7,7 +7,7 @@ use phpseclib\Crypt\RSA;
 
 /**
  * Class Transfer
- * @package Iredeem\Vendor\Model\Batch\Handler
+ * @package Mageinn\Dropship\Model\Batch\Handler
  * @codeCoverageIgnore
  */
 class Transfer

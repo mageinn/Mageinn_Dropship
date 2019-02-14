@@ -1,7 +1,7 @@
 <?php
-namespace Iredeem\Vendor\Cron;
+namespace Mageinn\Dropship\Cron;
 
-use \Iredeem\Vendor\Model\Source\BatchStatus;
+use \Mageinn\Dropship\Model\Source\BatchStatus;
 
 use \Magento\Framework\Stdlib\DateTime\DateTime;
 use \Magento\Cron\Observer\ProcessCronQueueObserver;
@@ -11,7 +11,7 @@ use \Psr\Log\LoggerInterface;
 /**
  * Class Batch
  *
- * @package Iredeem\Vendor\Cron
+ * @package Mageinn\Dropship\Cron
  */
 class Batch
 {
@@ -19,7 +19,7 @@ class Batch
     const SCHEDULE_CRON_GROUP_ID = 'default';
 
     /**
-     * @var \Iredeem\Vendor\Model\Batch
+     * @var \Mageinn\Dropship\Model\Batch
      */
     protected $batchFactory;
 
@@ -29,12 +29,12 @@ class Batch
     protected $scheduledBatches = [];
 
     /**
-     * @var \Iredeem\Vendor\Model\InfoFactory
+     * @var \Mageinn\Dropship\Model\InfoFactory
      */
     protected $vendorFactory;
 
     /**
-     * @var \Iredeem\Vendor\Model\ResourceModel\Info\Collection
+     * @var \Mageinn\Dropship\Model\ResourceModel\Info\Collection
      */
     protected $batchEnabledVendors;
 
@@ -65,27 +65,27 @@ class Batch
     protected $logger;
 
     /**
-     * @var \Iredeem\Vendor\Helper\CoreData
+     * @var \Mageinn\Dropship\Helper\CoreData
      */
     protected $helper;
 
     /**
      * Batch constructor.
      *
-     * @param \Iredeem\Vendor\Model\BatchFactory $batchFactory
-     * @param \Iredeem\Vendor\Model\InfoFactory $vendorFactory
+     * @param \Mageinn\Dropship\Model\BatchFactory $batchFactory
+     * @param \Mageinn\Dropship\Model\InfoFactory $vendorFactory
      * @param DateTime $dateTime
      * @param ScopeConfigInterface $scopeConfig
      * @param LoggerInterface $logger
-     * @param \Iredeem\Vendor\Helper\CoreData $helper
+     * @param \Mageinn\Dropship\Helper\CoreData $helper
      */
     public function __construct(
-        \Iredeem\Vendor\Model\BatchFactory $batchFactory,
-        \Iredeem\Vendor\Model\InfoFactory $vendorFactory,
+        \Mageinn\Dropship\Model\BatchFactory $batchFactory,
+        \Mageinn\Dropship\Model\InfoFactory $vendorFactory,
         DateTime $dateTime,
         ScopeConfigInterface $scopeConfig,
         LoggerInterface $logger,
-        \Iredeem\Vendor\Helper\CoreData $helper
+        \Mageinn\Dropship\Helper\CoreData $helper
     ) {
         $this->batchFactory = $batchFactory;
         $this->vendorFactory = $vendorFactory;
@@ -110,7 +110,7 @@ class Batch
                 $this->_createBatch(
                     $vendor->getId(),
                     $vendor->getBatchImportSchedule(),
-                    \Iredeem\Vendor\Model\Source\BatchType::IREDEEM_VENDOR_BATCH_TYPE_IMPORT,
+                    \Mageinn\Dropship\Model\Source\BatchType::IREDEEM_VENDOR_BATCH_TYPE_IMPORT,
                     $currentTime,
                     $vendor->getBatchImportSource()
                 );
@@ -119,7 +119,7 @@ class Batch
                 $this->_createBatch(
                     $vendor->getId(),
                     $vendor->getBatchExportSchedule(),
-                    \Iredeem\Vendor\Model\Source\BatchType::IREDEEM_VENDOR_BATCH_TYPE_EXPORT,
+                    \Mageinn\Dropship\Model\Source\BatchType::IREDEEM_VENDOR_BATCH_TYPE_EXPORT,
                     $currentTime
                 );
             }
@@ -164,7 +164,7 @@ class Batch
     /**
      * Returns the vendors with at least one of the batches enabled
      *
-     * @return \Iredeem\Vendor\Model\ResourceModel\Info\Collection
+     * @return \Mageinn\Dropship\Model\ResourceModel\Info\Collection
      */
     protected function _getBatchEnabledVendors()
     {
@@ -233,7 +233,7 @@ class Batch
      */
     protected function _saveBatchSchedule($cronExpression, $scheduledAt, $vendorId, $type, $source)
     {
-        /** @var \Iredeem\Vendor\Model\Batch $batch */
+        /** @var \Mageinn\Dropship\Model\Batch $batch */
         $batch = $this->batchFactory->create();
 
         try {
@@ -262,7 +262,7 @@ class Batch
     protected function _runJobs($scheduledBatches, $currentTime)
     {
         // @codingStandardsIgnoreStart
-        /** @var \Iredeem\Vendor\Model\Batch $batch */
+        /** @var \Mageinn\Dropship\Model\Batch $batch */
         foreach ($scheduledBatches as $batch) {
             $scheduledTime = strtotime($batch->getScheduledAt());
             if ($scheduledTime > $currentTime) {

@@ -1,10 +1,10 @@
 <?php
-namespace Iredeem\Vendor\Setup;
+namespace Mageinn\Dropship\Setup;
 
 /**
  * Class UpgradeData
  *
- * @package Iredeem\Vendor\Setup
+ * @package Mageinn\Dropship\Setup
  * @codeCoverageIgnoreFile
  */
 class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface

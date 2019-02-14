@@ -1,11 +1,11 @@
 <?php
-namespace Iredeem\Vendor\Controller\Adminhtml\Vendor;
+namespace Mageinn\Dropship\Controller\Adminhtml\Vendor;
 
 use \Magento\Backend\App\Action;
 use \Magento\Backend\App\Action\Context;
 use \Magento\Framework\Registry;
 use \Magento\Framework\View\Result\PageFactory;
-use \Iredeem\Vendor\Model\Info;
+use \Mageinn\Dropship\Model\Info;
 
 class Edit extends Action
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Iredeem\Vendor\Controller\Adminhtml\Shipment;
+namespace Mageinn\Dropship\Controller\Adminhtml\Shipment;
 
-use Iredeem\Vendor\Model\Source\ShipmentStatus;
+use Mageinn\Dropship\Model\Source\ShipmentStatus;
 
 class View extends \Magento\Shipping\Controller\Adminhtml\Order\Shipment\View
 {

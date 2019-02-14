@@ -1,9 +1,9 @@
 <?php
-namespace Iredeem\Vendor\Controller\Adminhtml\Batches;
+namespace Mageinn\Dropship\Controller\Adminhtml\Batches;
 
 /**
  * Class ViewExport
- * @package Iredeem\Vendor\Controller\Adminhtml\Batches
+ * @package Mageinn\Dropship\Controller\Adminhtml\Batches
  */
 class ViewExport extends \Magento\Backend\App\Action
 {
@@ -13,7 +13,7 @@ class ViewExport extends \Magento\Backend\App\Action
     protected $_registry;
 
     /**
-     * @var \Iredeem\Vendor\Model\Batch
+     * @var \Mageinn\Dropship\Model\Batch
      */
     private $batchModel;
 
@@ -22,13 +22,13 @@ class ViewExport extends \Magento\Backend\App\Action
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magento\Framework\View\Result\PageFactory $resultFactory
      * @param \Magento\Framework\Registry $registry
-     * @param \Iredeem\Vendor\Model\Batch $batchModel
+     * @param \Mageinn\Dropship\Model\Batch $batchModel
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\View\Result\PageFactory $resultFactory,
         \Magento\Framework\Registry $registry,
-        \Iredeem\Vendor\Model\Batch $batchModel
+        \Mageinn\Dropship\Model\Batch $batchModel
     ) {
         $this->resultFactory = $resultFactory;
         $this->_registry = $registry;

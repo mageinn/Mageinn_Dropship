@@ -1,8 +1,8 @@
 <?php
 
-namespace Iredeem\Vendor\Model\Export;
+namespace Mageinn\Dropship\Model\Export;
 
-use Iredeem\Vendor\Model\Address;
+use Mageinn\Dropship\Model\Address;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
@@ -10,7 +10,7 @@ use Magento\Ui\Component\MassAction\Filter;
 
 /**
  * Class VendorToCsv
- * @package Iredeem\Vendor\Model\Export
+ * @package Mageinn\Dropship\Model\Export
  */
 class VendorToCsv
 {

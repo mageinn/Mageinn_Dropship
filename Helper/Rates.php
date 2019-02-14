@@ -6,7 +6,7 @@
  * Time: 9:49
  */
 
-namespace Iredeem\Vendor\Helper;
+namespace Mageinn\Dropship\Helper;
 
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\ObjectManagerInterface;

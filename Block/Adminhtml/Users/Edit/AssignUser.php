@@ -1,10 +1,10 @@
 <?php
 
-namespace Iredeem\Vendor\Block\Adminhtml\Users\Edit;
+namespace Mageinn\Dropship\Block\Adminhtml\Users\Edit;
 
 /**
  * Class Stock
- * @package Iredeem\Vendor\Block\Adminhtml\Edit\
+ * @package Mageinn\Dropship\Block\Adminhtml\Edit\
  */
 class AssignUser extends \Magento\Backend\Block\Template
 {
@@ -14,7 +14,7 @@ class AssignUser extends \Magento\Backend\Block\Template
     protected $_template = 'Iredeem_Vendor::vendor/assign_user.phtml';
 
     /**
-     * @var \Iredeem\Vendor\Block\Adminhtml\Users\Edit\Tab\User
+     * @var \Mageinn\Dropship\Block\Adminhtml\Users\Edit\Tab\User
      */
     protected $blockGrid;
 
@@ -64,7 +64,7 @@ class AssignUser extends \Magento\Backend\Block\Template
     {
         if (null === $this->blockGrid) {
             $this->blockGrid = $this->getLayout()->createBlock(
-                \Iredeem\Vendor\Block\Adminhtml\Users\Edit\Tab\User::class,
+                \Mageinn\Dropship\Block\Adminhtml\Users\Edit\Tab\User::class,
                 'vendor.user.grid'
             );
         }

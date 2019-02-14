@@ -1,5 +1,5 @@
 <?php
-namespace Iredeem\Vendor\Ui\Component\Listing\Column;
+namespace Mageinn\Dropship\Ui\Component\Listing\Column;
 
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
@@ -8,7 +8,7 @@ use Magento\Framework\UrlInterface;
 
 /**
  * Class Actions
- * @package Iredeem\Vendor\Ui\Component\Listing\Column
+ * @package Mageinn\Dropship\Ui\Component\Listing\Column
  */
 class Actions extends Column
 {

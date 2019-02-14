@@ -1,6 +1,6 @@
 <?php
 
-namespace Iredeem\Vendor\Controller\Adminhtml\Stock;
+namespace Mageinn\Dropship\Controller\Adminhtml\Stock;
 
 use \Magento\Backend\App\Action;
 use \Magento\Backend\App\Action\Context;
@@ -8,7 +8,7 @@ use \Magento\Framework\View\Result\PageFactory;
 
 /**
  * Vendor Index Action
- * @package Iredeem\Vendor\Controller\Adminhtml\Vendor
+ * @package Mageinn\Dropship\Controller\Adminhtml\Vendor
  * @codeCoverageIgnore Controller functions don't need UT
  */
 class Index extends Action

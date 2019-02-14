@@ -1,12 +1,12 @@
 <?php
-namespace Iredeem\Vendor\Model\Source;
+namespace Mageinn\Dropship\Model\Source;
 
 use \Magento\Framework\Data\OptionSourceInterface;
 
 /**
  * Class DropshipNotificationRecipient Source.
  *
- * @package Iredeem\Vendor\Model\Source
+ * @package Mageinn\Dropship\Model\Source
  */
 class DropshipNotificationRecipient implements OptionSourceInterface
 {

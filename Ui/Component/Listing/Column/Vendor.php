@@ -1,5 +1,5 @@
 <?php
-namespace Iredeem\Vendor\Ui\Component\Listing\Column;
+namespace Mageinn\Dropship\Ui\Component\Listing\Column;
 
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
@@ -7,21 +7,21 @@ use Magento\Ui\Component\Listing\Columns\Column;
 
 class Vendor extends Column
 {
-    /** @var \Iredeem\Vendor\Model\Info  */
+    /** @var \Mageinn\Dropship\Model\Info  */
     protected $_vendor;
 
     /**
      * Vendor constructor.
      * @param ContextInterface $context
      * @param UiComponentFactory $uiComponentFactory
-     * @param \Iredeem\Vendor\Model\Info $vendor
+     * @param \Mageinn\Dropship\Model\Info $vendor
      * @param array $components
      * @param array $data
      */
     public function __construct(
         ContextInterface $context,
         UiComponentFactory $uiComponentFactory,
-        \Iredeem\Vendor\Model\Info $vendor,
+        \Mageinn\Dropship\Model\Info $vendor,
         array $components = [],
         array $data = []
     ) {

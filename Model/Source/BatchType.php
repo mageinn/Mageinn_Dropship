@@ -1,11 +1,11 @@
 <?php
-namespace Iredeem\Vendor\Model\Source;
+namespace Mageinn\Dropship\Model\Source;
 
 use \Magento\Framework\Data\OptionSourceInterface;
 
 /**
  * Class BatchType
- * @package Iredeem\Vendor\Model\Source
+ * @package Mageinn\Dropship\Model\Source
  */
 class BatchType implements OptionSourceInterface
 {

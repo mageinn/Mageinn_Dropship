@@ -1,15 +1,15 @@
 <?php
-namespace Iredeem\Vendor\Setup;
+namespace Mageinn\Dropship\Setup;
 
 use \Magento\Framework\DB\Ddl\Table;
 use \Magento\Framework\DB\Adapter\AdapterInterface;
 use \Magento\Framework\Setup\UpgradeSchemaInterface;
 use \Magento\Framework\Setup\ModuleContextInterface;
 use \Magento\Framework\Setup\SchemaSetupInterface;
-use \Iredeem\Vendor\Model\Info;
-use \Iredeem\Vendor\Model\Address;
-use \Iredeem\Vendor\Model\Batch;
-use \Iredeem\Vendor\Model\BatchRow;
+use \Mageinn\Dropship\Model\Info;
+use \Mageinn\Dropship\Model\Address;
+use \Mageinn\Dropship\Model\Batch;
+use \Mageinn\Dropship\Model\BatchRow;
 
 /**
  * @codeCoverageIgnore

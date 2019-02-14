@@ -1,12 +1,12 @@
 <?php
-namespace Iredeem\Vendor\Model;
+namespace Mageinn\Dropship\Model;
 
 use \Magento\Framework\Model\AbstractModel;
-use \Iredeem\Vendor\Model\ResourceModel\Info as ResourceModelInfo;
+use \Mageinn\Dropship\Model\ResourceModel\Info as ResourceModelInfo;
 
 /**
  * Class Info
- * @package Iredeem\Vendor\Model
+ * @package Mageinn\Dropship\Model
  */
 class Info extends AbstractModel
 {

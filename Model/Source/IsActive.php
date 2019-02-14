@@ -1,17 +1,17 @@
 <?php
-namespace Iredeem\Vendor\Model\Source;
+namespace Mageinn\Dropship\Model\Source;
 
 use \Magento\Framework\Data\OptionSourceInterface;
-use \Iredeem\Vendor\Model\Info;
+use \Mageinn\Dropship\Model\Info;
 
 /**
  * Class IsActive Source.
  *
- * @package Iredeem\Vendor\Model\Source
+ * @package Mageinn\Dropship\Model\Source
  */
 class IsActive implements OptionSourceInterface
 {
-    /** @var \Iredeem\Vendor\Model\Info */
+    /** @var \Mageinn\Dropship\Model\Info */
     protected $vendor;
 
     public function __construct(Info $vendor)

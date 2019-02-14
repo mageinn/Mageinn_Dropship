@@ -1,12 +1,12 @@
 <?php
-namespace Iredeem\Vendor\Model\Plugin\Quote;
+namespace Mageinn\Dropship\Model\Plugin\Quote;
 
 use Closure;
 use Magento\Framework\DataObject\Copy\Config;
 
 /**
  * Class QuoteToOrderItem
- * @package Iredeem\Vendor\Model\Plugin\Quote
+ * @package Mageinn\Dropship\Model\Plugin\Quote
  * @codeCoverageIgnore Moves data from quote to Order
  */
 class QuoteToOrderItem

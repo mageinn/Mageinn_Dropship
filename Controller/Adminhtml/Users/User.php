@@ -1,6 +1,6 @@
 <?php
 
-namespace Iredeem\Vendor\Controller\Adminhtml\Users;
+namespace Mageinn\Dropship\Controller\Adminhtml\Users;
 
 abstract class User extends \Magento\Backend\App\Action
 {

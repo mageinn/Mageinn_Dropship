@@ -1,12 +1,12 @@
 <?php
-namespace Iredeem\Vendor\Model\ResourceModel\Batch;
+namespace Mageinn\Dropship\Model\ResourceModel\Batch;
 
 use \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 
 /**
  * Class Collection
  *
- * @package Iredeem\Vendor\Model\ResourceModel\Batch
+ * @package Mageinn\Dropship\Model\ResourceModel\Batch
  */
 class Collection extends AbstractCollection
 {
@@ -22,7 +22,7 @@ class Collection extends AbstractCollection
      */
     protected function _construct()
     {
-        $this->_init(\Iredeem\Vendor\Model\Batch::class, \Iredeem\Vendor\Model\ResourceModel\Batch::class);
+        $this->_init(\Mageinn\Dropship\Model\Batch::class, \Mageinn\Dropship\Model\ResourceModel\Batch::class);
         $this->_map['fields']['entity_id'] = 'main_table.entity_id';
     }
 }

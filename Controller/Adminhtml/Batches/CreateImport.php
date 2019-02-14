@@ -1,9 +1,9 @@
 <?php
-namespace Iredeem\Vendor\Controller\Adminhtml\Batches;
+namespace Mageinn\Dropship\Controller\Adminhtml\Batches;
 
 /**
  * Class CreateImport
- * @package Iredeem\Vendor\Controller\Adminhtml\Batches
+ * @package Mageinn\Dropship\Controller\Adminhtml\Batches
  */
 class CreateImport extends \Magento\Backend\App\Action
 {

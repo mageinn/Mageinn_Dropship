@@ -14,13 +14,13 @@
                 <label>Shipment Statuses</label>
                 <field id="default" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Default Vendor Shipment Status</label>
-                    <source_model>Iredeem\Vendor\Model\Source\ShipmentStatus</source_model>
+                    <source_model>Mageinn\Dropship\Model\Source\ShipmentStatus</source_model>
                     <comment>Select shipment status upon order creation. By default status is "Pending".</comment>
                 </field>
                 <field id="make_available" translate="label" type="multiselect" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Make Available to Dropship on Order Status(es)</label>
                     <comment>Select one or multiple statuses that the order should reach before notifying vendors. By default "Processing".</comment>
-                    <source_model>Iredeem\Vendor\Model\Source\OrderStatus</source_model>
+                    <source_model>Mageinn\Dropship\Model\Source\OrderStatus</source_model>
                 </field>
             </group>
             <group id="notification" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
@@ -38,7 +38,7 @@
                 <field id="recipient" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Notification Recipient</label>
                     <comment>Chose vendor email to send order</comment>
-                    <source_model>Iredeem\Vendor\Model\Source\DropshipNotificationRecipient</source_model>
+                    <source_model>Mageinn\Dropship\Model\Source\DropshipNotificationRecipient</source_model>
                 </field>
             </group>
             <group id="batch_order_export" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="0">
@@ -46,7 +46,7 @@
                 <field id="shipment_statuses" translate="label comment" type="multiselect" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Export On Shipment Statuses</label>
                     <comment>Select which shipment status triggers an export.</comment>
-                    <source_model>Iredeem\Vendor\Model\Source\ShipmentStatus</source_model>
+                    <source_model>Mageinn\Dropship\Model\Source\ShipmentStatus</source_model>
                 </field>
                 <field id="notification_template" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Email Notification template</label>
@@ -71,7 +71,7 @@
                 <label>Batch Orders Import</label>
                 <field id="order_status" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Change Shipment Status on Import</label>
-                    <source_model>Iredeem\Vendor\Model\Source\ShipmentStatus</source_model>
+                    <source_model>Mageinn\Dropship\Model\Source\ShipmentStatus</source_model>
                     <comment>Once shipment imported then status will be changed automatically</comment>
                 </field>
             </group>

@@ -8,7 +8,7 @@
             <action method="setTemplate">
                 <argument name="template" xsi:type="string">Iredeem_Vendor::items/column/name.phtml</argument>
             </action>
-            <block class="Iredeem\Vendor\Block\Adminhtml\Order\View\VendorInfo" name="sales_order_view_vendor" template="order/view/vendor_info.phtml"/>
+            <block class="Mageinn\Dropship\Block\Adminhtml\Order\View\VendorInfo" name="sales_order_view_vendor" template="order/view/vendor_info.phtml"/>
         </referenceBlock>
     </body>
 </page>

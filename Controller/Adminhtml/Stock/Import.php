@@ -1,17 +1,17 @@
 <?php
-namespace Iredeem\Vendor\Controller\Adminhtml\Stock;
+namespace Mageinn\Dropship\Controller\Adminhtml\Stock;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\File\Csv;
-use Iredeem\Vendor\Helper\Rates;
+use Mageinn\Dropship\Helper\Rates;
 use Psr\Log\LoggerInterface;
-use Iredeem\Vendor\Helper\Stock;
+use Mageinn\Dropship\Helper\Stock;
 
 /**
  * Class Import
- * @package Iredeem\Vendor\Controller\Adminhtml\Stock
+ * @package Mageinn\Dropship\Controller\Adminhtml\Stock
  * @codeCoverageIgnore Controller functions don't need UT
  */
 class Import extends Action
@@ -36,7 +36,7 @@ class Import extends Action
      */
     protected $logger;
     /**
-     * @var \Iredeem\Vendor\Helper\Stock
+     * @var \Mageinn\Dropship\Helper\Stock
      */
     protected $stockHelper;
 

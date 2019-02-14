@@ -1,19 +1,19 @@
 <?php
-namespace Iredeem\Vendor\Test\Unit\Model\Batch\Export;
+namespace Mageinn\Dropship\Test\Unit\Model\Batch\Export;
 
 /**
  * Class FileTest
- * @package Iredeem\Vendor\Test\Unit\Model\Batch\Export
+ * @package Mageinn\Dropship\Test\Unit\Model\Batch\Export
  */
 class FileTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var string
      */
-    protected $_testClassName = \Iredeem\Vendor\Model\Batch\Export\File::class;
+    protected $_testClassName = \Mageinn\Dropship\Model\Batch\Export\File::class;
 
     /**
-     * @var \Iredeem\Vendor\Model\Batch\Export\File
+     * @var \Mageinn\Dropship\Model\Batch\Export\File
      */
     protected $_testClass;
 
@@ -23,7 +23,7 @@ class FileTest extends \PHPUnit\Framework\TestCase
     public function setUp()
     {
         $objectManager = new \Magento\Framework\TestFramework\Unit\Helper\ObjectManager($this);
-        $this->_testClass = $objectManager->getObject('Iredeem\Vendor\Model\Batch\Export\File');
+        $this->_testClass = $objectManager->getObject('Mageinn\Dropship\Model\Batch\Export\File');
     }
 
     /**

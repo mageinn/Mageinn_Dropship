@@ -1,8 +1,8 @@
 <?php
 
-namespace Iredeem\Vendor\Test\Model\Source;
+namespace Mageinn\Dropship\Test\Model\Source;
 
-use Iredeem\Vendor\Model\Source\ShipmentStatus;
+use Mageinn\Dropship\Model\Source\ShipmentStatus;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use ReflectionClass;
 

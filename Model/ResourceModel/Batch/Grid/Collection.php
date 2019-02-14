@@ -1,22 +1,22 @@
 <?php
-namespace Iredeem\Vendor\Model\ResourceModel\Batch\Grid;
+namespace Mageinn\Dropship\Model\ResourceModel\Batch\Grid;
 
 use Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult;
 use Magento\Framework\Event\ManagerInterface as EventManager;
 use Magento\Framework\Data\Collection\Db\FetchStrategyInterface as FetchStrategy;
 use Magento\Framework\Data\Collection\EntityFactoryInterface as EntityFactory;
 use Psr\Log\LoggerInterface as Logger;
-use Iredeem\Vendor\Model\Batch;
+use Mageinn\Dropship\Model\Batch;
 
 /**
  * Flat batches grid collection
  *
- * @package Iredeem\Vendor\Model\ResourceModel\Info\Grid
+ * @package Mageinn\Dropship\Model\ResourceModel\Info\Grid
  */
 class Collection extends SearchResult
 {
     /**
-     * @var \Iredeem\Vendor\Model\Batch
+     * @var \Mageinn\Dropship\Model\Batch
      */
     protected $batchModel;
 

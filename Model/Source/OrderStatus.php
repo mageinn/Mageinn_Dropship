@@ -1,5 +1,5 @@
 <?php
-namespace Iredeem\Vendor\Model\Source;
+namespace Mageinn\Dropship\Model\Source;
 
 use \Magento\Sales\Model\Config\Source\Order\Status;
 

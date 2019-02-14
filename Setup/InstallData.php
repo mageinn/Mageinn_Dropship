@@ -1,7 +1,7 @@
 <?php
 /* app/code/Iredeem/Vendor/Setup/InstallData.php */
 
-namespace Iredeem\Vendor\Setup;
+namespace Mageinn\Dropship\Setup;
 
 use Magento\Eav\Setup\EavSetup;
 use Magento\Eav\Setup\EavSetupFactory;
@@ -47,7 +47,7 @@ class InstallData implements InstallDataInterface
                 'type' => 'int',
                 'label' => 'Vendor',
                 'input' => 'select',
-                'source' => \Iredeem\Vendor\Model\Info\Attribute\Source\Vendorid::class,
+                'source' => \Mageinn\Dropship\Model\Info\Attribute\Source\Vendorid::class,
                 'required' => true,
                 'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,
                 'visible' => true,

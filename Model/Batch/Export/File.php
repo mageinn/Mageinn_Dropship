@@ -1,12 +1,12 @@
 <?php
-namespace Iredeem\Vendor\Model\Batch\Export;
+namespace Mageinn\Dropship\Model\Batch\Export;
 
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Mail\Template\TransportBuilder;
 
 /**
  * Class File
- * @package Iredeem\Vendor\Model\Batch\Export
+ * @package Mageinn\Dropship\Model\Batch\Export
  */
 class File extends \Magento\Framework\Filesystem\Io\File
 {
@@ -52,7 +52,7 @@ class File extends \Magento\Framework\Filesystem\Io\File
     protected $logger;
 
     /**
-     * @var \Iredeem\Vendor\Model\Batch\Export\File\Email
+     * @var \Mageinn\Dropship\Model\Batch\Export\File\Email
      */
     protected $email;
 
@@ -62,7 +62,7 @@ class File extends \Magento\Framework\Filesystem\Io\File
     protected $notes = [];
 
     /**
-     * @var \Iredeem\Vendor\Model\Batch\Export\File\Response
+     * @var \Mageinn\Dropship\Model\Batch\Export\File\Response
      */
     protected $response;
 
@@ -72,7 +72,7 @@ class File extends \Magento\Framework\Filesystem\Io\File
     protected $fileInfo;
 
     /**
-     * @var \Iredeem\Vendor\Helper\Data
+     * @var \Mageinn\Dropship\Helper\Data
      */
     protected $transfer;
 
@@ -81,19 +81,19 @@ class File extends \Magento\Framework\Filesystem\Io\File
      * @param \Magento\Framework\Filesystem\DirectoryList $dir
      * @param \Iredeem\Core\Magento\Mail\Template\TransportBuilder $builder
      * @param \Psr\Log\LoggerInterface $logger
-     * @param \Iredeem\Vendor\Model\Batch\Export\File\Email $email
-     * @param \Iredeem\Vendor\Model\Batch\Export\File\Response $response
+     * @param \Mageinn\Dropship\Model\Batch\Export\File\Email $email
+     * @param \Mageinn\Dropship\Model\Batch\Export\File\Response $response
      * @param \Magento\Framework\Filesystem\Io\File $fileSystem
-     * @param \Iredeem\Vendor\Model\Batch\Handler\Transfer $transfer
+     * @param \Mageinn\Dropship\Model\Batch\Handler\Transfer $transfer
      */
     public function __construct(
         \Magento\Framework\Filesystem\DirectoryList $dir,
         TransportBuilder $builder,
         \Psr\Log\LoggerInterface $logger,
-        \Iredeem\Vendor\Model\Batch\Export\File\Email $email,
-        \Iredeem\Vendor\Model\Batch\Export\File\Response $response,
+        \Mageinn\Dropship\Model\Batch\Export\File\Email $email,
+        \Mageinn\Dropship\Model\Batch\Export\File\Response $response,
         \Magento\Framework\Filesystem\Io\File $fileSystem,
-        \Iredeem\Vendor\Model\Batch\Handler\Transfer $transfer
+        \Mageinn\Dropship\Model\Batch\Handler\Transfer $transfer
     ) {
         $this->dir = $dir;
         $this->transportBuilder = $builder;
@@ -109,7 +109,7 @@ class File extends \Magento\Framework\Filesystem\Io\File
      *
      * @param $contents
      * @param $vendor
-     * @return \Iredeem\Vendor\Model\Batch\Export\File\Response
+     * @return \Mageinn\Dropship\Model\Batch\Export\File\Response
      * @throws \Exception
      */
     public function handle($contents, $vendor)

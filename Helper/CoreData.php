@@ -6,7 +6,7 @@
  * Time: 9:40
  */
 
-namespace Iredeem\Vendor\Helper;
+namespace Mageinn\Dropship\Helper;
 
 use \Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\Exception\LocalizedException;

@@ -1,19 +1,19 @@
 <?php
-namespace Iredeem\Vendor\Test\Unit\Model\Batch\Handler;
+namespace Mageinn\Dropship\Test\Unit\Model\Batch\Handler;
 
 /**
  * Class TransferTest
- * @package Iredeem\Vendor\Test\Unit\Model\Batch\Handler
+ * @package Mageinn\Dropship\Test\Unit\Model\Batch\Handler
  */
 class TransferTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @var \Iredeem\Vendor\Model\Batch\Handler\Transfer
+     * @var \Mageinn\Dropship\Model\Batch\Handler\Transfer
      */
-    protected $testClassName = \Iredeem\Vendor\Model\Batch\Handler\Transfer::class;
+    protected $testClassName = \Mageinn\Dropship\Model\Batch\Handler\Transfer::class;
 
     /**
-     * @var \Iredeem\Vendor\Model\Batch\Handler\Transfer
+     * @var \Mageinn\Dropship\Model\Batch\Handler\Transfer
      */
     protected $testClass;
 

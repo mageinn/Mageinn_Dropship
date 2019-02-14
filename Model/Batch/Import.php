@@ -1,5 +1,5 @@
 <?php
-namespace Iredeem\Vendor\Model\Batch;
+namespace Mageinn\Dropship\Model\Batch;
 
 use \Magento\Framework\Model\AbstractModel;
 use \Magento\Framework\Exception\LocalizedException;
@@ -7,7 +7,7 @@ use \Magento\Framework\Exception\LocalizedException;
 /**
  * Class Import
  *
- * @package Iredeem\Vendor\Model\Batch
+ * @package Mageinn\Dropship\Model\Batch
  * @method Import setBatchRowError($flag)
  * @method Import getBatchRowError()
  * @method Import setBatchRows($data)

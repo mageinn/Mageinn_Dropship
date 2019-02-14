@@ -64,10 +64,10 @@
                 <sorting>asc</sorting>
             </settings>
         </column>
-        <column name="vendor_id" class="Iredeem\Vendor\Ui\Component\Listing\Column\Vendor">
+        <column name="vendor_id" class="Mageinn\Dropship\Ui\Component\Listing\Column\Vendor">
             <settings>
                 <filter>select</filter>
-                <options class="Iredeem\Vendor\Ui\Component\Listing\Column\Vendor\Options"/>
+                <options class="Mageinn\Dropship\Ui\Component\Listing\Column\Vendor\Options"/>
                 <dataType>select</dataType>
                 <label translate="true">Vendor</label>
                 <visible>true</visible>
@@ -75,7 +75,7 @@
         </column>
         <column name="type" component="Magento_Ui/js/grid/columns/select">
             <settings>
-                <options class="Iredeem\Vendor\Model\Source\BatchType"/>
+                <options class="Mageinn\Dropship\Model\Source\BatchType"/>
                 <filter>select</filter>
                 <editor>
                     <editorType>select</editorType>
@@ -86,7 +86,7 @@
         </column>
         <column name="status" component="Magento_Ui/js/grid/columns/select">
             <settings>
-                <options class="Iredeem\Vendor\Model\Source\BatchStatus"/>
+                <options class="Mageinn\Dropship\Model\Source\BatchStatus"/>
                 <filter>select</filter>
                 <editor>
                     <editorType>select</editorType>
@@ -122,7 +122,7 @@
                 <label translate="true">Scheduled At</label>
             </settings>
         </column>
-        <actionsColumn name="actions" class="Iredeem\Vendor\Ui\Component\Listing\Column\Batches\Actions">
+        <actionsColumn name="actions" class="Mageinn\Dropship\Ui\Component\Listing\Column\Batches\Actions">
             <settings>
                 <indexField>entity_id</indexField>
             </settings>

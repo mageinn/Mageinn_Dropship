@@ -1,20 +1,20 @@
 <?php
-namespace Iredeem\Vendor\Model\Info;
+namespace Mageinn\Dropship\Model\Info;
 
 use \Magento\Ui\DataProvider\AbstractDataProvider;
-use \Iredeem\Vendor\Model\ResourceModel\Info\CollectionFactory as InfoCollectionFactory;
-use \Iredeem\Vendor\Model\ResourceModel\Address\CollectionFactory as AddressCollectionFactory;
-use \Iredeem\Vendor\Model\Info;
-use \Iredeem\Vendor\Model\Address;
+use \Mageinn\Dropship\Model\ResourceModel\Info\CollectionFactory as InfoCollectionFactory;
+use \Mageinn\Dropship\Model\ResourceModel\Address\CollectionFactory as AddressCollectionFactory;
+use \Mageinn\Dropship\Model\Info;
+use \Mageinn\Dropship\Model\Address;
 
 /**
  * Class DataProvider
  *
- * @package Iredeem\Vendor\Model\Vendor
+ * @package Mageinn\Dropship\Model\Vendor
  */
 class DataProvider extends AbstractDataProvider
 {
-    /** @var \Iredeem\Vendor\Model\ResourceModel\Address\Collection */
+    /** @var \Mageinn\Dropship\Model\ResourceModel\Address\Collection */
     protected $addressCollection;
 
     /** @var array Settings fieldset */
@@ -92,7 +92,7 @@ class DataProvider extends AbstractDataProvider
         }
 
         $items = $this->collection->getItems();
-        /** @var \Iredeem\Vendor\Model\Info $vendor */
+        /** @var \Mageinn\Dropship\Model\Info $vendor */
         foreach ($items as $vendor) {
             $vendorId = $vendor->getEntityId();
             $info = [];

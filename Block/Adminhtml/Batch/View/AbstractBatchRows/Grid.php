@@ -1,11 +1,11 @@
 <?php
-namespace Iredeem\Vendor\Block\Adminhtml\Batch\View\AbstractBatchRows;
+namespace Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractBatchRows;
 
-use Iredeem\Vendor\Model\ResourceModel\BatchRow\CollectionFactory;
+use Mageinn\Dropship\Model\ResourceModel\BatchRow\CollectionFactory;
 
 /**
  * Class Grid
- * @package Iredeem\Vendor\Block\Adminhtml\Batch\View\AbstractBatchRows
+ * @package Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractBatchRows
  */
 abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
 {
@@ -51,7 +51,7 @@ abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     }
 
     /**
-     * @return \Iredeem\Vendor\Model\Batch|null
+     * @return \Mageinn\Dropship\Model\Batch|null
      */
     public function getBatch()
     {

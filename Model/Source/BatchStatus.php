@@ -1,12 +1,12 @@
 <?php
-namespace Iredeem\Vendor\Model\Source;
+namespace Mageinn\Dropship\Model\Source;
 
 use \Magento\Framework\Data\OptionSourceInterface;
 
 /**
  * Class ShipmentStatus Source.
  *
- * @package Iredeem\Vendor\Model\Source
+ * @package Mageinn\Dropship\Model\Source
  */
 class BatchStatus implements OptionSourceInterface
 {

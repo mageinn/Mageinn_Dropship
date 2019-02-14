@@ -29,7 +29,7 @@
                 <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
             </item>
         </argument>
-        <dataProvider class="Iredeem\Vendor\Model\Batch\DataProvider" name="iredeem_batches_view_import_data_source">
+        <dataProvider class="Mageinn\Dropship\Model\Batch\DataProvider" name="iredeem_batches_view_import_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>entity_id</primaryFieldName>
@@ -83,7 +83,7 @@
             <formElements>
                 <select>
                     <settings>
-                        <options class="Iredeem\Vendor\Model\Source\BatchStatus"/>
+                        <options class="Mageinn\Dropship\Model\Source\BatchStatus"/>
                     </settings>
                 </select>
             </formElements>
@@ -129,7 +129,7 @@
                 </item>
             </argument>
             <htmlContent name="html_content">
-                <argument name="block" xsi:type="object">Iredeem\Vendor\Block\Adminhtml\Batch\View\Import\Sources</argument>
+                <argument name="block" xsi:type="object">Mageinn\Dropship\Block\Adminhtml\Batch\View\Import\Sources</argument>
             </htmlContent>
         </container>
     </fieldset>
@@ -147,7 +147,7 @@
                 </item>
             </argument>
             <htmlContent name="html_content">
-                <argument name="block" xsi:type="object">Iredeem\Vendor\Block\Adminhtml\Batch\View\Import\BatchRows</argument>
+                <argument name="block" xsi:type="object">Mageinn\Dropship\Block\Adminhtml\Batch\View\Import\BatchRows</argument>
             </htmlContent>
         </container>
     </fieldset>

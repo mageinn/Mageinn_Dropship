@@ -1,19 +1,19 @@
 <?php
-namespace Iredeem\Vendor\Controller\Adminhtml\Batches;
+namespace Mageinn\Dropship\Controller\Adminhtml\Batches;
 
 /**
  * Class Save
- * @package Iredeem\Vendor\Controller\Adminhtml\Batches\Import
+ * @package Mageinn\Dropship\Controller\Adminhtml\Batches\Import
  */
 class SaveImport extends \Magento\Backend\App\Action
 {
     /**
-     * @var \Iredeem\Vendor\Model\BatchFactory
+     * @var \Mageinn\Dropship\Model\BatchFactory
      */
     protected $_batch;
 
     /**
-     * @var \Iredeem\Vendor\Model\InfoFactory
+     * @var \Mageinn\Dropship\Model\InfoFactory
      */
     protected $_vendor;
 
@@ -30,16 +30,16 @@ class SaveImport extends \Magento\Backend\App\Action
     /**
      * SaveImport constructor.
      * @param \Magento\Backend\App\Action\Context $context
-     * @param \Iredeem\Vendor\Model\BatchFactory $batch
-     * @param \Iredeem\Vendor\Model\InfoFactory $vendor
+     * @param \Mageinn\Dropship\Model\BatchFactory $batch
+     * @param \Mageinn\Dropship\Model\InfoFactory $vendor
      * @param \Magento\Framework\Filesystem $filesystem
      * @param \Magento\Framework\Stdlib\DateTime\DateTime $dateTime
      * @throws \Magento\Framework\Exception\FileSystemException
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
-        \Iredeem\Vendor\Model\BatchFactory $batch,
-        \Iredeem\Vendor\Model\InfoFactory $vendor,
+        \Mageinn\Dropship\Model\BatchFactory $batch,
+        \Mageinn\Dropship\Model\InfoFactory $vendor,
         \Magento\Framework\Filesystem $filesystem,
         \Magento\Framework\Stdlib\DateTime\DateTime $dateTime
     ) {
@@ -86,8 +86,8 @@ class SaveImport extends \Magento\Backend\App\Action
         try {
             $this->_batch
                 ->setVendorId($batch['vendor_name'])
-                ->setType(\Iredeem\Vendor\Model\Source\BatchType::IREDEEM_VENDOR_BATCH_TYPE_IMPORT)
-                ->setStatus(\Iredeem\Vendor\Model\Source\BatchStatus::BATCH_STATUS_SCHEDULED)
+                ->setType(\Mageinn\Dropship\Model\Source\BatchType::IREDEEM_VENDOR_BATCH_TYPE_IMPORT)
+                ->setStatus(\Mageinn\Dropship\Model\Source\BatchStatus::BATCH_STATUS_SCHEDULED)
                 ->setCreatedAt($time)
                 ->setScheduledAt($time)
                 ->setFilePath($file)

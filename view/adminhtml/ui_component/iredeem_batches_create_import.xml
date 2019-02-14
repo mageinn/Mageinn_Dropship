@@ -39,7 +39,7 @@
         <settings>
             <submitUrl path="sales/batches/saveImport"/>
         </settings>
-        <dataProvider class="Iredeem\Vendor\Model\Batch\DataProvider" name="iredeem_batches_create_import_data_source">
+        <dataProvider class="Mageinn\Dropship\Model\Batch\DataProvider" name="iredeem_batches_create_import_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>entity_id</primaryFieldName>
@@ -58,7 +58,7 @@
             <formElements>
                 <select>
                     <settings>
-                        <options class="Iredeem\Vendor\Ui\Component\Listing\Column\Vendor\Options"/>
+                        <options class="Mageinn\Dropship\Ui\Component\Listing\Column\Vendor\Options"/>
                     </settings>
                 </select>
             </formElements>

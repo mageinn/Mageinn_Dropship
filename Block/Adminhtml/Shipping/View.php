@@ -1,17 +1,17 @@
 <?php
 
-namespace Iredeem\Vendor\Block\Adminhtml\Shipping;
+namespace Mageinn\Dropship\Block\Adminhtml\Shipping;
 
-use Iredeem\Vendor\Model\Source\ShipmentStatus;
+use Mageinn\Dropship\Model\Source\ShipmentStatus;
 
 /**
  * Class View
- * @package Iredeem\Vendor\Block\Adminhtml\Shipping
+ * @package Mageinn\Dropship\Block\Adminhtml\Shipping
  */
 class View extends \Magento\Shipping\Block\Adminhtml\View
 {
     /**
-     * @var \Iredeem\Vendor\Model\Shipment
+     * @var \Mageinn\Dropship\Model\Shipment
      */
     protected $shipment;
 
@@ -19,13 +19,13 @@ class View extends \Magento\Shipping\Block\Adminhtml\View
      * View constructor.
      * @param \Magento\Backend\Block\Widget\Context $context
      * @param \Magento\Framework\Registry $registry
-     * @param \Iredeem\Vendor\Model\Shipment $shipment
+     * @param \Mageinn\Dropship\Model\Shipment $shipment
      * @param array $data
      */
     public function __construct(
         \Magento\Backend\Block\Widget\Context $context,
         \Magento\Framework\Registry $registry,
-        \Iredeem\Vendor\Model\Shipment $shipment,
+        \Mageinn\Dropship\Model\Shipment $shipment,
         array $data = []
     ) {
         $this->shipment = $shipment;

@@ -1,9 +1,9 @@
 <?php
-namespace Iredeem\Vendor\Controller\Adminhtml\Batches;
+namespace Mageinn\Dropship\Controller\Adminhtml\Batches;
 
 /**
  * Class View
- * @package Iredeem\Vendor\Controller\Adminhtml\BatchRows
+ * @package Mageinn\Dropship\Controller\Adminhtml\BatchRows
  */
 class Download extends \Magento\Backend\App\Action
 {
@@ -42,7 +42,7 @@ class Download extends \Magento\Backend\App\Action
     protected $registry;
 
     /**
-     * @var \Iredeem\Vendor\Model\Batch
+     * @var \Mageinn\Dropship\Model\Batch
      */
     protected $batchModel;
 
@@ -65,7 +65,7 @@ class Download extends \Magento\Backend\App\Action
         \Psr\Log\LoggerInterface $logger,
         \Magento\Framework\Filesystem\Io\File $fileSystemIo,
         \Magento\Framework\Registry $registry,
-        \Iredeem\Vendor\Model\Batch $batchModel
+        \Mageinn\Dropship\Model\Batch $batchModel
     ) {
         $this->_resultRawFactory = $resultRawFactory;
         $this->_layoutFactory = $layoutFactory;
@@ -149,10 +149,10 @@ class Download extends \Magento\Backend\App\Action
             }
 
             $registry->register('iredeem_batch', $model);
-            if ($model->getType() == \Iredeem\Vendor\Model\Source\BatchType::IREDEEM_VENDOR_BATCH_TYPE_IMPORT) {
-                $registry->register('current_batch_type', \Iredeem\Vendor\Model\Batch::BATCH_TYPE_VIEW_IMPORT);
+            if ($model->getType() == \Mageinn\Dropship\Model\Source\BatchType::IREDEEM_VENDOR_BATCH_TYPE_IMPORT) {
+                $registry->register('current_batch_type', \Mageinn\Dropship\Model\Batch::BATCH_TYPE_VIEW_IMPORT);
             } else {
-                $registry->register('current_batch_type', \Iredeem\Vendor\Model\Batch::BATCH_TYPE_VIEW_EXPORT);
+                $registry->register('current_batch_type', \Mageinn\Dropship\Model\Batch::BATCH_TYPE_VIEW_EXPORT);
             }
         }
 

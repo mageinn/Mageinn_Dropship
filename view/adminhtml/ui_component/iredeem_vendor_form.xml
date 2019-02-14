@@ -17,9 +17,9 @@
             <button name="reset">
                 <label translate="true">Reset</label>
             </button>
-            <button name="delete" class="Iredeem\Vendor\Block\Adminhtml\Edit\DeleteButton"/>
-            <button name="save_and_continue" class="Iredeem\Vendor\Block\Adminhtml\Edit\SaveAndContinueButton"/>
-            <button name="save" class="Iredeem\Vendor\Block\Adminhtml\Edit\SaveButton"/>
+            <button name="delete" class="Mageinn\Dropship\Block\Adminhtml\Edit\DeleteButton"/>
+            <button name="save_and_continue" class="Mageinn\Dropship\Block\Adminhtml\Edit\SaveAndContinueButton"/>
+            <button name="save" class="Mageinn\Dropship\Block\Adminhtml\Edit\SaveButton"/>
         </buttons>
         <layout>
             <navContainerName>left</navContainerName>
@@ -38,7 +38,7 @@
         <settings>
             <submitUrl path="sales/vendor/save"/>
         </settings>
-        <dataProvider class="Iredeem\Vendor\Model\Info\DataProvider" name="iredeem_vendor_form_data_source">
+        <dataProvider class="Mageinn\Dropship\Model\Info\DataProvider" name="iredeem_vendor_form_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>entity_id</primaryFieldName>
@@ -650,7 +650,7 @@
                     </item>
                 </argument>
                 <htmlContent name="html_content">
-                    <argument name="block" xsi:type="object">Iredeem\Vendor\Block\Adminhtml\Users\Edit\AssignUser</argument>
+                    <argument name="block" xsi:type="object">Mageinn\Dropship\Block\Adminhtml\Users\Edit\AssignUser</argument>
                 </htmlContent>
             </container>
         </fieldset>
@@ -706,7 +706,7 @@
                 <formElements>
                     <select>
                         <settings>
-                            <options class="Iredeem\Vendor\Model\Source\ShipmentStatus"/>
+                            <options class="Mageinn\Dropship\Model\Source\ShipmentStatus"/>
                         </settings>
                     </select>
                 </formElements>

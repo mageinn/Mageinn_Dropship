@@ -1,6 +1,6 @@
 <?php
 
-namespace Iredeem\Vendor\Block\Adminhtml\Users\Edit\Tab;
+namespace Mageinn\Dropship\Block\Adminhtml\Users\Edit\Tab;
 
 use Magento\Backend\Block\Template\Context;
 use Magento\Backend\Block\Widget\Grid;
@@ -14,7 +14,7 @@ use Magento\User\Model\UserFactory;
 
 /**
  * Class Stock
- * @package Iredeem\Vendor\Block\Adminhtml\Edit\Tab
+ * @package Mageinn\Dropship\Block\Adminhtml\Edit\Tab
  */
 class User extends Extended
 {

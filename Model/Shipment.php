@@ -1,6 +1,6 @@
 <?php
 
-namespace Iredeem\Vendor\Model;
+namespace Mageinn\Dropship\Model;
 
 use Magento\Framework\Api\AttributeValueFactory;
 
@@ -117,7 +117,7 @@ class Shipment extends \Magento\Sales\Model\Order\Shipment
         $shipment = $this->_registry->registry('current_shipment');
         if (!empty($admin->getAssocVendorId()) &&
             (int) $shipment->getDropshipStatus()
-            === \Iredeem\Vendor\Model\Source\ShipmentStatus::SHIPMENT_STATUS_SHIPPED
+            === \Mageinn\Dropship\Model\Source\ShipmentStatus::SHIPMENT_STATUS_SHIPPED
         ) {
             return true;
         }

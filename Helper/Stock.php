@@ -1,7 +1,7 @@
 <?php
-namespace Iredeem\Vendor\Helper;
+namespace Mageinn\Dropship\Helper;
 
-use Iredeem\Vendor\Helper\CoreData;
+use Mageinn\Dropship\Helper\CoreData;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\App\Helper\Context;
@@ -45,7 +45,7 @@ class Stock extends CoreData
      */
     protected $filesystem;
     /**
-     * @var  /Iredeem\Vendor\Helper\Data
+     * @var  /Mageinn\Dropship\Helper\Data
      */
     protected $vendorHelper;
 
@@ -72,7 +72,7 @@ class Stock extends CoreData
      * @param StockRegistryInterface $stockRegistryInterface
      */
     public function __construct(
-        \Iredeem\Vendor\Helper\Rates $ratesHelper,
+        \Mageinn\Dropship\Helper\Rates $ratesHelper,
         Context $context,
         ObjectManagerInterface $objectManager,
         StoreManagerInterface $storeManager,
@@ -81,7 +81,7 @@ class Stock extends CoreData
         \Magento\Framework\File\Csv $csvProcessor,
         \Magento\Framework\App\Filesystem\DirectoryList $directoryList,
         \Magento\Framework\Filesystem $filesystem,
-        \Iredeem\Vendor\Helper\Data $vendorHelper,
+        \Mageinn\Dropship\Helper\Data $vendorHelper,
         \Magento\CatalogInventory\Api\StockRegistryInterface $stockRegistryInterface
     ) {
         $this->ratesHelper = $ratesHelper;

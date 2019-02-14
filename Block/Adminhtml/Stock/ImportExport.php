@@ -1,15 +1,15 @@
 <?php
 
-namespace Iredeem\Vendor\Block\Adminhtml\Stock;
+namespace Mageinn\Dropship\Block\Adminhtml\Stock;
 
 /**
  * Class ImportExport
- * @package Iredeem\Vendor\Block\Adminhtml\Stock
+ * @package Mageinn\Dropship\Block\Adminhtml\Stock
  */
 class ImportExport extends \Magento\Backend\Block\Widget
 {
     /**
-     * @var \Iredeem\Vendor\Model\ResourceModel\Info\CollectionFactory
+     * @var \Mageinn\Dropship\Model\ResourceModel\Info\CollectionFactory
      */
     protected $vendorsCollectionFactory;
 
@@ -22,13 +22,13 @@ class ImportExport extends \Magento\Backend\Block\Widget
      * ImportExport constructor.
      * @param \Magento\Backend\Block\Template\Context $context
      * @param \Magento\Backend\Model\Auth\Session $authSession
-     * @param \Iredeem\Vendor\Model\ResourceModel\Info\CollectionFactory $collectionFactory
+     * @param \Mageinn\Dropship\Model\ResourceModel\Info\CollectionFactory $collectionFactory
      * @param array $data
      */
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Backend\Model\Auth\Session $authSession,
-        \Iredeem\Vendor\Model\ResourceModel\Info\CollectionFactory $collectionFactory,
+        \Mageinn\Dropship\Model\ResourceModel\Info\CollectionFactory $collectionFactory,
         array $data = []
     ) {
         $this->authSession = $authSession;

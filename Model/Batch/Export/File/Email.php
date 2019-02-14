@@ -1,9 +1,9 @@
 <?php
-namespace Iredeem\Vendor\Model\Batch\Export\File;
+namespace Mageinn\Dropship\Model\Batch\Export\File;
 
 /**
  * Class Email
- * @package Iredeem\Vendor\Model\Batch\Export\File
+ * @package Mageinn\Dropship\Model\Batch\Export\File
  */
 class Email
 {
@@ -57,7 +57,7 @@ class Email
     protected $templateVars;
 
     /**
-     * @var \Iredeem\Vendor\Helper\Data
+     * @var \Mageinn\Dropship\Helper\Data
      */
     protected $vendorHelper;
 
@@ -73,11 +73,11 @@ class Email
 
     /**
      * Email constructor.
-     * @param \Iredeem\Vendor\Helper\Data $helper
+     * @param \Mageinn\Dropship\Helper\Data $helper
      * @param \Magento\Store\Model\StoreManagerInterface $manager
      */
     public function __construct(
-        \Iredeem\Vendor\Helper\Data $helper,
+        \Mageinn\Dropship\Helper\Data $helper,
         \Magento\Store\Model\StoreManagerInterface $manager
     ) {
         $this->vendorHelper = $helper;

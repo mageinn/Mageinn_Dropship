@@ -114,7 +114,7 @@ $orderStoreDate = $block->formatDate(
                 <?php if ($tmpBlock->getShipment()->getVendorId()): ?>
                     <tr>
                         <th><?= $block->escapeHtml(__('Vendor')) ?></th>
-                        <td><?= $block->escapeHtml($this->helper('Iredeem\Vendor\Helper\Data')->getVendorNameById($tmpBlock->getShipment()->getVendorId())) ?></td>
+                        <td><?= $block->escapeHtml($this->helper('Mageinn\Dropship\Helper\Data')->getVendorNameById($tmpBlock->getShipment()->getVendorId())) ?></td>
                     </tr>
                 <?php endif; ?>
             </table>

@@ -1,18 +1,18 @@
 <?php
 
-namespace Iredeem\Vendor\Model\Batch;
+namespace Mageinn\Dropship\Model\Batch;
 
 use \Magento\Framework\Model\AbstractModel;
 
 /**
  * Class Adapter
  *
- * @package Iredeem\Vendor\Model\Batch
+ * @package Mageinn\Dropship\Model\Batch
  */
 class Export extends AbstractModel
 {
     /**
-     * @var \Iredeem\Vendor\Helper\Data
+     * @var \Mageinn\Dropship\Helper\Data
      */
     protected $vendorHelper;
 
@@ -22,7 +22,7 @@ class Export extends AbstractModel
     protected $shipmentCollection;
 
     /**
-     * @var \Iredeem\Vendor\Model\Batch\Export\Response
+     * @var \Mageinn\Dropship\Model\Batch\Export\Response
      */
     protected $response;
 
@@ -32,7 +32,7 @@ class Export extends AbstractModel
     protected $shipments;
 
     /**
-     * @var \Iredeem\Vendor\Model\Batch\Export\File
+     * @var \Mageinn\Dropship\Model\Batch\Export\File
      */
     protected $file;
 
@@ -46,10 +46,10 @@ class Export extends AbstractModel
      *
      * @param \Magento\Framework\Model\Context $context
      * @param \Magento\Framework\Registry $registry
-     * @param \Iredeem\Vendor\Helper\Data $helper
+     * @param \Mageinn\Dropship\Helper\Data $helper
      * @param \Magento\Sales\Model\ResourceModel\Order\Shipment\CollectionFactory $shipmentCollection
-     * @param \Iredeem\Vendor\Model\Batch\Export\Response $response
-     * @param \Iredeem\Vendor\Model\Batch\Export\File $file
+     * @param \Mageinn\Dropship\Model\Batch\Export\Response $response
+     * @param \Mageinn\Dropship\Model\Batch\Export\File $file
      * @param \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection $shipments
      * @param \Magento\Framework\Model\ResourceModel\AbstractResource|null $resource
      * @param \Magento\Framework\Data\Collection\AbstractDb|null $resourceCollection
@@ -58,10 +58,10 @@ class Export extends AbstractModel
     public function __construct(
         \Magento\Framework\Model\Context $context,
         \Magento\Framework\Registry $registry,
-        \Iredeem\Vendor\Helper\Data $helper,
+        \Mageinn\Dropship\Helper\Data $helper,
         \Magento\Sales\Model\ResourceModel\Order\Shipment\CollectionFactory $shipmentCollection,
-        \Iredeem\Vendor\Model\Batch\Export\Response $response,
-        \Iredeem\Vendor\Model\Batch\Export\File $file,
+        \Mageinn\Dropship\Model\Batch\Export\Response $response,
+        \Mageinn\Dropship\Model\Batch\Export\File $file,
         \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection $shipments = null,
         \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
         \Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
@@ -80,7 +80,7 @@ class Export extends AbstractModel
      *
      * @param $vendor
      * @param $batchId
-     * @return \Iredeem\Vendor\Model\Batch\Export\Response|null
+     * @return \Mageinn\Dropship\Model\Batch\Export\Response|null
      * @throws \Exception
      */
     public function process($vendor, $batchId)

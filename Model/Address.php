@@ -1,12 +1,12 @@
 <?php
-namespace Iredeem\Vendor\Model;
+namespace Mageinn\Dropship\Model;
 
 use \Magento\Framework\Model\AbstractModel;
-use \Iredeem\Vendor\Model\ResourceModel\Address as ResourceModelAddress;
+use \Mageinn\Dropship\Model\ResourceModel\Address as ResourceModelAddress;
 
 /**
  * Class Info
- * @package Iredeem\Vendor\Model
+ * @package Mageinn\Dropship\Model
  */
 class Address extends AbstractModel
 {

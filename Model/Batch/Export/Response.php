@@ -1,11 +1,11 @@
 <?php
 
-namespace Iredeem\Vendor\Model\Batch\Export;
+namespace Mageinn\Dropship\Model\Batch\Export;
 
 /**
  * Class Response
  *
- * @package Iredeem\Vendor\Model\Batch\Export
+ * @package Mageinn\Dropship\Model\Batch\Export
  */
 class Response
 {

@@ -1,7 +1,7 @@
 <?php
-namespace Iredeem\Vendor\Controller\Adminhtml\Users;
+namespace Mageinn\Dropship\Controller\Adminhtml\Users;
 
-class Grid extends \Iredeem\Vendor\Controller\Adminhtml\Users\User
+class Grid extends \Mageinn\Dropship\Controller\Adminhtml\Users\User
 {
     /**
      * @var \Magento\Framework\Controller\Result\RawFactory
@@ -14,7 +14,7 @@ class Grid extends \Iredeem\Vendor\Controller\Adminhtml\Users\User
     protected $layoutFactory;
 
     /**
-     * @var \Iredeem\Vendor\Model\Info
+     * @var \Mageinn\Dropship\Model\Info
      */
     protected $vendorModel;
 
@@ -28,14 +28,14 @@ class Grid extends \Iredeem\Vendor\Controller\Adminhtml\Users\User
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magento\Framework\Controller\Result\RawFactory $resultRawFactory
      * @param \Magento\Framework\View\LayoutFactory $layoutFactory
-     * @param \Iredeem\Vendor\Model\Info $vendorModel
+     * @param \Mageinn\Dropship\Model\Info $vendorModel
      * @param \Magento\Framework\Registry $registry
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\Controller\Result\RawFactory $resultRawFactory,
         \Magento\Framework\View\LayoutFactory $layoutFactory,
-        \Iredeem\Vendor\Model\Info $vendorModel,
+        \Mageinn\Dropship\Model\Info $vendorModel,
         \Magento\Framework\Registry $registry
     ) {
         parent::__construct($context);
@@ -63,7 +63,7 @@ class Grid extends \Iredeem\Vendor\Controller\Adminhtml\Users\User
 
         return $resultRaw->setContents(
             $this->layoutFactory->create()->createBlock(
-                'Iredeem\Vendor\Block\Adminhtml\Users\Edit\Tab\User',
+                'Mageinn\Dropship\Block\Adminhtml\Users\Edit\Tab\User',
                 'vendor.user.grid'
             )->toHtml()
         );

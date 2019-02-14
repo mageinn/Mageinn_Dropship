@@ -1,11 +1,11 @@
 <?php
-namespace Iredeem\Vendor\Model\ResourceModel;
+namespace Mageinn\Dropship\Model\ResourceModel;
 
 use \Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
 /**
  * Class Address
- * @package Iredeem\Vendor\Model\ResourceModel
+ * @package Mageinn\Dropship\Model\ResourceModel
  */
 class Address extends AbstractDb
 {

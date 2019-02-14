@@ -1,20 +1,20 @@
 <?php
-namespace Iredeem\Vendor\Controller\Adminhtml\Vendor;
+namespace Mageinn\Dropship\Controller\Adminhtml\Vendor;
 
 use \Magento\Backend\App\Action;
 use \Magento\Backend\App\Action\Context;
 use \Magento\Framework\Registry;
 use \Magento\Framework\Exception\LocalizedException;
-use \Iredeem\Vendor\Model\Info;
-use \Iredeem\Vendor\Model\Address;
-use \Iredeem\Vendor\Model\ResourceModel\Address\CollectionFactory as AddressCollectionFactory;
+use \Mageinn\Dropship\Model\Info;
+use \Mageinn\Dropship\Model\Address;
+use \Mageinn\Dropship\Model\ResourceModel\Address\CollectionFactory as AddressCollectionFactory;
 use \Magento\User\Model\ResourceModel\User\CollectionFactory as UserCollectionFactory;
-use \Iredeem\Vendor\Helper\CoreData;
+use \Mageinn\Dropship\Helper\CoreData;
 
 /**
  * Class Save
  *
- * @package Iredeem\Vendor\Controller\Adminhtml\Vendor
+ * @package Mageinn\Dropship\Controller\Adminhtml\Vendor
  */
 class Save extends Action
 {
@@ -193,7 +193,7 @@ class Save extends Action
                 $info['entity_id'] = null;
             }
 
-            /** @var \Iredeem\Vendor\Model\Info $model */
+            /** @var \Mageinn\Dropship\Model\Info $model */
             $model = $this->vendorModel->load($id);
             if (!$model->getId() && $id) {
                 $this->messageManager->addError(__('This vendor no longer exists.'));

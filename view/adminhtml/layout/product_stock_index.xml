@@ -3,7 +3,7 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceBlock name="content">
-            <block class="Iredeem\Vendor\Block\Adminhtml\Stock\ImportExport"
+            <block class="Mageinn\Dropship\Block\Adminhtml\Stock\ImportExport"
                    name="product-stock-management" template="Iredeem_Vendor::stockManagement/importExport.phtml"/>
         </referenceBlock>
     </body>

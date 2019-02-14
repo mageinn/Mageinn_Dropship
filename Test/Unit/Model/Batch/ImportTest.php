@@ -1,14 +1,14 @@
 <?php
 
-namespace Iredeem\Vendor\Test\Model\Batch\Import;
+namespace Mageinn\Dropship\Test\Model\Batch\Import;
 
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
-use Iredeem\Vendor\Model\Batch\Import;
+use Mageinn\Dropship\Model\Batch\Import;
 
 class ImportTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @var \Iredeem\Vendor\Model\Batch\Import
+     * @var \Mageinn\Dropship\Model\Batch\Import
      */
     private $_import;
 

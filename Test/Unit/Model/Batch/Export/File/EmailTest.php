@@ -1,19 +1,19 @@
 <?php
-namespace Iredeem\Vendor\Test\Unit\Model\Batch\Export\File;
+namespace Mageinn\Dropship\Test\Unit\Model\Batch\Export\File;
 
 /**
  * Class EmailTest
- * @package Iredeem\Vendor\Test\Unit\Model\Batch\Export\File
+ * @package Mageinn\Dropship\Test\Unit\Model\Batch\Export\File
  */
 class EmailTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var string
      */
-    protected $_testClassName = \Iredeem\Vendor\Model\Batch\Export\File\Email::class;
+    protected $_testClassName = \Mageinn\Dropship\Model\Batch\Export\File\Email::class;
 
     /**
-     * @var \Iredeem\Vendor\Model\Batch\Export\File\Email
+     * @var \Mageinn\Dropship\Model\Batch\Export\File\Email
      */
     protected $_testClass;
 
@@ -29,11 +29,11 @@ class EmailTest extends \PHPUnit\Framework\TestCase
     {
         $objectManager = new \Magento\Framework\TestFramework\Unit\Helper\ObjectManager($this);
         $this->_vendorHelper = $this->createPartialMock(
-            \Iredeem\Vendor\Helper\Data::class,
+            \Mageinn\Dropship\Helper\Data::class,
             ['getBatchOrderExportConfig']
         );
         $this->_testClass = $objectManager->getObject(
-            'Iredeem\Vendor\Model\Batch\Export\File\Email',
+            'Mageinn\Dropship\Model\Batch\Export\File\Email',
             [
                 'vendorHelper' => $this->_vendorHelper
             ]

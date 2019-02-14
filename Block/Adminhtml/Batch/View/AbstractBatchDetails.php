@@ -1,9 +1,9 @@
 <?php
-namespace Iredeem\Vendor\Block\Adminhtml\Batch\View;
+namespace Mageinn\Dropship\Block\Adminhtml\Batch\View;
 
 /**
  * Class AbstractBatchDetails
- * @package Iredeem\Vendor\Block\Adminhtml\Batch\View
+ * @package Mageinn\Dropship\Block\Adminhtml\Batch\View
  */
 abstract class AbstractBatchDetails extends \Magento\Backend\Block\Template
 {

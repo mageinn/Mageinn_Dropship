@@ -1,11 +1,11 @@
 <?php
-namespace Iredeem\Vendor\Block\Adminhtml\Batch\View\Export;
+namespace Mageinn\Dropship\Block\Adminhtml\Batch\View\Export;
 
 /**
  * Class DataRows
- * @package Iredeem\Vendor\Block\Adminhtml\Batch\View\Export
+ * @package Mageinn\Dropship\Block\Adminhtml\Batch\View\Export
  */
-class Destinations extends \Iredeem\Vendor\Block\Adminhtml\Batch\View\AbstractBatchDetails
+class Destinations extends \Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractBatchDetails
 {
 
     /**
@@ -18,7 +18,7 @@ class Destinations extends \Iredeem\Vendor\Block\Adminhtml\Batch\View\AbstractBa
     {
         if (null === $this->_grid) {
             $this->_grid = $this->getLayout()->createBlock(
-                \Iredeem\Vendor\Block\Adminhtml\Batch\View\Export\Destinations\Grid::class,
+                \Mageinn\Dropship\Block\Adminhtml\Batch\View\Export\Destinations\Grid::class,
                 'batches.destinations'
             );
         }

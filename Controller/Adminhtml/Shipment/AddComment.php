@@ -4,7 +4,7 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Iredeem\Vendor\Controller\Adminhtml\Shipment;
+namespace Mageinn\Dropship\Controller\Adminhtml\Shipment;
 
 use Magento\Sales\Model\Order\Email\Sender\ShipmentCommentSender;
 use Magento\Backend\App\Action;
@@ -59,7 +59,7 @@ class AddComment extends \Magento\Shipping\Controller\Adminhtml\Order\Shipment\A
 
             if (!empty($this->_auth->getUser()->getAssocVendorId()) && ($status)
                 && (int) $shipment->getDropshipStatus()
-                !== \Iredeem\Vendor\Model\Source\ShipmentStatus::SHIPMENT_STATUS_SHIPPED
+                !== \Mageinn\Dropship\Model\Source\ShipmentStatus::SHIPMENT_STATUS_SHIPPED
             ) {
                 $shipment->setDropshipStatus($status);
             } elseif (empty($this->_auth->getUser()->getAssocVendorId()) && $status) {

@@ -1,11 +1,11 @@
 <?php
-namespace Iredeem\Vendor\Block\Adminhtml\Batch\View\Export\BatchRows;
+namespace Mageinn\Dropship\Block\Adminhtml\Batch\View\Export\BatchRows;
 
 /**
  * Class Grid
- * @package Iredeem\Vendor\Block\Adminhtml\Batch\View\Export\BatchRows
+ * @package Mageinn\Dropship\Block\Adminhtml\Batch\View\Export\BatchRows
  */
-class Grid extends \Iredeem\Vendor\Block\Adminhtml\Batch\View\AbstractBatchRows\Grid
+class Grid extends \Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractBatchRows\Grid
 {
     /**
      * @return \Magento\Backend\Block\Widget\Grid\Extended

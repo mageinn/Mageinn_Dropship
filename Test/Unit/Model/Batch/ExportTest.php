@@ -1,15 +1,15 @@
 <?php
-namespace Iredeem\Vendor\Test\Unit\Model\Batch;
+namespace Mageinn\Dropship\Test\Unit\Model\Batch;
 
 class ExportTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @var \Iredeem\Vendor\Model\Batch\Export
+     * @var \Mageinn\Dropship\Model\Batch\Export
      */
-    protected $testClassName = \Iredeem\Vendor\Model\Batch\Export::class;
+    protected $testClassName = \Mageinn\Dropship\Model\Batch\Export::class;
 
     /**
-     * @var \Iredeem\Vendor\Model\Batch\Export
+     * @var \Mageinn\Dropship\Model\Batch\Export
      */
     protected $testClass;
 
@@ -19,7 +19,7 @@ class ExportTest extends \PHPUnit\Framework\TestCase
     public function setUp()
     {
         $objectManager = new \Magento\Framework\TestFramework\Unit\Helper\ObjectManager($this);
-        $this->testClass = $objectManager->getObject('Iredeem\Vendor\Model\Batch\Export');
+        $this->testClass = $objectManager->getObject('Mageinn\Dropship\Model\Batch\Export');
     }
 
     /**
@@ -32,7 +32,7 @@ class ExportTest extends \PHPUnit\Framework\TestCase
         $fileHeadings = new \ReflectionMethod($this->testClassName, '_getFileHeading');
         $fileHeadings->setAccessible(true);
 
-        $vendorMock = $this->createPartialMock(\Iredeem\Vendor\Model\Info::class, ['getBatchExportHeadings']);
+        $vendorMock = $this->createPartialMock(\Mageinn\Dropship\Model\Info::class, ['getBatchExportHeadings']);
         $vendorMock->expects($this->once())
             ->method('getBatchExportHeadings')
             ->will($this->returnValue('Placeholder text for header'));
@@ -53,7 +53,7 @@ class ExportTest extends \PHPUnit\Framework\TestCase
         $fileHeadings = new \ReflectionMethod($this->testClassName, '_getFileHeading');
         $fileHeadings->setAccessible(true);
 
-        $vendorMock = $this->createPartialMock(\Iredeem\Vendor\Model\Info::class, ['getBatchExportHeadings']);
+        $vendorMock = $this->createPartialMock(\Mageinn\Dropship\Model\Info::class, ['getBatchExportHeadings']);
         $vendorMock->expects($this->once())
             ->method('getBatchExportHeadings')
             ->will($this->returnValue(null));

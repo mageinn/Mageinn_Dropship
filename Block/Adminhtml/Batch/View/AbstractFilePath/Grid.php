@@ -1,9 +1,9 @@
 <?php
-namespace Iredeem\Vendor\Block\Adminhtml\Batch\View\AbstractFilePath;
+namespace Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractFilePath;
 
 /**
  * Class Grid
- * @package Iredeem\Vendor\Block\Adminhtml\Batch\View\AbstractFilePath
+ * @package Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractFilePath
  */
 abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
 {
@@ -23,7 +23,7 @@ abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     protected $_logger;
 
     /**
-     * @var \Iredeem\Vendor\Model\Source\BatchStatus
+     * @var \Mageinn\Dropship\Model\Source\BatchStatus
      */
     protected $_batchStatus;
 
@@ -34,7 +34,7 @@ abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
      * @param \Magento\Framework\Data\CollectionFactory $collectionFactory
      * @param \Magento\Framework\Registry $registry
      * @param \Psr\Log\LoggerInterface $logger
-     * @param \Iredeem\Vendor\Model\Source\BatchStatus $batchStatus
+     * @param \Mageinn\Dropship\Model\Source\BatchStatus $batchStatus
      * @param array $data
      */
     public function __construct(
@@ -43,7 +43,7 @@ abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         \Magento\Framework\Data\CollectionFactory $collectionFactory,
         \Magento\Framework\Registry $registry,
         \Psr\Log\LoggerInterface $logger,
-        \Iredeem\Vendor\Model\Source\BatchStatus $batchStatus,
+        \Mageinn\Dropship\Model\Source\BatchStatus $batchStatus,
         array $data = []
     ) {
         $this->_registry = $registry;
@@ -66,7 +66,7 @@ abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     }
 
     /**
-     * @return \Iredeem\Vendor\Model\Batch|null
+     * @return \Mageinn\Dropship\Model\Batch|null
      */
     public function getBatch()
     {
