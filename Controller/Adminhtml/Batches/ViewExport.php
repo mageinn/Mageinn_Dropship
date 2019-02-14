@@ -60,7 +60,7 @@ class ViewExport extends \Magento\Backend\App\Action
             }
         }
 
-        $this->_registry->register('iredeem_batch', $model);
+        $this->_registry->register('mageinn_batch', $model);
         $this->_registry->register('current_batch_type', 'Export');
 
         $resultPage = $this->resultFactory->create(\Magento\Framework\Controller\ResultFactory::TYPE_PAGE);

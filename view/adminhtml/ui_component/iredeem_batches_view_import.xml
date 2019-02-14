@@ -46,7 +46,7 @@
         <field name="entity_id" formElement="input">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">iredeem_batch</item>
+                    <item name="source" xsi:type="string">mageinn_batch</item>
                 </item>
             </argument>
             <settings>
@@ -58,7 +58,7 @@
         <field name="vendor" formElement="input">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">iredeem_batch</item>
+                    <item name="source" xsi:type="string">mageinn_batch</item>
                     <item name="label" xsi:type="string" translate="true">Vendor</item>
                 </item>
             </argument>
@@ -71,7 +71,7 @@
         <field name="status" formElement="select">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">iredeem_batch</item>
+                    <item name="source" xsi:type="string">mageinn_batch</item>
                 </item>
             </argument>
             <settings>
@@ -91,7 +91,7 @@
         <field name="num_rows" formElement="input">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">iredeem_batch</item>
+                    <item name="source" xsi:type="string">mageinn_batch</item>
                     <item name="label" xsi:type="string" translate="true">Number of Rows</item>
                 </item>
             </argument>
@@ -104,7 +104,7 @@
         <field name="rows_text" formElement="textarea">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">iredeem_batch</item>
+                    <item name="source" xsi:type="string">mageinn_batch</item>
                     <item name="label" xsi:type="string" translate="true">Content</item>
                 </item>
             </argument>

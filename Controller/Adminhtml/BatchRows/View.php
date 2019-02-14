@@ -84,7 +84,7 @@ class View extends \Magento\Backend\App\Action
      */
     protected function _initItem($registry)
     {
-        $model = $registry->registry('iredeem_batch');
+        $model = $registry->registry('mageinn_batch');
         if (!$model) {
             $id = (int)$this->getRequest()->getParam('id', false);
             $model = $this->batchModel;
@@ -93,7 +93,7 @@ class View extends \Magento\Backend\App\Action
                 $model->load($id);
             }
 
-            $registry->register('iredeem_batch', $model);
+            $registry->register('mageinn_batch', $model);
             if ($model->getType() == \Mageinn\Dropship\Model\Source\BatchType::IREDEEM_VENDOR_BATCH_TYPE_IMPORT) {
                 $registry->register('current_batch_type', \Mageinn\Dropship\Model\Batch::BATCH_TYPE_VIEW_IMPORT);
             } else {

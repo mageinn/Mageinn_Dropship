@@ -55,7 +55,7 @@ abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
      */
     public function getBatch()
     {
-        return $this->_registry->registry('iredeem_batch');
+        return $this->_registry->registry('mageinn_batch');
     }
 
     /**
