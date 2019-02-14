@@ -8,7 +8,7 @@
             <stories value="Create a Vendor via the Admin"/>
             <title value="You should be able to create a Vendor in the admin back-end."/>
             <description value="You should be able to create a Vendor in the admin back-end."/>
-            <group value="iredeem"/>
+            <group value="mageinn"/>
             <group value="vendor"/>
         </annotations>
         <before>
@@ -91,7 +91,7 @@
             <stories value="Create a Vendor via the Admin without a required field"/>
             <title value="Create a vendor with a required field missing"/>
             <description value="Create a vendor with a required field missing"/>
-            <group value="iredeem"/>
+            <group value="mageinn"/>
             <group value="vendor"/>
         </annotations>
         <before>
@@ -149,7 +149,7 @@
             <stories value="Create a Vendor via the Admin with invalid fields"/>
             <title value="Create a vendor with invalid fields"/>
             <description value="Create a vendor with invalid fields"/>
-            <group value="iredeem"/>
+            <group value="mageinn"/>
             <group value="vendor"/>
         </annotations>
         <before>

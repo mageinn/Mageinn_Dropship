@@ -7,7 +7,7 @@
             <stories value="Create/Edit/Delete a Vendor via the Admin"/>
             <title value="You should be able to manage a Vendor in the admin back-end."/>
             <description value="You should be able to mange a Vendor in the admin back-end."/>
-            <group value="iredeem"/>
+            <group value="mageinn"/>
             <group value="vendorManage"/>
         </annotations>
         <before>

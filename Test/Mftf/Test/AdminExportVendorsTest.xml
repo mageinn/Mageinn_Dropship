@@ -7,7 +7,7 @@
             <stories value="Export via CSV a Vendor via the Admin"/>
             <title value="You should be able to export a Vendor via CSV in the admin back-end."/>
             <description value="You should be able to export a Vendor via CSV in the admin back-end."/>
-            <group value="iredeem"/>
+            <group value="mageinn"/>
             <group value="exportCSVVendor"/>
         </annotations>
         <before>
@@ -36,7 +36,7 @@
             <stories value="Export via XML a Vendor via the Admin"/>
             <title value="You should be able to export a Vendor via XML in the admin back-end."/>
             <description value="You should be able to export a Vendor via XML in the admin back-end."/>
-            <group value="iredeem"/>
+            <group value="mageinn"/>
             <group value="exportXMLVendor"/>
         </annotations>
         <before>

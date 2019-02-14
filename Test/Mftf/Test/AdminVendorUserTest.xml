@@ -7,7 +7,7 @@
             <stories value="Check if the shipment is displayed for a vendor user."/>
             <title value="The vendor should be able to see his shipment."/>
             <description value="Checks if a vendor is able to see his shipment."/>
-            <group value="iredeem"/>
+            <group value="mageinn"/>
             <group value="vendorManageUser"/>
         </annotations>
         <before>

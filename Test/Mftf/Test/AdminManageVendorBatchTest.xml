@@ -7,7 +7,7 @@
             <stories value="Manage Vendor Batch Exoport"/>
             <title value="Export Vendor Batch"/>
             <description value="Export Vendor Batch "/>
-            <group value="iredeem"/>
+            <group value="mageinn"/>
             <group value="vendorBatch"/>
         </annotations>
         <before>
@@ -79,7 +79,7 @@
             <stories value="Manage Vendor Batch"/>
             <title value="Export Vendor Batch and Import it from a file"/>
             <description value="Export Vendor Batch and Import it from a file"/>
-            <group value="iredeem"/>
+            <group value="mageinn"/>
             <group value="vendorBatchExportImport"/>
         </annotations>
         <before>

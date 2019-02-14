@@ -8,7 +8,7 @@
             <stories value="Manage Shipping Rates"/>
             <title value="Import and Export Shipping Rates"/>
             <description value="Importing Shipping Rates from a file and then export them."/>
-            <group value="iredeem"/>
+            <group value="mageinn"/>
             <group value="vendorShippingRates"/>
         </annotations>
         <before>
@@ -28,7 +28,7 @@
             <stories value="Manage Shipping Rates"/>
             <title value="Import and Export Shipping Rates from a invalid file"/>
             <description value="Importing Shipping Rates from a invalid file"/>
-            <group value="iredeem"/>
+            <group value="mageinn"/>
             <group value="vendorShippingRatesInvalidFile"/>
         </annotations>
         <before>
@@ -46,7 +46,7 @@
             <stories value="Manage Shipping Rates"/>
             <title value="Import and Export Shipping Rates with regions only"/>
             <description value="Importing Shipping Rates with regions only"/>
-            <group value="iredeem"/>
+            <group value="mageinn"/>
             <group value="vendorShippingRatesRegionsOnly"/>
         </annotations>
         <before>
@@ -63,7 +63,7 @@
             <stories value="Manage Shipping Rates"/>
             <title value="Import and Export Shipping Rates with regions and countries"/>
             <description value="Importing Shipping Rates with regions and countries"/>
-            <group value="iredeem"/>
+            <group value="mageinn"/>
             <group value="vendorShippingRatesRegionsAndCountries"/>
         </annotations>
         <before>
@@ -80,7 +80,7 @@
             <stories value="Manage Shipping Rates"/>
             <title value="Re-import successfully a file"/>
             <description value="Re-import successfully a file"/>
-            <group value="iredeem"/>
+            <group value="mageinn"/>
             <group value="reimportfile"/>
         </annotations>
         <before>

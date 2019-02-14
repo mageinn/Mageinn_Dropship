@@ -8,7 +8,7 @@
             <stories value="Export Shipping Rates"/>
             <title value="Export Shipping Rates happy flow"/>
             <description value="Export Shipping Rates happy flow"/>
-            <group value="iredeem"/>
+            <group value="mageinn"/>
             <group value="shippingRates"/>
         </annotations>
         <before>

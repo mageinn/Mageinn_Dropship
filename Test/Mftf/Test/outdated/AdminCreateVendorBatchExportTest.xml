@@ -3,7 +3,7 @@
        xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/Test/etc/testSchema.xsd">
     <test name="AdminCreateBatchExport">
         <annotations>
-            <group value="iredeem"/>
+            <group value="mageinn"/>
             <group value="vendorBatch"/>
         </annotations>
         <before>

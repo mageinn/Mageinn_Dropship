@@ -7,7 +7,7 @@
             <stories value="Check if batch is importend"/>
             <title value="Check if batch is importend"/>
             <description value="Create Vendor and import batch"/>
-            <group value="iredeem"/>
+            <group value="mageinn"/>
             <group value="vendorBatch"/>
         </annotations>
         <before>

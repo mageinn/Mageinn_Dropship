@@ -8,7 +8,7 @@
             <stories value="Delete a Vendor via the Admin"/>
             <title value="You should be able to delete a Vendor in the admin back-end."/>
             <description value="You should be able to delete a Vendor in the admin back-end."/>
-            <group value="iredeem"/>
+            <group value="mageinn"/>
             <group value="vendor"/>
         </annotations>
         <before>
@@ -28,7 +28,7 @@
             <stories value="Delete a Vendor with cancel on popup"/>
             <title value="Delete a vendor and canceling the deletion"/>
             <description value="Delete a vendor and canceling the deletion"/>
-            <group value="iredeem"/>
+            <group value="mageinn"/>
             <group value="vendor"/>
         </annotations>
         <before>

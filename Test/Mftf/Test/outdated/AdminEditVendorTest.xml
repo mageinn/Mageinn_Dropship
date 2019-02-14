@@ -8,7 +8,7 @@
             <stories value="Edit a Vendor via the Admin"/>
             <title value="You should be able to edit a Vendor in the admin back-end."/>
             <description value="You should be able to edit a Vendor in the admin back-end."/>
-            <group value="iredeem"/>
+            <group value="mageinn"/>
             <group value="vendor"/>
         </annotations>
         <before>
@@ -58,7 +58,7 @@
             <stories value="Edit a Vendor via the Admin without required fields"/>
             <title value="Try to save vendor without a required field"/>
             <description value="Try to save vendor without a required field"/>
-            <group value="iredeem"/>
+            <group value="mageinn"/>
             <group value="vendor"/>
         </annotations>
         <before>
@@ -104,7 +104,7 @@
             <stories value="Edit a Vendor via the Admin with failed validations"/>
             <title value="Try to save vendor with failing validation"/>
             <description value="Try to save vendor with failing validation"/>
-            <group value="iredeem"/>
+            <group value="mageinn"/>
             <group value="vendor"/>
         </annotations>
         <before>

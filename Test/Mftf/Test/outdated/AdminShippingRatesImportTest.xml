@@ -7,7 +7,7 @@
             <stories value="Import Shipping Rates"/>
             <title value="Importing Shipping Rates from a file"/>
             <description value="Importing Shipping Rates from a file"/>
-            <group value="iredeem"/>
+            <group value="mageinn"/>
             <group value="shippingRates"/>
         </annotations>
         <before>

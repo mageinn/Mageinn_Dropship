@@ -12,7 +12,7 @@ class BatchRow extends AbstractModel
     /**#@+
      * Table
      */
-    const TABLE_DROPSHIP_BATCH_ROW = 'iredeem_dropship_batch_row';
+    const TABLE_DROPSHIP_BATCH_ROW = 'mageinn_dropship_batch_row';
     /**#@-*/
 
     /**

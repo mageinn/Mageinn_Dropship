@@ -27,7 +27,7 @@
                 <item name="mageinn_dropship_user_grid_data_source" xsi:type="string">Mageinn\Dropship\Model\ResourceModel\User\Grid\Collection</item>
                 <item name="mageinn_batches_grid_data_source" xsi:type="string">Mageinn\Dropship\Model\ResourceModel\Batch\Grid\Collection</item>
                 <item name="mageinn_batches_view_data_source" xsi:type="string">Mageinn\Dropship\Model\ResourceModel\Batch\Collection</item>
-                <item name="iredeem_regions_data_source" xsi:type="string">Mageinn\Dropship\Model\ResourceModel\Region\Collection</item>
+                <item name="mageinn_regions_data_source" xsi:type="string">Mageinn\Dropship\Model\ResourceModel\Region\Collection</item>
             </argument>
         </arguments>
     </type>
@@ -44,7 +44,7 @@
     </virtualType>
     <type name="Mageinn\Dropship\Model\ResourceModel\Batch\Grid\Collection">
         <arguments>
-            <argument name="mainTable" xsi:type="string">iredeem_dropship_batch</argument>
+            <argument name="mainTable" xsi:type="string">mageinn_dropship_batch</argument>
             <argument name="resourceModel" xsi:type="string">Mageinn\Dropship\Model\ResourceModel\Batch</argument>
         </arguments>
     </type>

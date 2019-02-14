@@ -367,7 +367,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
 
         if (version_compare($context->getVersion(), '0.0.10') < 0) {
             /**
-             * Create table 'iredeem_dropship_batch'
+             * Create table 'mageinn_dropship_batch'
              */
             if (!$setup->tableExists(Batch::TABLE_DROPSHIP_BATCH)) {
                 $table = $setup->getConnection()
@@ -487,16 +487,16 @@ class UpgradeSchema implements UpgradeSchemaInterface
         // Need to change the types of the columns to simple text because there is the possibility
         // that the export file of the error may contain more than 255 chars
         if (version_compare($context->getVersion(), '0.0.13') < 0) {
-            if ($setup->tableExists('iredeem_dropship_batch')) {
+            if ($setup->tableExists('mageinn_dropship_batch')) {
                 $setup->getConnection()->modifyColumn(
-                    $setup->getTable('iredeem_dropship_batch'),
+                    $setup->getTable('mageinn_dropship_batch'),
                     'rows_text',
                     [
                         'type' => Table::TYPE_TEXT,
                         'comment' => 'Rows Text'
                     ]
                 )->modifyColumn(
-                    $setup->getTable('iredeem_dropship_batch'),
+                    $setup->getTable('mageinn_dropship_batch'),
                     'error_info',
                     [
                         'type' => Table::TYPE_TEXT,
@@ -523,7 +523,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
 
         if (version_compare($context->getVersion(), '0.0.15') < 0) {
             /**
-             * Create table 'iredeem_dropship_batch_row'
+             * Create table 'mageinn_dropship_batch_row'
              */
             if (!$setup->tableExists(BatchRow::TABLE_DROPSHIP_BATCH_ROW)) {
                 $table = $setup->getConnection()
@@ -677,7 +677,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
         }
 
         if (version_compare($context->getVersion(), '0.0.17') < 0) {
-            if ($setup->tableExists('iredeem_dropship_batch')) {
+            if ($setup->tableExists('mageinn_dropship_batch')) {
                 $setup->getConnection()->modifyColumn(
                     $setup->getTable('admin_user'),
                     'assoc_vendor_id',
