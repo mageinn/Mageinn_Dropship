@@ -1,9 +1,24 @@
 <?php
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
 namespace Mageinn\Dropship\Ui\Component\Listing\Column\Batches;
 
 /**
  * Class Actions
- * @package Mageinn\Dropship\Ui\Component\Listing\Column
+ * @package Mageinn\Dropship\Ui\Component\Listing\Column\Batches
  */
 class Actions extends \Magento\Ui\Component\Listing\Columns\Column
 {
@@ -13,6 +28,7 @@ class Actions extends \Magento\Ui\Component\Listing\Columns\Column
     protected $urlBuilder;
 
     /**
+     * Actions constructor.
      * @param \Magento\Framework\View\Element\UiComponent\ContextInterface $context
      * @param \Magento\Framework\View\Element\UiComponentFactory $uiComponentFactory
      * @param \Magento\Framework\UrlInterface $urlBuilder
@@ -31,8 +47,6 @@ class Actions extends \Magento\Ui\Component\Listing\Columns\Column
     }
 
     /**
-     * Prepare Data Source
-     *
      * @param array $dataSource
      * @return array
      */
@@ -40,13 +54,13 @@ class Actions extends \Magento\Ui\Component\Listing\Columns\Column
     {
         if (isset($dataSource['data']['items'])) {
             foreach ($dataSource['data']['items'] as &$item) {
-                // Form the view action based on the batch type so that we can create
-                // separate pages for each type of batch
+
                 if ($item['type'] == \Mageinn\Dropship\Model\Source\BatchType::MAGEINN_DROPSHIP_BATCH_TYPE_IMPORT) {
                     $actionType = 'Import';
                 } else {
                     $actionType = 'Export';
                 }
+
                 $item[$this->getData('name')]['view'] = [
                     'href' => $this->urlBuilder->getUrl(
                         'sales/batches/view' . $actionType,
@@ -55,6 +69,7 @@ class Actions extends \Magento\Ui\Component\Listing\Columns\Column
                     'label' => __('View'),
                     'hidden' => false,
                 ];
+
             }
         }
 
