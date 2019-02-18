@@ -82,7 +82,6 @@ class User extends Extended
      */
     protected function _addColumnFilterToCollection($column)
     {
-        // Set custom filter for in associated user flag
         if ($column->getId() == 'associated_user') {
             $usersIds = $this->_getSelectedUsers();
             if (empty($usersIds)) {
