@@ -5,7 +5,7 @@ use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 /**
  * Class SaveButton
- * @package Magento\Customer\Block\Adminhtml\Edit
+ * @package Mageinn\Dropship\Block\Adminhtml\Edit
  */
 class SaveButton implements ButtonProviderInterface
 {

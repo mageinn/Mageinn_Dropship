@@ -2,7 +2,7 @@
 namespace Mageinn\Dropship\Block\Adminhtml\Batch\View\Export;
 
 /**
- * Class DataRows
+ * Class Destinations
  * @package Mageinn\Dropship\Block\Adminhtml\Batch\View\Export
  */
 class Destinations extends \Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractBatchDetails
@@ -10,8 +10,7 @@ class Destinations extends \Mageinn\Dropship\Block\Adminhtml\Batch\View\Abstract
 
     /**
      * Retrieve instance of grid block
-     *
-     * @return \Magento\Framework\View\Element\BlockInterface
+     * @return \Magento\Backend\Block\Widget\Grid\Extended|\Magento\Framework\View\Element\BlockInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function getGrid()

@@ -6,8 +6,8 @@ use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 use Magento\Backend\Block\Widget\Context;
 
 /**
- * Class SaveButton
- * @package Magento\Customer\Block\Adminhtml\Edit
+ * Class DeleteButton
+ * @package Mageinn\Dropship\Block\Adminhtml\Edit
  */
 class DeleteButton implements ButtonProviderInterface
 {
@@ -17,6 +17,7 @@ class DeleteButton implements ButtonProviderInterface
     protected $context;
 
     /**
+     * DeleteButton constructor.
      * @param Context $context
      */
     public function __construct(Context $context)
@@ -25,7 +26,7 @@ class DeleteButton implements ButtonProviderInterface
     }
 
     /**
-     * Return CMS block ID
+     * Return Vendor ID
      *
      * @return int|null
      */

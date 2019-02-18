@@ -1,11 +1,20 @@
 <?php
 namespace Mageinn\Dropship\Block\Adminhtml\Order\View;
 
+/**
+ * Class VendorInfo
+ * @package Mageinn\Dropship\Block\Adminhtml\Order\View
+ */
 class VendorInfo extends \Magento\Sales\Block\Adminhtml\Items\Column\Name
 {
+    /**
+     * @var int|null
+     */
     protected $vendorId;
 
-    /** @var \Mageinn\Dropship\Model\Info  */
+    /**
+     * @var \Mageinn\Dropship\Model\Address
+     */
     protected $vendor;
 
     /**

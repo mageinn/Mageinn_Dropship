@@ -8,7 +8,7 @@ namespace Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractFilePath;
 abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
 {
     /**
-     * @var \Magento\Framework\Registry
+     * @var \Magento\Framework\Registry|null
      */
     protected $_registry = null;
 
@@ -28,7 +28,7 @@ abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     protected $_batchStatus;
 
     /**
-     * User constructor.
+     * Grid constructor.
      * @param \Magento\Backend\Helper\Data $backendHelper
      * @param \Magento\Backend\Block\Template\Context $context
      * @param \Magento\Framework\Data\CollectionFactory $collectionFactory

@@ -20,7 +20,7 @@ abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     protected $_collectionFactory;
 
     /**
-     * User constructor.
+     * Grid constructor.
      * @param \Magento\Backend\Helper\Data $backendHelper
      * @param \Magento\Backend\Block\Template\Context $context
      * @param CollectionFactory $collectionFactory

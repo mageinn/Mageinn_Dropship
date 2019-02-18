@@ -8,7 +8,7 @@ namespace Mageinn\Dropship\Block\Adminhtml\Batch\View\Export\Destinations;
 class Grid extends \Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractFilePath\Grid
 {
     /**
-     * @return \Magento\Backend\Block\Widget\Grid\Extended
+     * @return \Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractFilePath\Grid
      * @throws \Exception
      */
     protected function _prepareColumns()

@@ -13,14 +13,12 @@ use Magento\User\Model\ResourceModel\User\CollectionFactory;
 use Magento\User\Model\UserFactory;
 
 /**
- * Class Stock
- * @package Mageinn\Dropship\Block\Adminhtml\Edit\Tab
+ * Class User
+ * @package Mageinn\Dropship\Block\Adminhtml\Users\Edit\Tab
  */
 class User extends Extended
 {
     /**
-     * Core registry
-     *
      * @var Registry
      */
     protected $coreRegistry = null;
@@ -31,17 +29,17 @@ class User extends Extended
     protected $userFactory;
 
     /**
-     * @var \Magento\User\Model\ResourceModel\User\Collection
+     * @var CollectionFactory
      */
     protected $userCollectionFactory;
 
     /**
      * User constructor.
-     * @param \Magento\Backend\Block\Template\Context $context
-     * @param \Magento\Backend\Helper\Data $backendHelper
-     * @param \Magento\User\Model\UserFactory $userFactory
-     * @param \Magento\User\Model\ResourceModel\User\CollectionFactory $userCollectionFactory
-     * @param \Magento\Framework\Registry $coreRegistry
+     * @param Context $context
+     * @param Data $backendHelper
+     * @param UserFactory $userFactory
+     * @param CollectionFactory $userCollectionFactory
+     * @param Registry $coreRegistry
      * @param array $data
      */
     public function __construct(
@@ -59,7 +57,7 @@ class User extends Extended
     }
 
     /**
-     * Costructor
+     * @return void
      */
     protected function _construct()
     {

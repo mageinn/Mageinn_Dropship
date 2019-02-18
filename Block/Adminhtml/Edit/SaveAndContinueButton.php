@@ -5,6 +5,7 @@ use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 /**
  * Class SaveAndContinueButton
+ * @package Mageinn\Dropship\Block\Adminhtml\Edit
  */
 class SaveAndContinueButton implements ButtonProviderInterface
 {

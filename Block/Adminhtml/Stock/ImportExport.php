@@ -54,7 +54,8 @@ class ImportExport extends \Magento\Backend\Block\Widget
         return $this->getUrl('*/*/import');
     }
 
-    /** Get associated vendor for current admin user
+    /**
+     * Get associated vendor for current admin user
      * @return string
      * @codeCoverageIgnore
      */

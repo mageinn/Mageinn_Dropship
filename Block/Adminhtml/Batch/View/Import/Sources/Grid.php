@@ -3,12 +3,12 @@ namespace Mageinn\Dropship\Block\Adminhtml\Batch\View\Import\Sources;
 
 /**
  * Class Grid
- * @package Mageinn\Dropship\Block\Adminhtml\Batch\View\Export\Destinations
+ * @package Mageinn\Dropship\Block\Adminhtml\Batch\View\Import\Sources
  */
 class Grid extends \Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractFilePath\Grid
 {
     /**
-     * @return \Magento\Backend\Block\Widget\Grid\Extended
+     * @return \Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractFilePath\Grid
      * @throws \Exception
      */
     protected function _prepareColumns()

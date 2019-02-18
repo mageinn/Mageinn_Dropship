@@ -52,6 +52,9 @@ class View extends \Magento\Shipping\Block\Adminhtml\View
         }
     }
 
+    /**
+     * @return string
+     */
     public function getMarkAsShippedUrl()
     {
         return $this->getUrl('sales/shipment/ship', ['shipment_id' => $this->getShipment()->getId()]);
@@ -59,6 +62,7 @@ class View extends \Magento\Shipping\Block\Adminhtml\View
 
     /**
      * @return \Magento\Framework\Phrase
+     * @throws \Exception
      */
     public function getHeaderText()
     {

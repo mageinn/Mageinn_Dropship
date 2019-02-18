@@ -8,7 +8,7 @@ namespace Mageinn\Dropship\Block\Adminhtml\Batch\View\Import\BatchRows;
 class Grid extends \Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractBatchRows\Grid
 {
     /**
-     * @return \Magento\Backend\Block\Widget\Grid\Extended
+     * @return \Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractBatchRows\Grid
      * @throws \Exception
      */
     protected function _prepareColumns()

@@ -10,8 +10,7 @@ class Sources extends \Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractBatch
 
     /**
      * Retrieve instance of grid block
-     *
-     * @return \Magento\Framework\View\Element\BlockInterface
+     * @return \Magento\Backend\Block\Widget\Grid\Extended|\Magento\Framework\View\Element\BlockInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function getGrid()
