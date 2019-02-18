@@ -1,11 +1,19 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: d1sho
- * Date: 13.02.19
- * Time: 9:49
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
  */
-
 namespace Mageinn\Dropship\Helper;
 
 use Magento\Store\Model\StoreManagerInterface;
@@ -14,19 +22,12 @@ use Magento\Framework\App\Helper\Context;
 use Magento\Framework\Filesystem\Io\File;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory as ProductCollectionFactory;
 
+/**
+ * Class Rates
+ * @package Mageinn\Dropship\Helper
+ */
 class Rates extends CoreData
 {
-    const REGION_ARRAY_POSITION = 0;
-    const COUNTRY_ARRAY_POSITION = 1;
-    const SHIPPING_GROUP_ARRAY_POSITION = 2;
-    const DELIVERY_TIME_ARRAY_POSITION = 3;
-    const PRICE_ARRAY_POSITION = 4;
-    const HEADINGS_ROW_NUMBER = 0;
-
-    /**
-     * @var array
-     */
-    protected $insertRows;
 
     /**
      * @var array
@@ -34,24 +35,9 @@ class Rates extends CoreData
     protected $errorMessages;
 
     /**
-     * @var array
-     */
-    protected $regionsArray;
-
-    /**
-     * @var array
-     */
-    protected $countriesArray;
-
-    /**
      * @var File
      */
     protected $fileSystem;
-
-    /**
-     * @var ProductCollectionFactory
-     */
-    protected $productCollectionFactory;
 
     /**
      * @var array
@@ -64,19 +50,14 @@ class Rates extends CoreData
      * @param ObjectManagerInterface $objectManager
      * @param StoreManagerInterface $storeManager
      * @param File $file
-     * @param ProductCollectionFactory $productCollectionFactory
      */
     public function __construct(
         Context $context,
         ObjectManagerInterface $objectManager,
         StoreManagerInterface $storeManager,
-        File $file,
-        ProductCollectionFactory $productCollectionFactory
+        File $file
     ) {
         $this->fileSystem = $file;
-        $this->productCollectionFactory = $productCollectionFactory;
-        $this->regionsArray = [];
-        $this->countriesArray = [];
         parent::__construct($context, $objectManager, $storeManager);
     }
 
@@ -89,8 +70,8 @@ class Rates extends CoreData
     }
 
     /**
-     * @param array $errorMessages
-     * @return ShippingRates
+     * @param $errorMessages
+     * @return $this
      */
     public function setErrorMessages($errorMessages)
     {
@@ -99,7 +80,7 @@ class Rates extends CoreData
     }
 
     /**
-     * @param string $message
+     * @param $message
      */
     public function addErrorMessage($message)
     {
@@ -107,7 +88,7 @@ class Rates extends CoreData
     }
 
     /**
-     * Clear the error messages
+     * @return void
      */
     public function clearErrorMessages()
     {
@@ -115,8 +96,6 @@ class Rates extends CoreData
     }
 
     /**
-     * Number check for time and rate values in CSV file
-     *
      * @param $value
      * @param $row
      * @return bool
@@ -133,8 +112,6 @@ class Rates extends CoreData
     }
 
     /**
-     * Check is the file has the csv extension
-     *
      * @param $file
      * @return bool
      */

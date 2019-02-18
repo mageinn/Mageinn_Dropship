@@ -1,9 +1,18 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: d1sho
- * Date: 13.02.19
- * Time: 9:40
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
  */
 
 namespace Mageinn\Dropship\Helper;
@@ -15,6 +24,10 @@ use \Magento\Framework\ObjectManagerInterface;
 use \Magento\Framework\App\Helper\Context;
 use \Magento\Store\Model\ScopeInterface;
 
+/**
+ * Class CoreData
+ * @package Mageinn\Dropship\Helper
+ */
 class CoreData extends AbstractHelper
 {
     /**
@@ -27,8 +40,7 @@ class CoreData extends AbstractHelper
     protected $objectManager;
 
     /**
-     * Data constructor.
-     *
+     * CoreData constructor.
      * @param Context $context
      * @param ObjectManagerInterface $objectManager
      * @param StoreManagerInterface $storeManager
@@ -44,10 +56,6 @@ class CoreData extends AbstractHelper
     }
 
     /**
-     * General method for getting a config value.
-     *
-     * Will be called for the specific configs in the future modules
-     *
      * @param $field
      * @param null $storeId
      * @return mixed
@@ -62,12 +70,9 @@ class CoreData extends AbstractHelper
     }
 
     /**
-     * Insert multiple values
-     *
      * @param \Magento\Framework\Model\ResourceModel\Db\AbstractDb $resource
      * @param $data
      * @throws LocalizedException
-     * @codeCoverageIgnore - SQl function
      */
     public function bulkInsert(\Magento\Framework\Model\ResourceModel\Db\AbstractDb $resource, $data)
     {
@@ -83,13 +88,10 @@ class CoreData extends AbstractHelper
     }
 
     /**
-     * Update multiple values
-     *
      * @param \Magento\Framework\Model\ResourceModel\Db\AbstractDb $resource
-     * @param array $data
+     * @param $data
      * @param array $fields
      * @throws LocalizedException
-     * @codeCoverageIgnore - SQl function
      */
     public function bulkUpdate(\Magento\Framework\Model\ResourceModel\Db\AbstractDb $resource, $data, $fields = [])
     {
@@ -109,7 +111,6 @@ class CoreData extends AbstractHelper
      * @param $field
      * @param $values
      * @throws LocalizedException
-     * @codeCoverageIgnore - Covered by Integration
      */
     public function bulkDelete(\Magento\Framework\Model\ResourceModel\Db\AbstractDb $resource, $field, $values)
     {
@@ -127,9 +128,10 @@ class CoreData extends AbstractHelper
 
     /**
      * @param \Magento\Framework\Model\ResourceModel\Db\AbstractDb $resource
+     * @param $field
+     * @param $values
      * @param $data
      * @throws LocalizedException
-     * @codeCoverageIgnore - Covered by Integration
      */
     public function bulkDeleteAndInsert(
         \Magento\Framework\Model\ResourceModel\Db\AbstractDb $resource,
@@ -151,11 +153,8 @@ class CoreData extends AbstractHelper
     }
 
     /**
-     * Return the rate of the current store to the base currency
-     *
      * @return int
      * @throws \Magento\Framework\Exception\NoSuchEntityException
-     * @codeCoverageIgnore - Covered by Acceptance
      */
     public function getStoreToBaseCurrencyRate()
     {
@@ -170,11 +169,8 @@ class CoreData extends AbstractHelper
     }
 
     /**
-     * Returns the Currency symbol for the current currency
-     *
      * @return mixed
      * @throws \Magento\Framework\Exception\NoSuchEntityException
-     * @codeCoverageIgnore - Covered by Acceptance
      */
     public function getCurrentCurrencySymbol()
     {

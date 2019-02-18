@@ -1,5 +1,19 @@
 <?php
-
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
 namespace Mageinn\Dropship\Helper;
 
 use Mageinn\Dropship\Model\Source\ShipmentStatus;
@@ -9,9 +23,6 @@ use \Magento\Framework\App\Helper\Context;
 
 /**
  * Class Data
- *
- * General helper for Vendor module
- *
  * @package Mageinn\Dropship\Helper
  */
 class Data extends CoreData
@@ -23,7 +34,9 @@ class Data extends CoreData
 
     /**
      * Data constructor.
-     * @param \Magento\Framework\App\Helper\Context $context
+     * @param Context $context
+     * @param ObjectManagerInterface $objectManager
+     * @param StoreManagerInterface $storeManager
      * @param \Mageinn\Dropship\Model\Info $vendor
      */
     public function __construct(
@@ -37,10 +50,8 @@ class Data extends CoreData
     }
 
     /**
-     * Get batch order export general configs
-     *
-     * @param string $code
-     * @param null   $storeId
+     * @param $code
+     * @param null $storeId
      * @return mixed
      */
     public function getBatchOrderExportConfig($code, $storeId = null)
@@ -49,8 +60,6 @@ class Data extends CoreData
     }
 
     /**
-     * Get vendor name by id
-     *
      * @param $id
      * @return mixed
      */
@@ -59,6 +68,10 @@ class Data extends CoreData
         return $this->_vendor->load($id)->getName();
     }
 
+    /**
+     * @param $value
+     * @return string
+     */
     public function getShipmentStatusLabel($value)
     {
         return ShipmentStatus::getLabel($value);

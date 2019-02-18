@@ -1,4 +1,19 @@
 <?php
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
 namespace Mageinn\Dropship\Helper;
 
 use Mageinn\Dropship\Helper\CoreData;
@@ -32,13 +47,9 @@ class Stock extends CoreData
     protected $stockRegistry;
 
     /**
-     * @var Magento\Framework\File\Csv
+     * @var \Magento\Framework\File\Csv
      */
     protected $csvProcessor;
-    /**
-     * @var \Magento\Framework\App\Filesystem\DirectoryList
-     */
-    protected $directoryList;
     /**
      * @var \Magento\Framework\Filesystem
      */
@@ -65,9 +76,7 @@ class Stock extends CoreData
      * @param ProductCollectionFactory $productCollectionFactory
      * @param StockRegistryInterface $stockRegistry
      * @param \Magento\Framework\File\Csv $csvProcessor
-     * @param \Magento\Framework\App\Filesystem\DirectoryList $directoryList
      * @param \Magento\Framework\Filesystem $filesystem
-     * @param Data $vendorHelper
      * @param StockRegistryInterface $stockRegistryInterface
      */
     public function __construct(
@@ -78,18 +87,14 @@ class Stock extends CoreData
         ProductCollectionFactory $productCollectionFactory,
         StockRegistryInterface $stockRegistry,
         \Magento\Framework\File\Csv $csvProcessor,
-        \Magento\Framework\App\Filesystem\DirectoryList $directoryList,
         \Magento\Framework\Filesystem $filesystem,
-        \Mageinn\Dropship\Helper\Data $vendorHelper,
         \Magento\CatalogInventory\Api\StockRegistryInterface $stockRegistryInterface
     ) {
         $this->ratesHelper = $ratesHelper;
         $this->stockRegistry = $stockRegistry;
         $this->productCollectionFactory = $productCollectionFactory;
         $this->filesystem = $filesystem;
-        $this->directoryList = $directoryList;
         $this->csvProcessor = $csvProcessor;
-        $this->vendorHelper = $vendorHelper;
         $this->stockRegistryInterface = $stockRegistryInterface;
 
         parent::__construct($context, $objectManager, $storeManager);
