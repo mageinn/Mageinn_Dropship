@@ -1,9 +1,18 @@
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
  */
-
-/* global $, $H */
 
 define([
     'mage/adminhtml/grid'
@@ -18,13 +27,6 @@ define([
 
         $('associated_user').value = Object.toJSON(vendorUsers);
 
-        /**
-         * Register Category Product
-         *
-         * @param {Object} grid
-         * @param {Object} element
-         * @param {Boolean} checked
-         */
         function registerVendorUser(grid, element, checked)
         {
             if (checked && element.value !== 'on') {
@@ -48,12 +50,7 @@ define([
             };
         }
 
-        /**
-         * Click on product row
-         *
-         * @param {Object} grid
-         * @param {String} event
-         */
+
         function vendorUserRowClick(grid, event)
         {
             var trElement = Event.findElement(event, 'tr'),
@@ -63,7 +60,6 @@ define([
 
             if (trElement) {
                 checkbox = Element.getElementsBySelector(trElement, 'input');
-                // 'on' value is from header checkbox and it was not ignored.
                 if (checkbox[0] && checkbox[0].value !== "on") {
                     checked = isInput ? checkbox[0].checked : !checkbox[0].checked;
                     gridJsObject.setCheckboxChecked(checkbox[0], checked);
@@ -71,11 +67,7 @@ define([
             }
         }
 
-        /**
-         * Change product position
-         *
-         * @param {String} event
-         */
+
         function positionChange(event)
         {
             var element = Event.element(event);
@@ -86,12 +78,7 @@ define([
             }
         }
 
-        /**
-         * Initialize category product row
-         *
-         * @param {Object} grid
-         * @param {String} row
-         */
+
         function vendorUserRowInit(grid, row)
         {
             var checkbox = $(row).getElementsByClassName('checkbox')[0],
