@@ -1,4 +1,19 @@
 <?php
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
 namespace Mageinn\Dropship\Model\Plugin\Quote;
 
 use Closure;
@@ -7,7 +22,6 @@ use Magento\Framework\DataObject\Copy\Config;
 /**
  * Class QuoteToOrderItem
  * @package Mageinn\Dropship\Model\Plugin\Quote
- * @codeCoverageIgnore Moves data from quote to Order
  */
 class QuoteToOrderItem
 {
@@ -53,7 +67,6 @@ class QuoteToOrderItem
         \Magento\Quote\Model\Quote\Item\AbstractItem $item,
         $additional = []
     ) {
-        $subject;
         /** @var $orderItem \Magento\Sales\Model\Order\Item */
         $orderItem = $proceed($item, $additional);
 

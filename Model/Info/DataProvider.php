@@ -1,4 +1,19 @@
 <?php
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
 namespace Mageinn\Dropship\Model\Info;
 
 use \Magento\Ui\DataProvider\AbstractDataProvider;
@@ -9,8 +24,7 @@ use \Mageinn\Dropship\Model\Address;
 
 /**
  * Class DataProvider
- *
- * @package Mageinn\Dropship\Model\Vendor
+ * @package Mageinn\Dropship\Model\Info
  */
 class DataProvider extends AbstractDataProvider
 {
@@ -55,15 +69,13 @@ class DataProvider extends AbstractDataProvider
 
     /**
      * DataProvider constructor.
-     * @param string $name
-     * @param string $primaryFieldName
-     * @param string $requestFieldName
+     * @param $name
+     * @param $primaryFieldName
+     * @param $requestFieldName
      * @param InfoCollectionFactory $infoCollectionFactory
      * @param AddressCollectionFactory $addressCollectionFactory
      * @param array $meta
      * @param array $data
-     *
-     * @codingStandardsIgnoreStart
      */
     public function __construct(
         $name,
@@ -78,11 +90,8 @@ class DataProvider extends AbstractDataProvider
         $this->addressCollection = $addressCollectionFactory->create();
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
     }
-    // @codingStandardsIgnoreEnd
 
     /**
-     * Get data
-     *
      * @return array
      */
     public function getData()

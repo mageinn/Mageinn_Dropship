@@ -1,4 +1,19 @@
 <?php
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
 namespace Mageinn\Dropship\Model\Batch\Export;
 
 use Magento\Framework\Exception\LocalizedException;
@@ -51,7 +66,7 @@ class File extends \Magento\Framework\Filesystem\Io\File
     protected $logger;
 
     /**
-     * @var \Mageinn\Dropship\Model\Batch\Export\File\Email
+     * @var File\Email
      */
     protected $email;
 
@@ -61,7 +76,7 @@ class File extends \Magento\Framework\Filesystem\Io\File
     protected $notes = [];
 
     /**
-     * @var \Mageinn\Dropship\Model\Batch\Export\File\Response
+     * @var File\Response
      */
     protected $response;
 
@@ -104,12 +119,10 @@ class File extends \Magento\Framework\Filesystem\Io\File
     }
 
     /**
-     * Creates the export file
-     *
      * @param $contents
      * @param $vendor
-     * @return \Mageinn\Dropship\Model\Batch\Export\File\Response
-     * @throws \Exception
+     * @return File\Response
+     * @throws LocalizedException
      */
     public function handle($contents, $vendor)
     {
@@ -128,11 +141,9 @@ class File extends \Magento\Framework\Filesystem\Io\File
                 $this->_createFileOnServer($contents, $path);
             }
         }
-        // If the vendor email was not among the emails in the destination setting, send the email to the vendor
         if (!$this->emailSentToVendor) {
             $this->_sendEmail($vendor, $contents);
         }
-        // If there are notes from parsing the email settings, we add them to the current ones
         if ($this->email->getNotes()) {
             $this->notes[] = $this->email->getNotes();
             $this->email->clearNotes();
@@ -143,10 +154,8 @@ class File extends \Magento\Framework\Filesystem\Io\File
     }
 
     /**
-     * Replace the placeholders with the date values
-     *
-     * @param string $destination
-     * @return string
+     * @param $destination
+     * @return mixed
      */
     protected function getDestinationPath($destination)
     {
@@ -164,8 +173,6 @@ class File extends \Magento\Framework\Filesystem\Io\File
     }
 
     /**
-     * Checks if the destination given is an email
-     *
      * @param $destination
      * @return bool
      */
@@ -179,20 +186,16 @@ class File extends \Magento\Framework\Filesystem\Io\File
     }
 
     /**
-     * Creates the file at the specified path
-     *
      * @param $contents
      * @param $destination
-     * @throws \Exception
+     * @throws LocalizedException
      */
     protected function _createFileOnServer($contents, $destination)
     {
-        // If the folder is not in media or var, the file will not be created
         if ((strpos($destination, self::BATCH_EXPORT_AVAILABLE_DIR_MEDIA) === 0)
             || (strpos($destination, self::BATCH_EXPORT_AVAILABLE_DIR_VAR) === 0)
         ) {
             $pathInfo = $this->fileInfo->getPathInfo($destination);
-            // Get the absolute path of the destination folder on the server
             $exportPath = $this->dir->getRoot() . DIRECTORY_SEPARATOR . $pathInfo['dirname'];
 
             $this->fileInfo->checkAndCreateFolder($exportPath, 0777);
@@ -207,33 +210,27 @@ class File extends \Magento\Framework\Filesystem\Io\File
     }
 
     /**
-     * Sends email based on the setting
-     *
      * @param $vendor
      * @param $contents
      * @param null $isMail
      */
     protected function _sendEmail($vendor, $contents, $isMail = null)
     {
-        // If there is no email setting parsed from the configuration, the email will be sent to the vendor
         if (!$isMail) {
             try {
                 /** @var \Magento\Framework\Mail\TransportInterface $transport */
                 $transport = $this->email->prepareEmailForVendor($vendor, $contents, $this->transportBuilder);
-                // If the recipient is not set properly, the email will not be sent
                 if ($transport) {
                     $transport->sendMessage();
                 }
             } catch (\Exception $e) {
                 $this->logger->warning($e);
             }
-        // If the email components are parsed correctly, then they are processed and the email is sent
         } elseif (count($isMail) == 3) {
             $componentsArray = $this->_getComponentsArray($isMail[2]);
             try {
                 $transport = $this->email
                     ->prepareGeneralEmail($isMail[1], $componentsArray, $contents, $this->transportBuilder);
-                // If the recipient is not set properly, the email will not be sent
                 if ($transport) {
                     $transport->sendMessage();
                 }
@@ -243,16 +240,12 @@ class File extends \Magento\Framework\Filesystem\Io\File
             if ($isMail[1] == $vendor->getEmail()) {
                 $this->emailSentToVendor = true;
             }
-        // If the email components were not set properly, a notice is added
         } else {
             $this->notes[] = sprintf('"%s" is not properly set', $isMail[0]);
         }
     }
 
     /**
-     * Returns settings like possible subject or email body from destination setting as an array
-     * with the keys being the setting names
-     *
      * @param $componentsString
      * @return mixed
      */
@@ -262,9 +255,7 @@ class File extends \Magento\Framework\Filesystem\Io\File
             $componentsString = substr($componentsString, 1);
         }
 
-        // @codingStandardsIgnoreStart
         parse_str($componentsString, $componentsArray);
-        // @codingStandardsIgnoreEnd
 
         return $componentsArray;
     }

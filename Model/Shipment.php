@@ -1,21 +1,26 @@
 <?php
-
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
 namespace Mageinn\Dropship\Model;
 
 use Magento\Framework\Api\AttributeValueFactory;
 
 /**
- * Sales order shipment model
- *
- * @api
- * @method \Magento\Sales\Model\Order\Invoice setSendEmail(bool $value)
- * @method \Magento\Sales\Model\Order\Invoice setCustomerNote(string $value)
- * @method string getCustomerNote()
- * @method \Magento\Sales\Model\Order\Invoice setCustomerNoteNotify(bool $value)
- * @method bool getCustomerNoteNotify()
- * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
- * @SuppressWarnings(PHPMD.ExcessivePublicCount)
- * @since 100.0.2
+ * Class Shipment
+ * @package Mageinn\Dropship\Model
  */
 class Shipment extends \Magento\Sales\Model\Order\Shipment
 {
@@ -26,6 +31,22 @@ class Shipment extends \Magento\Sales\Model\Order\Shipment
      */
     protected $authSession;
 
+    /**
+     * Shipment constructor.
+     * @param \Magento\Framework\Model\Context $context
+     * @param \Magento\Framework\Registry $registry
+     * @param \Magento\Framework\Api\ExtensionAttributesFactory $extensionFactory
+     * @param AttributeValueFactory $customAttributeFactory
+     * @param \Magento\Sales\Model\ResourceModel\Order\Shipment\Item\CollectionFactory $shipmentItemCollectionFactory
+     * @param \Magento\Sales\Model\ResourceModel\Order\Shipment\Track\CollectionFactory $trackCollectionFactory
+     * @param \Magento\Sales\Model\Order\Shipment\CommentFactory $commentFactory
+     * @param \Magento\Sales\Model\ResourceModel\Order\Shipment\Comment\CollectionFactory $commentCollectionFactory
+     * @param \Magento\Sales\Api\OrderRepositoryInterface $orderRepository
+     * @param \Magento\Backend\Model\Auth\Session $authSession
+     * @param \Magento\Framework\Model\ResourceModel\AbstractResource|null $resource
+     * @param \Magento\Framework\Data\Collection\AbstractDb|null $resourceCollection
+     * @param array $data
+     */
     public function __construct(
         \Magento\Framework\Model\Context $context,
         \Magento\Framework\Registry $registry,
@@ -59,13 +80,10 @@ class Shipment extends \Magento\Sales\Model\Order\Shipment
     }
 
     /**
-     * Adds comment to shipment with additional possibility to send it to customer via email
-     * and show it in customer account
-     *
      * @param \Magento\Sales\Model\Order\Shipment\Comment|string $comment
      * @param bool $notify
      * @param bool $visibleOnFront
-     * @return $this
+     * @return $this|\Magento\Sales\Model\Order\Shipment
      * @throws \Exception
      */
     public function addComment($comment, $notify = false, $visibleOnFront = false)
@@ -92,9 +110,7 @@ class Shipment extends \Magento\Sales\Model\Order\Shipment
     }
 
     /**
-     * Returns dropship_status
-     *
-     * @return string
+     * @return mixed
      */
     public function getDropshipStatus()
     {
@@ -107,8 +123,6 @@ class Shipment extends \Magento\Sales\Model\Order\Shipment
     }
 
     /**
-     * Check if vendor can change shipment status
-     *
      * @return bool
      */
     public function isStatusLocked()

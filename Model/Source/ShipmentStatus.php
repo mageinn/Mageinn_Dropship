@@ -1,18 +1,29 @@
 <?php
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
 namespace Mageinn\Dropship\Model\Source;
 
 use \Magento\Framework\Data\OptionSourceInterface;
 
 /**
- * Class ShipmentStatus Source.
- *
+ * Class ShipmentStatus
  * @package Mageinn\Dropship\Model\Source
  */
 class ShipmentStatus implements OptionSourceInterface
 {
-    /**#@+
-     * Enabled/Disabled Statuses
-     */
     const SHIPMENT_STATUS_PENDING    = 0;
     const SHIPMENT_STATUS_SHIPPED    = 1;
     const SHIPMENT_STATUS_PARTIAL    = 2;
@@ -27,7 +38,6 @@ class ShipmentStatus implements OptionSourceInterface
     const SHIPMENT_STATUS_RETURNED   = 11;
     const SHIPMENT_STATUS_REFUNDED   = 12;
     const SHIPMENT_STATUS_FRAUD      = 13;
-    /**#@-*/
 
     protected static $statusOptions = [
         self::SHIPMENT_STATUS_PENDING    => 'Pending',
@@ -54,6 +64,9 @@ class ShipmentStatus implements OptionSourceInterface
         return self::getStatusOptions();
     }
 
+    /**
+     * @return array
+     */
     public static function getStatusOptions()
     {
         $options = [];
@@ -65,9 +78,8 @@ class ShipmentStatus implements OptionSourceInterface
     }
 
     /**
-     * @param string|int $value
-     *
-     * @return string
+     * @param $value
+     * @return \Magento\Framework\Phrase
      */
     public static function getLabel($value)
     {

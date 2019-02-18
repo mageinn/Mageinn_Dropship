@@ -1,4 +1,19 @@
 <?php
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
 namespace Mageinn\Dropship\Model\Batch;
 
 use \Magento\Framework\Model\AbstractModel;
@@ -6,20 +21,11 @@ use \Magento\Framework\Exception\LocalizedException;
 
 /**
  * Class Import
- *
  * @package Mageinn\Dropship\Model\Batch
- * @method Import setBatchRowError($flag)
- * @method Import getBatchRowError()
- * @method Import setBatchRows($data)
- * @method Import getBatchRows()
  */
 class Import extends AbstractModel
 {
-    /**#@+
-     * Configuration paths
-     */
     const CONFIGURATION_BATCH_IMPORT_ORDER_STATUS = 'dropship/batch_order_import/order_status';
-    /**#@-*/
 
     /**
      * @var \Magento\Framework\File\Csv
@@ -51,13 +57,9 @@ class Import extends AbstractModel
      */
     protected $scopeConfig;
 
-    /**
-     * @var
-     */
     protected $defaultImportStatus;
 
     /**
-     * Batch ID types.
      * @var array
      */
     protected $idTypes = ['po_id', 'order_id'];
@@ -113,8 +115,6 @@ class Import extends AbstractModel
     }
 
     /**
-     * Get batch import data.
-     *
      * @param $source
      * @param $template
      * @param $delimiter
@@ -123,11 +123,7 @@ class Import extends AbstractModel
      */
     public function getImportData($source, $template, $delimiter)
     {
-        // @codingStandardsIgnoreStart
-        // Added this because the $fileDriver->isFile() method does not have consistent results with
-        // PHP function
         if (is_file($source)) {
-        // @codingStandardsIgnoreStart
             $this->csvProcessor->setDelimiter($delimiter);
 
             try {
@@ -157,8 +153,6 @@ class Import extends AbstractModel
     }
 
     /**
-     * Validate import template header.
-     *
      * @param $template
      * @param $delimiter
      * @return mixed
@@ -189,15 +183,12 @@ class Import extends AbstractModel
     }
 
     /**
-     * Update shipment status.
-     *
      * @param $shipmentData
      * @param $template
      * @param $batchId
      * @param $vendorId
      * @param $currentDate
      * @return $this
-     * @codeCoverageIgnore Integration
      */
     public function updateShipmentBatch($shipmentData, $template, $batchId, $vendorId, $currentDate)
     {
@@ -207,7 +198,6 @@ class Import extends AbstractModel
             self::CONFIGURATION_BATCH_IMPORT_ORDER_STATUS
         );
 
-        // @codingStandardsIgnoreStart
         $batchRows = [];
         foreach ($shipmentData as $data) {
             $trackData = null;
@@ -223,7 +213,6 @@ class Import extends AbstractModel
                 $shipment
                     ->setDropshipStatus($this->defaultImportStatus)
                     ->setShippingDate($shippingDate)
-                    // Fix packages set as string
                     ->setPackages($this->serializer->unserialize($shipment->getPackages()))
                     ->save();
                 $batchRows[] = $this->_getBatchRowArray($batchId, $trackData, $shipment, $error);
@@ -234,7 +223,6 @@ class Import extends AbstractModel
                 $this->_logger->warning('Error for vendor with ID: ' . $vendorId . ' -> ' . $error);
             }
         }
-        // @codingStandardsIgnoreEnd
 
         $this->setBatchRows($batchRows);
 
@@ -242,13 +230,10 @@ class Import extends AbstractModel
     }
 
     /**
-     * Get shipment based on shipment or order increment id.
-     *
      * @param $id
      * @param $type
      * @param null $vendorId
      * @return \Magento\Framework\DataObject|null
-     * @codeCoverageIgnore Integration
      */
     protected function _getShipment($id, $type, $vendorId = null)
     {
@@ -270,8 +255,6 @@ class Import extends AbstractModel
     }
 
     /**
-     * Get shipment tracking.
-     *
      * @param $data
      * @return array|null
      */
@@ -290,11 +273,9 @@ class Import extends AbstractModel
     }
 
     /**
-     * Creates a batch_row entity array which will be inserted in the DB later
-     *
      * @param $batchId
-     * @param array $trackData
-     * @param \Magento\Sales\Model\Order\Shipment  $shipment
+     * @param $trackData
+     * @param null $shipment
      * @param null $error
      * @return array
      */

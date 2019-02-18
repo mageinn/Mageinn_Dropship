@@ -1,4 +1,19 @@
 <?php
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
 namespace Mageinn\Dropship\Model\Batch\Handler;
 
 use Magento\Framework\Exception\LocalizedException;
@@ -8,15 +23,12 @@ use phpseclib\Crypt\RSA;
 /**
  * Class Transfer
  * @package Mageinn\Dropship\Model\Batch\Handler
- * @codeCoverageIgnore
  */
 class Transfer
 {
     protected $activeConnections = [];
 
     /**
-     * Check if the destination is SFTP
-     *
      * @param $destination
      * @return bool
      */
@@ -30,17 +42,14 @@ class Transfer
     }
 
     /**
-     * Get SFTP connection
-     *
      * @param $endpoint
      * @param $username
      * @param $privateKey
-     * @return SFTP
+     * @return mixed
      * @throws LocalizedException
      */
     protected function _getSftpConnection($endpoint, $username, $privateKey)
     {
-        // @codingStandardsIgnoreStart
         if (!isset($this->activeConnections[$endpoint . '_' . $username])) {
             $sftp = new SFTP($endpoint);
             $key = new RSA();
@@ -51,14 +60,11 @@ class Transfer
 
             $this->activeConnections[$endpoint . '_' . $username] = $sftp;
         }
-        // @codingStandardsIgnoreEnd
 
         return $this->activeConnections[$endpoint . '_' . $username];
     }
 
     /**
-     * Upload file to sftp server
-     *
      * @param $connectionDetails
      * @param $privateKey
      * @param $contents
@@ -72,8 +78,6 @@ class Transfer
     }
 
     /**
-     * Download file from sftp server
-     *
      * @param $connectionDetails
      * @param $privateKey
      * @param $localPath

@@ -1,11 +1,26 @@
 <?php
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
 namespace Mageinn\Dropship\Model;
 
 use Mageinn\Dropship\Model\Source\BatchStatus;
 use Magento\Framework\Exception\LocalizedException;
 
 /**
- * Class Info
+ * Class Batch
  * @package Mageinn\Dropship\Model
  */
 class Batch extends \Magento\Cron\Model\Schedule
@@ -14,19 +29,16 @@ class Batch extends \Magento\Cron\Model\Schedule
     const BATCH_TYPE_VIEW_IMPORT = 'Import';
     const BATCH_TYPE_VIEW_EXPORT = 'Export';
 
-    /**#@+
-     * Table
-     */
+
     const TABLE_DROPSHIP_BATCH = 'mageinn_dropship_batch';
-    /**#@-*/
 
     /**
-     * @var \Mageinn\Dropship\Model\InfoFactory
+     * @var InfoFactory
      */
     protected $vendor;
 
     /**
-     * @var \Mageinn\Dropship\Model\Batch\Import
+     * @var Batch\Import
      */
     protected $import;
 
@@ -46,19 +58,17 @@ class Batch extends \Magento\Cron\Model\Schedule
     protected $file;
 
     /**
-     * Batch constructor.
-     *
-     * @var \Mageinn\Dropship\Model\Batch\Export
+     * @var Batch\Export
      */
     protected $export;
 
     /**
-     * @var \Mageinn\Dropship\Model\ResourceModel\BatchRow
+     * @var ResourceModel\BatchRow
      */
     protected $batchRow;
 
     /**
-     * @var \Mageinn\Dropship\Model\Batch\Handler\Transfer
+     * @var Batch\Handler\Transfer
      */
     protected $transfer;
 
@@ -69,13 +79,12 @@ class Batch extends \Magento\Cron\Model\Schedule
 
     /**
      * Batch constructor.
-     *
      * @param \Magento\Framework\Model\Context $context
      * @param \Magento\Framework\Registry $registry
-     * @param \Mageinn\Dropship\Model\InfoFactory $vendor
-     * @param \Mageinn\Dropship\Model\Batch\Import $import
-     * @param \Mageinn\Dropship\Model\Batch\Export $export
-     * @param \Mageinn\Dropship\Model\ResourceModel\BatchRow $batchRow
+     * @param InfoFactory $vendor
+     * @param Batch\Import $import
+     * @param Batch\Export $export
+     * @param ResourceModel\BatchRow $batchRow
      * @param \Magento\Framework\Stdlib\DateTime\DateTime $date
      * @param \Magento\Framework\App\Filesystem\DirectoryList $dir
      * @param \Magento\Framework\Filesystem\Driver\File $file
@@ -115,8 +124,6 @@ class Batch extends \Magento\Cron\Model\Schedule
     }
 
     /**
-     * Object initialization
-     *
      * @return void
      */
     public function _construct()
@@ -125,8 +132,6 @@ class Batch extends \Magento\Cron\Model\Schedule
     }
 
     /**
-     * Lock current running job.
-     *
      * @return bool
      * @throws \Exception
      */
@@ -142,9 +147,7 @@ class Batch extends \Magento\Cron\Model\Schedule
     }
 
     /**
-     * Run Export job
-     *
-     * @throws \Exception
+     * @throws LocalizedException
      */
     protected function _runExport()
     {
@@ -167,9 +170,8 @@ class Batch extends \Magento\Cron\Model\Schedule
     }
 
     /**
-     * Run Export job
-     *
      * @throws LocalizedException
+     * @throws \Magento\Framework\Exception\FileSystemException
      */
     protected function _runImport()
     {
@@ -199,7 +201,6 @@ class Batch extends \Magento\Cron\Model\Schedule
                 $this->date->gmtDate()
             );
             $this->batchRow->bulkInsert($this->import->getBatchRows());
-//                $this->file->deleteFile($filePath); Check if the file should be deleted
             $this->setNumRows(count($fileData));
             $this->setRowsText(implode(PHP_EOL, array_map(
                 function ($el) use ($delimiter) {
@@ -219,10 +220,9 @@ class Batch extends \Magento\Cron\Model\Schedule
     }
 
     /**
-     * Run batch schedule jobs.
-     *
+     * @return $this
      * @throws LocalizedException
-     * @throws \Exception
+     * @throws \Magento\Framework\Exception\FileSystemException
      */
     public function runJob()
     {

@@ -1,13 +1,24 @@
 <?php
 /**
- * Catalog product vendor attribute source
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
  */
 namespace Mageinn\Dropship\Model\Info\Attribute\Source;
 
 /**
- * Class Collection
- *
- * @package Mageinn\Dropship\Model\ResourceModel\Info
+ * Class Vendorid
+ * @package Mageinn\Dropship\Model\Info\Attribute\Source
  */
 class Vendorid extends \Magento\Eav\Model\Entity\Attribute\Source\Table
 {
@@ -17,6 +28,7 @@ class Vendorid extends \Magento\Eav\Model\Entity\Attribute\Source\Table
     protected $infoFactory;
 
     /**
+     * Vendorid constructor.
      * @param \Magento\Eav\Model\ResourceModel\Entity\Attribute\Option\CollectionFactory $attrOptionCollectionFactory
      * @param \Magento\Eav\Model\ResourceModel\Entity\Attribute\OptionFactory $attrOptionFactory
      * @param \Mageinn\Dropship\Model\ResourceModel\Info\CollectionFactory $infoFactory
@@ -31,8 +43,6 @@ class Vendorid extends \Magento\Eav\Model\Entity\Attribute\Source\Table
     }
 
     /**
-     * Retrieve all options
-     *
      * @return array
      */
     public function getAllOptions()

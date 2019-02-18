@@ -1,18 +1,29 @@
 <?php
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
 namespace Mageinn\Dropship\Model\Source;
 
 use \Magento\Framework\Data\OptionSourceInterface;
 
 /**
- * Class ShipmentStatus Source.
- *
+ * Class BatchStatus
  * @package Mageinn\Dropship\Model\Source
  */
 class BatchStatus implements OptionSourceInterface
 {
-    /**#@+
-     * Batch statuses
-     */
     const BATCH_STATUS_PENDING    = 'pending';
     const BATCH_STATUS_SCHEDULED  = 'scheduled';
     const BATCH_STATUS_MISSED     = 'missed';
@@ -24,7 +35,6 @@ class BatchStatus implements OptionSourceInterface
     const BATCH_STATUS_PARTIAL    = 'partial';
     const BATCH_STATUS_ERROR      = 'error';
     const BATCH_STATUS_CANCELED   = 'canceled';
-    /**#@-*/
 
     /**
      * @return array
