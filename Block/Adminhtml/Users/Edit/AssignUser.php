@@ -1,10 +1,24 @@
 <?php
-
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
 namespace Mageinn\Dropship\Block\Adminhtml\Users\Edit;
 
 /**
- * Class Stock
- * @package Mageinn\Dropship\Block\Adminhtml\Edit\
+ * Class AssignUser
+ * @package Mageinn\Dropship\Block\Adminhtml\Users\Edit
  */
 class AssignUser extends \Magento\Backend\Block\Template
 {
@@ -29,7 +43,7 @@ class AssignUser extends \Magento\Backend\Block\Template
     protected $jsonEncoder;
 
     /**
-     * @var \Magento\User\Model\ResourceModel\User\Collection
+     * @var \Magento\User\Model\ResourceModel\User\CollectionFactory
      */
     protected $userCollectionFactory;
 
@@ -55,9 +69,7 @@ class AssignUser extends \Magento\Backend\Block\Template
     }
 
     /**
-     * Retrieve instance of grid block
-     *
-     * @return \Magento\Framework\View\Element\BlockInterface
+     * @return Tab\User|\Magento\Framework\View\Element\BlockInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function getBlockGrid()
@@ -72,8 +84,6 @@ class AssignUser extends \Magento\Backend\Block\Template
     }
 
     /**
-     * Return HTML of grid block
-     *
      * @return string
      * @throws \Magento\Framework\Exception\LocalizedException
      */
@@ -107,9 +117,7 @@ class AssignUser extends \Magento\Backend\Block\Template
     }
 
     /**
-     * Retrieve current category instance
-     *
-     * @return array|null
+     * @return mixed
      */
     public function getVendor()
     {

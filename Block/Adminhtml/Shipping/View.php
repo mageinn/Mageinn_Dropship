@@ -1,5 +1,19 @@
 <?php
-
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
 namespace Mageinn\Dropship\Block\Adminhtml\Shipping;
 
 use Mageinn\Dropship\Model\Source\ShipmentStatus;
@@ -71,7 +85,6 @@ class View extends \Magento\Shipping\Block\Adminhtml\View
         } else {
             $emailSent = __('the shipment email is not sent');
         }
-        // @codingStandardsIgnoreStart
         return __(
             'Shipment #%1 | %3 (%2) [%4]',
             $this->getShipment()->getIncrementId(),
@@ -83,6 +96,5 @@ class View extends \Magento\Shipping\Block\Adminhtml\View
             ),
             ShipmentStatus::getLabel($this->getShipment()->getDropshipStatus())
         );
-        // @codingStandardsIgnoreEnd
     }
 }
