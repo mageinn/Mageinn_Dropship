@@ -1,4 +1,19 @@
 <?php
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
 namespace Mageinn\Dropship\Controller\Adminhtml\Batches;
 
 use Magento\Backend\App\Action\Context;
@@ -50,9 +65,7 @@ class MassDelete extends \Magento\Backend\App\Action
 
             /** @var \Mageinn\Dropship\Model\Batch $item */
             foreach ($collection as $item) {
-                // @codingStandardsIgnoreStart
                 $item->delete();
-                // @codingStandardsIgnoreEnd
             }
 
             $this->messageManager->addSuccess(__('Batches deleted successfully.'));

@@ -1,4 +1,19 @@
 <?php
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
 namespace Mageinn\Dropship\Controller\Adminhtml\Vendor;
 
 use \Magento\Backend\App\Action;
@@ -92,7 +107,6 @@ class Save extends Action
             Address::ADDRESS_TYPE_CUSTOMER_SERVICE  => $data[Address::ADDRESS_TYPE_CUSTOMER_SERVICE],
         ];
 
-        // @codingStandardsIgnoreStart
         $collection = $this->addressCollection->create();
         $addresses = $collection->addFieldToFilter('vendor_id', $vendorId)->getItems();
         if (!$addresses) {
@@ -109,7 +123,6 @@ class Save extends Action
                 $address->save();
             }
         }
-        // @codingStandardsIgnoreEnd
     }
 
     /**

@@ -1,8 +1,18 @@
 <?php
 /**
+ * Mageinn
  *
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
  */
 namespace Mageinn\Dropship\Controller\Adminhtml\Shipment;
 
