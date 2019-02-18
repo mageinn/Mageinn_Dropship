@@ -1,11 +1,24 @@
 <?php
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
 namespace Mageinn\Dropship\Setup;
 
 /**
  * Class UpgradeData
- *
  * @package Mageinn\Dropship\Setup
- * @codeCoverageIgnoreFile
  */
 class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface
 {
@@ -25,8 +38,8 @@ class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface
     }
 
     /**
-     * {@inheritdoc}
-     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     * @param \Magento\Framework\Setup\ModuleDataSetupInterface $setup
+     * @param \Magento\Framework\Setup\ModuleContextInterface $context
      */
     public function upgrade(
         \Magento\Framework\Setup\ModuleDataSetupInterface $setup,

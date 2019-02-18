@@ -1,5 +1,19 @@
 <?php
-/* app/code/Iredeem/Vendor/Setup/InstallData.php */
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
 
 namespace Mageinn\Dropship\Setup;
 
@@ -10,20 +24,18 @@ use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 
 /**
- * @codeCoverageIgnore
+ * Class InstallData
+ * @package Mageinn\Dropship\Setup
  */
 class InstallData implements InstallDataInterface
 {
     /**
-     * EAV setup factory
-     *
      * @var EavSetupFactory
      */
     private $eavSetupFactory;
 
     /**
-     * Init
-     *
+     * InstallData constructor.
      * @param EavSetupFactory $eavSetupFactory
      */
     public function __construct(EavSetupFactory $eavSetupFactory)
@@ -32,8 +44,8 @@ class InstallData implements InstallDataInterface
     }
 
     /**
-     * {@inheritdoc}
-     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     * @param ModuleDataSetupInterface $setup
+     * @param ModuleContextInterface $context
      */
     public function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {

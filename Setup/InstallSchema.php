@@ -1,4 +1,19 @@
 <?php
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
 namespace Mageinn\Dropship\Setup;
 
 use \Magento\Framework\DB\Ddl\Table;
@@ -9,13 +24,15 @@ use Magento\Framework\Setup\SchemaSetupInterface;
 use Mageinn\Dropship\Model\Info;
 
 /**
- * @codeCoverageIgnore
+ * Class InstallSchema
+ * @package Mageinn\Dropship\Setup
  */
 class InstallSchema implements InstallSchemaInterface
 {
     /**
-     * {@inheritdoc}
-     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     * @param SchemaSetupInterface $setup
+     * @param ModuleContextInterface $context
+     * @throws \Zend_Db_Exception
      */
     public function install(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
@@ -24,9 +41,6 @@ class InstallSchema implements InstallSchemaInterface
 
         $installer->startSetup();
 
-        /**
-         * Create table 'mageinn_dropship_information'
-         */
         if (!$installer->tableExists(Info::VENDOR_INFO_TABLE)) {
             $table = $installer->getConnection()
                 ->newTable($installer->getTable(Info::VENDOR_INFO_TABLE))

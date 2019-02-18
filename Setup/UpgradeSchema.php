@@ -1,4 +1,19 @@
 <?php
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
 namespace Mageinn\Dropship\Setup;
 
 use \Magento\Framework\DB\Ddl\Table;
@@ -12,13 +27,15 @@ use \Mageinn\Dropship\Model\Batch;
 use \Mageinn\Dropship\Model\BatchRow;
 
 /**
- * @codeCoverageIgnore
+ * Class UpgradeSchema
+ * @package Mageinn\Dropship\Setup
  */
 class UpgradeSchema implements UpgradeSchemaInterface
 {
     /**
-     * {@inheritdoc}
-     * @codingStandardsIgnoreStart
+     * @param SchemaSetupInterface $setup
+     * @param ModuleContextInterface $context
+     * @throws \Zend_Db_Exception
      */
     public function upgrade(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
@@ -40,9 +57,6 @@ class UpgradeSchema implements UpgradeSchemaInterface
         }
 
         if (version_compare($context->getVersion(), '0.0.3') < 0) {
-            /**
-             * Create table 'mageinn_dropship_address'
-             */
             if (!$setup->tableExists(Address::VENDOR_ADDRESS_TABLE)) {
                 $table = $setup->getConnection()
                     ->newTable($setup->getTable(Address::VENDOR_ADDRESS_TABLE))
@@ -366,9 +380,6 @@ class UpgradeSchema implements UpgradeSchemaInterface
         }
 
         if (version_compare($context->getVersion(), '0.0.10') < 0) {
-            /**
-             * Create table 'mageinn_dropship_batch'
-             */
             if (!$setup->tableExists(Batch::TABLE_DROPSHIP_BATCH)) {
                 $table = $setup->getConnection()
                     ->newTable($setup->getTable(Batch::TABLE_DROPSHIP_BATCH))
@@ -484,8 +495,6 @@ class UpgradeSchema implements UpgradeSchemaInterface
             }
         }
 
-        // Need to change the types of the columns to simple text because there is the possibility
-        // that the export file of the error may contain more than 255 chars
         if (version_compare($context->getVersion(), '0.0.13') < 0) {
             if ($setup->tableExists('mageinn_dropship_batch')) {
                 $setup->getConnection()->modifyColumn(
@@ -522,9 +531,6 @@ class UpgradeSchema implements UpgradeSchemaInterface
         }
 
         if (version_compare($context->getVersion(), '0.0.15') < 0) {
-            /**
-             * Create table 'mageinn_dropship_batch_row'
-             */
             if (!$setup->tableExists(BatchRow::TABLE_DROPSHIP_BATCH_ROW)) {
                 $table = $setup->getConnection()
                     ->newTable($setup->getTable(BatchRow::TABLE_DROPSHIP_BATCH_ROW))
@@ -711,5 +717,4 @@ class UpgradeSchema implements UpgradeSchemaInterface
 
         $setup->endSetup();
     }
-    // @codingStandardsIgnoreEnd
 }
