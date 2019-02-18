@@ -1,4 +1,19 @@
 <?php
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
 namespace Mageinn\Dropship\Cron;
 
 use \Mageinn\Dropship\Model\Source\BatchStatus;
@@ -10,16 +25,14 @@ use \Psr\Log\LoggerInterface;
 
 /**
  * Class Batch
- *
  * @package Mageinn\Dropship\Cron
  */
 class Batch
 {
-    /** Schedule ahead group id. */
     const SCHEDULE_CRON_GROUP_ID = 'default';
 
     /**
-     * @var \Mageinn\Dropship\Model\Batch
+     * @var \Mageinn\Dropship\Model\BatchFactory
      */
     protected $batchFactory;
 
@@ -71,7 +84,6 @@ class Batch
 
     /**
      * Batch constructor.
-     *
      * @param \Mageinn\Dropship\Model\BatchFactory $batchFactory
      * @param \Mageinn\Dropship\Model\InfoFactory $vendorFactory
      * @param DateTime $dateTime
@@ -96,7 +108,7 @@ class Batch
     }
 
     /**
-     * Schedule vendor batch cron.
+     * @return void
      */
     public function execute()
     {
@@ -129,8 +141,6 @@ class Batch
     }
 
     /**
-     * Get scheduled ahead time.
-     *
      * @return int
      */
     protected function _getScheduleTimeInterval()
@@ -145,9 +155,7 @@ class Batch
     }
 
     /**
-     * Get currently scheduled batches.
-     *
-     * @return array
+     * @return array|\Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
      */
     protected function _getScheduledBatches()
     {
@@ -162,9 +170,7 @@ class Batch
     }
 
     /**
-     * Returns the vendors with at least one of the batches enabled
-     *
-     * @return \Mageinn\Dropship\Model\ResourceModel\Info\Collection
+     * @return \Mageinn\Dropship\Model\ResourceModel\Info\Collection|\Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
      */
     protected function _getBatchEnabledVendors()
     {
@@ -185,8 +191,6 @@ class Batch
     }
 
     /**
-     * Creates a batch and saves it
-     *
      * @param $vendorId
      * @param $cronExpression
      * @param $type
@@ -207,7 +211,6 @@ class Batch
 
     /**
      * @param $scheduleKey
-     *
      * @return bool
      */
     protected function _notAlreadyScheduled($scheduleKey)
@@ -223,8 +226,6 @@ class Batch
     }
 
     /**
-     * Save scheduled batch.
-     *
      * @param $cronExpression
      * @param $scheduledAt
      * @param $vendorId
@@ -254,14 +255,11 @@ class Batch
     }
 
     /**
-     * Run scheduled jobs.
-     *
      * @param $scheduledBatches
      * @param $currentTime
      */
     protected function _runJobs($scheduledBatches, $currentTime)
     {
-        // @codingStandardsIgnoreStart
         /** @var \Mageinn\Dropship\Model\Batch $batch */
         foreach ($scheduledBatches as $batch) {
             $scheduledTime = strtotime($batch->getScheduledAt());
@@ -280,6 +278,5 @@ class Batch
                 $batch->setErrorInfo($ex->getMessage())->save();
             }
         }
-        // @codingStandardsIgnoreEnd
     }
 }
