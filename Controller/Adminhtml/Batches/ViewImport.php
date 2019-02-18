@@ -2,7 +2,7 @@
 namespace Mageinn\Dropship\Controller\Adminhtml\Batches;
 
 /**
- * Class ViewExport
+ * Class ViewImport
  * @package Mageinn\Dropship\Controller\Adminhtml\Batches
  */
 class ViewImport extends \Magento\Backend\App\Action
@@ -18,7 +18,7 @@ class ViewImport extends \Magento\Backend\App\Action
     private $batchModel;
 
     /**
-     * ViewExport constructor.
+     * ViewImport constructor.
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magento\Framework\View\Result\PageFactory $resultFactory
      * @param \Magento\Framework\Registry $registry
@@ -38,12 +38,7 @@ class ViewImport extends \Magento\Backend\App\Action
     }
 
     /**
-     * Customer edit action
-     *
-     * @return \Magento\Framework\Controller\ResultInterface|\Magento\Backend\Model\View\Result\Redirect
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-     * @SuppressWarnings(PHPMD.NPathComplexity)
-     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     * @return \Magento\Backend\Model\View\Result\Redirect|\Magento\Framework\View\Result\Page
      */
     public function execute()
     {

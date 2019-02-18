@@ -4,8 +4,16 @@ namespace Mageinn\Dropship\Controller\Adminhtml\Shipment;
 
 use Mageinn\Dropship\Model\Source\ShipmentStatus;
 
+/**
+ * Class View
+ * @package Mageinn\Dropship\Controller\Adminhtml\Shipment
+ */
 class View extends \Magento\Shipping\Controller\Adminhtml\Order\Shipment\View
 {
+    /**
+     * @return \Magento\Backend\Model\View\Result\Forward|\Magento\Framework\View\Result\Page
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
     public function execute()
     {
         $this->shipmentLoader->setOrderId($this->getRequest()->getParam('order_id'));

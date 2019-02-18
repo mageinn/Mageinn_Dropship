@@ -3,7 +3,7 @@ namespace Mageinn\Dropship\Controller\Adminhtml\FilePath;
 
 /**
  * Class View
- * @package Mageinn\Dropship\Controller\Adminhtml\BatchRows
+ * @package Mageinn\Dropship\Controller\Adminhtml\FilePath
  */
 class View extends \Magento\Backend\App\Action
 {
@@ -28,6 +28,7 @@ class View extends \Magento\Backend\App\Action
     private $batchModel;
 
     /**
+     * View constructor.
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magento\Framework\Controller\Result\RawFactory $resultRawFactory
      * @param \Magento\Framework\View\LayoutFactory $layoutFactory
@@ -50,9 +51,7 @@ class View extends \Magento\Backend\App\Action
     }
 
     /**
-     * Action for when you refresh the batch rows grid
-     *
-     * @return $this|\Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Raw|\Magento\Framework\Controller\ResultInterface
+     * @return \Magento\Backend\Model\View\Result\Redirect|\Magento\Framework\Controller\Result\Raw
      */
     public function execute()
     {
@@ -80,8 +79,8 @@ class View extends \Magento\Backend\App\Action
     }
 
     /**
-     * @param \Magento\Framework\Registry $registry
-     * @return mixed
+     * @param $registry
+     * @return \Mageinn\Dropship\Model\Batch
      */
     protected function _initItem($registry)
     {
@@ -106,7 +105,7 @@ class View extends \Magento\Backend\App\Action
     }
 
     /**
-     * @param \Magento\Framework\Registry $registry
+     * @param $registry
      * @return string
      */
     protected function _getGridClass($registry)

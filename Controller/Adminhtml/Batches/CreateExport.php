@@ -2,7 +2,7 @@
 namespace Mageinn\Dropship\Controller\Adminhtml\Batches;
 
 /**
- * Class CreateImport
+ * Class CreateExport
  * @package Mageinn\Dropship\Controller\Adminhtml\Batches
  */
 class CreateExport extends \Magento\Backend\App\Action
@@ -13,7 +13,7 @@ class CreateExport extends \Magento\Backend\App\Action
     protected $_resultPage;
 
     /**
-     * CreateImport constructor.
+     * CreateExport constructor.
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
      */
@@ -26,7 +26,7 @@ class CreateExport extends \Magento\Backend\App\Action
     }
 
     /**
-     * @return \Magento\Backend\Model\View\Result\Page|\Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface
+     * @return \Magento\Backend\Model\View\Result\Page
      */
     public function execute()
     {

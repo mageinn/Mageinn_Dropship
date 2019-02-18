@@ -7,6 +7,10 @@ use \Magento\Framework\Registry;
 use \Magento\Framework\View\Result\PageFactory;
 use \Mageinn\Dropship\Model\Info;
 
+/**
+ * Class Edit
+ * @package Mageinn\Dropship\Controller\Adminhtml\Vendor
+ */
 class Edit extends Action
 {
     /**
@@ -15,9 +19,7 @@ class Edit extends Action
     protected $resultPageFactory;
 
     /**
-     * Core registry
-     *
-     * @var \Magento\Framework\Registry
+     * @var Registry
      */
     protected $coreRegistry;
 
@@ -48,12 +50,7 @@ class Edit extends Action
     }
 
     /**
-     * Customer edit action
-     *
      * @return \Magento\Backend\Model\View\Result\Page|\Magento\Backend\Model\View\Result\Redirect
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-     * @SuppressWarnings(PHPMD.NPathComplexity)
-     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
     public function execute()
     {

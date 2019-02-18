@@ -12,7 +12,6 @@ use Magento\Framework\Controller\Result\RawFactory;
 /**
  * Class Export
  * @package Mageinn\Dropship\Controller\Adminhtml\Stock
- * @codeCoverageIgnore Controller functions don't need UT
  */
 class Export extends Action
 {
@@ -20,10 +19,12 @@ class Export extends Action
      * @var LoggerInterface
      */
     protected $logger;
+
     /**
-     * @var \Mageinn\Dropship\Helper\Stock
+     * @var Stock
      */
     protected $stockHelper;
+
     /**
      * @var FileFactory
      */
@@ -40,7 +41,7 @@ class Export extends Action
     protected $directoryList;
 
     /**
-     * @var  /Mageinn\Dropship\Helper\Data
+     * @var \Mageinn\Dropship\Helper\Data
      */
     protected $vendorHelper;
 
@@ -82,8 +83,7 @@ class Export extends Action
     }
 
     /**
-     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Raw|
-     * \Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
+     * @return \Magento\Framework\Controller\Result\Raw|\Magento\Framework\Controller\Result\Redirect
      * @throws \Magento\Framework\Exception\FileSystemException
      */
     public function execute()
@@ -96,7 +96,6 @@ class Export extends Action
                 DIRECTORY_SEPARATOR .
                 sprintf(Stock::FILE_SAVE_PATH, $vendorId);
 
-            //create file name using vendor name, and date time
             $vendorName = $this->vendorHelper->getVendorNameById($vendorId) .
                 '-stock-' . $this->date->date()->format('Y-m-d H:i') . '.csv';
 

@@ -6,21 +6,20 @@ use \Magento\Backend\App\Action\Context;
 use \Magento\Framework\View\Result\PageFactory;
 
 /**
- * Vendor Index Action
- * @package Mageinn\Dropship\Controller\Adminhtml\Vendor
+ * Class Index
+ * @package Mageinn\Dropship\Controller\Adminhtml\Batches
  */
 class Index extends Action
 {
     /**
-     * @var \Magento\Framework\View\Result\PageFactory
+     * @var PageFactory
      */
     protected $resultPageFactory;
 
     /**
-     * Constructor
-     *
-     * @param \Magento\Backend\App\Action\Context $context
-     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
+     * Index constructor.
+     * @param Context $context
+     * @param PageFactory $resultPageFactory
      */
     public function __construct(Context $context, PageFactory $resultPageFactory)
     {
@@ -29,9 +28,7 @@ class Index extends Action
     }
 
     /**
-     * Load the defined page.
-     *
-     * @return \Magento\Framework\View\Result\Page
+     * @return \Magento\Backend\Model\View\Result\Page
      */
     public function execute()
     {

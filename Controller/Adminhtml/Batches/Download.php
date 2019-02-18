@@ -2,8 +2,8 @@
 namespace Mageinn\Dropship\Controller\Adminhtml\Batches;
 
 /**
- * Class View
- * @package Mageinn\Dropship\Controller\Adminhtml\BatchRows
+ * Class Download
+ * @package Mageinn\Dropship\Controller\Adminhtml\Batches
  */
 class Download extends \Magento\Backend\App\Action
 {
@@ -36,8 +36,9 @@ class Download extends \Magento\Backend\App\Action
      * @var \Magento\Framework\Filesystem\Io\File
      */
     protected $fileSystem;
+
     /**
-     * @var \Magento\Framework\Registry $registry
+     * @var \Magento\Framework\Registry
      */
     protected $registry;
 
@@ -47,6 +48,7 @@ class Download extends \Magento\Backend\App\Action
     protected $batchModel;
 
     /**
+     * Download constructor.
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magento\Framework\Controller\Result\RawFactory $resultRawFactory
      * @param \Magento\Framework\View\LayoutFactory $layoutFactory
@@ -55,6 +57,7 @@ class Download extends \Magento\Backend\App\Action
      * @param \Psr\Log\LoggerInterface $logger
      * @param \Magento\Framework\Filesystem\Io\File $fileSystemIo
      * @param \Magento\Framework\Registry $registry
+     * @param \Mageinn\Dropship\Model\Batch $batchModel
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
@@ -80,9 +83,7 @@ class Download extends \Magento\Backend\App\Action
     }
 
     /**
-     * Action for when you refresh the batch rows grid
-     *
-     * @return $this|\Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Raw|\Magento\Framework\Controller\ResultInterface
+     * @return \Magento\Backend\Model\View\Result\Redirect|\Magento\Framework\Controller\Result\Raw
      */
     public function execute()
     {
@@ -134,8 +135,8 @@ class Download extends \Magento\Backend\App\Action
     }
 
     /**
-     * @param \Magento\Framework\Registry $registry
-     * @return mixed
+     * @param $registry
+     * @return \Mageinn\Dropship\Model\Batch
      */
     private function _initItem($registry)
     {

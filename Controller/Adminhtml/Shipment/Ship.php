@@ -7,6 +7,10 @@ use \Magento\Backend\App\Action\Context;
 use \Magento\Framework\Registry;
 use \Magento\Framework\View\Result\PageFactory;
 
+/**
+ * Class Ship
+ * @package Mageinn\Dropship\Controller\Adminhtml\Shipment
+ */
 class Ship extends Action
 {
     /**
@@ -17,15 +21,13 @@ class Ship extends Action
     const ADMIN_RESOURCE = 'Magento_Sales::shipment';
 
     /**
-     * @var \Magento\Framework\View\Result\PageFactory
+     * @var PageFactory
      */
     protected $resultPageFactory;
 
 
     /**
-     * Core registry
-     *
-     * @var \Magento\Framework\Registry
+     * @var Registry
      */
     protected $_coreRegistry;
 
@@ -35,11 +37,10 @@ class Ship extends Action
     protected $shipmentLoader;
 
     /**
-     * Edit action constructor.
-     *
-     * @param \Magento\Backend\App\Action\Context $context
-     * @param \Magento\Framework\Registry $coreRegistry
-     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
+     * Ship constructor.
+     * @param Context $context
+     * @param Registry $coreRegistry
+     * @param PageFactory $resultPageFactory
      * @param \Magento\Shipping\Controller\Adminhtml\Order\ShipmentLoader $shipmentLoader
      */
     public function __construct(
@@ -56,6 +57,9 @@ class Ship extends Action
     }
 
 
+    /**
+     * @return \Magento\Backend\Model\View\Result\Redirect
+     */
     public function execute()
     {
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */

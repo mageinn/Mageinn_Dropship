@@ -12,7 +12,6 @@ use Mageinn\Dropship\Helper\Stock;
 /**
  * Class Import
  * @package Mageinn\Dropship\Controller\Adminhtml\Stock
- * @codeCoverageIgnore Controller functions don't need UT
  */
 class Import extends Action
 {
@@ -27,16 +26,12 @@ class Import extends Action
     protected $shippingRatesHelper;
 
     /**
-     * @var WriteInterface
-     */
-    protected $filesystem;
-
-    /**
      * @var LoggerInterface
      */
     protected $logger;
+
     /**
-     * @var \Mageinn\Dropship\Helper\Stock
+     * @var Stock
      */
     protected $stockHelper;
 
@@ -64,7 +59,8 @@ class Import extends Action
     }
 
     /**
-     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect
+     *         |\Magento\Framework\Controller\ResultInterface
      */
     public function execute()
     {
@@ -78,13 +74,11 @@ class Import extends Action
                     $this->messageManager->addSuccessMessage(__('Stock have been successfully updated'));
                 }
             } catch (LocalizedException $e) {
-                // Could be caught while the stock is saved in the DB
                 $this->logger->error($e);
                 $this->messageManager->addErrorMessage(
                     __('An issue occurred while adding stock into the  system')
                 );
             } catch (\Exception $e) {
-                // Could be caught for getting the csv data from the file or saving the file
                 $this->logger->error($e);
                 $this->messageManager->addErrorMessage(__('Selected vendor has no products associated'));
             }

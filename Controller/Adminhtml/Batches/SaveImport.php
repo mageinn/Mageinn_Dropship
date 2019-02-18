@@ -2,18 +2,18 @@
 namespace Mageinn\Dropship\Controller\Adminhtml\Batches;
 
 /**
- * Class Save
- * @package Mageinn\Dropship\Controller\Adminhtml\Batches\Import
+ * Class SaveImport
+ * @package Mageinn\Dropship\Controller\Adminhtml\Batches
  */
 class SaveImport extends \Magento\Backend\App\Action
 {
     /**
-     * @var \Mageinn\Dropship\Model\BatchFactory
+     * @var \Mageinn\Dropship\Model\Batch
      */
     protected $_batch;
 
     /**
-     * @var \Mageinn\Dropship\Model\InfoFactory
+     * @var \Mageinn\Dropship\Model\Info
      */
     protected $_vendor;
 
@@ -52,10 +52,7 @@ class SaveImport extends \Magento\Backend\App\Action
     }
 
     /**
-     * Save action
-     *
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-     * @return \Magento\Framework\Controller\ResultInterface
+     * @return \Magento\Backend\Model\View\Result\Redirect
      */
     public function execute()
     {

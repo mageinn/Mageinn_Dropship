@@ -7,9 +7,8 @@ use \Magento\Backend\App\Action\Context;
 use \Magento\Framework\View\Result\PageFactory;
 
 /**
- * Vendor Index Action
- * @package Mageinn\Dropship\Controller\Adminhtml\Vendor
- * @codeCoverageIgnore Controller functions don't need UT
+ * Class Index
+ * @package Mageinn\Dropship\Controller\Adminhtml\Stock
  */
 class Index extends Action
 {
@@ -25,7 +24,7 @@ class Index extends Action
     }
 
     /**
-     * @return \Magento\Backend\Model\View\Result\Page|\Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface
+     * @return \Magento\Backend\Model\View\Result\Page
      */
     public function execute()
     {

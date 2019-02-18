@@ -13,7 +13,6 @@ use \Mageinn\Dropship\Helper\CoreData;
 
 /**
  * Class Save
- *
  * @package Mageinn\Dropship\Controller\Adminhtml\Vendor
  */
 class Save extends Action
@@ -118,6 +117,7 @@ class Save extends Action
      *
      * @param $vendorId
      * @param $assocVendorUsersIds
+     * @throws LocalizedException
      */
     protected function _saveAssocUsers($vendorId, $assocVendorUsersIds)
     {
@@ -162,10 +162,7 @@ class Save extends Action
     }
 
     /**
-     * Save action
-     *
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-     * @return \Magento\Framework\Controller\ResultInterface
+     * @return \Magento\Backend\Model\View\Result\Redirect
      */
     public function execute()
     {

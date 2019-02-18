@@ -13,8 +13,6 @@ class CreateImport extends \Magento\Backend\App\Action
     protected $_resultPage;
 
     /**
-     * Core registry
-     *
      * @var \Magento\Framework\Registry
      */
     protected $_coreRegistry;
@@ -36,7 +34,7 @@ class CreateImport extends \Magento\Backend\App\Action
     }
 
     /**
-     * @return \Magento\Backend\Model\View\Result\Page|\Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface
+     * @return \Magento\Backend\Model\View\Result\Page
      */
     public function execute()
     {

@@ -6,6 +6,10 @@ use Magento\Ui\Component\MassAction\Filter;
 use Magento\Framework\Controller\ResultFactory;
 use Mageinn\Dropship\Model\ResourceModel\Batch\CollectionFactory;
 
+/**
+ * Class MassDelete
+ * @package Mageinn\Dropship\Controller\Adminhtml\Batches
+ */
 class MassDelete extends \Magento\Backend\App\Action
 {
     /**
@@ -14,12 +18,12 @@ class MassDelete extends \Magento\Backend\App\Action
     protected $redirectUrl = '*/*/';
 
     /**
-     * @var \Magento\Ui\Component\MassAction\Filter
+     * @var Filter
      */
     protected $filter;
 
     /**
-     * @var object
+     * @var CollectionFactory
      */
     protected $collectionFactory;
 
@@ -37,7 +41,7 @@ class MassDelete extends \Magento\Backend\App\Action
     }
 
     /**
-     * @return $this|\Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface
+     * @return \Magento\Backend\Model\View\Result\Redirect|\Magento\Framework\Controller\Result\Redirect
      */
     public function execute()
     {

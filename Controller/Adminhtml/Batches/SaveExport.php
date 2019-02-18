@@ -2,8 +2,8 @@
 namespace Mageinn\Dropship\Controller\Adminhtml\Batches;
 
 /**
- * Class Save
- * @package Mageinn\Dropship\Controller\Adminhtml\Batches\Import
+ * Class SaveExport
+ * @package Mageinn\Dropship\Controller\Adminhtml\Batches
  */
 class SaveExport extends \Magento\Backend\App\Action
 {
@@ -18,15 +18,16 @@ class SaveExport extends \Magento\Backend\App\Action
     protected $_dateTime;
 
     /**
-     * @var \Mageinn\Dropship\Model\InfoFactory
+     * @var \Mageinn\Dropship\Model\Info
      */
     protected $_vendor;
 
     /**
-     * SaveImport constructor.
+     * SaveExport constructor.
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Mageinn\Dropship\Model\BatchFactory $batch
      * @param \Magento\Framework\Stdlib\DateTime\DateTime $dateTime
+     * @param \Mageinn\Dropship\Model\InfoFactory $vendor
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
@@ -41,10 +42,7 @@ class SaveExport extends \Magento\Backend\App\Action
     }
 
     /**
-     * Save action
-     *
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-     * @return \Magento\Framework\Controller\ResultInterface
+     * @return \Magento\Backend\Model\View\Result\Redirect
      */
     public function execute()
     {

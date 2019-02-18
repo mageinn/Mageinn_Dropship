@@ -1,6 +1,10 @@
 <?php
 namespace Mageinn\Dropship\Controller\Adminhtml\Users;
 
+/**
+ * Class Grid
+ * @package Mageinn\Dropship\Controller\Adminhtml\Users
+ */
 class Grid extends \Mageinn\Dropship\Controller\Adminhtml\Users\User
 {
     /**
@@ -46,7 +50,7 @@ class Grid extends \Mageinn\Dropship\Controller\Adminhtml\Users\User
     }
 
     /**
-     * @return $this|\Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface
+     * @return \Magento\Backend\Model\View\Result\Redirect|\Magento\Framework\Controller\Result\Raw
      */
     public function execute()
     {
@@ -70,7 +74,7 @@ class Grid extends \Mageinn\Dropship\Controller\Adminhtml\Users\User
     }
 
     /**
-     * @return mixed
+     * @return \Mageinn\Dropship\Model\Info
      */
     protected function _initItem()
     {

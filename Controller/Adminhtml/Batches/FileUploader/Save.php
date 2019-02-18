@@ -5,8 +5,7 @@ use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 
 /**
- * File Uploads Action Controller
- *
+ * Class Save
  * @package Mageinn\Dropship\Controller\Adminhtml\Batches\FileUploader
  */
 class Save extends Action
@@ -42,7 +41,7 @@ class Save extends Action
     }
 
     /**
-     * @inheritDoc
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Json|\Magento\Framework\Controller\Result\Redirect
      */
     public function execute()
     {

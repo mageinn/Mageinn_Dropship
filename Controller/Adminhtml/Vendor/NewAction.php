@@ -17,10 +17,9 @@ class NewAction extends Action
     protected $resultForwardFactory;
 
     /**
-     * Constructor
-     *
-     * @param \Magento\Backend\App\Action\Context $context
-     * @param \Magento\Backend\Model\View\Result\ForwardFactory $resultForwardFactory
+     * NewAction constructor.
+     * @param Context $context
+     * @param ForwardFactory $resultForwardFactory
      */
     public function __construct(Context $context, ForwardFactory $resultForwardFactory)
     {
@@ -29,8 +28,6 @@ class NewAction extends Action
     }
 
     /**
-     * Create new customer action
-     *
      * @return \Magento\Backend\Model\View\Result\Forward
      */
     public function execute()
