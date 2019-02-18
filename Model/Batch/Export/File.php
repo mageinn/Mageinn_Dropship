@@ -2,7 +2,6 @@
 namespace Mageinn\Dropship\Model\Batch\Export;
 
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Mail\Template\TransportBuilder;
 
 /**
  * Class File
@@ -42,7 +41,7 @@ class File extends \Magento\Framework\Filesystem\Io\File
     protected $emailSentToVendor;
 
     /**
-     * @var \Mageinn\Dropship\Magento\Mail\Template\TransportBuilder 
+     * @var \Mageinn\Dropship\Magento\Mail\Template\TransportBuilder
      */
     protected $transportBuilder;
 

@@ -63,7 +63,7 @@ class ShipmentEmail implements ObserverInterface
     public function __construct(
         Info $vendor,
         CollectionFactory $vendorAddress,
-        \Magento\Framework\Mail\Template\TransportBuilder $transportBuilder,
+        \Mageinn\Dropship\Magento\Mail\Template\TransportBuilder $transportBuilder,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Framework\Escaper $escaper,
