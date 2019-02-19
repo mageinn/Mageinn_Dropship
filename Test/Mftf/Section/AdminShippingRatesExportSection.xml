@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/Page/etc/SectionObject.xsd">
-    <section name="AdminShippingRatesExportSection">
-        <element name="Vendor" type="select" selector="#export_form select[name='vendor_id']" timeout="30"/>
-        <element name="Submit" type="button" selector="button[title='Export']" timeout="30"/>
-    </section>
-</sections>
