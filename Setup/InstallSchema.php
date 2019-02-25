@@ -86,13 +86,6 @@ class InstallSchema implements InstallSchemaInterface
                     [],
                     'Vendor Shipment Type'
                 )
-                ->addColumn(
-                    'client_managed',
-                    Table::TYPE_BOOLEAN,
-                    null,
-                    ['nullable' => false, 'default' => '0'],
-                    'Vendor Is Client Managed'
-                )
                 ->addIndex(
                     $setup->getIdxName(
                         $installer->getTable(Info::VENDOR_INFO_TABLE),

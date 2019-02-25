@@ -42,7 +42,7 @@ class VendorToCsv
      * @var array
      */
     protected $vendor = [
-        'name', 'email', 'telephone', 'notify_order', 'currency', 'client_managed', 'same_as_billing',
+        'name', 'email', 'telephone', 'notify_order', 'currency', 'same_as_billing',
         'batch_export_enabled', 'batch_export_schedule', 'batch_import_enabled', 'batch_import_schedule'
     ];
 

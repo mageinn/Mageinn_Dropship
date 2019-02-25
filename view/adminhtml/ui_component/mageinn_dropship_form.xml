@@ -161,30 +161,6 @@
                     <visible>true</visible>
                 </settings>
             </field>
-            <field name="client_managed" formElement="checkbox">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="source" xsi:type="string">mageinn_dropship</item>
-                        <item name="default" xsi:type="number">1</item>
-                    </item>
-                </argument>
-                <settings>
-                    <dataType>boolean</dataType>
-                    <label translate="true">Client Managed</label>
-                    <dataScope>client_managed</dataScope>
-                </settings>
-                <formElements>
-                    <checkbox>
-                        <settings>
-                            <valueMap>
-                                <map name="false" xsi:type="number">0</map>
-                                <map name="true" xsi:type="number">1</map>
-                            </valueMap>
-                            <prefer>toggle</prefer>
-                        </settings>
-                    </checkbox>
-                </formElements>
-            </field>
         </fieldset>
     </fieldset>
     <fieldset name="vendor_settings">

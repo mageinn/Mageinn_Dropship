@@ -113,17 +113,6 @@
                 <label translate="true">Telephone</label>
             </settings>
         </column>
-        <column name="client_managed" component="Magento_Ui/js/grid/columns/select">
-            <settings>
-                <options class="Mageinn\Dropship\Model\Source\IsEnabled"/>
-                <filter>select</filter>
-                <editor>
-                    <editorType>select</editorType>
-                </editor>
-                <dataType>select</dataType>
-                <label translate="true">Client Managed</label>
-            </settings>
-        </column>
         <actionsColumn name="actions" class="Mageinn\Dropship\Ui\Component\Listing\Column\Actions">
             <settings>
                 <indexField>entity_id</indexField>
