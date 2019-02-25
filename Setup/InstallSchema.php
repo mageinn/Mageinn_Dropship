@@ -93,13 +93,6 @@ class InstallSchema implements InstallSchemaInterface
                     ['nullable' => false, 'default' => '0'],
                     'Vendor Is Client Managed'
                 )
-                ->addColumn(
-                    'multiplier',
-                    Table::TYPE_DECIMAL,
-                    '12,4',
-                    ['nullable' => false, 'default' => '0.0000'],
-                    'Vendor Multiplier'
-                )
                 ->addIndex(
                     $setup->getIdxName(
                         $installer->getTable(Info::VENDOR_INFO_TABLE),

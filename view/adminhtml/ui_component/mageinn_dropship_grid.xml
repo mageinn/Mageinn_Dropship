@@ -124,12 +124,6 @@
                 <label translate="true">Client Managed</label>
             </settings>
         </column>
-        <column name="multiplier">
-            <settings>
-                <filter>text</filter>
-                <label translate="true">Multiplier</label>
-            </settings>
-        </column>
         <actionsColumn name="actions" class="Mageinn\Dropship\Ui\Component\Listing\Column\Actions">
             <settings>
                 <indexField>entity_id</indexField>

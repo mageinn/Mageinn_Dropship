@@ -185,21 +185,6 @@
                     </checkbox>
                 </formElements>
             </field>
-            <field name="multiplier" formElement="input">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="source" xsi:type="string">mageinn_dropship</item>
-                        <item name="label" xsi:type="string" translate="true">Multiplier</item>
-                    </item>
-                </argument>
-                <settings>
-                    <validation>
-                        <rule name="validate-number" xsi:type="boolean">true</rule>
-                    </validation>
-                    <dataType>text</dataType>
-                    <visible>true</visible>
-                </settings>
-            </field>
         </fieldset>
     </fieldset>
     <fieldset name="vendor_settings">
