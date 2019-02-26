@@ -155,18 +155,29 @@ class Batch extends \Magento\Cron\Model\Schedule
 
         $vendor = $this->vendor->create()->load($this->getVendorId());
         $response = $this->export->process($vendor, $this->getId());
-        $this->setNumRows($response->getRowsNumber());
-        if ($response->getRowsNumber() == 0) {
-            $this->setStatus(BatchStatus::BATCH_STATUS_EMPTY);
+
+        if( is_null($response) ) {
+
+            throw new LocalizedException(__('Invalid export file template'));
+
         } else {
-            $this->setRowsText($response->getRowsText())
-                ->setFilePath($response->getFilePath());
-            if ($response->getNotes()) {
-                $this->setNotes($response->getNotes());
+
+            $this->setNumRows($response->getRowsNumber());
+            if ($response->getRowsNumber() == 0) {
+                $this->setStatus(BatchStatus::BATCH_STATUS_EMPTY);
+            } else {
+                $this->setRowsText($response->getRowsText())
+                    ->setFilePath($response->getFilePath());
+                if ($response->getNotes()) {
+                    $this->setNotes($response->getNotes());
+                }
+                $this->batchRow->bulkInsert($response->getBatchRows());
+                $this->setStatus(BatchStatus::BATCH_STATUS_SUCCESS);
             }
-            $this->batchRow->bulkInsert($response->getBatchRows());
-            $this->setStatus(BatchStatus::BATCH_STATUS_SUCCESS);
+
         }
+
+
     }
 
     /**
