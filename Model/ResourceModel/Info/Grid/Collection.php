@@ -40,7 +40,7 @@ class Collection extends SearchResult
      * @param Logger $logger
      * @param FetchStrategy $fetchStrategy
      * @param EventManager $eventManager
-     * @param $mainTable
+     * @param string $mainTable
      * @param $resourceModel
      * @param Info $infoModel
      * @throws \Magento\Framework\Exception\LocalizedException

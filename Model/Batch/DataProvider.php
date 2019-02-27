@@ -1,6 +1,8 @@
 <?php
 namespace Mageinn\Dropship\Model\Batch;
 
+use vendor\project\StatusTest;
+
 /**
  * Class DataProvider
  * @package Mageinn\Dropship\Model\Batch
@@ -19,9 +21,9 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 
     /**
      * DataProvider constructor.
-     * @param $name
-     * @param $primaryFieldName
-     * @param $requestFieldName
+     * @param string $name
+     * @param string $primaryFieldName
+     * @param string $requestFieldName
      * @param \Mageinn\Dropship\Model\ResourceModel\Batch\CollectionFactory $collectionFactory
      * @param \Mageinn\Dropship\Helper\Data $vendorHelper
      * @param array $meta

@@ -69,13 +69,14 @@ class DataProvider extends AbstractDataProvider
 
     /**
      * DataProvider constructor.
-     * @param $name
-     * @param $primaryFieldName
-     * @param $requestFieldName
+     * @param string $name
+     * @param string $primaryFieldName
+     * @param string $requestFieldName
      * @param InfoCollectionFactory $infoCollectionFactory
      * @param AddressCollectionFactory $addressCollectionFactory
      * @param array $meta
      * @param array $data
+     *
      */
     public function __construct(
         $name,

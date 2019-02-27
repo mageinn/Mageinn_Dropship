@@ -41,7 +41,7 @@ class Collection extends SearchResult
      * @param FetchStrategy $fetchStrategy
      * @param EventManager $eventManager
      * @param Batch $batchModel
-     * @param $mainTable
+     * @param string $mainTable
      * @param $resourceModel
      * @throws \Magento\Framework\Exception\LocalizedException
      */
