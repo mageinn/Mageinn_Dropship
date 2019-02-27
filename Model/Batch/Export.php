@@ -55,6 +55,11 @@ class Export extends AbstractModel
     protected $batchRowsArray;
 
     /**
+     * @var \Magento\Framework\Serialize\SerializerInterface
+     */
+    protected $serializer;
+
+    /**
      * Export constructor.
      * @param \Magento\Framework\Model\Context $context
      * @param \Magento\Framework\Registry $registry
@@ -74,6 +79,7 @@ class Export extends AbstractModel
         \Magento\Sales\Model\ResourceModel\Order\Shipment\CollectionFactory $shipmentCollection,
         \Mageinn\Dropship\Model\Batch\Export\Response $response,
         \Mageinn\Dropship\Model\Batch\Export\File $file,
+        \Magento\Framework\Serialize\SerializerInterface $serializer,
         \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection $shipments = null,
         \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
         \Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
@@ -84,6 +90,7 @@ class Export extends AbstractModel
         $this->response = $response;
         $this->file = $file;
         $this->shipments = $shipments;
+        $this->serializer = $serializer;
         parent::__construct($context, $registry, $resource, $resourceCollection, $data);
     }
 
@@ -259,15 +266,13 @@ class Export extends AbstractModel
      */
     protected function _updateShipments($vendor)
     {
-        $this->shipments->getConnection()->update(
-            $this->shipments->getMainTable(),
-            ['dropship_status' => $vendor->getBatchExportShipmentStatus()],
-            sprintf(
-                'vendor_id = %s and dropship_status in (%s)',
-                $vendor->getId(),
-                $this->vendorHelper->getBatchOrderExportConfig('shipment_statuses')
-            )
-        );
+        foreach ($this->shipments as $shipment) {
+
+            $shipment->setDropshipStatus($vendor->getBatchExportShipmentStatus())
+                ->setPackages($this->serializer->unserialize($shipment->getPackages()))
+                ->save();
+
+        }
     }
 
     /**
