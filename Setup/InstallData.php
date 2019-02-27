@@ -17,6 +17,10 @@
 
 namespace Mageinn\Dropship\Setup;
 
+use Magento\Authorization\Model\Acl\Role\Group;
+use Magento\Authorization\Model\RoleFactory;
+use Magento\Authorization\Model\RulesFactory;
+use Magento\Authorization\Model\UserContextInterface;
 use Magento\Eav\Setup\EavSetup;
 use Magento\Eav\Setup\EavSetupFactory;
 use Magento\Framework\Setup\InstallDataInterface;
@@ -35,12 +39,30 @@ class InstallData implements InstallDataInterface
     private $eavSetupFactory;
 
     /**
+     * @var RoleFactory
+     */
+    private $roleFactory;
+
+    /**
+     * @var RulesFactory
+     */
+    private $rulesFactory;
+
+    /**
      * InstallData constructor.
      * @param EavSetupFactory $eavSetupFactory
+     * @param RoleFactory $roleFactory
+     * @param RulesFactory $rulesFactory
      */
-    public function __construct(EavSetupFactory $eavSetupFactory)
+    public function __construct(
+        EavSetupFactory $eavSetupFactory,
+        RoleFactory $roleFactory,
+        RulesFactory $rulesFactory
+    )
     {
         $this->eavSetupFactory = $eavSetupFactory;
+        $this->roleFactory = $roleFactory;
+        $this->rulesFactory = $rulesFactory;
     }
 
     /**
@@ -49,7 +71,6 @@ class InstallData implements InstallDataInterface
      */
     public function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
-        $context;
         /** @var EavSetup $eavSetup */
         $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
         $eavSetup->addAttribute(
@@ -76,5 +97,34 @@ class InstallData implements InstallDataInterface
                 'is_filterable_in_grid' => true,
             ]
         );
+
+
+        $this->createVendorsRole();
+    }
+
+
+    private function createVendorsRole()
+    {
+        $resources = [
+            'Magento_Sales::sales',
+            'Magento_Sales::sales_operation',
+            'Magento_Sales::shipment',
+            'Mageinn_Dropship::dropship',
+            'Mageinn_Dropship::product_stock'
+        ];
+
+        $role = $this->roleFactory->create();
+        $role->setRoleName('Vendors')
+            ->setParentId(0)
+            ->setRoleType(Group::ROLE_TYPE)
+            ->setUserType(UserContextInterface::USER_TYPE_ADMIN)
+            ->save();
+
+
+        $this->rulesFactory->create()
+            ->setRoleId($role->getId())
+            ->setResources($resources)
+            ->saveRel();
+
     }
 }
