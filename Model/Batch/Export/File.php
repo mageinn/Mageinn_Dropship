@@ -141,9 +141,7 @@ class File extends \Magento\Framework\Filesystem\Io\File
                 $this->_createFileOnServer($contents, $path);
             }
         }
-        if (!$this->emailSentToVendor) {
-            $this->_sendEmail($vendor, $contents);
-        }
+        
         if ($this->email->getNotes()) {
             $this->notes[] = $this->email->getNotes();
             $this->email->clearNotes();
