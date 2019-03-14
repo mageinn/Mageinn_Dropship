@@ -2,10 +2,7 @@
   "name": "mageinn/module-dropship",
   "description": "Dropship",
   "require": {
-    "magento/module-framework": "*",
-    "magento/module-sales": "*",
-    "magento/module-shipping": "*",
-    "magento/module-catalog": "*"
+    "php": ">=7.0.0"
   },
   "type": "magento2-module",
   "version": "1.0.0",
