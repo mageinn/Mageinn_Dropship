@@ -1,11 +1,26 @@
 <?php
-namespace Mageinn\Vendor\Block\Adminhtml\Batch\View\AbstractBatchRows;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractBatchRows;
 
-use Mageinn\Vendor\Model\ResourceModel\BatchRow\CollectionFactory;
+use Mageinn\Dropship\Model\ResourceModel\BatchRow\CollectionFactory;
 
 /**
  * Class Grid
- * @package Mageinn\Vendor\Block\Adminhtml\Batch\View\AbstractBatchRows
+ * @package Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractBatchRows
  */
 abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
 {
@@ -20,7 +35,7 @@ abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     protected $_collectionFactory;
 
     /**
-     * User constructor.
+     * Grid constructor.
      * @param \Magento\Backend\Helper\Data $backendHelper
      * @param \Magento\Backend\Block\Template\Context $context
      * @param CollectionFactory $collectionFactory
@@ -51,7 +66,7 @@ abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     }
 
     /**
-     * @return \Mageinn\Vendor\Model\Batch|null
+     * @return \Mageinn\Dropship\Model\Batch|null
      */
     public function getBatch()
     {

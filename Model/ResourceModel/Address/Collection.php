@@ -1,14 +1,28 @@
 <?php
-namespace Mageinn\Vendor\Model\ResourceModel\Address;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Model\ResourceModel\Address;
 
 use \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
-use \Mageinn\Vendor\Model\Address;
-use \Mageinn\Vendor\Model\ResourceModel\Address as ResourceModelAddress;
+use \Mageinn\Dropship\Model\Address;
+use \Mageinn\Dropship\Model\ResourceModel\Address as ResourceModelAddress;
 
 /**
  * Class Collection
- *
- * @package Mageinn\Vendor\Model\ResourceModel\Address
+ * @package Mageinn\Dropship\Model\ResourceModel\Address
  */
 class Collection extends AbstractCollection
 {
@@ -18,8 +32,6 @@ class Collection extends AbstractCollection
     protected $_idFieldName = 'entity_id';
 
     /**
-     * Define resource model
-     *
      * @return void
      */
     protected function _construct()

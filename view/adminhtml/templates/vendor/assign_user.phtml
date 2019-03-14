@@ -1,25 +1,38 @@
 <?php
-// @codingStandardsIgnoreFile
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
 
-/** @var \Mageinn\Vendor\Block\Adminhtml\Users\Edit\AssignUser $block */
+/** @var \Mageinn\Dropship\Block\Adminhtml\Users\Edit\AssignUser $block */
 
-/** @var \Mageinn\Vendor\Block\Adminhtml\Users\Edit\Tab\User $blockGrid */
+/** @var \Mageinn\Dropship\Block\Adminhtml\Users\Edit\Tab\User $blockGrid */
 $blockGrid = $block->getBlockGrid();
 $gridJsObjectName = $blockGrid->getJsObjectName();
 ?>
 <?= $block->getGridHtml() ?>
-<input type="hidden" name="vendor_users" id="associated_user" data-form-part="mageinn_vendor_form" value="" />
+<input type="hidden" name="vendor_users" id="associated_user" data-form-part="mageinn_dropship_form" value="" />
 <script type="text/x-magento-init">
     {
         "*": {
-            "Mageinn_Vendor/users/assign-users": {
+            "Mageinn_Dropship/users/assign-users": {
                 "selectedUsers": <?php /* @escapeNotVerified */ echo $block->getUsersJson(); ?>,
                 "gridJsObjectName": <?php /* @escapeNotVerified */ echo '"' . $gridJsObjectName . '"' ?: '{}'; ?>
             }
         }
     }
 </script>
-<!-- @todo remove when "UI components" will support such initialization -->
 <script>
     require('mage/apply/main').apply();
 </script>

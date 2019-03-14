@@ -1,11 +1,35 @@
 <?php
-namespace Mageinn\Vendor\Block\Adminhtml\Order\View;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Block\Adminhtml\Order\View;
 
+/**
+ * Class VendorInfo
+ * @package Mageinn\Dropship\Block\Adminhtml\Order\View
+ */
 class VendorInfo extends \Magento\Sales\Block\Adminhtml\Items\Column\Name
 {
+    /**
+     * @var int|null
+     */
     protected $vendorId;
 
-    /** @var \Mageinn\Vendor\Model\Info  */
+    /**
+     * @var \Mageinn\Dropship\Model\Address
+     */
     protected $vendor;
 
     /**
@@ -15,7 +39,7 @@ class VendorInfo extends \Magento\Sales\Block\Adminhtml\Items\Column\Name
      * @param \Magento\CatalogInventory\Api\StockConfigurationInterface $stockConfiguration
      * @param \Magento\Framework\Registry $registry
      * @param \Magento\Catalog\Model\Product\OptionFactory $optionFactory
-     * @param \Mageinn\Vendor\Model\Address $vendor
+     * @param \Mageinn\Dropship\Model\Address $vendor
      * @param array $data
      */
     public function __construct(
@@ -24,7 +48,7 @@ class VendorInfo extends \Magento\Sales\Block\Adminhtml\Items\Column\Name
         \Magento\CatalogInventory\Api\StockConfigurationInterface $stockConfiguration,
         \Magento\Framework\Registry $registry,
         \Magento\Catalog\Model\Product\OptionFactory $optionFactory,
-        \Mageinn\Vendor\Model\Address $vendor,
+        \Mageinn\Dropship\Model\Address $vendor,
         array $data = []
     ) {
         $this->vendor = $vendor;
@@ -40,13 +64,11 @@ class VendorInfo extends \Magento\Sales\Block\Adminhtml\Items\Column\Name
     }
 
     /**
-     * Get vendor customer support address
-     *
-     * @return \Magento\Framework\DataObject
+     * @return \Mageinn\Dropship\Model\Address
      */
     public function getVendor()
     {
-        $addressType = \Mageinn\Vendor\Model\Address::ADDRESS_TYPE_CUSTOMER_SERVICE;
+        $addressType = \Mageinn\Dropship\Model\Address::ADDRESS_TYPE_CUSTOMER_SERVICE;
         $vendorAddressCollection = $this->vendor->getCollection()
             ->addFieldToFilter('vendor_id', ['eq' => "$this->vendorId"])
             ->addFieldToFilter('type', ['eq' => "$addressType"]);

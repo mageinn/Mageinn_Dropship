@@ -1,22 +1,36 @@
 <?php
-namespace Mageinn\Vendor\Model\ResourceModel\Batch\Grid;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Model\ResourceModel\Batch\Grid;
 
 use Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult;
 use Magento\Framework\Event\ManagerInterface as EventManager;
 use Magento\Framework\Data\Collection\Db\FetchStrategyInterface as FetchStrategy;
 use Magento\Framework\Data\Collection\EntityFactoryInterface as EntityFactory;
 use Psr\Log\LoggerInterface as Logger;
-use Mageinn\Vendor\Model\Batch;
+use Mageinn\Dropship\Model\Batch;
 
 /**
- * Flat batches grid collection
- *
- * @package Mageinn\Vendor\Model\ResourceModel\Info\Grid
+ * Class Collection
+ * @package Mageinn\Dropship\Model\ResourceModel\Batch\Grid
  */
 class Collection extends SearchResult
 {
     /**
-     * @var \Mageinn\Vendor\Model\Batch
+     * @var \Mageinn\Dropship\Model\Batch
      */
     protected $batchModel;
 
@@ -28,7 +42,7 @@ class Collection extends SearchResult
      * @param EventManager $eventManager
      * @param Batch $batchModel
      * @param string $mainTable
-     * @param string $resourceModel
+     * @param $resourceModel
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function __construct(

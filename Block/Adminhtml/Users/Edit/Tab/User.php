@@ -1,6 +1,20 @@
 <?php
-
-namespace Mageinn\Vendor\Block\Adminhtml\Users\Edit\Tab;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Block\Adminhtml\Users\Edit\Tab;
 
 use Magento\Backend\Block\Template\Context;
 use Magento\Backend\Block\Widget\Grid;
@@ -13,14 +27,12 @@ use Magento\User\Model\ResourceModel\User\CollectionFactory;
 use Magento\User\Model\UserFactory;
 
 /**
- * Class Stock
- * @package Mageinn\Vendor\Block\Adminhtml\Edit\Tab
+ * Class User
+ * @package Mageinn\Dropship\Block\Adminhtml\Users\Edit\Tab
  */
 class User extends Extended
 {
     /**
-     * Core registry
-     *
      * @var Registry
      */
     protected $coreRegistry = null;
@@ -31,17 +43,17 @@ class User extends Extended
     protected $userFactory;
 
     /**
-     * @var \Magento\User\Model\ResourceModel\User\Collection
+     * @var CollectionFactory
      */
     protected $userCollectionFactory;
 
     /**
      * User constructor.
-     * @param \Magento\Backend\Block\Template\Context $context
-     * @param \Magento\Backend\Helper\Data $backendHelper
-     * @param \Magento\User\Model\UserFactory $userFactory
-     * @param \Magento\User\Model\ResourceModel\User\CollectionFactory $userCollectionFactory
-     * @param \Magento\Framework\Registry $coreRegistry
+     * @param Context $context
+     * @param Data $backendHelper
+     * @param UserFactory $userFactory
+     * @param CollectionFactory $userCollectionFactory
+     * @param Registry $coreRegistry
      * @param array $data
      */
     public function __construct(
@@ -59,12 +71,12 @@ class User extends Extended
     }
 
     /**
-     * Costructor
+     * @return void
      */
     protected function _construct()
     {
         parent::_construct();
-        $this->setId('mageinn_vendor_users');
+        $this->setId('mageinn_dropship_users');
         $this->setDefaultSort('user_id');
         $this->setUseAjax(true);
     }
@@ -74,7 +86,7 @@ class User extends Extended
      */
     public function getVendor()
     {
-        return $this->coreRegistry->registry('mageinn_vendor');
+        return $this->coreRegistry->registry('mageinn_dropship');
     }
 
     /**
@@ -84,7 +96,6 @@ class User extends Extended
      */
     protected function _addColumnFilterToCollection($column)
     {
-        // Set custom filter for in associated user flag
         if ($column->getId() == 'associated_user') {
             $usersIds = $this->_getSelectedUsers();
             if (empty($usersIds)) {
@@ -110,14 +121,21 @@ class User extends Extended
             $this->setDefaultFilter(['associated_user' => 1]);
         }
 
-        $collection = $this->userCollectionFactory->create()
-            ->addFieldToSelect('user_id')
-            ->addFieldToSelect('username')
-            ->addFieldToSelect('firstname')
-            ->addFieldToSelect('lastname')
-            ->addFieldToSelect('email')
-            ->addFieldToSelect('is_active')
-            ->addFieldToSelect('assoc_vendor_id');
+        $collection = $this->userCollectionFactory->create()->addFieldToSelect(
+            'user_id'
+        )->addFieldToSelect(
+            'username'
+        )->addFieldToSelect(
+            'firstname'
+        )->addFieldToSelect(
+            'lastname'
+        )->addFieldToSelect(
+            'email'
+        )->addFieldToSelect(
+            'is_active'
+        )->addFieldToSelect(
+            'assoc_vendor_id'
+        );
 
         $this->setCollection($collection);
 
@@ -183,7 +201,7 @@ class User extends Extended
     {
         $users = $this->getRequest()->getPost('selected_users');
 
-        if (is_null($users) && $this->getVendor()->getId()) {
+        if ($users === null && $this->getVendor()->getId()) {
             $vUsers = $this->userCollectionFactory->create()
                 ->addFieldToFilter('assoc_vendor_id', [
                     'like' => '%"' . $this->getVendor()->getId() . '"%'

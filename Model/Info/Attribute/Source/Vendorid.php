@@ -1,38 +1,48 @@
 <?php
 /**
- * Catalog product vendor attribute source
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
  */
-namespace Mageinn\Vendor\Model\Info\Attribute\Source;
+namespace Mageinn\Dropship\Model\Info\Attribute\Source;
 
 /**
- * Class Collection
- *
- * @package Mageinn\Vendor\Model\ResourceModel\Info
+ * Class Vendorid
+ * @package Mageinn\Dropship\Model\Info\Attribute\Source
  */
 class Vendorid extends \Magento\Eav\Model\Entity\Attribute\Source\Table
 {
     /**
-     * @var \Mageinn\Vendor\Model\ResourceModel\Info\CollectionFactory
+     * @var \Mageinn\Dropship\Model\ResourceModel\Info\CollectionFactory
      */
     protected $infoFactory;
 
     /**
+     * Vendorid constructor.
      * @param \Magento\Eav\Model\ResourceModel\Entity\Attribute\Option\CollectionFactory $attrOptionCollectionFactory
      * @param \Magento\Eav\Model\ResourceModel\Entity\Attribute\OptionFactory $attrOptionFactory
-     * @param \Mageinn\Vendor\Model\ResourceModel\Info\CollectionFactory $infoFactory
+     * @param \Mageinn\Dropship\Model\ResourceModel\Info\CollectionFactory $infoFactory
      */
     public function __construct(
         \Magento\Eav\Model\ResourceModel\Entity\Attribute\Option\CollectionFactory $attrOptionCollectionFactory,
         \Magento\Eav\Model\ResourceModel\Entity\Attribute\OptionFactory $attrOptionFactory,
-        \Mageinn\Vendor\Model\ResourceModel\Info\CollectionFactory $infoFactory
+        \Mageinn\Dropship\Model\ResourceModel\Info\CollectionFactory $infoFactory
     ) {
         $this->infoFactory = $infoFactory;
         parent::__construct($attrOptionCollectionFactory, $attrOptionFactory);
     }
 
     /**
-     * Retrieve all options
-     *
      * @return array
      */
     public function getAllOptions()
@@ -48,7 +58,7 @@ class Vendorid extends \Magento\Eav\Model\Entity\Attribute\Source\Table
     }
 
     /**
-     * @return \Mageinn\Vendor\Model\ResourceModel\Info\Collection
+     * @return \Mageinn\Dropship\Model\ResourceModel\Info\Collection
      */
     protected function _createVendorCollection()
     {

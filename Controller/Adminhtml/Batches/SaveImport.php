@@ -1,19 +1,34 @@
 <?php
-namespace Mageinn\Vendor\Controller\Adminhtml\Batches;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Controller\Adminhtml\Batches;
 
 /**
- * Class Save
- * @package Mageinn\Vendor\Controller\Adminhtml\Batches\Import
+ * Class SaveImport
+ * @package Mageinn\Dropship\Controller\Adminhtml\Batches
  */
 class SaveImport extends \Magento\Backend\App\Action
 {
     /**
-     * @var \Mageinn\Vendor\Model\BatchFactory
+     * @var \Mageinn\Dropship\Model\Batch
      */
     protected $_batch;
 
     /**
-     * @var \Mageinn\Vendor\Model\InfoFactory
+     * @var \Mageinn\Dropship\Model\Info
      */
     protected $_vendor;
 
@@ -30,16 +45,16 @@ class SaveImport extends \Magento\Backend\App\Action
     /**
      * SaveImport constructor.
      * @param \Magento\Backend\App\Action\Context $context
-     * @param \Mageinn\Vendor\Model\BatchFactory $batch
-     * @param \Mageinn\Vendor\Model\InfoFactory $vendor
+     * @param \Mageinn\Dropship\Model\BatchFactory $batch
+     * @param \Mageinn\Dropship\Model\InfoFactory $vendor
      * @param \Magento\Framework\Filesystem $filesystem
      * @param \Magento\Framework\Stdlib\DateTime\DateTime $dateTime
      * @throws \Magento\Framework\Exception\FileSystemException
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
-        \Mageinn\Vendor\Model\BatchFactory $batch,
-        \Mageinn\Vendor\Model\InfoFactory $vendor,
+        \Mageinn\Dropship\Model\BatchFactory $batch,
+        \Mageinn\Dropship\Model\InfoFactory $vendor,
         \Magento\Framework\Filesystem $filesystem,
         \Magento\Framework\Stdlib\DateTime\DateTime $dateTime
     ) {
@@ -52,10 +67,7 @@ class SaveImport extends \Magento\Backend\App\Action
     }
 
     /**
-     * Save action
-     *
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-     * @return \Magento\Framework\Controller\ResultInterface
+     * @return \Magento\Backend\Model\View\Result\Redirect
      */
     public function execute()
     {
@@ -86,8 +98,8 @@ class SaveImport extends \Magento\Backend\App\Action
         try {
             $this->_batch
                 ->setVendorId($batch['vendor_name'])
-                ->setType(\Mageinn\Vendor\Model\Source\BatchType::MAGEINN_VENDOR_BATCH_TYPE_IMPORT)
-                ->setStatus(\Mageinn\Vendor\Model\Source\BatchStatus::BATCH_STATUS_SCHEDULED)
+                ->setType(\Mageinn\Dropship\Model\Source\BatchType::MAGEINN_DROPSHIP_BATCH_TYPE_IMPORT)
+                ->setStatus(\Mageinn\Dropship\Model\Source\BatchStatus::BATCH_STATUS_SCHEDULED)
                 ->setCreatedAt($time)
                 ->setScheduledAt($time)
                 ->setFilePath($file)

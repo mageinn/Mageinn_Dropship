@@ -1,10 +1,24 @@
 <?php
 
-// @codingStandardsIgnoreFile
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
 
-$statuses = \Mageinn\Vendor\Model\Source\ShipmentStatus::getStatusOptions();
+$statuses = \Mageinn\Dropship\Model\Source\ShipmentStatus::getStatusOptions();
 $currentStatus = $block->getData('entity')->getDropshipStatus();
-$helper = $this->helper('Mageinn\Vendor\Helper\Data');
+$helper = $this->helper('Mageinn\Dropship\Helper\Data');
 $disabled = $block->getData('entity')->isStatusLocked() ? 'disabled' : '';
 ?>
 <?php if ($_entity = $block->getEntity()): ?>

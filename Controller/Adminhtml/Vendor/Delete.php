@@ -1,22 +1,34 @@
 <?php
-namespace Mageinn\Vendor\Controller\Adminhtml\Vendor;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Controller\Adminhtml\Vendor;
 
 use \Magento\Backend\App\Action;
 use \Magento\Backend\App\Action\Context;
 use \Magento\Framework\Registry;
-use \Mageinn\Vendor\Model\Info;
+use \Mageinn\Dropship\Model\Info;
 
 /**
  * Class Delete
- *
- * @package Mageinn\Vendor\Controller\Adminhtml\Vendor
+ * @package Mageinn\Dropship\Controller\Adminhtml\Vendor
  */
 class Delete extends Action
 {
     /**
-     * Core registry
-     *
-     * @var \Magento\Framework\Registry
+     * @var Registry
      */
     protected $coreRegistry;
 
@@ -26,8 +38,9 @@ class Delete extends Action
     protected $vendorModel;
 
     /**
-     * @param \Magento\Backend\App\Action\Context $context
-     * @param \Magento\Framework\Registry $coreRegistry
+     * Delete constructor.
+     * @param Context $context
+     * @param Registry $coreRegistry
      * @param Info $vendorModel
      */
     public function __construct(Context $context, Registry $coreRegistry, Info $vendorModel)

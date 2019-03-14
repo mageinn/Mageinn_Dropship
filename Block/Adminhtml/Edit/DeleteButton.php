@@ -1,13 +1,27 @@
 <?php
-
-namespace Mageinn\Vendor\Block\Adminhtml\Edit;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Block\Adminhtml\Edit;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 use Magento\Backend\Block\Widget\Context;
 
 /**
- * Class SaveButton
- * @package Magento\Customer\Block\Adminhtml\Edit
+ * Class DeleteButton
+ * @package Mageinn\Dropship\Block\Adminhtml\Edit
  */
 class DeleteButton implements ButtonProviderInterface
 {
@@ -17,6 +31,7 @@ class DeleteButton implements ButtonProviderInterface
     protected $context;
 
     /**
+     * DeleteButton constructor.
      * @param Context $context
      */
     public function __construct(Context $context)
@@ -25,9 +40,7 @@ class DeleteButton implements ButtonProviderInterface
     }
 
     /**
-     * Return CMS block ID
-     *
-     * @return int|null
+     * @return mixed
      */
     public function getVendorId()
     {

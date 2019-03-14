@@ -1,0 +1,31 @@
+{
+  "name": "mageinn/module-dropship",
+  "description": "Dropship",
+  "require": {
+    "magento/module-framework": "*",
+    "magento/module-sales": "*",
+    "magento/module-shipping": "*",
+    "magento/module-catalog": "*"
+  },
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "license": [
+    "OSL-3.0"
+  ],
+  "authors":[
+    {
+      "name": "Mageinn",
+      "email": "sales@mageinn.com",
+      "homepage": "mageinn.com",
+      "role": "Company"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Mageinn\\Dropship\\": ""
+    }
+  }
+}

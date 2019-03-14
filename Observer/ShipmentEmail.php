@@ -1,24 +1,42 @@
 <?php
-
-namespace Mageinn\Vendor\Observer;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Observer;
 
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
-use Mageinn\Vendor\Model\Info;
-use Mageinn\Vendor\Model\Source\DropshipNotificationRecipient;
-use Mageinn\Vendor\Model\ResourceModel\Address\CollectionFactory;
-use Mageinn\Vendor\Model\Address;
+use Mageinn\Dropship\Model\Info;
+use Mageinn\Dropship\Model\Source\DropshipNotificationRecipient;
+use Mageinn\Dropship\Model\ResourceModel\Address\CollectionFactory;
+use Mageinn\Dropship\Model\Address;
 use \Psr\Log\LoggerInterface;
 
+/**
+ * Class ShipmentEmail
+ * @package Mageinn\Dropship\Observer
+ */
 class ShipmentEmail implements ObserverInterface
 {
     /**
-     * @var \Mageinn\Vendor\Model\Info
+     * @var \Mageinn\Dropship\Model\Info
      */
     protected $vendor;
 
     /**
-     * @var \Mageinn\Vendor\Model\ResourceModel\Address\Collection;
+     * @var \Mageinn\Dropship\Model\ResourceModel\Address\Collection;
      */
     protected $vendorAddress;
 
@@ -54,7 +72,7 @@ class ShipmentEmail implements ObserverInterface
      * ShipmentEmail constructor.
      * @param Info $vendor
      * @param CollectionFactory $vendorAddress
-     * @param \Magento\Framework\Mail\Template\TransportBuilder $transportBuilder
+     * @param \Mageinn\Dropship\Magento\Mail\Template\TransportBuilder $transportBuilder
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
      * @param \Magento\Framework\Escaper $escaper
@@ -63,7 +81,7 @@ class ShipmentEmail implements ObserverInterface
     public function __construct(
         Info $vendor,
         CollectionFactory $vendorAddress,
-        \Magento\Framework\Mail\Template\TransportBuilder $transportBuilder,
+        \Mageinn\Dropship\Magento\Mail\Template\TransportBuilder $transportBuilder,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Framework\Escaper $escaper,
@@ -88,7 +106,6 @@ class ShipmentEmail implements ObserverInterface
         $order = $shipment->getOrder();
         $vendor = $this->vendor->load($shipment->getVendorId());
 
-        /* Check if vendor notification for new orders is enabled */
         if (!$vendor->getNotifyOrder()) {
             return;
         }
@@ -100,7 +117,6 @@ class ShipmentEmail implements ObserverInterface
         $recipient = $vendor->getEmail();
         $ccRecipient = $vendor->getNotifyOrderEmail();
 
-        /* Check to what email recipient to send vendor email */
         if ($this->scopeConfig->getValue(Info::CONFIGURATION_NOTIFICATION_RECIPIENT) ==
                 DropshipNotificationRecipient::DROPSHIP_NOTIFICATION_RECIPIENT_CUSTOMER_SERVICE_EMAIL) {
             $vendorAddressEmail = $this->vendorAddress->create()
@@ -108,7 +124,6 @@ class ShipmentEmail implements ObserverInterface
                 ->addFieldToFilter('type', ['eq' => Address::ADDRESS_TYPE_CUSTOMER_SERVICE])
                 ->getFirstItem()
                 ->getEmail();
-            /* If no vendor customer email is set will send to default vendor email */
             if ($vendorAddressEmail) {
                 $recipient = $vendorAddressEmail;
             }
@@ -119,9 +134,7 @@ class ShipmentEmail implements ObserverInterface
             'order' => $order
         ];
 
-        // @codingStandardsIgnoreStart
         $vars = new \Magento\Framework\DataObject($vars);
-        // @codingStandardsIgnoreEnd
 
         try {
             $transport = $this->transportBuilder

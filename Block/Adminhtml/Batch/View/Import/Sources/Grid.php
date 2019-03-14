@@ -1,14 +1,29 @@
 <?php
-namespace Mageinn\Vendor\Block\Adminhtml\Batch\View\Import\Sources;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Block\Adminhtml\Batch\View\Import\Sources;
 
 /**
  * Class Grid
- * @package Mageinn\Vendor\Block\Adminhtml\Batch\View\Export\Destinations
+ * @package Mageinn\Dropship\Block\Adminhtml\Batch\View\Import\Sources
  */
-class Grid extends \Mageinn\Vendor\Block\Adminhtml\Batch\View\AbstractFilePath\Grid
+class Grid extends \Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractFilePath\Grid
 {
     /**
-     * @return \Magento\Backend\Block\Widget\Grid\Extended
+     * @return \Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractFilePath\Grid
      * @throws \Exception
      */
     protected function _prepareColumns()

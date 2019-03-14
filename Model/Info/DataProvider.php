@@ -1,20 +1,34 @@
 <?php
-namespace Mageinn\Vendor\Model\Info;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Model\Info;
 
 use \Magento\Ui\DataProvider\AbstractDataProvider;
-use \Mageinn\Vendor\Model\ResourceModel\Info\CollectionFactory as InfoCollectionFactory;
-use \Mageinn\Vendor\Model\ResourceModel\Address\CollectionFactory as AddressCollectionFactory;
-use \Mageinn\Vendor\Model\Info;
-use \Mageinn\Vendor\Model\Address;
+use \Mageinn\Dropship\Model\ResourceModel\Info\CollectionFactory as InfoCollectionFactory;
+use \Mageinn\Dropship\Model\ResourceModel\Address\CollectionFactory as AddressCollectionFactory;
+use \Mageinn\Dropship\Model\Info;
+use \Mageinn\Dropship\Model\Address;
 
 /**
  * Class DataProvider
- *
- * @package Mageinn\Vendor\Model\Vendor
+ * @package Mageinn\Dropship\Model\Info
  */
 class DataProvider extends AbstractDataProvider
 {
-    /** @var \Mageinn\Vendor\Model\ResourceModel\Address\Collection */
+    /** @var \Mageinn\Dropship\Model\ResourceModel\Address\Collection */
     protected $addressCollection;
 
     /** @var array Settings fieldset */
@@ -34,6 +48,7 @@ class DataProvider extends AbstractDataProvider
         'batch_export_destination' => '',
         'batch_export_headings' => '',
         'batch_export_values' => '',
+        'batch_export_private_key' => '',
     ];
 
     /**
@@ -62,7 +77,6 @@ class DataProvider extends AbstractDataProvider
      * @param array $meta
      * @param array $data
      *
-     * @codingStandardsIgnoreStart
      */
     public function __construct(
         $name,
@@ -77,11 +91,8 @@ class DataProvider extends AbstractDataProvider
         $this->addressCollection = $addressCollectionFactory->create();
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
     }
-    // @codingStandardsIgnoreEnd
 
     /**
-     * Get data
-     *
      * @return array
      */
     public function getData()
@@ -91,7 +102,7 @@ class DataProvider extends AbstractDataProvider
         }
 
         $items = $this->collection->getItems();
-        /** @var \Mageinn\Vendor\Model\Info $vendor */
+        /** @var \Mageinn\Dropship\Model\Info $vendor */
         foreach ($items as $vendor) {
             $vendorId = $vendor->getEntityId();
             $info = [];
@@ -109,7 +120,7 @@ class DataProvider extends AbstractDataProvider
             $batchImport[Info::VENDOR_BATCH_IMPORT_GENERAL] =
                 array_intersect_key($vendor->getData(), $this->batchImportColumns);
 
-            $this->loadedData[$vendorId]['mageinn_vendor'] = $info;
+            $this->loadedData[$vendorId]['mageinn_dropship'] = $info;
             $this->loadedData[$vendorId]['vendor_settings'] = $settings;
             $this->loadedData[$vendorId]['vendor_address'] = $vendorAddresses;
             $this->loadedData[$vendorId]['batch_export'] = $batchExport;

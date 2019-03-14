@@ -1,27 +1,46 @@
 <?php
-namespace Mageinn\Vendor\Ui\Component\Listing\Column;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Ui\Component\Listing\Column;
 
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
 
+/**
+ * Class Vendor
+ * @package Mageinn\Dropship\Ui\Component\Listing\Column
+ */
 class Vendor extends Column
 {
-    /** @var \Mageinn\Vendor\Model\Info  */
-    protected $_vendor;
+    /** @var \Mageinn\Dropship\Model\Info  */
+    protected $vendor;
 
     /**
      * Vendor constructor.
      * @param ContextInterface $context
      * @param UiComponentFactory $uiComponentFactory
-     * @param \Mageinn\Vendor\Model\Info $vendor
+     * @param \Mageinn\Dropship\Model\Info $vendor
      * @param array $components
      * @param array $data
      */
     public function __construct(
         ContextInterface $context,
         UiComponentFactory $uiComponentFactory,
-        \Mageinn\Vendor\Model\Info $vendor,
+        \Mageinn\Dropship\Model\Info $vendor,
         array $components = [],
         array $data = []
     ) {
@@ -31,8 +50,6 @@ class Vendor extends Column
     }
 
     /**
-     * Prepare Data Source
-     *
      * @param array $dataSource
      * @return array
      */
@@ -40,10 +57,8 @@ class Vendor extends Column
     {
         if (isset($dataSource['data']['items'])) {
             foreach ($dataSource['data']['items'] as & $item) {
-                // @codingStandardsIgnoreStart
                 $vendorName = $this->vendor->load($item['vendor_id'])->getName();
-                // @codingStandardsIgnoreEnd
-                $item['vendor_id'] = $vendorName; //Value which you want to display
+                $item['vendor_id'] = $vendorName;
             }
         }
         return $dataSource;

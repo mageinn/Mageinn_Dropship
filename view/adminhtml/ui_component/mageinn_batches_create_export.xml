@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+-->
 <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
@@ -39,7 +56,7 @@
         <settings>
             <submitUrl path="sales/batches/saveExport"/>
         </settings>
-        <dataProvider class="Mageinn\Vendor\Model\Batch\DataProvider" name="mageinn_batches_create_export_data_source">
+        <dataProvider class="Mageinn\Dropship\Model\Batch\DataProvider" name="mageinn_batches_create_export_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>entity_id</primaryFieldName>
@@ -58,7 +75,7 @@
             <formElements>
                 <select>
                     <settings>
-                        <options class="Mageinn\Vendor\Ui\Component\Listing\Column\Vendor\Options"/>
+                        <options class="Mageinn\Dropship\Ui\Component\Listing\Column\Vendor\Options"/>
                     </settings>
                 </select>
             </formElements>

@@ -1,9 +1,24 @@
 <?php
-namespace Mageinn\Vendor\Model\Batch\Export\File;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Model\Batch\Export\File;
 
 /**
  * Class Email
- * @package Mageinn\Vendor\Model\Batch\Export\File
+ * @package Mageinn\Dropship\Model\Batch\Export\File
  */
 class Email
 {
@@ -57,7 +72,7 @@ class Email
     protected $templateVars;
 
     /**
-     * @var \Mageinn\Vendor\Helper\Data
+     * @var \Mageinn\Dropship\Helper\Data
      */
     protected $vendorHelper;
 
@@ -73,11 +88,11 @@ class Email
 
     /**
      * Email constructor.
-     * @param \Mageinn\Vendor\Helper\Data $helper
+     * @param \Mageinn\Dropship\Helper\Data $helper
      * @param \Magento\Store\Model\StoreManagerInterface $manager
      */
     public function __construct(
-        \Mageinn\Vendor\Helper\Data $helper,
+        \Mageinn\Dropship\Helper\Data $helper,
         \Magento\Store\Model\StoreManagerInterface $manager
     ) {
         $this->vendorHelper = $helper;
@@ -94,8 +109,8 @@ class Email
     }
 
     /**
-     * @param string $template
-     * @return Email
+     * @param $template
+     * @return $this
      */
     public function setTemplate($template)
     {
@@ -130,9 +145,9 @@ class Email
     }
 
     /**
-     * @param string $email
+     * @param $email
      * @param string $name
-     * @return Email
+     * @return $this
      */
     public function setSender($email, $name = '')
     {
@@ -151,8 +166,8 @@ class Email
     }
 
     /**
-     * @param string $fileName
-     * @return Email
+     * @param $fileName
+     * @return $this
      */
     public function setFileName($fileName)
     {
@@ -169,8 +184,8 @@ class Email
     }
 
     /**
-     * @param string $subject
-     * @return Email
+     * @param $subject
+     * @return $this
      */
     public function setSubject($subject)
     {
@@ -187,8 +202,8 @@ class Email
     }
 
     /**
-     * @param string $body
-     * @return Email
+     * @param $body
+     * @return $this
      */
     public function setBody($body)
     {
@@ -205,8 +220,8 @@ class Email
     }
 
     /**
-     * @param string $ccRecipient
-     * @return Email
+     * @param $ccRecipient
+     * @return $this
      */
     public function setCcRecipient($ccRecipient)
     {
@@ -223,8 +238,8 @@ class Email
     }
 
     /**
-     * @param string $bccRecipient
-     * @return Email
+     * @param $bccRecipient
+     * @return $this
      */
     public function setBccRecipient($bccRecipient)
     {
@@ -241,7 +256,7 @@ class Email
     }
 
     /**
-     * @return Email
+     * @return $this
      */
     public function setTemplateVars()
     {
@@ -253,7 +268,7 @@ class Email
     /**
      * @param $name
      * @param $value
-     * @return Email
+     * @return $this
      */
     public function addTemplateVar($name, $value)
     {
@@ -262,7 +277,7 @@ class Email
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getNotes()
     {
@@ -270,8 +285,8 @@ class Email
     }
 
     /**
-     * @param mixed $notes
-     * @return Email
+     * @param $notes
+     * @return $this
      */
     public function setNotes($notes)
     {
@@ -290,7 +305,7 @@ class Email
     }
 
     /**
-     * Clears the notes array
+     * @return void
      */
     public function clearNotes()
     {
@@ -298,12 +313,11 @@ class Email
     }
 
     /**
-     * Prepares the email components for a vendor
-     *
      * @param $vendor
      * @param $contents
      * @param $transportBuilder
      * @return bool
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function prepareEmailForVendor($vendor, $contents, $transportBuilder)
     {
@@ -321,13 +335,12 @@ class Email
     }
 
     /**
-     * Prepares the email components for a general email
-     *
      * @param $recipient
      * @param $componentsArray
      * @param $contents
      * @param $transportBuilder
      * @return bool
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function prepareGeneralEmail($recipient, $componentsArray, $contents, $transportBuilder)
     {
@@ -349,11 +362,10 @@ class Email
     }
 
     /**
-     * Creates an email message based on the set components
-     *
-     * @param \Mageinn\Vendor\Magento\Mail\Template\TransportBuilder $transportBuilder
+     * @param $transportBuilder
      * @param $contents
-     * @return bool|\Magento\Framework\Mail\TransportInterface
+     * @return bool
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     protected function _prepareTransport($transportBuilder, $contents)
     {
@@ -364,7 +376,6 @@ class Email
                 'store' => $this->storeManager->getStore()->getId()])
             ->setTemplateVars($this->getTemplateVars());
 
-        // If recipient or sender are not set, the email will not be sent
         if ($this->getRecipient()) {
             $transport->addTo($this->getRecipient());
         } else {
@@ -390,10 +401,8 @@ class Email
     }
 
     /**
-     * Returns the global config value for the requested email components
-     *
      * @param $settingName
-     * @return bool|mixed
+     * @return bool|mixed|string
      */
     protected function _getDefaultValue($settingName)
     {
@@ -411,16 +420,13 @@ class Email
                 $setting = false;
                 break;
         }
-        // If there is a string result, we trim it so that there are no preceding or trailing spaces
         return $setting ? trim($setting) : $setting;
     }
 
     /**
-     * Checks if an email is set properly
-     *
      * @param $email
      * @param $settingName
-     * @return bool|mixed
+     * @return array|bool|string
      */
     protected function _checkEmail($email, $settingName)
     {
@@ -441,13 +447,10 @@ class Email
     }
 
     /**
-     * Returns an email component from the components array
-     * If the component is not in the array, it will try to get the default value
-     *
      * @param $componentArray
      * @param $settingName
      * @param bool $isEmailFormat
-     * @return bool|mixed
+     * @return bool|mixed|string
      */
     protected function _getEmailComponent($componentArray, $settingName, $isEmailFormat = false)
     {
@@ -468,8 +471,6 @@ class Email
     }
 
     /**
-     * Checks the emails if there are multiple emails for a setting
-     *
      * @param $emailArray
      * @param $settingName
      * @return array
@@ -488,8 +489,6 @@ class Email
     }
 
     /**
-     * Checks a single email string to be valid and adds a note if it is not
-     *
      * @param $email
      * @param $settingName
      * @return bool|string

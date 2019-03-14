@@ -1,14 +1,29 @@
 <?php
-namespace Mageinn\Vendor\Controller\Adminhtml\Batches;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Controller\Adminhtml\Batches;
 
 /**
- * Class Save
- * @package Mageinn\Vendor\Controller\Adminhtml\Batches\Import
+ * Class SaveExport
+ * @package Mageinn\Dropship\Controller\Adminhtml\Batches
  */
 class SaveExport extends \Magento\Backend\App\Action
 {
     /**
-     * @var \Mageinn\Vendor\Model\Batch
+     * @var \Mageinn\Dropship\Model\Batch
      */
     protected $_batch;
 
@@ -18,21 +33,22 @@ class SaveExport extends \Magento\Backend\App\Action
     protected $_dateTime;
 
     /**
-     * @var \Mageinn\Vendor\Model\InfoFactory
+     * @var \Mageinn\Dropship\Model\Info
      */
     protected $_vendor;
 
     /**
-     * SaveImport constructor.
+     * SaveExport constructor.
      * @param \Magento\Backend\App\Action\Context $context
-     * @param \Mageinn\Vendor\Model\BatchFactory $batch
+     * @param \Mageinn\Dropship\Model\BatchFactory $batch
      * @param \Magento\Framework\Stdlib\DateTime\DateTime $dateTime
+     * @param \Mageinn\Dropship\Model\InfoFactory $vendor
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
-        \Mageinn\Vendor\Model\BatchFactory $batch,
+        \Mageinn\Dropship\Model\BatchFactory $batch,
         \Magento\Framework\Stdlib\DateTime\DateTime $dateTime,
-        \Mageinn\Vendor\Model\InfoFactory $vendor
+        \Mageinn\Dropship\Model\InfoFactory $vendor
     ) {
         $this->_batch = $batch->create();
         $this->_dateTime = $dateTime;
@@ -41,10 +57,7 @@ class SaveExport extends \Magento\Backend\App\Action
     }
 
     /**
-     * Save action
-     *
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-     * @return \Magento\Framework\Controller\ResultInterface
+     * @return \Magento\Backend\Model\View\Result\Redirect
      */
     public function execute()
     {
@@ -64,8 +77,8 @@ class SaveExport extends \Magento\Backend\App\Action
         try {
             $this->_batch
                 ->setVendorId($batch['vendor_name'])
-                ->setType(\Mageinn\Vendor\Model\Source\BatchType::MAGEINN_VENDOR_BATCH_TYPE_EXPORT)
-                ->setStatus(\Mageinn\Vendor\Model\Source\BatchStatus::BATCH_STATUS_SCHEDULED)
+                ->setType(\Mageinn\Dropship\Model\Source\BatchType::MAGEINN_DROPSHIP_BATCH_TYPE_EXPORT)
+                ->setStatus(\Mageinn\Dropship\Model\Source\BatchStatus::BATCH_STATUS_SCHEDULED)
                 ->setCreatedAt($time)
                 ->setScheduledAt($time)
                 ->save();

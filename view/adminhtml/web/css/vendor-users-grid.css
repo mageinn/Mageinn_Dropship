@@ -1,4 +1,18 @@
-/* Vendor Users Grid */
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
 .admin__data-grid-wrap-static .col-select.col-massaction.col-associated_user .data-grid-checkbox-cell-inner  {
     margin: 0.2rem 1.8rem 0.9rem;
 }

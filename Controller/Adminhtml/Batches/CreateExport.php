@@ -1,9 +1,24 @@
 <?php
-namespace Mageinn\Vendor\Controller\Adminhtml\Batches;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Controller\Adminhtml\Batches;
 
 /**
- * Class CreateImport
- * @package Mageinn\Vendor\Controller\Adminhtml\Batches
+ * Class CreateExport
+ * @package Mageinn\Dropship\Controller\Adminhtml\Batches
  */
 class CreateExport extends \Magento\Backend\App\Action
 {
@@ -13,7 +28,7 @@ class CreateExport extends \Magento\Backend\App\Action
     protected $_resultPage;
 
     /**
-     * CreateImport constructor.
+     * CreateExport constructor.
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
      */
@@ -26,13 +41,13 @@ class CreateExport extends \Magento\Backend\App\Action
     }
 
     /**
-     * @return \Magento\Backend\Model\View\Result\Page|\Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface
+     * @return \Magento\Backend\Model\View\Result\Page
      */
     public function execute()
     {
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->_resultPage->create();
-        $resultPage->setActiveMenu('Mageinn_Vendor::vendor_batches')
+        $resultPage->setActiveMenu('Mageinn_Dropship::vendor_batches')
             ->addBreadcrumb(__('Create Order Export Batch'), __('Create Order Export Batch'));
         $resultPage->getConfig()->getTitle()->prepend(__('Create Order Export Batch'));
 

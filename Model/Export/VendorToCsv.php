@@ -1,8 +1,22 @@
 <?php
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Model\Export;
 
-namespace Mageinn\Vendor\Model\Export;
-
-use Mageinn\Vendor\Model\Address;
+use Mageinn\Dropship\Model\Address;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
@@ -10,7 +24,7 @@ use Magento\Ui\Component\MassAction\Filter;
 
 /**
  * Class VendorToCsv
- * @package Mageinn\Vendor\Model\Export
+ * @package Mageinn\Dropship\Model\Export
  */
 class VendorToCsv
 {
@@ -28,7 +42,7 @@ class VendorToCsv
      * @var array
      */
     protected $vendor = [
-        'name', 'email', 'telephone', 'notify_order', 'currency', 'client_managed', 'multiplier', 'same_as_billing',
+        'name', 'email', 'telephone', 'notify_order', 'currency', 'same_as_billing',
         'batch_export_enabled', 'batch_export_schedule', 'batch_import_enabled', 'batch_import_schedule'
     ];
 
@@ -68,8 +82,6 @@ class VendorToCsv
     }
 
     /**
-     * Get CSV file
-     *
      * @return array
      * @throws \Magento\Framework\Exception\FileSystemException
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -78,9 +90,7 @@ class VendorToCsv
     {
         $component = $this->filter->getComponent();
 
-        // @codingStandardsIgnoreStart
         $name = md5(microtime());
-        // @codingStandardsIgnoreEnd
         $file = 'export/vendor' . $name . '.csv';
 
         $this->filter->prepareComponent($component);
@@ -110,9 +120,7 @@ class VendorToCsv
         $this->directory->create('export');
         $stream = $this->directory->openFile($file, 'w+');
         $stream->lock();
-        // @codingStandardsIgnoreStart
         $stream->writeCsv(array_keys($this->_cleanExportData($collection->getFirstItem()->getData())));
-        // @codingStandardsIgnoreEnd
         foreach ($collection as $item) {
             $stream->writeCsv($this->_cleanExportData($item->getData()));
         }
@@ -122,13 +130,11 @@ class VendorToCsv
         return [
             'type' => 'filename',
             'value' => $file,
-            'rm' => true  // can delete file after use
+            'rm' => true
         ];
     }
 
     /**
-     * Clean Vendor Data
-     *
      * @param $exportData
      * @return array
      */

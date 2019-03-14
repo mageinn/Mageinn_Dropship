@@ -1,15 +1,29 @@
 <?php
 /**
+ * Mageinn
  *
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
  */
-namespace Mageinn\Vendor\Controller\Adminhtml\Shipment;
+namespace Mageinn\Dropship\Controller\Adminhtml\Shipment;
 
 use Magento\Sales\Model\Order\Email\Sender\ShipmentCommentSender;
 use Magento\Backend\App\Action;
 use Magento\Framework\View\Result\LayoutFactory;
 
+/**
+ * Class AddComment
+ * @package Mageinn\Dropship\Controller\Adminhtml\Shipment
+ */
 class AddComment extends \Magento\Shipping\Controller\Adminhtml\Order\Shipment\AddComment
 {
     /**
@@ -59,7 +73,7 @@ class AddComment extends \Magento\Shipping\Controller\Adminhtml\Order\Shipment\A
 
             if (!empty($this->_auth->getUser()->getAssocVendorId()) && ($status)
                 && (int) $shipment->getDropshipStatus()
-                !== \Mageinn\Vendor\Model\Source\ShipmentStatus::SHIPMENT_STATUS_SHIPPED
+                !== \Mageinn\Dropship\Model\Source\ShipmentStatus::SHIPMENT_STATUS_SHIPPED
             ) {
                 $shipment->setDropshipStatus($status);
             } elseif (empty($this->_auth->getUser()->getAssocVendorId()) && $status) {

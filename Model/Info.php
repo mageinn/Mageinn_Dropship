@@ -1,24 +1,32 @@
 <?php
-namespace Mageinn\Vendor\Model;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Model;
 
 use \Magento\Framework\Model\AbstractModel;
-use \Mageinn\Vendor\Model\ResourceModel\Info as ResourceModelInfo;
+use \Mageinn\Dropship\Model\ResourceModel\Info as ResourceModelInfo;
 
 /**
  * Class Info
- * @package Mageinn\Vendor\Model
+ * @package Mageinn\Dropship\Model
  */
 class Info extends AbstractModel
 {
-    /**#@+
-     * Table
-     */
-    const VENDOR_INFO_TABLE = 'mageinn_vendor_information';
-    /**#@-*/
+    const VENDOR_INFO_TABLE = 'mageinn_dropship_information';
 
-    /**#@+
-     * Vendor Information Data
-     */
     const VENDOR_DATA_INFORMATION = 'vendor';
 
     const VENDOR_DATA_SETTINGS = 'settings';
@@ -26,44 +34,33 @@ class Info extends AbstractModel
     const VENDOR_BATCH_EXPORT_GENERAL = 'batch_export_general';
 
     const VENDOR_BATCH_IMPORT_GENERAL = 'batch_import_general';
-    /**#@-*/
 
-    /**#@+
-     * Enabled/Disabled Statuses
-     */
     const STATUS_ENABLED    = 1;
     const STATUS_DISABLED   = 0;
-    /**#@-*/
 
-    /**#@+
-     * Yes/No Flag
-     */
     const FLAG_YES  = 1;
     const FLAG_NO   = 0;
-    /**#@-*/
 
-    /**#@+
-     * Configuration paths
-     */
+
     const CONFIGURATION_NOTIFICATION_EMAIL_TEMPLATE = 'dropship/notification/template';
     const CONFIGURATION_NOTIFICATION_SENDER = 'dropship/notification/sender';
     const CONFIGURATION_NOTIFICATION_RECIPIENT = 'dropship/notification/recipient';
     const CONFIGURATION_OPTION_DEFAULT_DROPSHIP_STATUS = 'dropship/shipment_status/default';
     const CONFIGURATION_OPTION_DEFAULT_DROPSHIP_ORDER_STATUS = 'dropship/shipment_status/make_available';
-    /**#@-*/
 
-    /** @var \Magento\Framework\App\Config\ScopeConfigInterface  */
+    /**
+     * @var \Magento\Framework\App\Config\ScopeConfigInterface
+     */
     protected $scopeConfig;
 
     /**
      * Info constructor.
-     *
      * @param \Magento\Framework\Model\Context $context
      * @param \Magento\Framework\Registry $registry
+     * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
      * @param \Magento\Framework\Model\ResourceModel\AbstractResource|null $resource
      * @param \Magento\Framework\Data\Collection\AbstractDb|null $resourceCollection
      * @param array $data
-     * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
      */
     public function __construct(
         \Magento\Framework\Model\Context $context,
@@ -78,8 +75,6 @@ class Info extends AbstractModel
     }
 
     /**
-     * Object initialization
-     *
      * @return void
      */
     protected function _construct()
@@ -88,8 +83,6 @@ class Info extends AbstractModel
     }
 
     /**
-     * Prepare vendor statuses.
-     *
      * @return array
      */
     public function getAvailableStatuses()
@@ -98,8 +91,6 @@ class Info extends AbstractModel
     }
 
     /**
-     * Prepare vendor flags.
-     *
      * @return array
      */
     public function getAvailableFlags()
@@ -108,8 +99,6 @@ class Info extends AbstractModel
     }
 
     /**
-     * Get vendor default shipment status.
-     *
      * @return mixed
      */
     public function getVendorShipmentStatus()

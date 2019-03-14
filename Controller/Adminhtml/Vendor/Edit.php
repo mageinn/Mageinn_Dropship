@@ -1,12 +1,31 @@
 <?php
-namespace Mageinn\Vendor\Controller\Adminhtml\Vendor;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Controller\Adminhtml\Vendor;
 
 use \Magento\Backend\App\Action;
 use \Magento\Backend\App\Action\Context;
 use \Magento\Framework\Registry;
 use \Magento\Framework\View\Result\PageFactory;
-use \Mageinn\Vendor\Model\Info;
+use \Mageinn\Dropship\Model\Info;
 
+/**
+ * Class Edit
+ * @package Mageinn\Dropship\Controller\Adminhtml\Vendor
+ */
 class Edit extends Action
 {
     /**
@@ -15,9 +34,7 @@ class Edit extends Action
     protected $resultPageFactory;
 
     /**
-     * Core registry
-     *
-     * @var \Magento\Framework\Registry
+     * @var Registry
      */
     protected $coreRegistry;
 
@@ -48,12 +65,7 @@ class Edit extends Action
     }
 
     /**
-     * Customer edit action
-     *
      * @return \Magento\Backend\Model\View\Result\Page|\Magento\Backend\Model\View\Result\Redirect
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-     * @SuppressWarnings(PHPMD.NPathComplexity)
-     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
     public function execute()
     {
@@ -70,11 +82,11 @@ class Edit extends Action
             }
         }
 
-        $this->coreRegistry->register('mageinn_vendor', $model);
+        $this->coreRegistry->register('mageinn_dropship', $model);
 
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
-        $resultPage->setActiveMenu('Mageinn_Vendor::vendor')->addBreadcrumb(
+        $resultPage->setActiveMenu('Mageinn_Dropship::vendor')->addBreadcrumb(
             $id ? __('Edit Vendor' . $model->getVendorName()) : __('New Vendor'),
             $id ? __('Edit Vendor' . $model->getVendorName()) : __('New Vendor')
         );

@@ -1,18 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+ -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="sales_quote_item_set_product">
-        <observer name="quote_mageinn_vendor_id" instance="Mageinn\Vendor\Observer\QuoteVendor"/>
+        <observer name="quote_mageinn_dropship_id" instance="Mageinn\Dropship\Observer\QuoteVendor"/>
     </event>
     <event name="checkout_submit_all_after">
-        <observer name="mageinn_vendor_checkout_submit_all_after" instance="Mageinn\Vendor\Observer\AutomaticShipment"/>
+        <observer name="mageinn_dropship_checkout_submit_all_after" instance="Mageinn\Dropship\Observer\AutomaticShipment"/>
     </event>
     <event name="sales_order_shipment_save_after">
-        <observer name="mageinn_vendor_shipment_save" instance="Mageinn\Vendor\Observer\ShipmentEmail"/>
-    </event>
-    <event name="catalog_block_product_list_collection">
-        <observer name="delivery_country" instance="Mageinn\Vendor\Observer\ProductListDeliveryCountry" shared="true" />
-    </event>
-    <event name="catalog_product_save_before">
-        <observer name="mageinn_vendor_product_delivery_country_save" instance="Mageinn\Vendor\Observer\ProductDeliveryCountry"/>
+        <observer name="mageinn_dropship_shipment_save" instance="Mageinn\Dropship\Observer\ShipmentEmail"/>
     </event>
 </config>

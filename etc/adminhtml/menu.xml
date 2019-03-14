@@ -1,17 +1,33 @@
 <?xml version="1.0"?>
+<!--
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+ -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Mageinn_Core::dropship" title="Mageinn Dropship" module="Mageinn_Vendor" sortOrder="11" action="admin/system_config/edit/section/dropship/" resource="Mageinn_Vendor::config" parent="Mageinn_Core::mageinnmenu"/>
-
-        <add id="Mageinn_Vendor::vendor" title="Dropship" translate="title" module="Mageinn_Vendor"
-             sortOrder="20" parent="Magento_Sales::sales" resource="Mageinn_Vendor::dropship"
+        <add id="Mageinn_Dropship::vendor" title="Dropship" translate="title" module="Mageinn_Dropship"
+             sortOrder="20" parent="Magento_Sales::sales" resource="Mageinn_Dropship::dropship"
              dependsOnModule="Magento_Sales" />
-        <add id="Mageinn_Vendor::vendor_vendors" title="Vendors" translate="title" module="Mageinn_Vendor" sortOrder="100"
-             parent="Mageinn_Vendor::vendor" action="sales/vendor" resource="Mageinn_Vendor::vendors"/>
-        <add id="Mageinn_Vendor::vendor_batches" title="Batches" translate="title" module="Mageinn_Vendor" sortOrder="200"
-             parent="Mageinn_Vendor::vendor" action="sales/batches" resource="Mageinn_Vendor::vendors"/>
-        <add id="Mageinn_Vendor::vendor_shipping_rates" title="Shipping Rates" translate="title" module="Mageinn_Vendor" sortOrder="300"
-             parent="Mageinn_Vendor::vendor" action="sales/shippingRates" resource="Mageinn_Vendor::vendors"/>
+        <add id="Mageinn_Dropship::vendor_vendors" title="Vendors" translate="title" module="Mageinn_Dropship" sortOrder="100"
+             parent="Mageinn_Dropship::vendor" action="sales/vendor" resource="Mageinn_Dropship::vendors"/>
+        <add id="Mageinn_Dropship::vendor_batches" title="Batches" translate="title" module="Mageinn_Dropship" sortOrder="200"
+             parent="Mageinn_Dropship::vendor" action="sales/batches" resource="Mageinn_Dropship::vendors"/>
+
+        <add id="Mageinn_Dropship::vendor_stock" title="Products Stock" translate="title" module="Mageinn_Dropship" sortOrder="201"
+             parent="Mageinn_Dropship::vendor" action="product/stock" resource="Mageinn_Dropship::product_stock"/>
     </menu>
 </config>

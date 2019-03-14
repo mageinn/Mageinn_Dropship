@@ -1,11 +1,33 @@
 <?php
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Controller\Adminhtml\Shipment;
 
-namespace Mageinn\Vendor\Controller\Adminhtml\Shipment;
+use Mageinn\Dropship\Model\Source\ShipmentStatus;
 
-use Mageinn\Vendor\Model\Source\ShipmentStatus;
-
+/**
+ * Class View
+ * @package Mageinn\Dropship\Controller\Adminhtml\Shipment
+ */
 class View extends \Magento\Shipping\Controller\Adminhtml\Order\Shipment\View
 {
+    /**
+     * @return \Magento\Backend\Model\View\Result\Forward|\Magento\Framework\View\Result\Page
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
     public function execute()
     {
         $this->shipmentLoader->setOrderId($this->getRequest()->getParam('order_id'));

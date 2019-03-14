@@ -1,7 +1,26 @@
 <?php
-namespace Mageinn\Vendor\Controller\Adminhtml\Users;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Controller\Adminhtml\Users;
 
-class Grid extends \Mageinn\Vendor\Controller\Adminhtml\Users\User
+/**
+ * Class Grid
+ * @package Mageinn\Dropship\Controller\Adminhtml\Users
+ */
+class Grid extends \Mageinn\Dropship\Controller\Adminhtml\Users\User
 {
     /**
      * @var \Magento\Framework\Controller\Result\RawFactory
@@ -14,7 +33,7 @@ class Grid extends \Mageinn\Vendor\Controller\Adminhtml\Users\User
     protected $layoutFactory;
 
     /**
-     * @var \Mageinn\Vendor\Model\Info
+     * @var \Mageinn\Dropship\Model\Info
      */
     protected $vendorModel;
 
@@ -28,14 +47,14 @@ class Grid extends \Mageinn\Vendor\Controller\Adminhtml\Users\User
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magento\Framework\Controller\Result\RawFactory $resultRawFactory
      * @param \Magento\Framework\View\LayoutFactory $layoutFactory
-     * @param \Mageinn\Vendor\Model\Info $vendorModel
+     * @param \Mageinn\Dropship\Model\Info $vendorModel
      * @param \Magento\Framework\Registry $registry
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\Controller\Result\RawFactory $resultRawFactory,
         \Magento\Framework\View\LayoutFactory $layoutFactory,
-        \Mageinn\Vendor\Model\Info $vendorModel,
+        \Mageinn\Dropship\Model\Info $vendorModel,
         \Magento\Framework\Registry $registry
     ) {
         parent::__construct($context);
@@ -46,7 +65,7 @@ class Grid extends \Mageinn\Vendor\Controller\Adminhtml\Users\User
     }
 
     /**
-     * @return $this|\Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface
+     * @return \Magento\Backend\Model\View\Result\Redirect|\Magento\Framework\Controller\Result\Raw
      */
     public function execute()
     {
@@ -63,14 +82,14 @@ class Grid extends \Mageinn\Vendor\Controller\Adminhtml\Users\User
 
         return $resultRaw->setContents(
             $this->layoutFactory->create()->createBlock(
-                'Mageinn\Vendor\Block\Adminhtml\Users\Edit\Tab\User',
+                'Mageinn\Dropship\Block\Adminhtml\Users\Edit\Tab\User',
                 'vendor.user.grid'
             )->toHtml()
         );
     }
 
     /**
-     * @return mixed
+     * @return \Mageinn\Dropship\Model\Info
      */
     protected function _initItem()
     {
@@ -81,7 +100,7 @@ class Grid extends \Mageinn\Vendor\Controller\Adminhtml\Users\User
             $myModel->load($id);
         }
 
-        $this->registry->register('mageinn_vendor', $myModel);
+        $this->registry->register('mageinn_dropship', $myModel);
 
         return $myModel;
     }

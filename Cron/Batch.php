@@ -1,7 +1,22 @@
 <?php
-namespace Mageinn\Vendor\Cron;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Cron;
 
-use \Mageinn\Vendor\Model\Source\BatchStatus;
+use \Mageinn\Dropship\Model\Source\BatchStatus;
 
 use \Magento\Framework\Stdlib\DateTime\DateTime;
 use \Magento\Cron\Observer\ProcessCronQueueObserver;
@@ -10,16 +25,14 @@ use \Psr\Log\LoggerInterface;
 
 /**
  * Class Batch
- *
- * @package Mageinn\Vendor\Cron
+ * @package Mageinn\Dropship\Cron
  */
 class Batch
 {
-    /** Schedule ahead group id. */
     const SCHEDULE_CRON_GROUP_ID = 'default';
 
     /**
-     * @var \Mageinn\Vendor\Model\Batch
+     * @var \Mageinn\Dropship\Model\BatchFactory
      */
     protected $batchFactory;
 
@@ -29,12 +42,12 @@ class Batch
     protected $scheduledBatches = [];
 
     /**
-     * @var \Mageinn\Vendor\Model\InfoFactory
+     * @var \Mageinn\Dropship\Model\InfoFactory
      */
     protected $vendorFactory;
 
     /**
-     * @var \Mageinn\Vendor\Model\ResourceModel\Info\Collection
+     * @var \Mageinn\Dropship\Model\ResourceModel\Info\Collection
      */
     protected $batchEnabledVendors;
 
@@ -65,27 +78,26 @@ class Batch
     protected $logger;
 
     /**
-     * @var \Mageinn\Vendor\Helper\Data
+     * @var \Mageinn\Dropship\Helper\CoreData
      */
     protected $helper;
 
     /**
      * Batch constructor.
-     *
-     * @param \Mageinn\Vendor\Model\BatchFactory $batchFactory
-     * @param \Mageinn\Vendor\Model\InfoFactory $vendorFactory
+     * @param \Mageinn\Dropship\Model\BatchFactory $batchFactory
+     * @param \Mageinn\Dropship\Model\InfoFactory $vendorFactory
      * @param DateTime $dateTime
      * @param ScopeConfigInterface $scopeConfig
      * @param LoggerInterface $logger
-     * @param \Mageinn\Vendor\Helper\Data $helper
+     * @param \Mageinn\Dropship\Helper\CoreData $helper
      */
     public function __construct(
-        \Mageinn\Vendor\Model\BatchFactory $batchFactory,
-        \Mageinn\Vendor\Model\InfoFactory $vendorFactory,
+        \Mageinn\Dropship\Model\BatchFactory $batchFactory,
+        \Mageinn\Dropship\Model\InfoFactory $vendorFactory,
         DateTime $dateTime,
         ScopeConfigInterface $scopeConfig,
         LoggerInterface $logger,
-        \Mageinn\Vendor\Helper\Data $helper
+        \Mageinn\Dropship\Helper\CoreData $helper
     ) {
         $this->batchFactory = $batchFactory;
         $this->vendorFactory = $vendorFactory;
@@ -96,7 +108,7 @@ class Batch
     }
 
     /**
-     * Schedule vendor batch cron.
+     * @return void
      */
     public function execute()
     {
@@ -110,7 +122,7 @@ class Batch
                 $this->_createBatch(
                     $vendor->getId(),
                     $vendor->getBatchImportSchedule(),
-                    \Mageinn\Vendor\Model\Source\BatchType::MAGEINN_VENDOR_BATCH_TYPE_IMPORT,
+                    \Mageinn\Dropship\Model\Source\BatchType::MAGEINN_DROPSHIP_BATCH_TYPE_IMPORT,
                     $currentTime,
                     $vendor->getBatchImportSource()
                 );
@@ -119,7 +131,7 @@ class Batch
                 $this->_createBatch(
                     $vendor->getId(),
                     $vendor->getBatchExportSchedule(),
-                    \Mageinn\Vendor\Model\Source\BatchType::MAGEINN_VENDOR_BATCH_TYPE_EXPORT,
+                    \Mageinn\Dropship\Model\Source\BatchType::MAGEINN_DROPSHIP_BATCH_TYPE_EXPORT,
                     $currentTime
                 );
             }
@@ -129,8 +141,6 @@ class Batch
     }
 
     /**
-     * Get scheduled ahead time.
-     *
      * @return int
      */
     protected function _getScheduleTimeInterval()
@@ -145,9 +155,7 @@ class Batch
     }
 
     /**
-     * Get currently scheduled batches.
-     *
-     * @return array
+     * @return array|\Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
      */
     protected function _getScheduledBatches()
     {
@@ -162,9 +170,7 @@ class Batch
     }
 
     /**
-     * Returns the vendors with at least one of the batches enabled
-     *
-     * @return \Mageinn\Vendor\Model\ResourceModel\Info\Collection
+     * @return \Mageinn\Dropship\Model\ResourceModel\Info\Collection|\Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
      */
     protected function _getBatchEnabledVendors()
     {
@@ -185,8 +191,6 @@ class Batch
     }
 
     /**
-     * Creates a batch and saves it
-     *
      * @param $vendorId
      * @param $cronExpression
      * @param $type
@@ -207,7 +211,6 @@ class Batch
 
     /**
      * @param $scheduleKey
-     *
      * @return bool
      */
     protected function _notAlreadyScheduled($scheduleKey)
@@ -223,8 +226,6 @@ class Batch
     }
 
     /**
-     * Save scheduled batch.
-     *
      * @param $cronExpression
      * @param $scheduledAt
      * @param $vendorId
@@ -233,7 +234,7 @@ class Batch
      */
     protected function _saveBatchSchedule($cronExpression, $scheduledAt, $vendorId, $type, $source)
     {
-        /** @var \Mageinn\Vendor\Model\Batch $batch */
+        /** @var \Mageinn\Dropship\Model\Batch $batch */
         $batch = $this->batchFactory->create();
 
         try {
@@ -254,15 +255,12 @@ class Batch
     }
 
     /**
-     * Run scheduled jobs.
-     *
      * @param $scheduledBatches
      * @param $currentTime
      */
     protected function _runJobs($scheduledBatches, $currentTime)
     {
-        // @codingStandardsIgnoreStart
-        /** @var \Mageinn\Vendor\Model\Batch $batch */
+        /** @var \Mageinn\Dropship\Model\Batch $batch */
         foreach ($scheduledBatches as $batch) {
             $scheduledTime = strtotime($batch->getScheduledAt());
             if ($scheduledTime > $currentTime) {
@@ -280,6 +278,5 @@ class Batch
                 $batch->setErrorInfo($ex->getMessage())->save();
             }
         }
-        // @codingStandardsIgnoreEnd
     }
 }

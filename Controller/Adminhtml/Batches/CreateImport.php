@@ -1,9 +1,24 @@
 <?php
-namespace Mageinn\Vendor\Controller\Adminhtml\Batches;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Controller\Adminhtml\Batches;
 
 /**
  * Class CreateImport
- * @package Mageinn\Vendor\Controller\Adminhtml\Batches
+ * @package Mageinn\Dropship\Controller\Adminhtml\Batches
  */
 class CreateImport extends \Magento\Backend\App\Action
 {
@@ -13,8 +28,6 @@ class CreateImport extends \Magento\Backend\App\Action
     protected $_resultPage;
 
     /**
-     * Core registry
-     *
      * @var \Magento\Framework\Registry
      */
     protected $_coreRegistry;
@@ -36,13 +49,13 @@ class CreateImport extends \Magento\Backend\App\Action
     }
 
     /**
-     * @return \Magento\Backend\Model\View\Result\Page|\Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface
+     * @return \Magento\Backend\Model\View\Result\Page
      */
     public function execute()
     {
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->_resultPage->create();
-        $resultPage->setActiveMenu('Mageinn_Vendor::vendor_batches')
+        $resultPage->setActiveMenu('Mageinn_Dropship::vendor_batches')
             ->addBreadcrumb(__('Create Tracking Import Batch'), __('Create Tracking Import Batch'));
         $resultPage->getConfig()->getTitle()->prepend(__('Create Tracking Import Batch'));
 

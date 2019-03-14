@@ -1,14 +1,29 @@
 <?php
-namespace Mageinn\Vendor\Controller\Adminhtml\VendorExport;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Controller\Adminhtml\VendorExport;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
-use Mageinn\Vendor\Model\Export\VendorToCsv;
+use Mageinn\Dropship\Model\Export\VendorToCsv;
 use Magento\Framework\App\Response\Http\FileFactory;
 
 /**
  * Class GridToCsv
- * @package Mageinn\Vendor\Controller\Adminhtml\VendorExport
+ * @package Mageinn\Dropship\Controller\Adminhtml\VendorExport
  */
 class GridToCsv extends Action
 {

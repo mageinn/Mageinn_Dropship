@@ -1,0 +1,823 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">mageinn_dropship_form.mageinn_dropship_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Vendor</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back">
+                <url path="*/*/"/>
+                <class>back</class>
+                <label translate="true">Back</label>
+            </button>
+            <button name="reset">
+                <label translate="true">Reset</label>
+            </button>
+            <button name="delete" class="Mageinn\Dropship\Block\Adminhtml\Edit\DeleteButton"/>
+            <button name="save_and_continue" class="Mageinn\Dropship\Block\Adminhtml\Edit\SaveAndContinueButton"/>
+            <button name="save" class="Mageinn\Dropship\Block\Adminhtml\Edit\SaveButton"/>
+        </buttons>
+        <layout>
+            <navContainerName>left</navContainerName>
+            <type>tabs</type>
+        </layout>
+        <deps>
+            <dep>mageinn_dropship_form.mageinn_dropship_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="mageinn_dropship_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="sales/vendor/save"/>
+        </settings>
+        <dataProvider class="Mageinn\Dropship\Model\Info\DataProvider" name="mageinn_dropship_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="mageinn_dropship">
+        <settings>
+            <label translate="true">Vendor Details</label>
+            <dataScope/>
+        </settings>
+        <fieldset name="vendor">
+            <settings>
+                <collapsible>true</collapsible>
+                <opened>true</opened>
+                <label translate="true">Information</label>
+                <additionalClasses>
+                    <class name="vendor-info">true</class>
+                </additionalClasses>
+            </settings>
+            <field name="entity_id" formElement="input">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataType>text</dataType>
+                    <visible>false</visible>
+                    <dataScope>entity_id</dataScope>
+                </settings>
+            </field>
+            <field name="status" formElement="checkbox">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="default" xsi:type="number">1</item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataType>boolean</dataType>
+                    <label translate="true">Enable</label>
+                    <dataScope>status</dataScope>
+                </settings>
+                <formElements>
+                    <checkbox>
+                        <settings>
+                            <valueMap>
+                                <map name="false" xsi:type="number">0</map>
+                                <map name="true" xsi:type="number">1</map>
+                            </valueMap>
+                            <prefer>toggle</prefer>
+                        </settings>
+                    </checkbox>
+                </formElements>
+            </field>
+            <field name="name" formElement="input">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="label" xsi:type="string" translate="true">Name</item>
+                    </item>
+                </argument>
+                <settings>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                    <dataType>text</dataType>
+                    <visible>true</visible>
+                </settings>
+            </field>
+            <field name="email" formElement="input">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="label" xsi:type="string" translate="true">Email</item>
+                    </item>
+                </argument>
+                <settings>
+                    <validation>
+                        <rule name="validate-email" xsi:type="boolean">true</rule>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                    <dataType>text</dataType>
+                    <visible>true</visible>
+                    <additionalClasses>
+                        <class name="email">true</class>
+                    </additionalClasses>
+                </settings>
+            </field>
+            <field name="telephone" formElement="input">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="label" xsi:type="string" translate="true">Telephone</item>
+                    </item>
+                </argument>
+                <settings>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                    <dataType>text</dataType>
+                    <visible>true</visible>
+                </settings>
+            </field>
+        </fieldset>
+    </fieldset>
+    <fieldset name="vendor_settings">
+        <settings>
+            <label translate="true">Vendor Settings</label>
+            <dataScope/>
+        </settings>
+        <fieldset name="settings">
+            <settings>
+                <label translate="true">Settings</label>
+                <collapsible>true</collapsible>
+                <additionalClasses>
+                    <class name="settings">true</class>
+                </additionalClasses>
+            </settings>
+            <field name="currency" formElement="select">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataType>text</dataType>
+                    <label translate="true">Currency</label>
+                    <dataScope>currency</dataScope>
+                </settings>
+                <formElements>
+                    <select>
+                        <settings>
+                            <options class="Magento\Config\Model\Config\Source\Locale\Currency"/>
+                        </settings>
+                    </select>
+                </formElements>
+            </field>
+            <field name="notify_order" formElement="checkbox">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="default" xsi:type="number">0</item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataType>boolean</dataType>
+                    <label translate="true">Notify on New Orders</label>
+                    <dataScope>notify_order</dataScope>
+                </settings>
+                <formElements>
+                    <checkbox>
+                        <settings>
+                            <valueMap>
+                                <map name="false" xsi:type="number">0</map>
+                                <map name="true" xsi:type="number">1</map>
+                            </valueMap>
+                            <prefer>toggle</prefer>
+                        </settings>
+                    </checkbox>
+                </formElements>
+            </field>
+            <field name="notify_order_email" formElement="input">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="label" xsi:type="string" translate="true">Specify in CC Whom to Notify on New Orders</item>
+                        <item name="notice" xsi:type="string" translate="true">Use comma to separate emails</item>
+                    </item>
+                </argument>
+            </field>
+        </fieldset>
+    </fieldset>
+    <fieldset name="vendor_address">
+        <settings>
+            <label translate="true">Vendor Addresses</label>
+            <dataScope/>
+        </settings>
+        <fieldset name="billing_address">
+            <settings>
+                <label translate="true">Billing Address</label>
+                <collapsible>true</collapsible>
+                <additionalClasses>
+                    <class name="billing-address">true</class>
+                </additionalClasses>
+            </settings>
+            <field name="contact_name" formElement="input">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="label" xsi:type="string" translate="true">Contact Name</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="street" formElement="input">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="label" xsi:type="string" translate="true">Street</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                </argument>
+            </field>
+            <field name="city" formElement="input">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="label" xsi:type="string" translate="true">City</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                </argument>
+            </field>
+            <field name="postal_code" formElement="input">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="label" xsi:type="string" translate="true">Postal Code</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="country">
+                <argument name="data" xsi:type="array">
+                    <item name="options" xsi:type="object">Magento\Directory\Model\Config\Source\Country</item>
+                    <item name="config" xsi:type="array">
+                        <item name="dataType" xsi:type="string">text</item>
+                        <item name="label" xsi:type="string" translate="true">Country</item>
+                        <item name="formElement" xsi:type="string">select</item>
+                        <item name="source" xsi:type="string">store</item>
+                        <item name="component" xsi:type="string">Magento_Ui/js/form/element/country</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                </argument>
+            </field>
+            <field name="region">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="dataType" xsi:type="string">text</item>
+                        <item name="label" xsi:type="string" translate="true">State/Region</item>
+                        <item name="formElement" xsi:type="string">input</item>
+                        <item name="source" xsi:type="string">store</item>
+                        <item name="sortOrder" xsi:type="number">15</item>
+                        <item name="visible" xsi:type="boolean">false</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="region_id">
+                <argument name="data" xsi:type="array">
+                    <item name="options" xsi:type="object">Magento\Directory\Model\ResourceModel\Region\Collection</item>
+                    <item name="config" xsi:type="array">
+                        <item name="dataType" xsi:type="string">text</item>
+                        <item name="label" xsi:type="string" translate="true">State/Region</item>
+                        <item name="formElement" xsi:type="string">select</item>
+                        <item name="source" xsi:type="string">store</item>
+                        <item name="sortOrder" xsi:type="number">20</item>
+                        <item name="customEntry" xsi:type="string">region</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                        <item name="filterBy" xsi:type="array">
+                            <item name="target" xsi:type="string">${ $.provider }:${ $.parentScope }.country</item>
+                            <item name="field" xsi:type="string">country_id</item>
+                        </item>
+                    </item>
+                </argument>
+            </field>
+        </fieldset>
+        <fieldset name="shipping_address">
+            <settings>
+                <label translate="true">Shipping Address</label>
+                <collapsible>true</collapsible>
+                <additionalClasses>
+                    <class name="shipping-address">true</class>
+                </additionalClasses>
+            </settings>
+            <field name="same_as_billing" formElement="checkbox">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="default" xsi:type="number">1</item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataType>boolean</dataType>
+                    <label translate="true">Same as Billing</label>
+                    <dataScope>same_as_billing</dataScope>
+                </settings>
+                <formElements>
+                    <checkbox>
+                        <settings>
+                            <valueMap>
+                                <map name="false" xsi:type="number">0</map>
+                                <map name="true" xsi:type="number">1</map>
+                            </valueMap>
+                            <prefer>toggle</prefer>
+                        </settings>
+                    </checkbox>
+                </formElements>
+            </field>
+            <field name="contact_name" formElement="input">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="label" xsi:type="string" translate="true">Contact Name</item>
+                    </item>
+                </argument>
+                <settings>
+                    <imports>
+                        <link name="disabled">ns = ${ $.ns }, index = same_as_billing :checked</link>
+                    </imports>
+                </settings>
+            </field>
+            <field name="street" formElement="input">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="label" xsi:type="string" translate="true">Street</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                </argument>
+                <settings>
+                    <imports>
+                        <link name="disabled">ns = ${ $.ns }, index = same_as_billing :checked</link>
+                    </imports>
+                </settings>
+            </field>
+            <field name="city" formElement="input">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="label" xsi:type="string" translate="true">City</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                </argument>
+                <settings>
+                    <imports>
+                        <link name="disabled">ns = ${ $.ns }, index = same_as_billing :checked</link>
+                    </imports>
+                </settings>
+            </field>
+            <field name="postal_code" formElement="input">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="label" xsi:type="string" translate="true">Postal Code</item>
+                    </item>
+                </argument>
+                <settings>
+                    <imports>
+                        <link name="disabled">ns = ${ $.ns }, index = same_as_billing :checked</link>
+                    </imports>
+                </settings>
+            </field>
+            <field name="country">
+                <argument name="data" xsi:type="array">
+                    <item name="options" xsi:type="object">Magento\Directory\Model\Config\Source\Country</item>
+                    <item name="config" xsi:type="array">
+                        <item name="dataType" xsi:type="string">text</item>
+                        <item name="label" xsi:type="string" translate="true">Country</item>
+                        <item name="formElement" xsi:type="string">select</item>
+                        <item name="source" xsi:type="string">store</item>
+                        <item name="component" xsi:type="string">Magento_Ui/js/form/element/country</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                </argument>
+                <settings>
+                    <imports>
+                        <link name="disabled">ns = ${ $.ns }, index = same_as_billing :checked</link>
+                    </imports>
+                </settings>
+            </field>
+            <field name="region">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="dataType" xsi:type="string">text</item>
+                        <item name="label" xsi:type="string" translate="true">State/Region</item>
+                        <item name="formElement" xsi:type="string">input</item>
+                        <item name="source" xsi:type="string">store</item>
+                        <item name="sortOrder" xsi:type="number">15</item>
+                        <item name="visible" xsi:type="boolean">false</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="region_id">
+                <argument name="data" xsi:type="array">
+                    <item name="options" xsi:type="object">Magento\Directory\Model\ResourceModel\Region\Collection</item>
+                    <item name="config" xsi:type="array">
+                        <item name="dataType" xsi:type="string">text</item>
+                        <item name="label" xsi:type="string" translate="true">State/Region</item>
+                        <item name="formElement" xsi:type="string">select</item>
+                        <item name="source" xsi:type="string">store</item>
+                        <item name="sortOrder" xsi:type="number">20</item>
+                        <item name="customEntry" xsi:type="string">region</item>
+                        <item name="filterBy" xsi:type="array">
+                            <item name="target" xsi:type="string">${ $.provider }:${ $.parentScope }.country</item>
+                            <item name="field" xsi:type="string">country_id</item>
+                        </item>
+                    </item>
+                </argument>
+                <settings>
+                    <imports>
+                        <link name="disabled">ns = ${ $.ns }, index = same_as_billing :checked</link>
+                    </imports>
+                </settings>
+            </field>
+            <field name="region_id_input">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">State/Region</item>
+                        <item name="formElement" xsi:type="string">input</item>
+                    </item>
+                </argument>
+                <settings>
+                    <imports>
+                        <link name="disabled">ns = ${ $.ns }, index = same_as_billing :checked</link>
+                    </imports>
+                </settings>
+            </field>
+        </fieldset>
+        <fieldset name="customer_service">
+            <settings>
+                <label translate="true">Customer Service Address</label>
+                <collapsible>true</collapsible>
+                <additionalClasses>
+                    <class name="service-address">true</class>
+                </additionalClasses>
+            </settings>
+            <field name="contact_name" formElement="input">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="label" xsi:type="string" translate="true">Contact Name</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="street" formElement="input">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="label" xsi:type="string" translate="true">Street</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="city" formElement="input">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="label" xsi:type="string" translate="true">City</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="postal_code" formElement="input">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="label" xsi:type="string" translate="true">Postal Code</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="country">
+                <argument name="data" xsi:type="array">
+                    <item name="options" xsi:type="object">Magento\Directory\Model\Config\Source\Country</item>
+                    <item name="config" xsi:type="array">
+                        <item name="dataType" xsi:type="string">text</item>
+                        <item name="label" xsi:type="string" translate="true">Country</item>
+                        <item name="formElement" xsi:type="string">select</item>
+                        <item name="source" xsi:type="string">store</item>
+                        <item name="component" xsi:type="string">Magento_Ui/js/form/element/country</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="region">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="dataType" xsi:type="string">text</item>
+                        <item name="label" xsi:type="string" translate="true">State/Region</item>
+                        <item name="formElement" xsi:type="string">input</item>
+                        <item name="source" xsi:type="string">store</item>
+                        <item name="sortOrder" xsi:type="number">15</item>
+                        <item name="visible" xsi:type="boolean">false</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="region_id">
+                <argument name="data" xsi:type="array">
+                    <item name="options" xsi:type="object">Magento\Directory\Model\ResourceModel\Region\Collection</item>
+                    <item name="config" xsi:type="array">
+                        <item name="dataType" xsi:type="string">text</item>
+                        <item name="label" xsi:type="string" translate="true">State/Region</item>
+                        <item name="formElement" xsi:type="string">select</item>
+                        <item name="source" xsi:type="string">store</item>
+                        <item name="sortOrder" xsi:type="number">20</item>
+                        <item name="customEntry" xsi:type="string">region</item>
+                        <item name="filterBy" xsi:type="array">
+                            <item name="target" xsi:type="string">${ $.provider }:${ $.parentScope }.country</item>
+                            <item name="field" xsi:type="string">country_id</item>
+                        </item>
+                    </item>
+                </argument>
+            </field>
+            <field name="email" formElement="input">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="label" xsi:type="string" translate="true">Email</item>
+                    </item>
+                </argument>
+                <settings>
+                    <validation>
+                        <rule name="validate-email" xsi:type="boolean">true</rule>
+                    </validation>
+                </settings>
+            </field>
+            <field name="telephone" formElement="input">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="label" xsi:type="string" translate="true">Telephone</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="url_title" component="Mageinn_Dropship/js/form/element/custom-check" formElement="input">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="label" xsi:type="string" translate="true">URL Title</item>
+                        <item name="notice" xsi:type="string" translate="true">Friendly short hyperlink to replace long URL.</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="url" formElement="input">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="label" xsi:type="string" translate="true">URL</item>
+                        <item name="notice" xsi:type="string" translate="true">Full URL for customer to read vendor's faq regarding order.</item>
+                    </item>
+                </argument>
+            </field>
+        </fieldset>
+    </fieldset>
+    <fieldset name="vendor_users">
+        <settings>
+            <label translate="true">Vendor Users</label>
+        </settings>
+        <fieldset name="vendor_users_association">
+            <settings>
+                <label translate="true">Users</label>
+                <collapsible>true</collapsible>
+                <additionalClasses>
+                    <class name="vendor-users">true</class>
+                </additionalClasses>
+            </settings>
+            <container name="vendor_user_association_block" >
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="sortOrder" xsi:type="number">10</item>
+                    </item>
+                </argument>
+                <htmlContent name="html_content">
+                    <argument name="block" xsi:type="object">Mageinn\Dropship\Block\Adminhtml\Users\Edit\AssignUser</argument>
+                </htmlContent>
+            </container>
+        </fieldset>
+    </fieldset>
+    <fieldset name="batch_export">
+        <settings>
+            <label translate="true">Batch Orders Export</label>
+            <dataScope/>
+        </settings>
+        <fieldset name="batch_export_general">
+            <settings>
+                <label translate="true">General</label>
+                <collapsible>true</collapsible>
+                <additionalClasses>
+                    <class name="batch-export">true</class>
+                </additionalClasses>
+            </settings>
+            <field name="batch_export_enabled" formElement="checkbox">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="default" xsi:type="number">0</item>
+                        <item name="label" xsi:type="string" translate="true">Enable Export</item>
+                        <item name="notice" xsi:type="string" translate="true">Yes for auto scheduled, No - disabled</item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataType>boolean</dataType>
+                </settings>
+                <formElements>
+                    <checkbox>
+                        <settings>
+                            <valueMap>
+                                <map name="false" xsi:type="number">0</map>
+                                <map name="true" xsi:type="number">1</map>
+                            </valueMap>
+                            <prefer>toggle</prefer>
+                        </settings>
+                    </checkbox>
+                </formElements>
+            </field>
+            <field name="batch_export_shipment_status" formElement="select">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="label" xsi:type="string" translate="true">Change Shipment Status On Export</item>
+                        <item name="notice" xsi:type="string" translate="true">Set the status of shipment in system after it is exported.</item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataType>text</dataType>
+                </settings>
+                <formElements>
+                    <select>
+                        <settings>
+                            <options class="Mageinn\Dropship\Model\Source\ShipmentStatus"/>
+                        </settings>
+                    </select>
+                </formElements>
+            </field>
+            <field name="batch_export_schedule" formElement="input">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="label" xsi:type="string" translate="true">Schedule</item>
+                        <item name="notice" xsi:type="string" translate="true">Specify how frequently to export orders. Use manual: https://en.wikipedia.org/wiki/Cron</item>
+                    </item>
+                </argument>
+                <settings>
+                    <validation>
+                        <rule name="validate-cron" xsi:type="boolean">true</rule>
+                    </validation>
+                </settings>
+            </field>
+            <field name="batch_export_destination" formElement="textarea">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="label" xsi:type="string" translate="true">Destination</item>
+                        <item name="notice" xsi:type="string" translate="true">Specify path on server, email or sFTP ('sftp://username@endpoint/path/file') where batch file with orders will be exported to. Available placeholders: [YYYY], [YY], [MM], [DD], [hh], [mm], [ss].</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="batch_export_headings" formElement="textarea">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="label" xsi:type="string" translate="true">Headings in export file</item>
+                        <item name="notice" xsi:type="string" translate="true">Provide comma separated headings in preferred order or leave empty if headings are not required</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="batch_export_values" formElement="textarea">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="label" xsi:type="string" translate="true">Values in export file</item>
+                        <item name="notice" xsi:type="string" translate="true">Provide comma separated values in preferred order.</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="batch_export_private_key" formElement="textarea">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="label" xsi:type="string" translate="true">SFTP Private Key</item>
+                    </item>
+                </argument>
+            </field>
+        </fieldset>
+    </fieldset>
+    <fieldset name="batch_import">
+        <settings>
+            <label translate="true">Batch Orders Import</label>
+            <dataScope/>
+        </settings>
+        <fieldset name="batch_import_general">
+            <settings>
+                <label translate="true">General</label>
+                <collapsible>true</collapsible>
+                <additionalClasses>
+                    <class name="batch-import">true</class>
+                </additionalClasses>
+            </settings>
+            <field name="batch_import_enabled" formElement="checkbox">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="default" xsi:type="number">0</item>
+                        <item name="label" xsi:type="string" translate="true">Enable Import</item>
+                        <item name="notice" xsi:type="string" translate="true">Yes for auto scheduled, No - disabled</item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataType>boolean</dataType>
+                </settings>
+                <formElements>
+                    <checkbox>
+                        <settings>
+                            <valueMap>
+                                <map name="false" xsi:type="number">0</map>
+                                <map name="true" xsi:type="number">1</map>
+                            </valueMap>
+                            <prefer>toggle</prefer>
+                        </settings>
+                    </checkbox>
+                </formElements>
+            </field>
+            <field name="batch_import_schedule" formElement="input">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="label" xsi:type="string" translate="true">Schedule</item>
+                        <item name="notice" xsi:type="string" translate="true">Specify how frequently to import orders. Use manual: https://en.wikipedia.org/wiki/Cron</item>
+                    </item>
+                </argument>
+                <settings>
+                    <validation>
+                        <rule name="validate-cron" xsi:type="boolean">true</rule>
+                    </validation>
+                </settings>
+            </field>
+            <field name="batch_import_source" formElement="input">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="label" xsi:type="string" translate="true">Source location</item>
+                        <item name="notice" xsi:type="string" translate="true">The location to import orders from. Local or sFTP ('sftp://username@endpoint/path/file')</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="batch_import_file_data" formElement="input">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="label" xsi:type="string" translate="true">Values in import file</item>
+                        <item name="notice" xsi:type="string" translate="true">Provide comma separated values in preferred order</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="batch_import_delimiter" formElement="input">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">mageinn_dropship</item>
+                        <item name="label" xsi:type="string" translate="true">Field delimiter</item>
+                        <item name="notice" xsi:type="string" translate="true">Provide separator to delimit values in export file</item>
+                    </item>
+                </argument>
+            </field>
+        </fieldset>
+    </fieldset>
+</form>

@@ -1,11 +1,30 @@
 <?php
-namespace Mageinn\Vendor\Controller\Adminhtml\Batches;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Controller\Adminhtml\Batches;
 
 use Magento\Backend\App\Action\Context;
 use Magento\Ui\Component\MassAction\Filter;
 use Magento\Framework\Controller\ResultFactory;
-use Mageinn\Vendor\Model\ResourceModel\Batch\CollectionFactory;
+use Mageinn\Dropship\Model\ResourceModel\Batch\CollectionFactory;
 
+/**
+ * Class MassDelete
+ * @package Mageinn\Dropship\Controller\Adminhtml\Batches
+ */
 class MassDelete extends \Magento\Backend\App\Action
 {
     /**
@@ -14,12 +33,12 @@ class MassDelete extends \Magento\Backend\App\Action
     protected $redirectUrl = '*/*/';
 
     /**
-     * @var \Magento\Ui\Component\MassAction\Filter
+     * @var Filter
      */
     protected $filter;
 
     /**
-     * @var object
+     * @var CollectionFactory
      */
     protected $collectionFactory;
 
@@ -37,18 +56,16 @@ class MassDelete extends \Magento\Backend\App\Action
     }
 
     /**
-     * @return $this|\Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface
+     * @return \Magento\Backend\Model\View\Result\Redirect|\Magento\Framework\Controller\Result\Redirect
      */
     public function execute()
     {
         try {
             $collection = $this->filter->getCollection($this->collectionFactory->create());
 
-            /** @var \Mageinn\Vendor\Model\Batch $item */
+            /** @var \Mageinn\Dropship\Model\Batch $item */
             foreach ($collection as $item) {
-                // @codingStandardsIgnoreStart
                 $item->delete();
-                // @codingStandardsIgnoreEnd
             }
 
             $this->messageManager->addSuccess(__('Batches deleted successfully.'));

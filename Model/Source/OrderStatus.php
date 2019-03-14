@@ -1,25 +1,36 @@
 <?php
-namespace Mageinn\Vendor\Model\Source;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Model\Source;
 
 use \Magento\Sales\Model\Config\Source\Order\Status;
 
 /**
- * Order archive model
- *
+ * Class OrderStatus
+ * @package Mageinn\Dropship\Model\Source
  */
 class OrderStatus extends Status
 {
     /**
-     * Retrieve order statuses as options for select
-     *
-     * @see \Magento\Sales\Model\Config\Source\Order\Status:toOptionArray()
      * @return array
      */
     public function toOptionArray()
     {
         $options = parent::toOptionArray();
         array_shift($options);
-        // Remove '--please select--' option
         return $options;
     }
 }

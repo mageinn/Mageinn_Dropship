@@ -1,9 +1,24 @@
 <?php
-namespace Mageinn\Vendor\Controller\Adminhtml\Batches;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Controller\Adminhtml\Batches;
 
 /**
- * Class View
- * @package Mageinn\Vendor\Controller\Adminhtml\BatchRows
+ * Class Download
+ * @package Mageinn\Dropship\Controller\Adminhtml\Batches
  */
 class Download extends \Magento\Backend\App\Action
 {
@@ -36,17 +51,19 @@ class Download extends \Magento\Backend\App\Action
      * @var \Magento\Framework\Filesystem\Io\File
      */
     protected $fileSystem;
+
     /**
-     * @var \Magento\Framework\Registry $registry
+     * @var \Magento\Framework\Registry
      */
     protected $registry;
 
     /**
-     * @var \Mageinn\Vendor\Model\Batch
+     * @var \Mageinn\Dropship\Model\Batch
      */
     protected $batchModel;
 
     /**
+     * Download constructor.
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magento\Framework\Controller\Result\RawFactory $resultRawFactory
      * @param \Magento\Framework\View\LayoutFactory $layoutFactory
@@ -55,6 +72,7 @@ class Download extends \Magento\Backend\App\Action
      * @param \Psr\Log\LoggerInterface $logger
      * @param \Magento\Framework\Filesystem\Io\File $fileSystemIo
      * @param \Magento\Framework\Registry $registry
+     * @param \Mageinn\Dropship\Model\Batch $batchModel
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
@@ -65,7 +83,7 @@ class Download extends \Magento\Backend\App\Action
         \Psr\Log\LoggerInterface $logger,
         \Magento\Framework\Filesystem\Io\File $fileSystemIo,
         \Magento\Framework\Registry $registry,
-        \Mageinn\Vendor\Model\Batch $batchModel
+        \Mageinn\Dropship\Model\Batch $batchModel
     ) {
         $this->_resultRawFactory = $resultRawFactory;
         $this->_layoutFactory = $layoutFactory;
@@ -80,9 +98,7 @@ class Download extends \Magento\Backend\App\Action
     }
 
     /**
-     * Action for when you refresh the batch rows grid
-     *
-     * @return $this|\Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Raw|\Magento\Framework\Controller\ResultInterface
+     * @return \Magento\Backend\Model\View\Result\Redirect|\Magento\Framework\Controller\Result\Raw
      */
     public function execute()
     {
@@ -96,26 +112,35 @@ class Download extends \Magento\Backend\App\Action
             );
         }
 
-        $filePath = $item->getFilePath();
-        $fileInfo = $this->fileSystem->getPathInfo($filePath);
-        $fileName = $fileInfo['basename'];
+        if ($item->getFilePath()) {
+            $filePath = $item->getFilePath();
+            $fileInfo = $this->fileSystem->getPathInfo($filePath);
+            $fileName = $fileInfo['basename'];
 
-        $searchString = $this->_dir->getRoot() . DIRECTORY_SEPARATOR;
-        $projectPath = str_replace($searchString, '', $filePath);
+            $searchString = $this->_dir->getRoot() . DIRECTORY_SEPARATOR;
+            $projectPath = str_replace($searchString, '', $filePath);
 
-        try {
-            $this->_fileFactory->create(
-                $fileName,
-                [
-                    'type' => 'filename',
-                    'value' => $projectPath
-                ]
-            );
-            $resultRaw = $this->_resultRawFactory->create();
+            try {
+                $this->_fileFactory->create(
+                    $fileName,
+                    [
+                        'type' => 'filename',
+                        'value' => $projectPath
+                    ]
+                );
+                $resultRaw = $this->_resultRawFactory->create();
 
-            return $resultRaw;
-        } catch (\Exception $e) {
-            $this->_logger->error($e);
+                return $resultRaw;
+            } catch (\Exception $e) {
+                $this->_logger->error($e);
+
+                return $resultRedirect->setPath(
+                    'sales/batches/view' . $this->registry->registry('current_batch_type'),
+                    ['_current' => true]
+                );
+            }
+        } else {
+            $this->messageManager->addWarningMessage(__('Batch does not have an export file.'));
 
             return $resultRedirect->setPath(
                 'sales/batches/view' . $this->registry->registry('current_batch_type'),
@@ -125,8 +150,8 @@ class Download extends \Magento\Backend\App\Action
     }
 
     /**
-     * @param \Magento\Framework\Registry $registry
-     * @return mixed
+     * @param $registry
+     * @return \Mageinn\Dropship\Model\Batch
      */
     private function _initItem($registry)
     {
@@ -140,10 +165,10 @@ class Download extends \Magento\Backend\App\Action
             }
 
             $registry->register('mageinn_batch', $model);
-            if ($model->getType() == \Mageinn\Vendor\Model\Source\BatchType::MAGEINN_VENDOR_BATCH_TYPE_IMPORT) {
-                $registry->register('current_batch_type', \Mageinn\Vendor\Model\Batch::BATCH_TYPE_VIEW_IMPORT);
+            if ($model->getType() == \Mageinn\Dropship\Model\Source\BatchType::MAGEINN_DROPSHIP_BATCH_TYPE_IMPORT) {
+                $registry->register('current_batch_type', \Mageinn\Dropship\Model\Batch::BATCH_TYPE_VIEW_IMPORT);
             } else {
-                $registry->register('current_batch_type', \Mageinn\Vendor\Model\Batch::BATCH_TYPE_VIEW_EXPORT);
+                $registry->register('current_batch_type', \Mageinn\Dropship\Model\Batch::BATCH_TYPE_VIEW_EXPORT);
             }
         }
 

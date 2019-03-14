@@ -1,3 +1,18 @@
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
 define([
     'underscore',
     'Magento_Ui/js/form/element/abstract',
@@ -6,14 +21,10 @@ define([
 ], function (_, AbstractField, uiRegistry) {
     "use strict";
 
-    /**
-     * Return the UI Component
-     */
+
     return AbstractField.extend({
 
-        /**
-         * Initialize field component, and store a reference to the dependent fields.
-         */
+
         initialize: function () {
             this._super();
 
@@ -22,9 +33,7 @@ define([
             }, this));
         },
 
-        /**
-         * Change currently selected option
-         */
+
         onUpdate: function () {
             this.setUrlRequired();
 

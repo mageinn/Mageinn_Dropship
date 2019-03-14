@@ -1,9 +1,24 @@
 <?php
-namespace Mageinn\Vendor\Controller\Adminhtml\Batches;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Controller\Adminhtml\Batches;
 
 /**
  * Class ViewExport
- * @package Mageinn\Vendor\Controller\Adminhtml\Batches
+ * @package Mageinn\Dropship\Controller\Adminhtml\Batches
  */
 class ViewExport extends \Magento\Backend\App\Action
 {
@@ -13,7 +28,7 @@ class ViewExport extends \Magento\Backend\App\Action
     protected $_registry;
 
     /**
-     * @var \Mageinn\Vendor\Model\Batch
+     * @var \Mageinn\Dropship\Model\Batch
      */
     private $batchModel;
 
@@ -22,13 +37,13 @@ class ViewExport extends \Magento\Backend\App\Action
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magento\Framework\View\Result\PageFactory $resultFactory
      * @param \Magento\Framework\Registry $registry
-     * @param \Mageinn\Vendor\Model\Batch $batchModel
+     * @param \Mageinn\Dropship\Model\Batch $batchModel
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\View\Result\PageFactory $resultFactory,
         \Magento\Framework\Registry $registry,
-        \Mageinn\Vendor\Model\Batch $batchModel
+        \Mageinn\Dropship\Model\Batch $batchModel
     ) {
         $this->resultFactory = $resultFactory;
         $this->_registry = $registry;
@@ -38,12 +53,7 @@ class ViewExport extends \Magento\Backend\App\Action
     }
 
     /**
-     * Customer edit action
-     *
-     * @return \Magento\Framework\Controller\ResultInterface|\Magento\Backend\Model\View\Result\Redirect
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-     * @SuppressWarnings(PHPMD.NPathComplexity)
-     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     * @return \Magento\Backend\Model\View\Result\Redirect|\Magento\Framework\View\Result\Page
      */
     public function execute()
     {
@@ -64,7 +74,7 @@ class ViewExport extends \Magento\Backend\App\Action
         $this->_registry->register('current_batch_type', 'Export');
 
         $resultPage = $this->resultFactory->create(\Magento\Framework\Controller\ResultFactory::TYPE_PAGE);
-        $resultPage->setActiveMenu('Mageinn_Vendor::vendor_batches')->addBreadcrumb(__('Batch View'), __('Batch View'));
+        $resultPage->setActiveMenu('Mageinn_Dropship::vendor_batches')->addBreadcrumb(__('Batch View'), __('Batch View'));
         $resultPage->getConfig()->getTitle()->prepend(__('View Export Orders Batch ' . $id));
 
         return $resultPage;

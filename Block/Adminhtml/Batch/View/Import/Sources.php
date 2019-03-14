@@ -1,24 +1,38 @@
 <?php
-namespace Mageinn\Vendor\Block\Adminhtml\Batch\View\Import;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Block\Adminhtml\Batch\View\Import;
 
 /**
  * Class Sources
- * @package Mageinn\Vendor\Block\Adminhtml\Batch\View\Import
+ * @package Mageinn\Dropship\Block\Adminhtml\Batch\View\Import
  */
-class Sources extends \Mageinn\Vendor\Block\Adminhtml\Batch\View\AbstractBatchDetails
+class Sources extends \Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractBatchDetails
 {
 
     /**
      * Retrieve instance of grid block
-     *
-     * @return \Magento\Framework\View\Element\BlockInterface
+     * @return \Magento\Backend\Block\Widget\Grid\Extended|\Magento\Framework\View\Element\BlockInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function getGrid()
     {
-        if (is_null($this->_grid)) {
+        if (null === $this->_grid) {
             $this->_grid = $this->getLayout()->createBlock(
-                \Mageinn\Vendor\Block\Adminhtml\Batch\View\Import\Sources\Grid::class,
+                \Mageinn\Dropship\Block\Adminhtml\Batch\View\Import\Sources\Grid::class,
                 'batches.destinations'
             );
         }

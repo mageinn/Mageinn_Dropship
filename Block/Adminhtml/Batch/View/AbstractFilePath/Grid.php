@@ -1,14 +1,29 @@
 <?php
-namespace Mageinn\Vendor\Block\Adminhtml\Batch\View\AbstractFilePath;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractFilePath;
 
 /**
  * Class Grid
- * @package Mageinn\Vendor\Block\Adminhtml\Batch\View\AbstractFilePath
+ * @package Mageinn\Dropship\Block\Adminhtml\Batch\View\AbstractFilePath
  */
 abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
 {
     /**
-     * @var \Magento\Framework\Registry
+     * @var \Magento\Framework\Registry|null
      */
     protected $_registry = null;
 
@@ -23,18 +38,18 @@ abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     protected $_logger;
 
     /**
-     * @var \Mageinn\Vendor\Model\Source\BatchStatus
+     * @var \Mageinn\Dropship\Model\Source\BatchStatus
      */
     protected $_batchStatus;
 
     /**
-     * User constructor.
+     * Grid constructor.
      * @param \Magento\Backend\Helper\Data $backendHelper
      * @param \Magento\Backend\Block\Template\Context $context
      * @param \Magento\Framework\Data\CollectionFactory $collectionFactory
      * @param \Magento\Framework\Registry $registry
      * @param \Psr\Log\LoggerInterface $logger
-     * @param \Mageinn\Vendor\Model\Source\BatchStatus $batchStatus
+     * @param \Mageinn\Dropship\Model\Source\BatchStatus $batchStatus
      * @param array $data
      */
     public function __construct(
@@ -43,7 +58,7 @@ abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         \Magento\Framework\Data\CollectionFactory $collectionFactory,
         \Magento\Framework\Registry $registry,
         \Psr\Log\LoggerInterface $logger,
-        \Mageinn\Vendor\Model\Source\BatchStatus $batchStatus,
+        \Mageinn\Dropship\Model\Source\BatchStatus $batchStatus,
         array $data = []
     ) {
         $this->_registry = $registry;
@@ -66,7 +81,7 @@ abstract class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     }
 
     /**
-     * @return \Mageinn\Vendor\Model\Batch|null
+     * @return \Mageinn\Dropship\Model\Batch|null
      */
     public function getBatch()
     {

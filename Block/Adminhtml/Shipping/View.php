@@ -1,17 +1,31 @@
 <?php
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Block\Adminhtml\Shipping;
 
-namespace Mageinn\Vendor\Block\Adminhtml\Shipping;
-
-use Mageinn\Vendor\Model\Source\ShipmentStatus;
+use Mageinn\Dropship\Model\Source\ShipmentStatus;
 
 /**
  * Class View
- * @package Mageinn\Vendor\Block\Adminhtml\Shipping
+ * @package Mageinn\Dropship\Block\Adminhtml\Shipping
  */
 class View extends \Magento\Shipping\Block\Adminhtml\View
 {
     /**
-     * @var \Mageinn\Vendor\Model\Shipment
+     * @var \Mageinn\Dropship\Model\Shipment
      */
     protected $shipment;
 
@@ -19,13 +33,13 @@ class View extends \Magento\Shipping\Block\Adminhtml\View
      * View constructor.
      * @param \Magento\Backend\Block\Widget\Context $context
      * @param \Magento\Framework\Registry $registry
-     * @param \Mageinn\Vendor\Model\Shipment $shipment
+     * @param \Mageinn\Dropship\Model\Shipment $shipment
      * @param array $data
      */
     public function __construct(
         \Magento\Backend\Block\Widget\Context $context,
         \Magento\Framework\Registry $registry,
-        \Mageinn\Vendor\Model\Shipment $shipment,
+        \Mageinn\Dropship\Model\Shipment $shipment,
         array $data = []
     ) {
         $this->shipment = $shipment;
@@ -39,7 +53,7 @@ class View extends \Magento\Shipping\Block\Adminhtml\View
     {
         parent::_construct();
 
-        if ($this->_authorization->isAllowed('Mageinn_Vendor::mark_shipped')) {
+        if ($this->_authorization->isAllowed('Mageinn_Dropship::mark_shipped')) {
             $this->buttonList->add(
                 'markShipped',
                 [
@@ -52,6 +66,9 @@ class View extends \Magento\Shipping\Block\Adminhtml\View
         }
     }
 
+    /**
+     * @return string
+     */
     public function getMarkAsShippedUrl()
     {
         return $this->getUrl('sales/shipment/ship', ['shipment_id' => $this->getShipment()->getId()]);
@@ -59,6 +76,7 @@ class View extends \Magento\Shipping\Block\Adminhtml\View
 
     /**
      * @return \Magento\Framework\Phrase
+     * @throws \Exception
      */
     public function getHeaderText()
     {
@@ -67,7 +85,6 @@ class View extends \Magento\Shipping\Block\Adminhtml\View
         } else {
             $emailSent = __('the shipment email is not sent');
         }
-        // @codingStandardsIgnoreStart
         return __(
             'Shipment #%1 | %3 (%2) [%4]',
             $this->getShipment()->getIncrementId(),
@@ -79,6 +96,5 @@ class View extends \Magento\Shipping\Block\Adminhtml\View
             ),
             ShipmentStatus::getLabel($this->getShipment()->getDropshipStatus())
         );
-        // @codingStandardsIgnoreEnd
     }
 }

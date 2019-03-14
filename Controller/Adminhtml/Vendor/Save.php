@@ -1,20 +1,34 @@
 <?php
-namespace Mageinn\Vendor\Controller\Adminhtml\Vendor;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Controller\Adminhtml\Vendor;
 
 use \Magento\Backend\App\Action;
 use \Magento\Backend\App\Action\Context;
 use \Magento\Framework\Registry;
 use \Magento\Framework\Exception\LocalizedException;
-use \Mageinn\Vendor\Model\Info;
-use \Mageinn\Vendor\Model\Address;
-use \Mageinn\Vendor\Model\ResourceModel\Address\CollectionFactory as AddressCollectionFactory;
+use \Mageinn\Dropship\Model\Info;
+use \Mageinn\Dropship\Model\Address;
+use \Mageinn\Dropship\Model\ResourceModel\Address\CollectionFactory as AddressCollectionFactory;
 use \Magento\User\Model\ResourceModel\User\CollectionFactory as UserCollectionFactory;
-use \Mageinn\Vendor\Helper\Data;
+use \Mageinn\Dropship\Helper\CoreData;
 
 /**
  * Class Save
- *
- * @package Mageinn\Vendor\Controller\Adminhtml\Vendor
+ * @package Mageinn\Dropship\Controller\Adminhtml\Vendor
  */
 class Save extends Action
 {
@@ -46,13 +60,12 @@ class Save extends Action
     protected $vendorModel;
 
     /**
-     * @var \Mageinn\Vendor\Helper\Data
+     * @var CoreData
      */
-    protected $dataHelper;
+    protected $coreHelper;
 
     /**
      * Save constructor.
-     *
      * @param Context $context
      * @param Registry $coreRegistry
      * @param AddressCollectionFactory $addressCollectionFactory
@@ -68,14 +81,14 @@ class Save extends Action
         UserCollectionFactory $userCollectionFactory,
         Address $addressModel,
         Info $vendorModel,
-        Data $dataHelper
+        CoreData $coreHelper
     ) {
         $this->coreRegistry = $coreRegistry;
         $this->addressCollection = $addressCollectionFactory;
         $this->userCollectionFactory = $userCollectionFactory;
         $this->addressModel = $addressModel;
         $this->vendorModel = $vendorModel;
-        $this->dataHelper = $dataHelper;
+        $this->coreHelper = $coreHelper;
 
         parent::__construct($context);
     }
@@ -94,7 +107,6 @@ class Save extends Action
             Address::ADDRESS_TYPE_CUSTOMER_SERVICE  => $data[Address::ADDRESS_TYPE_CUSTOMER_SERVICE],
         ];
 
-        // @codingStandardsIgnoreStart
         $collection = $this->addressCollection->create();
         $addresses = $collection->addFieldToFilter('vendor_id', $vendorId)->getItems();
         if (!$addresses) {
@@ -111,7 +123,6 @@ class Save extends Action
                 $address->save();
             }
         }
-        // @codingStandardsIgnoreEnd
     }
 
     /**
@@ -119,6 +130,7 @@ class Save extends Action
      *
      * @param $vendorId
      * @param $assocVendorUsersIds
+     * @throws LocalizedException
      */
     protected function _saveAssocUsers($vendorId, $assocVendorUsersIds)
     {
@@ -142,31 +154,35 @@ class Save extends Action
         $adminData = [];
         foreach ($assocVendorUsers as $user) {
             $userIds = json_decode($user->getAssocVendorId());
+
+            if (is_object($userIds)) {
+                $userIds = get_object_vars($userIds);
+            }
+
             if (in_array($user->getId(), $usersIds)) {
                 $userIds = !empty($userIds) ? array_unique(array_merge($userIds, [$vendorId])) : [$vendorId];
             } else {
                 $userIds = !empty($userIds) ? array_diff($userIds, [$vendorId]) : null;
             }
-            $adminData[] = ['user_id' => $user->getId(), 'assoc_vendor_id' => json_encode($userIds)];
+            $adminData[] = ['user_id' => $user->getId(),
+                'assoc_vendor_id' => json_encode(!empty($userIds) ? array_values($userIds) : 0)
+            ];
         }
 
         if (!empty($adminData)) {
-            $this->dataHelper->bulkUpdate($assocVendorUsers->getResource(), $adminData);
+            $this->coreHelper->bulkUpdate($assocVendorUsers->getResource(), $adminData);
         }
     }
 
     /**
-     * Save action
-     *
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-     * @return \Magento\Framework\Controller\ResultInterface
+     * @return \Magento\Backend\Model\View\Result\Redirect
      */
     public function execute()
     {
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
         $postData = $this->getRequest()->getPostValue();
-        $vendor = $postData['mageinn_vendor'];
+        $vendor = $postData['mageinn_dropship'];
         $addresses = $postData['vendor_address'];
         $settings = $postData['vendor_settings'];
         $batchExport = $postData['batch_export'];
@@ -187,7 +203,7 @@ class Save extends Action
                 $info['entity_id'] = null;
             }
 
-            /** @var \Mageinn\Vendor\Model\Info $model */
+            /** @var \Mageinn\Dropship\Model\Info $model */
             $model = $this->vendorModel->load($id);
             if (!$model->getId() && $id) {
                 $this->messageManager->addError(__('This vendor no longer exists.'));

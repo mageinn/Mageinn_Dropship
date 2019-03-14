@@ -1,9 +1,11 @@
 <?php
-namespace Mageinn\Vendor\Model\Batch;
+namespace Mageinn\Dropship\Model\Batch;
+
+use vendor\project\StatusTest;
 
 /**
  * Class DataProvider
- * @package Mageinn\Vendor\Model\Batch
+ * @package Mageinn\Dropship\Model\Batch
  */
 class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 {
@@ -13,29 +15,26 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
     protected $_loadedData;
 
     /**
-     * @var \Mageinn\Vendor\Helper\Data
+     * @var \Mageinn\Dropship\Helper\Data
      */
     protected $_vendorHelper;
 
     /**
      * DataProvider constructor.
-     *
      * @param string $name
      * @param string $primaryFieldName
      * @param string $requestFieldName
-     * @param \Mageinn\Vendor\Model\ResourceModel\Batch\CollectionFactory $collectionFactory
-     * @param \Mageinn\Vendor\Helper\Data $vendorHelper
+     * @param \Mageinn\Dropship\Model\ResourceModel\Batch\CollectionFactory $collectionFactory
+     * @param \Mageinn\Dropship\Helper\Data $vendorHelper
      * @param array $meta
      * @param array $data
-     *
-     * @codingStandardsIgnoreStart
      */
     public function __construct(
         $name,
         $primaryFieldName,
         $requestFieldName,
-        \Mageinn\Vendor\Model\ResourceModel\Batch\CollectionFactory $collectionFactory,
-        \Mageinn\Vendor\Helper\Data $vendorHelper,
+        \Mageinn\Dropship\Model\ResourceModel\Batch\CollectionFactory $collectionFactory,
+        \Mageinn\Dropship\Helper\Data $vendorHelper,
         array $meta = [],
         array $data = []
     ) {
@@ -44,11 +43,8 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
     }
-    // @codingStandardsIgnoreEnd
 
     /**
-     * Get data
-     *
      * @return array
      */
     public function getData()
@@ -60,11 +56,10 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
         $info = [];
         $batchItems = $this->collection->getItems();
 
-        /** @var \Mageinn\Vendor\Model\Batch $item */
+        /** @var \Mageinn\Dropship\Model\Batch $item */
         foreach ($batchItems as $item) {
-            // Set vendor name for the data
             $item->setVendor($this->_vendorHelper->getVendorNameById($item->getVendorId()));
-            $info[\Mageinn\Vendor\Model\Batch::BATCH_DATA_INFORMATION] = $item->getData();
+            $info[\Mageinn\Dropship\Model\Batch::BATCH_DATA_INFORMATION] = $item->getData();
             $this->_loadedData[$item->getId()] = $info;
         }
 

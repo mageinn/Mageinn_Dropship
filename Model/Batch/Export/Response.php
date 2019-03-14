@@ -1,11 +1,24 @@
 <?php
-
-namespace Mageinn\Vendor\Model\Batch\Export;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Model\Batch\Export;
 
 /**
  * Class Response
- *
- * @package Mageinn\Vendor\Model\Batch\Export
+ * @package Mageinn\Dropship\Model\Batch\Export
  */
 class Response
 {
@@ -35,8 +48,6 @@ class Response
     protected $batchRows;
 
     /**
-     * Setter for the rows number property
-     *
      * @param $number
      * @return $this
      */
@@ -48,8 +59,6 @@ class Response
     }
 
     /**
-     * Getter for the rows number property
-     *
      * @return int
      */
     public function getRowsNumber()
@@ -58,8 +67,6 @@ class Response
     }
 
     /**
-     * Setter for the rows text property
-     *
      * @param $text
      * @return $this
      */
@@ -71,8 +78,6 @@ class Response
     }
 
     /**
-     * Getter for the rows text property
-     *
      * @return string
      */
     public function getRowsText()
@@ -89,7 +94,7 @@ class Response
     }
 
     /**
-     * @param array $notes
+     * @param $notes
      * @return $this
      */
     public function setNotes($notes)
@@ -109,8 +114,8 @@ class Response
     }
 
     /**
-     * @param string $filePath
-     * @return Response
+     * @param $filePath
+     * @return $this
      */
     public function setFilePath($filePath)
     {
@@ -127,8 +132,8 @@ class Response
     }
 
     /**
-     * @param array $batchRows
-     * @return Response
+     * @param $batchRows
+     * @return $this
      */
     public function setBatchRows($batchRows)
     {

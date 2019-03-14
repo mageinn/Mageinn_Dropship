@@ -1,21 +1,38 @@
 <?php
-namespace Mageinn\Vendor\Setup;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Setup;
 
 use \Magento\Framework\DB\Ddl\Table;
 use \Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
-use Mageinn\Vendor\Model\Info;
+use Mageinn\Dropship\Model\Info;
 
 /**
- * @codeCoverageIgnore
+ * Class InstallSchema
+ * @package Mageinn\Dropship\Setup
  */
 class InstallSchema implements InstallSchemaInterface
 {
     /**
-     * {@inheritdoc}
-     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     * @param SchemaSetupInterface $setup
+     * @param ModuleContextInterface $context
+     * @throws \Zend_Db_Exception
      */
     public function install(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
@@ -24,9 +41,6 @@ class InstallSchema implements InstallSchemaInterface
 
         $installer->startSetup();
 
-        /**
-         * Create table 'mageinn_vendor_information'
-         */
         if (!$installer->tableExists(Info::VENDOR_INFO_TABLE)) {
             $table = $installer->getConnection()
                 ->newTable($installer->getTable(Info::VENDOR_INFO_TABLE))
@@ -71,20 +85,6 @@ class InstallSchema implements InstallSchemaInterface
                     255,
                     [],
                     'Vendor Shipment Type'
-                )
-                ->addColumn(
-                    'client_managed',
-                    Table::TYPE_BOOLEAN,
-                    null,
-                    ['nullable' => false, 'default' => '0'],
-                    'Vendor Is Client Managed'
-                )
-                ->addColumn(
-                    'multiplier',
-                    Table::TYPE_DECIMAL,
-                    '12,4',
-                    ['nullable' => false, 'default' => '0.0000'],
-                    'Vendor Multiplier'
                 )
                 ->addIndex(
                     $setup->getIdxName(

@@ -1,5 +1,20 @@
 <?php
-namespace Mageinn\Vendor\Controller\Adminhtml\Vendor;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Controller\Adminhtml\Vendor;
 
 use \Magento\Backend\App\Action;
 use \Magento\Backend\App\Action\Context;
@@ -7,7 +22,7 @@ use \Magento\Backend\Model\View\Result\ForwardFactory;
 
 /**
  * Vendor Index Action
- * @package Mageinn\Vendor\Controller\Adminhtml\Vendor
+ * @package Mageinn\Dropship\Controller\Adminhtml\Vendor
  */
 class NewAction extends Action
 {
@@ -17,10 +32,9 @@ class NewAction extends Action
     protected $resultForwardFactory;
 
     /**
-     * Constructor
-     *
-     * @param \Magento\Backend\App\Action\Context $context
-     * @param \Magento\Backend\Model\View\Result\ForwardFactory $resultForwardFactory
+     * NewAction constructor.
+     * @param Context $context
+     * @param ForwardFactory $resultForwardFactory
      */
     public function __construct(Context $context, ForwardFactory $resultForwardFactory)
     {
@@ -29,8 +43,6 @@ class NewAction extends Action
     }
 
     /**
-     * Create new customer action
-     *
      * @return \Magento\Backend\Model\View\Result\Forward
      */
     public function execute()

@@ -1,12 +1,31 @@
 <?php
-namespace Mageinn\Vendor\Controller\Adminhtml\Shipment;
+/**
+ * Mageinn
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageinn.com license that is
+ * available through the world-wide-web at this URL:
+ * https://mageinn.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ */
+namespace Mageinn\Dropship\Controller\Adminhtml\Shipment;
 
-use Mageinn\Vendor\Model\Source\ShipmentStatus;
+use Mageinn\Dropship\Model\Source\ShipmentStatus;
 use \Magento\Backend\App\Action;
 use \Magento\Backend\App\Action\Context;
 use \Magento\Framework\Registry;
 use \Magento\Framework\View\Result\PageFactory;
 
+/**
+ * Class Ship
+ * @package Mageinn\Dropship\Controller\Adminhtml\Shipment
+ */
 class Ship extends Action
 {
     /**
@@ -17,15 +36,13 @@ class Ship extends Action
     const ADMIN_RESOURCE = 'Magento_Sales::shipment';
 
     /**
-     * @var \Magento\Framework\View\Result\PageFactory
+     * @var PageFactory
      */
     protected $resultPageFactory;
 
 
     /**
-     * Core registry
-     *
-     * @var \Magento\Framework\Registry
+     * @var Registry
      */
     protected $_coreRegistry;
 
@@ -35,11 +52,10 @@ class Ship extends Action
     protected $shipmentLoader;
 
     /**
-     * Edit action constructor.
-     *
-     * @param \Magento\Backend\App\Action\Context $context
-     * @param \Magento\Framework\Registry $coreRegistry
-     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
+     * Ship constructor.
+     * @param Context $context
+     * @param Registry $coreRegistry
+     * @param PageFactory $resultPageFactory
      * @param \Magento\Shipping\Controller\Adminhtml\Order\ShipmentLoader $shipmentLoader
      */
     public function __construct(
@@ -56,6 +72,9 @@ class Ship extends Action
     }
 
 
+    /**
+     * @return \Magento\Backend\Model\View\Result\Redirect
+     */
     public function execute()
     {
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
