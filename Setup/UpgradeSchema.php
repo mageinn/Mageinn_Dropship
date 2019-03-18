@@ -592,10 +592,12 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     )->addColumn(
                         'error_info',
                         Table::TYPE_TEXT,
+                        null,
                         []
                     )->addColumn(
                         'row_json',
                         Table::TYPE_TEXT,
+                        null,
                         []
                     )->addIndex(
                         $setup->getIdxName(
