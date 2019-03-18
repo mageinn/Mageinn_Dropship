@@ -81,7 +81,7 @@ class InstallData implements InstallDataInterface
                 'label' => 'Vendor',
                 'input' => 'select',
                 'source' => \Mageinn\Dropship\Model\Info\Attribute\Source\Vendorid::class,
-                'required' => true,
+                'required' => false,
                 'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,
                 'visible' => true,
                 'user_defined' => false,

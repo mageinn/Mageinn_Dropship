@@ -45,7 +45,7 @@ class Vendorid extends \Magento\Eav\Model\Entity\Attribute\Source\Table
     /**
      * @return array
      */
-    public function getAllOptions()
+    public function getAllOptions($withEmpty = true, $defaultValues = false)
     {
         if (!$this->_options) {
             $options = $this->_createVendorCollection()->toOptionArray();
