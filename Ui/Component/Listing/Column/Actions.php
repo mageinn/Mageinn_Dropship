@@ -33,6 +33,27 @@ class Actions extends Column
     protected $urlBuilder;
 
     /**
+     * @param array $dataSource
+     * @return array
+     */
+    public function prepareDataSource(array $dataSource)
+    {
+        if (isset($dataSource['data']['items'])) {
+            $storeId = $this->context->getFilterParam('store_id');
+
+            foreach ($dataSource['data']['items'] as &$item) {
+                $item[$this->getData('name')]['edit'] = [
+                    'href' => $this->urlBuilder->getUrl('sales/vendor/edit', ['id' => $item['entity_id'], 'store' => $storeId]),
+                    'label' => __('Edit'),
+                    'hidden' => false,
+                ];
+            }
+        }
+
+        return $dataSource;
+    }
+
+    /**
      * Actions constructor.
      * @param ContextInterface $context
      * @param UiComponentFactory $uiComponentFactory
@@ -49,29 +70,5 @@ class Actions extends Column
     ) {
         $this->urlBuilder = $urlBuilder;
         parent::__construct($context, $uiComponentFactory, $components, $data);
-    }
-
-    /**
-     * @param array $dataSource
-     * @return array
-     */
-    public function prepareDataSource(array $dataSource)
-    {
-        if (isset($dataSource['data']['items'])) {
-            $storeId = $this->context->getFilterParam('store_id');
-
-            foreach ($dataSource['data']['items'] as &$item) {
-                $item[$this->getData('name')]['edit'] = [
-                    'href' => $this->urlBuilder->getUrl(
-                        'sales/vendor/edit',
-                        ['id' => $item['entity_id'], 'store' => $storeId]
-                    ),
-                    'label' => __('Edit'),
-                    'hidden' => false,
-                ];
-            }
-        }
-
-        return $dataSource;
     }
 }
