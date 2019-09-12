@@ -102,9 +102,9 @@ class User extends Extended
                 $usersIds = 0;
             }
             if ($column->getFilter()->getValue()) {
-                $this->getCollection()->addFieldToFilter('user_id', ['in' => $usersIds]);
+                $this->getCollection()->addFieldToFilter('main_table.user_id', ['in' => $usersIds]);
             } elseif (!empty($usersIds)) {
-                $this->getCollection()->addFieldToFilter('user_id', ['nin' => $usersIds]);
+                $this->getCollection()->addFieldToFilter('main_table.user_id', ['nin' => $usersIds]);
             }
         } else {
             parent::_addColumnFilterToCollection($column);
