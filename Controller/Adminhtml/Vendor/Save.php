@@ -142,7 +142,7 @@ class Save extends Action
         $collection = $this->userCollectionFactory->create();
         $assocVendorUsers = $collection->addFieldToFilter(
             [
-                'user_id',
+                'main_table.user_id',
                 'assoc_vendor_id',
             ],
             [
